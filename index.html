@@ -32,13 +32,24 @@
     .link-button:hover {
       background-color: #005fe0;
     }
+    .link-button.phantom {
+      background-color: #a2e3f6; /* Phantom's brand color */
+      color: #000;
+    }
+    .link-button.civic {
+      background-color: #28a745; /* Civic's green */
+    }
     .instructions {
       margin-top: 2em;
       font-size: 1em;
       color: #333;
+      text-align: left;
     }
     .instructions p {
       margin-bottom: 1em;
+    }
+    .instructions ol {
+      padding-left: 1.2em;
     }
   </style>
 </head>
@@ -46,6 +57,16 @@
   <div class="container">
     <h1>Cal Coin Placeholder Site</h1>
     <p>Welcome! This placeholder site will later host the Cal Coin DApp. Follow the steps below to get started:</p>
+    
+    <!-- Phantom Wallet Setup Link -->
+    <a 
+      class="link-button phantom" 
+      href="https://phantom.app/" 
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Get Phantom Wallet
+    </a>
     
     <!-- MoonPay SOL Purchase Link -->
     <a 
@@ -59,11 +80,10 @@
     
     <!-- Civic Get Pass Link -->
     <a 
-      class="link-button" 
-      href="https://getpass.civic.me" 
+      class="link-button civic" 
+      href="https://getpass.civic.com" 
       target="_blank"
       rel="noopener noreferrer"
-      style="background-color: #28a745;" <!-- Optional: Different color for distinction -->
     >
       Get Your Civic Pass
     </a>
@@ -72,9 +92,18 @@
     <div class="instructions">
       <p><strong>Steps to Register:</strong></p>
       <ol>
-        <li>Purchase SOL using the MoonPay link above.</li>
-        <li>Once you have SOL in your wallet, click on "Get Your Civic Pass" to complete your unique face scan.</li>
-        <li>After verification, you'll be eligible to register and receive your daily Cal Coins.</li>
+        <li>
+          <strong>Set Up Your Phantom Wallet:</strong> Click on "Get Phantom Wallet" above and follow the instructions to install and create your Phantom Wallet. This wallet will store your SOL and interact with the Cal Coin DApp.
+        </li>
+        <li>
+          <strong>Purchase SOL:</strong> Use the MoonPay link to buy SOL and transfer it to your Phantom Wallet. SOL is needed for transaction fees and interacting with the Solana blockchain.
+        </li>
+        <li>
+          <strong>Obtain Your Civic Pass:</strong> Once you have SOL in your wallet, click on "Get Your Civic Pass" to complete your unique face scan. This ensures your identity is verified for receiving Cal Coins.
+        </li>
+        <li>
+          <strong>Register and Receive Cal Coins:</strong> After verification, you'll be eligible to register and start receiving your daily Cal Coins.
+        </li>
       </ol>
     </div>
   </div>
