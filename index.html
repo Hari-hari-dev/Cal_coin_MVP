@@ -7,13 +7,18 @@
     body {
       font-family: sans-serif;
       margin: 2em;
+      background-color: #f9f9f9;
     }
     .container {
       max-width: 600px;
       margin: 0 auto;
       text-align: center;
+      background-color: #fff;
+      padding: 2em;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
-    .moonpay-link {
+    .link-button {
       background-color: #0070FF;
       color: #fff;
       padding: 1em 2em;
@@ -22,26 +27,56 @@
       font-weight: bold;
       margin-top: 1em;
       display: inline-block;
+      transition: background-color 0.3s ease;
     }
-    .moonpay-link:hover {
+    .link-button:hover {
       background-color: #005fe0;
+    }
+    .instructions {
+      margin-top: 2em;
+      font-size: 1em;
+      color: #333;
+    }
+    .instructions p {
+      margin-bottom: 1em;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Cal Coin Placeholder Site</h1>
-    <p>Welcome! This placeholder site will later host the Cal Coin DApp. For now, if you need SOL to begin registration, use the link below:</p>
+    <p>Welcome! This placeholder site will later host the Cal Coin DApp. Follow the steps below to get started:</p>
     
-    <!-- Replace with your actual MoonPay link or a relevant page -->
+    <!-- MoonPay SOL Purchase Link -->
     <a 
-      class="moonpay-link" 
+      class="link-button" 
       href="https://www.moonpay.com/buy/sol" 
       target="_blank"
       rel="noopener noreferrer"
     >
       Use MoonPay to Get SOL
     </a>
+    
+    <!-- Civic Get Pass Link -->
+    <a 
+      class="link-button" 
+      href="https://getpass.civic.me" 
+      target="_blank"
+      rel="noopener noreferrer"
+      style="background-color: #28a745;" <!-- Optional: Different color for distinction -->
+    >
+      Get Your Civic Pass
+    </a>
+    
+    <!-- Instructions -->
+    <div class="instructions">
+      <p><strong>Steps to Register:</strong></p>
+      <ol>
+        <li>Purchase SOL using the MoonPay link above.</li>
+        <li>Once you have SOL in your wallet, click on "Get Your Civic Pass" to complete your unique face scan.</li>
+        <li>After verification, you'll be eligible to register and receive your daily Cal Coins.</li>
+      </ol>
+    </div>
   </div>
 </body>
 </html>
