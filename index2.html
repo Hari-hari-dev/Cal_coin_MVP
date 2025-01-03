@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Daily FaceScan Demo</title>
+  <!-- Include the Solana web3 library & Anchor. 
+       You can fetch from CDN or local files. -->
+  <script src="https://unpkg.com/@solana/web3.js@1.84.1/lib/index.iife.js"></script>
+  <script src="https://unpkg.com/@project-serum/anchor@0.27.0/dist/anchor.iife.js"></script>
+</head>
+<body>
+  <h1>Daily FaceScan Airdrop Demo</h1>
+  
+  <!-- Buttons -->
+  <button id="connectBtn">Connect Phantom</button>
+  <button id="initBtn">Initialize</button>
+  <button id="claimBtn">Claim</button>
+  
+  <div id="status"></div>
+
+  <script>
+    /*********************************************************
+     * 1) Global Variables & Setup
+     *********************************************************/
+    // Use the devnet or testnet cluster for testing:
+    const NETWORK_URL = "https://api.devnet.solana.com";
+    
+    // Replace with your own program ID from declare_id! in your Rust
+    const PROGRAM_ID = new solanaWeb3.PublicKey("5nghtxRD9idNc6CmEP73AKrpoQBpWjt8qsVQFqWRsgD8");
+
+    // Your program's IDL as a JavaScript object. 
+    // Typically, you export an "idl.json" from Anchor or paste it here.
+    // For brevity, here's a *very short placeholder* – you’d need your actual IDL.
+    const IDL = {
+      version: "0.0.1",
+      name: "daily_facescan",
+      instructions: [
+        {
+          name: "initialize",
+          accounts: [],
+          args: []
+        },
+        {
+          name: "claim",
+          accounts: [],
+          args: []
+        }
+      ]
+    };
+
+    // We'll store our Anchor "program" object here once we create it.
+    let program;
+    let provider;
+
+    // For demonstration, these PDAs will be placeholders.
+    // In real usage, you must derive them (like airdropPubkey, mintPubkey, etc.)
+    // and store them in local storage or pass them from your server.
+    let airdropPubkey;        
+    let mintPubkey;
+    let mintAuthorityPubkey;  
+
+    /*********************************************************
+     * 2) Connect to Phantom
+     *********************************************************/
+    async function connectPhantom() {
+      // Modern Phantom injection:
+      if (!window.solana) {
+        alert("Phantom wallet not found. Install it first!");
+        return;
+      }
+      try {
+        // Request connection
+        const resp = await window.solana.connect();
+        // Public key
+        const userPublicKey = window.solana.publicKey.toBase58();
+        console.log("Connected to Phantom as:", userPublicKey);
+        document.getElementById('status').textContent = 
+          "Connected to Phantom: " + userPublicKey;
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    /*********************************************************
+     * 3) Setup Anchor (Provider, Program)
+     *********************************************************/
+    function setupAnchor() {
+      // Create a Solana connection
+      const connection = new solanaWeb3.Connection(NETWORK_URL, "processed");
+
+      // Use the Phantom provider as the Signer
+      const wallet = {
+        publicKey: window.solana.publicKey,
+        signTransaction: (tx) => window.solana.signTransaction(tx),
+        signAllTransactions: (txs) => window.solana.signAllTransactions(txs)
+      };
+
+      // Anchor provider 
+      provider = new anchor.AnchorProvider(connection, wallet, {
+        preflightCommitment: "processed",
+      });
+      
+      // Create the Program object
+      program = new anchor.Program(IDL, PROGRAM_ID, provider);
+    }
+
+    /*********************************************************
+     * 4) Initialize
+     *********************************************************/
+    async function onInitialize() {
+      if (!window.solana || !window.solana.publicKey) {
+        alert("Connect Phantom first!");
+        return;
+      }
+
+      // Set up anchor if not already done
+      if (!program) {
+        setupAnchor();
+      }
+
+      // 4A) Derive or create PDAs for airdrop, mint, etc.
+      // For demonstration, we’ll do something minimal:
+      //   airdropPubkey   = Keypair you generate or findProgramAddress with seeds
+      //   mintPubkey      = Keypair or PDA for the minted token
+      //   mintAuthorityPubkey = PDA (seeds [airdropPubkey, "mint_authority"])
+      //
+      // In real usage, you do something like:
+      //   const airdropKeypair = anchor.web3.Keypair.generate();
+      //   const [mintAuthorityPda] = await anchor.web3.PublicKey.findProgramAddress(
+      //      [airdropKeypair.publicKey.toBuffer(), Buffer.from("mint_authority")],
+      //      PROGRAM_ID
+      //   );
+      //   etc...
+      //
+      // For now, let's just pretend we have them:
+      airdropPubkey = anchor.web3.Keypair.generate();
+      mintPubkey = anchor.web3.Keypair.generate();
+      // We'll guess the mintAuthority from the same seeds as in Rust
+      const [mintAuthPda] = await anchor.web3.PublicKey.findProgramAddress(
+        [airdropPubkey.publicKey.toBuffer(), Buffer.from("mint_authority")],
+        PROGRAM_ID
+      );
+      mintAuthorityPubkey = mintAuthPda;
+
+      try {
+        // 4B) Call the "initialize" instruction with the correct accounts
+        //   This must match your Rust: `#[derive(Accounts)] pub struct Initialize`
+        //   which includes: 
+        //    - airdrop
+        //    - mint
+        //    - mint_authority
+        //    - authority
+        //    - system_program
+        //    - token_program
+        //    - rent
+        //
+        //   Because we use `#[account(init, payer = authority)]`, 
+        //   you pass the Keypair in .signers([...]) to create it.
+        
+        await program.methods.initialize() // no args
+          .accounts({
+            airdrop: airdropPubkey.publicKey,
+            mint: mintPubkey.publicKey,
+            mintAuthority: mintAuthorityPubkey,
+            authority: provider.wallet.publicKey, // your Phantom wallet
+            systemProgram: anchor.web3.SystemProgram.programId,
+            tokenProgram: anchor.utils.token.TOKEN_PROGRAM_ID,
+            rent: anchor.web3.SYSVAR_RENT_PUBKEY,
+          })
+          .signers([airdropPubkey, mintPubkey]) 
+          // the Keypairs that are "init" must sign
+          .rpc();
+
+        document.getElementById('status').textContent = "Initialize successful!";
+      } catch (err) {
+        console.error(err);
+        alert("Initialize failed: " + err.message);
+      }
+    }
+
+    /*********************************************************
+     * 5) Claim
+     *********************************************************/
+    async function onClaim() {
+      if (!program) {
+        alert("Program not set up yet. Try Initialize first!");
+        return;
+      }
+      try {
+        // 5A) Derive or create the "ticket" address, recipient's token account, etc.
+        //   This must match your `Claim` struct in Rust:
+        //   seeds = [airdrop, recipient, "ticket_seed"], etc.
+        //
+        // Example:
+        const [ticketPda] = await anchor.web3.PublicKey.findProgramAddress(
+          [airdropPubkey.publicKey.toBuffer(), 
+           provider.wallet.publicKey.toBuffer(), 
+           Buffer.from("ticket")],
+          PROGRAM_ID
+        );
+
+        // 5B) Also we need the associated token account for the user
+        //   But fortunately, we can do `init_if_needed` or 
+        //   just call anchor's "getAssociatedTokenAddress" 
+        //
+        // For demonstration, let's do minimal:
+        const recipientTokenAccount = await anchor.utils.token.associatedAddress({
+          mint: mintPubkey.publicKey,
+          owner: provider.wallet.publicKey
+        });
+
+        // 5C) For the gateway token
+        //   The user must have a valid gateway token. 
+        //   Suppose they already do, and you just get it from 
+        //   your gateway program or an API. We'll fake a placeholder:
+        const gatewayToken = anchor.web3.Keypair.generate().publicKey;
+        // In reality, you'd have to find the actual gateway token address
+        // from the user.
+
+        // 5D) Finally, call the "claim" instruction
+        await program.methods.claim()
+          .accounts({
+            airdrop: airdropPubkey.publicKey,
+            payer: provider.wallet.publicKey,
+            mintAuthority: mintAuthorityPubkey,
+            ticket: ticketPda,
+            mint: mintPubkey.publicKey,
+            recipientTokenAccount: recipientTokenAccount,
+            gatewayToken: gatewayToken,
+            recipient: provider.wallet.publicKey,
+            systemProgram: anchor.web3.SystemProgram.programId,
+            tokenProgram: anchor.utils.token.TOKEN_PROGRAM_ID,
+            associatedTokenProgram: anchor.utils.token.ASSOCIATED_PROGRAM_ID,
+            rent: anchor.web3.SYSVAR_RENT_PUBKEY,
+          })
+          .rpc();
+
+        document.getElementById('status').textContent = "Claim successful!";
+      } catch (err) {
+        console.error(err);
+        alert("Claim failed: " + err.message);
+      }
+    }
+
+    /*********************************************************
+     * 6) DOM Event Listeners
+     *********************************************************/
+    document.getElementById("connectBtn").onclick = connectPhantom;
+    document.getElementById("initBtn").onclick = onInitialize;
+    document.getElementById("claimBtn").onclick = onClaim;
+  </script>
+</body>
+</html>
