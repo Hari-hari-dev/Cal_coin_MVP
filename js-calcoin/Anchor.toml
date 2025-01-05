@@ -12,7 +12,7 @@ calcoin = "5nghtxRD9idNc6CmEP73AKrpoQBpWjt8qsVQFqWRsgD8"
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "Localnet"
+cluster = "devnet"
 wallet = "~/.config/solana/id.json"
 
 [scripts]
