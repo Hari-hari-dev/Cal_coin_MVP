@@ -2,17 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Anchor 0.29.0 Example</title>
+  <title>Anchor 0.29 + Buffer Polyfill (Browser)</title>
 
-  <!-- Load Solana Web3.js for Phantom usage -->
+  <!-- 1) Load Solana Web3 for Phantom usage -->
   <script src="https://unpkg.com/@solana/web3.js@1.84.1/lib/index.iife.js"></script>
 
-  <!-- Load Buffer polyfill -->
+  <!-- 
+    2) Load a known-dist buffer polyfill that attaches to window. 
+    We'll use buffer@5.2.1 "dist/buffer.min.js" (an older version tested 
+    to attach itself to `window.buffer`).
+    
+    If you see "Buffer polyfill not found", try a different pinned version
+    or a different CDN link. The key is we need `window.buffer.Buffer`.
+  -->
   <script src="https://cdn.jsdelivr.net/npm/buffer@5.2.1/dist/buffer.min.js"></script>
+  <script>
+    // Attempt to attach Buffer globally
+    if (window.buffer && window.buffer.Buffer) {
+      window.Buffer = window.buffer.Buffer;
+      console.log("Buffer polyfill assigned to window.Buffer successfully!");
+    } else {
+      console.error("Could not find window.buffer.Buffer. The buffer polyfill might not match this build.");
+    }
+  </script>
 
-  <!-- Load Anchor 0.29.0 Browser Build -->
+  <!-- 3) Anchor 0.29.0 IIFE build -->
   <script src="https://unpkg.com/@coral-xyz/anchor@0.29.0/dist/browser/index.js"></script>
-
   <script>
     // Check if 'anchor' is defined
     if (typeof anchor === 'undefined') {
@@ -20,8 +35,22 @@
     } else {
       console.log("anchor is defined. Version info:", anchor);
     }
+  </script>
+</head>
 
-    // Phantom wallet connection setup
+<body>
+  <h1>Anchor 0.29 + Buffer Polyfill in Browser (Updated)</h1>
+
+  <!-- Buttons -->
+  <button id="connectBtn">Connect Phantom</button>
+  <button id="testBtn">Test Anchor</button>
+
+  <pre id="status"></pre>
+
+  <script>
+    /*********************************************************
+     * 0) Phantom Connect
+     *********************************************************/
     let userPublicKey;
 
     async function connectPhantom() {
@@ -41,14 +70,16 @@
       }
     }
 
-    // Test using Anchor
+    /*********************************************************
+     * 1) Test Using Anchor
+     *********************************************************/
     async function testAnchor() {
       if (!userPublicKey) {
         alert("Please connect Phantom first!");
         return;
       }
       try {
-        // Confirm 'anchor' is loaded
+        // Confirm anchor is loaded
         if (typeof anchor === 'undefined') {
           throw new Error("anchor is still undefined.");
         }
@@ -74,19 +105,8 @@
       }
     }
 
-    // Event listeners for buttons
     document.getElementById("connectBtn").onclick = connectPhantom;
     document.getElementById("testBtn").onclick = testAnchor;
   </script>
-</head>
-<body>
-  <h1>Anchor 0.29.0 Example</h1>
-
-  <!-- Buttons -->
-  <button id="connectBtn">Connect Phantom</button>
-  <button id="testBtn">Test Anchor</button>
-
-  <!-- Status display -->
-  <pre id="status"></pre>
 </body>
 </html>
