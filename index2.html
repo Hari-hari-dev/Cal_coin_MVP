@@ -1,269 +1,303 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Daily FaceScan - Pure Web3.js Example</title>
-  <meta charset="UTF-8" />
-  <!-- Only the Solana Web3 library (no Anchor) -->
+  <title>Daily FaceScan Airdrop Demo (with Debug)</title>
+  <!-- Include the Solana web3 library & Anchor. 
+       You can fetch from CDN or local files. -->
   <script src="https://unpkg.com/@solana/web3.js@1.84.1/lib/index.iife.js"></script>
+  <script src="https://unpkg.com/@project-serum/anchor@0.29.0/dist/anchor.iife.js"></script>
 </head>
 <body>
-  <h1>Daily FaceScan (Initialize & Claim) - Web3.js Only</h1>
-
-  <!-- UI Buttons -->
+  <h1>Daily FaceScan Airdrop Demo (with Debug)</h1>
+  
+  <!-- Buttons -->
   <button id="connectBtn">Connect Phantom</button>
   <button id="initBtn">Initialize</button>
   <button id="claimBtn">Claim</button>
+  <button id="debugBtn">Debug</button>
 
-  <pre id="status"></pre>
+  <div id="status" style="white-space: pre-wrap;"></div>
 
   <script>
     /*********************************************************
-     * 0) Some Hard-Coded Instruction Discriminators
-     *********************************************************/
-    // For an Anchor instruction named "initialize", anchor does:
-    //   "global:initialize" => sha256 => first 8 bytes
-    // Example placeholder (HEX) for demonstration:
-    const initializeDiscHex = "2e251954ef0c374d"; // <--- REPLACE with real hex
-    // Convert hex => Buffer of length 8
-    const initializeDisc = Buffer.from(initializeDiscHex, "hex");
-
-    // For "claim":
-    // Example placeholder (HEX) for demonstration:
-    const claimDiscHex = "c3a22d14bfdbb103";  // <--- REPLACE with real hex
-    const claimDisc = Buffer.from(claimDiscHex, "hex");
-
-    /*********************************************************
      * 1) Global Variables & Setup
      *********************************************************/
+    // We'll use the devnet cluster for demonstration:
     const NETWORK_URL = "https://api.devnet.solana.com";
+    
+    // Program ID from your Rust code / logs
+    const PROGRAM_ID = new solanaWeb3.PublicKey("6FhraHnUCBLHUXyKypmZPv67VbbWb1GtPzmyrGLsZ7EV");
 
-    // The program ID from declare_id! in your Rust
-    // e.g. 6FhraHnUCBLHUXyKypmZPv67VbbWb1GtPzmyrGLsZ7EV
-    const PROGRAM_ID = new solanaWeb3.PublicKey(
-      "6FhraHnUCBLHUXyKypmZPv67VbbWb1GtPzmyrGLsZ7EV"
-    );
+    // YOUR FULL IDL, as provided:
+    const IDL = {
+      "version": "0.1.0",
+      "name": "daily_facescan",
+      "instructions": [
+        {
+          "name": "initialize",
+          "accounts": [
+            {"name": "airdrop","isMut": true,"isSigner": true},
+            {"name": "mint","isMut": true,"isSigner": true},
+            {"name": "mintAuthority","isMut": false,"isSigner": false},
+            {"name": "authority","isMut": true,"isSigner": true},
+            {"name": "systemProgram","isMut": false,"isSigner": false},
+            {"name": "tokenProgram","isMut": false,"isSigner": false},
+            {"name": "rent","isMut": false,"isSigner": false}
+          ],
+          "args": []
+        },
+        {
+          "name": "claim",
+          "accounts": [
+            {"name": "airdrop","isMut": false,"isSigner": false},
+            {"name": "payer","isMut": true,"isSigner": true},
+            {"name": "mintAuthority","isMut": false,"isSigner": false},
+            {"name": "ticket","isMut": true,"isSigner": false},
+            {"name": "mint","isMut": true,"isSigner": false},
+            {"name": "recipientTokenAccount","isMut": true,"isSigner": false},
+            {"name": "gatewayToken","isMut": false,"isSigner": false},
+            {"name": "recipient","isMut": true,"isSigner": false},
+            {"name": "systemProgram","isMut": false,"isSigner": false},
+            {"name": "tokenProgram","isMut": false,"isSigner": false},
+            {"name": "associatedTokenProgram","isMut": false,"isSigner": false},
+            {"name": "rent","isMut": false,"isSigner": false}
+          ],
+          "args": []
+        },
+        {
+          "name": "addOwner",
+          "accounts": [
+            {"name": "airdrop","isMut": true,"isSigner": false},
+            {"name": "signer","isMut": true,"isSigner": true}
+          ],
+          "args": [{"name": "newOwner","type": "publicKey"}]
+        },
+        {
+          "name": "deleteOwner",
+          "accounts": [
+            {"name": "airdrop","isMut": true,"isSigner": false},
+            {"name": "signer","isMut": true,"isSigner": true}
+          ],
+          "args": [{"name": "targetOwner","type": "publicKey"}]
+        },
+        {
+          "name": "changeGatewayNetwork",
+          "accounts": [
+            {"name": "airdrop","isMut": true,"isSigner": false},
+            {"name": "signer","isMut": true,"isSigner": true}
+          ],
+          "args": [{"name": "newGatekeeper","type": "publicKey"}]
+        }
+      ],
+      "accounts": [
+        {
+          "name": "Airdrop",
+          "type": {
+            "kind": "struct",
+            "fields": [
+              {"name": "gatekeeperNetwork","type": "publicKey"},
+              {"name": "mint","type": "publicKey"},
+              {"name": "dailyAmount","type": "u64"},
+              {"name": "lastClaimTimestamp","type": "i64"},
+              {
+                "name": "owners",
+                "type": {"array": ["publicKey",6]}
+              },
+              {"name": "ownersCount","type": "u8"}
+            ]
+          }
+        },
+        {
+          "name": "Ticket",
+          "type": {
+            "kind": "struct",
+            "fields": []
+          }
+        }
+      ],
+      "errors": [
+        {"code": 6000,"name": "InvalidPass","msg": "Invalid gateway token or gating check not satisfied"},
+        {"code": 6001,"name": "Unauthorized","msg": "You are not an authorized owner"},
+        {"code": 6002,"name": "OwnersFull","msg": "Owners array is full"},
+        {"code": 6003,"name": "AlreadyOwner","msg": "That pubkey is already an owner"},
+        {"code": 6004,"name": "OwnerNotFound","msg": "Owner not found in the array"},
+        {"code": 6005,"name": "CannotRemoveSelf","msg": "Cannot remove yourself"},
+        {"code": 6006,"name": "InvalidPubkey","msg": "Could not parse gatekeeper network as a valid Pubkey"}
+      ]
+    };
 
-    // We'll store Phantom's publicKey + a Connection + any placeholder Keypairs
-    let connection;
-    let userPublicKey;
-    let airdropKeypair;   // (signer for the "airdrop" account)
-    let mintKeypair;      // (signer for the "mint" account)
-    let mintAuthorityPda; // (non-signer, derived PDA)
+    // We'll store our Program / Provider once set up
+    let program;
+    let provider;
+
+    // For demonstration placeholders
+    let airdropPubkey;        
+    let mintPubkey;
+    let mintAuthorityPubkey;  
 
     /*********************************************************
-     * 2) Connect to Phantom
+     * 2) Connect Phantom
      *********************************************************/
     async function connectPhantom() {
       if (!window.solana) {
-        alert("Phantom wallet not found. Install or enable it!");
+        alert("Phantom wallet not found. Install it first!");
         return;
       }
       try {
-        // Request permission
         await window.solana.connect();
-        userPublicKey = window.solana.publicKey;
-        console.log("Connected to Phantom as:", userPublicKey.toBase58());
-        document.getElementById("status").textContent =
-          `Phantom connected: ${userPublicKey.toBase58()}`;
+        const userPublicKey = window.solana.publicKey.toBase58();
+        console.log("Connected to Phantom as:", userPublicKey);
+        document.getElementById('status').textContent =
+          "Connected to Phantom: " + userPublicKey;
       } catch (err) {
         console.error("Phantom connect error:", err);
-        document.getElementById("status").textContent =
-          `Failed to connect: ${err.message}`;
+        alert("Failed to connect: " + err.message);
       }
     }
 
     /*********************************************************
-     * 3) Setup on page load: Connection to devnet
+     * 3) Setup Anchor
      *********************************************************/
-    window.addEventListener("load", () => {
-      connection = new solanaWeb3.Connection(NETWORK_URL, "confirmed");
-      console.log("Solana devnet connection established.");
-    });
+    function setupAnchor() {
+      const connection = new solanaWeb3.Connection(NETWORK_URL, "processed");
+      const wallet = {
+        publicKey: window.solana.publicKey,
+        signTransaction: (tx) => window.solana.signTransaction(tx),
+        signAllTransactions: (txs) => window.solana.signAllTransactions(txs),
+      };
+      provider = new anchor.AnchorProvider(connection, wallet, {
+        preflightCommitment: "processed",
+      });
+      // Create the Program instance from your full IDL
+      program = new anchor.Program(IDL, PROGRAM_ID, provider);
+    }
 
     /*********************************************************
-     * 4) "Initialize" Instruction
+     * 4) Initialize
      *********************************************************/
     async function onInitialize() {
-      if (!userPublicKey) {
+      if (!window.solana || !window.solana.publicKey) {
         alert("Connect Phantom first!");
         return;
       }
+      if (!program) {
+        setupAnchor();
+      }
+      // Generate placeholders
+      airdropPubkey = anchor.web3.Keypair.generate();
+      mintPubkey = anchor.web3.Keypair.generate();
 
-      // For demonstration, we create new signers for airdrop + mint
-      // WARNING: Phantom can't sign for these new Keypairs. 
-      airdropKeypair = solanaWeb3.Keypair.generate();
-      mintKeypair = solanaWeb3.Keypair.generate();
-
-      // Derive the mint authority seeds = [airdropPubkey, "mint_authority"]
-      let seeds = [
-        airdropKeypair.publicKey.toBuffer(),
-        Buffer.from("mint_authority"),
-      ];
-      const [pdaPubkey, _bump] = await solanaWeb3.PublicKey.findProgramAddress(
-        seeds,
+      const [mintAuthPda] = await anchor.web3.PublicKey.findProgramAddress(
+        [airdropPubkey.publicKey.toBuffer(), Buffer.from("mint_authority")],
         PROGRAM_ID
       );
-      mintAuthorityPda = pdaPubkey;
-
-      // Build the "initialize" instruction
-      const keys = [
-        // 1) airdrop (signer, writable)
-        { pubkey: airdropKeypair.publicKey, isSigner: true, isWritable: true },
-        // 2) mint (signer, writable)
-        { pubkey: mintKeypair.publicKey, isSigner: true, isWritable: true },
-        // 3) mintAuthority (not signer, not writable)
-        { pubkey: mintAuthorityPda, isSigner: false, isWritable: false },
-        // 4) authority (the Phantom wallet user)
-        { pubkey: userPublicKey, isSigner: true, isWritable: true },
-        // 5) systemProgram
-        { pubkey: solanaWeb3.SystemProgram.programId, isSigner: false, isWritable: false },
-        // 6) tokenProgram
-        { pubkey: solanaWeb3.TOKEN_PROGRAM_ID, isSigner: false, isWritable: false },
-        // 7) rent
-        { pubkey: solanaWeb3.SYSVAR_RENT_PUBKEY, isSigner: false, isWritable: false },
-      ];
-
-      const initIx = new solanaWeb3.TransactionInstruction({
-        programId: PROGRAM_ID,
-        keys,
-        data: initializeDisc, // 8-byte anchor discriminator for "initialize"
-      });
-
-      let tx = new solanaWeb3.Transaction().add(initIx);
-
-      // The tricky part: we have 3 signers: airdropKeypair, mintKeypair, and the Phantom user.
-      // In a pure web3 flow, we can do partialSign for the Keypairs, then ask Phantom to sign+send.
-
-      // 1) Partial sign locally with the newly generated Keypairs
-      tx.partialSign(airdropKeypair);
-      tx.partialSign(mintKeypair);
-
-      // 2) Let Phantom sign the rest (the userPublicKey).
-      // We'll convert to a "sendTransaction" style if Phantom supports it:
-      // (Equivalent to: await window.solana.signTransaction(tx) but returning a signature)
+      mintAuthorityPubkey = mintAuthPda;
 
       try {
-        // A simpler approach: let Phantom handle everything in "sendTransaction" 
-        // but it won't sign for the new keypairs. => We do partialSign first.
+        await program.methods.initialize()
+          .accounts({
+            airdrop: airdropPubkey.publicKey,
+            mint: mintPubkey.publicKey,
+            mintAuthority: mintAuthorityPubkey,
+            authority: provider.wallet.publicKey,
+            systemProgram: anchor.web3.SystemProgram.programId,
+            tokenProgram: anchor.utils.token.TOKEN_PROGRAM_ID,
+            rent: anchor.web3.SYSVAR_RENT_PUBKEY,
+          })
+          .signers([airdropPubkey, mintPubkey])
+          .rpc();
 
-        const signedTx = await window.solana.signTransaction(tx);
-        // "signedTx" is now fully signed by Phantom's key + your partialSigners.
-
-        const txSig = await connection.sendRawTransaction(signedTx.serialize());
-        await connection.confirmTransaction(txSig, "confirmed");
-
-        document.getElementById("status").textContent =
-          `Initialize Success!\nTx Sig: ${txSig}`;
-        console.log("Initialize txSig:", txSig);
+        document.getElementById('status').textContent = "Initialize successful!";
+        console.log("Initialized with new airdropPubkey:", airdropPubkey.publicKey.toBase58());
       } catch (err) {
-        console.error("Initialize transaction error:", err);
-        document.getElementById("status").textContent =
-          `Initialize failed: ${err.message}`;
+        console.error("Initialize failed:", err);
+        alert("Initialize failed: " + err.message);
       }
     }
 
     /*********************************************************
-     * 5) "Claim" Instruction
+     * 5) Claim
      *********************************************************/
     async function onClaim() {
-      if (!airdropKeypair || !mintKeypair || !mintAuthorityPda) {
-        alert("No airdrop + mint found. Did you run Initialize?");
+      if (!program) {
+        alert("Program not set up yet. Try Initialize first!");
         return;
       }
       try {
-        // We also need a "ticket" address, seeds = [airdrop, recipient, "ticket"]
-        const seedTicket = [
-          airdropKeypair.publicKey.toBuffer(),
-          userPublicKey.toBuffer(),
-          Buffer.from("ticket"),
-        ];
-        const [ticketPda, _tbump] = await solanaWeb3.PublicKey.findProgramAddress(
-          seedTicket,
+        const [ticketPda] = await anchor.web3.PublicKey.findProgramAddress(
+          [
+            airdropPubkey.publicKey.toBuffer(),
+            provider.wallet.publicKey.toBuffer(),
+            Buffer.from("ticket")
+          ],
           PROGRAM_ID
         );
 
-        // Derive recipient token account (ATA) if needed
-        // (In real usage, you might prefer spl-token creation or so)
-        // For now, we'll just guess some placeholder or create an ATA with 
-        // the token program. But let's skip for brevity and do minimal.
-
-        // For the "recipientTokenAccount" from the IDL:
-        let recipientTokenAcct = solanaWeb3.Keypair.generate(); 
-        // However, that won't be recognized as an "Associated Token" account
-        // Real usage => derive the ATA with a separate function or direct usage of "spl-token"
-
-        // For "gatewayToken", we do a placeholder
-        let gatewayToken = solanaWeb3.Keypair.generate().publicKey;
-
-        const claimKeys = [
-          // 1) airdrop
-          { pubkey: airdropKeypair.publicKey, isSigner: false, isWritable: false },
-          // 2) payer (the Phantom user)
-          { pubkey: userPublicKey, isSigner: true, isWritable: true },
-          // 3) mintAuthority
-          { pubkey: mintAuthorityPda, isSigner: false, isWritable: false },
-          // 4) ticket
-          { pubkey: ticketPda, isSigner: false, isWritable: true },
-          // 5) mint
-          { pubkey: mintKeypair.publicKey, isSigner: false, isWritable: true },
-          // 6) recipientTokenAccount
-          { pubkey: recipientTokenAcct.publicKey, isSigner: false, isWritable: true },
-          // 7) gatewayToken
-          { pubkey: gatewayToken, isSigner: false, isWritable: false },
-          // 8) recipient
-          { pubkey: userPublicKey, isSigner: false, isWritable: true },
-          // 9) systemProgram
-          { pubkey: solanaWeb3.SystemProgram.programId, isSigner: false, isWritable: false },
-          // 10) tokenProgram
-          { pubkey: solanaWeb3.TOKEN_PROGRAM_ID, isSigner: false, isWritable: false },
-          // 11) associatedTokenProgram
-          { 
-            pubkey: new solanaWeb3.PublicKey("ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"), 
-            isSigner: false, 
-            isWritable: false 
-          },
-          // 12) rent
-          { pubkey: solanaWeb3.SYSVAR_RENT_PUBKEY, isSigner: false, isWritable: false },
-        ];
-
-        const claimIx = new solanaWeb3.TransactionInstruction({
-          programId: PROGRAM_ID,
-          keys: claimKeys,
-          data: claimDisc, // the 8-byte buffer for "claim" 
+        const recipientTokenAccount = await anchor.utils.token.associatedAddress({
+          mint: mintPubkey.publicKey,
+          owner: provider.wallet.publicKey
         });
 
-        let claimTx = new solanaWeb3.Transaction().add(claimIx);
+        // Fake gateway token
+        const gatewayToken = anchor.web3.Keypair.generate().publicKey;
 
-        // sign with any local signers (none in this simplified scenario, except
-        // if the "recipientTokenAcct" needed it => but we said "isSigner: false").
-        // Then let Phantom sign:
+        await program.methods.claim()
+          .accounts({
+            airdrop: airdropPubkey.publicKey,
+            payer: provider.wallet.publicKey,
+            mintAuthority: mintAuthorityPubkey,
+            ticket: ticketPda,
+            mint: mintPubkey.publicKey,
+            recipientTokenAccount,
+            gatewayToken,
+            recipient: provider.wallet.publicKey,
+            systemProgram: anchor.web3.SystemProgram.programId,
+            tokenProgram: anchor.utils.token.TOKEN_PROGRAM_ID,
+            associatedTokenProgram: anchor.utils.token.ASSOCIATED_PROGRAM_ID,
+            rent: anchor.web3.SYSVAR_RENT_PUBKEY,
+          })
+          .rpc();
 
-        try {
-          const signedTx = await window.solana.signTransaction(claimTx);
-          const txSig = await connection.sendRawTransaction(signedTx.serialize());
-          await connection.confirmTransaction(txSig, "confirmed");
-
-          document.getElementById("status").textContent =
-            `Claim Success!\nTx Sig: ${txSig}`;
-          console.log("Claim txSig:", txSig);
-        } catch (err2) {
-          console.error("Claim transaction error:", err2);
-          document.getElementById("status").textContent =
-            `Claim failed: ${err2.message}`;
-        }
+        document.getElementById('status').textContent = "Claim successful!";
       } catch (err) {
-        console.error("Error building 'claim' instruction:", err);
-        document.getElementById("status").textContent =
-          `Error building claim ix: ${err.message}`;
+        console.error("Claim failed:", err);
+        alert("Claim failed: " + err.message);
       }
     }
 
     /*********************************************************
-     * 6) Wire Up the Buttons
+     * 6) Debug: fetch the Airdrop state
      *********************************************************/
+    async function onDebug() {
+      if (!program) {
+        setupAnchor();
+      }
+      try {
+        if (!airdropPubkey) {
+          alert("No airdropPubkey known. Did you run 'Initialize'?");
+          return;
+        }
+
+        // The "account name" is the same as in your IDL: "Airdrop"
+        // So we do: program.account.airdrop.fetch(...)
+        const airdropState = await program.account.airdrop.fetch(
+          airdropPubkey.publicKey
+        );
+
+        console.log("Airdrop state:", airdropState);
+        document.getElementById('status').textContent =
+          "Airdrop state:\n" + JSON.stringify(airdropState, null, 2);
+      } catch (err) {
+        console.error("Debug fetch failed:", err);
+        alert("Debug fetch failed: " + err.message);
+      }
+    }
+
+    // Wire up our new debug button
     document.getElementById("connectBtn").onclick = connectPhantom;
     document.getElementById("initBtn").onclick = onInitialize;
     document.getElementById("claimBtn").onclick = onClaim;
+    document.getElementById("debugBtn").onclick = onDebug;
   </script>
 </body>
 </html>
