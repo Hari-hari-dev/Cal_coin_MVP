@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>CalCoin Contract - Anchor Frontend</title>
+  <title>CalCoin Contract - Frontend</title>
 
-  <!-- Solana Web3.js -->
+  <!-- Load Solana Web3.js -->
   <script src="https://unpkg.com/@solana/web3.js@1.84.1/lib/index.iife.js"></script>
 
   <!-- Buffer Polyfill -->
@@ -18,7 +18,7 @@
     }
   </script>
 
-  <!-- Anchor 0.29.0 -->
+  <!-- Load Anchor -->
   <script src="https://unpkg.com/@coral-xyz/anchor@0.29.0/dist/browser/index.js"></script>
   <script>
     if (typeof anchor === "undefined") {
@@ -51,7 +51,7 @@
       "instructions": [
         { "name": "initialize", "accounts": [], "args": [] },
         { "name": "claim", "accounts": [], "args": [] }
-      ],
+      ]
     };
 
     let userPublicKey;
@@ -59,19 +59,18 @@
     let program;
 
     /*********************************************************
-     * Connect to Phantom
+     * Connect Phantom
      *********************************************************/
     async function connectPhantom() {
-      if (!window.solana || !window.solana.isPhantom) {
-        alert("Phantom wallet not detected. Please install or enable it!");
+      if (!window.solana) {
+        alert("Phantom wallet not found. Please install/enable it!");
         return;
       }
-
       try {
         await window.solana.connect();
         userPublicKey = window.solana.publicKey;
         document.getElementById("status").textContent =
-          "Connected to Phantom: " + userPublicKey.toBase58();
+          "Phantom connected: " + userPublicKey.toBase58();
 
         const connection = new solanaWeb3.Connection(NETWORK_URL, "confirmed");
         const wallet = {
