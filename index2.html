@@ -1,44 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Anchor 0.29 + Buffer Polyfill in Browser</title>
+  <title>Anchor 0.29 + Buffer Polyfill (Browser)</title>
 
-  <!-- 1) Solana Web3 for Phantom usage -->
+  <!-- 1) Load Solana Web3 for Phantom usage -->
   <script src="https://unpkg.com/@solana/web3.js@1.84.1/lib/index.iife.js"></script>
 
-  <!-- 2) Buffer polyfill: pinned version + known dist build -->
-  <!-- e.g. buffer@5.6.0 or 5.7.1 or 6.x, but must be a build that attaches to window.buffer -->
-  <script src="https://unpkg.com/buffer@5.7.1/dist/index.js"></script>
+  <!-- 
+    2) Load a known-dist buffer polyfill that attaches to window. 
+    We'll use buffer@5.2.1 "dist/buffer.min.js" (an older version tested 
+    to attach itself to `window.buffer`).
+    
+    If you see "Buffer polyfill not found", try a different pinned version
+    or a different CDN link. The key is we need `window.buffer.Buffer`.
+  -->
+  <script src="https://cdn.jsdelivr.net/npm/buffer@5.2.1/dist/buffer.min.js"></script>
   <script>
-    // Some builds put the exported package under 'window.buffer'
-    // so we do:
-    if (!window.buffer || !window.buffer.Buffer) {
-      console.error("Buffer polyfill not found under window.buffer.Buffer");
-    } else {
+    // Attempt to attach Buffer globally
+    if (window.buffer && window.buffer.Buffer) {
       window.Buffer = window.buffer.Buffer;
-      console.log("Buffer polyfill assigned to window.Buffer");
+      console.log("Buffer polyfill assigned to window.Buffer successfully!");
+    } else {
+      console.error("Could not find window.buffer.Buffer. The buffer polyfill might not match this build.");
     }
   </script>
 
   <!-- 3) Anchor 0.29.0 IIFE build -->
   <script src="https://unpkg.com/@project-serum/anchor@0.29.0/dist/anchor.iife.js"></script>
+  <script>
+    // Check if 'anchor' is defined
+    if (typeof anchor === 'undefined') {
+      console.error("anchor is undefined even after loading anchor@0.29.0 script.");
+    } else {
+      console.log("anchor is defined. Version info:", anchor);
+    }
+  </script>
 </head>
-<body>
-  <h1>Anchor 0.29 + Phantom Test</h1>
 
+<body>
+  <h1>Anchor 0.29 + Buffer Polyfill in Browser (Updated)</h1>
+
+  <!-- Buttons -->
   <button id="connectBtn">Connect Phantom</button>
   <button id="testBtn">Test Anchor</button>
 
   <pre id="status"></pre>
 
   <script>
+    /*********************************************************
+     * 0) Phantom Connect
+     *********************************************************/
     let userPublicKey;
 
-    // Connect Phantom
     async function connectPhantom() {
       if (!window.solana) {
-        alert("Phantom not found");
+        alert("Phantom wallet not found. Please install/enable it!");
         return;
       }
       try {
@@ -48,42 +65,46 @@
           "Phantom connected: " + userPublicKey.toBase58();
       } catch (err) {
         console.error("Connect error:", err);
+        document.getElementById("status").textContent =
+          "Connect error: " + err.message;
       }
     }
 
-    // Test if Anchor is loaded
+    /*********************************************************
+     * 1) Test Using Anchor
+     *********************************************************/
     async function testAnchor() {
+      if (!userPublicKey) {
+        alert("Please connect Phantom first!");
+        return;
+      }
       try {
-        if (typeof anchor === "undefined") {
-          throw new Error("anchor is still undefined");
+        // Confirm anchor is loaded
+        if (typeof anchor === 'undefined') {
+          throw new Error("anchor is still undefined.");
         }
 
-        // Suppose we build a minimal provider:
-        const connection = new solanaWeb3.Connection(
-          "https://api.devnet.solana.com",
-          "confirmed"
-        );
+        // Create a minimal provider
+        const connection = new solanaWeb3.Connection("https://api.devnet.solana.com", "confirmed");
         const wallet = {
           publicKey: userPublicKey,
           signTransaction: (tx) => window.solana.signTransaction(tx),
-          signAllTransactions: (txs) => window.solana.signAllTransactions(txs),
+          signAllTransactions: (txs) => window.solana.signAllTransactions(txs)
         };
-
         const provider = new anchor.AnchorProvider(connection, wallet, {
-          preflightCommitment: "confirmed"
+          preflightCommitment: "confirmed",
         });
-        // If this works, then anchor is indeed functional
+
         document.getElementById("status").textContent =
-          "Anchor loaded. Provider created successfully!";
+          "Anchor loaded and provider created!\nPublicKey: " + userPublicKey.toBase58();
         console.log("Provider:", provider);
       } catch (err) {
+        console.error("Test anchor error:", err);
         document.getElementById("status").textContent =
           "Test anchor error: " + err.message;
-        console.error(err);
       }
     }
 
-    // wire up
     document.getElementById("connectBtn").onclick = connectPhantom;
     document.getElementById("testBtn").onclick = testAnchor;
   </script>
