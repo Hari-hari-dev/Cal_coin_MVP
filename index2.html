@@ -2,76 +2,98 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Daily FaceScan - Pure Web3.js</title>
-  <!-- Only Solana Web3 library, no Anchor. -->
+  <title>Daily FaceScan - Anchor 0.29 + Buffer Polyfill</title>
+
+  <!-- 1) Solana Web3 for Phantom -->
   <script src="https://unpkg.com/@solana/web3.js@1.84.1/lib/index.iife.js"></script>
+  <!-- 2) Buffer polyfill for the browser -->
+  <script src="https://unpkg.com/buffer@6.0.3/index.js"></script>
+  <script>
+    // Make Buffer globally accessible so Anchor can use it
+    window.Buffer = window.buffer.Buffer;
+  </script>
+  <!-- 3) Anchor v0.29.0 IIFE -->
+  <script src="https://unpkg.com/@project-serum/anchor@0.29.0/dist/anchor.iife.js"></script>
 </head>
 <body>
-  <h1>Daily FaceScan: Initialize & Claim (web3.js only) v1</h1>
+  <h1>Daily FaceScan - Anchor 0.29 + Phantom</h1>
 
   <!-- Buttons for demonstration -->
   <button id="connectBtn">Connect Phantom</button>
   <button id="initBtn">Initialize</button>
   <button id="claimBtn">Claim</button>
 
-  <pre id="status"></pre>
+  <pre id="status" style="white-space: pre-wrap;"></pre>
 
   <script>
-    /********************************************************
-     * 1) Hard-Code Anchor Instruction Discriminators
-     ********************************************************/
-    // Replace these hex strings with the actual first 8 bytes of 
-    //  sha256("global:initialize") and sha256("global:claim").
-    // Each should be 16 hex characters -> 8 bytes.
-    const initializeDiscHex = "2e251954ef0c374d"; // EXAMPLE: REPLACE
-    const claimDiscHex =      "c3a22d14bfdbb103"; // EXAMPLE: REPLACE
-
-    // Convert hex => Buffer(8)
-    const initializeDisc = Buffer.from(initializeDiscHex, "hex");
-    const claimDisc = Buffer.from(claimDiscHex, "hex");
-
-    /********************************************************
-     * 2) Global Variables
-     ********************************************************/
-    // Devnet RPC
+    /*********************************************************
+     * 1) Global Setup (Anchor v0.29 + Buffer polyfill)
+     *********************************************************/
     const NETWORK_URL = "https://api.devnet.solana.com";
 
-    // Program ID from your Rust code
-    const PROGRAM_ID = new solanaWeb3.PublicKey(
-      "6FhraHnUCBLHUXyKypmZPv67VbbWb1GtPzmyrGLsZ7EV"
-    );
+    // Program ID
+    const PROGRAM_ID = new solanaWeb3.PublicKey("6FhraHnUCBLHUXyKypmZPv67VbbWb1GtPzmyrGLsZ7EV");
 
-    // We'll store the devnet connection + Phantom's publicKey
-    let connection;
-    let userPublicKey;
+    // Minimal IDL example (paste your real IDL)
+    const IDL = {
+      version: "0.1.0",
+      name: "daily_facescan",
+      instructions: [
+        {
+          name: "initialize",
+          accounts: [
+            { name: "airdrop", isMut: true, isSigner: true },
+            { name: "mint", isMut: true, isSigner: true },
+            { name: "mintAuthority", isMut: false, isSigner: false },
+            { name: "authority", isMut: true, isSigner: true },
+            { name: "systemProgram", isMut: false, isSigner: false },
+            { name: "tokenProgram", isMut: false, isSigner: false },
+            { name: "rent", isMut: false, isSigner: false }
+          ],
+          args: []
+        },
+        {
+          name: "claim",
+          accounts: [
+            { name: "airdrop", isMut: false, isSigner: false },
+            { name: "payer", isMut: true, isSigner: true },
+            { name: "mintAuthority", isMut: false, isSigner: false },
+            { name: "ticket", isMut: true, isSigner: false },
+            { name: "mint", isMut: true, isSigner: false },
+            { name: "recipientTokenAccount", isMut: true, isSigner: false },
+            { name: "gatewayToken", isMut: false, isSigner: false },
+            { name: "recipient", isMut: true, isSigner: false },
+            { name: "systemProgram", isMut: false, isSigner: false },
+            { name: "tokenProgram", isMut: false, isSigner: false },
+            { name: "associatedTokenProgram", isMut: false, isSigner: false },
+            { name: "rent", isMut: false, isSigner: false }
+          ],
+          args: []
+        }
+      ]
+    };
 
-    // For demonstration, we create local Keypairs for "airdrop" and "mint"
+    let provider;
+    let program;
+
     let airdropKeypair;
     let mintKeypair;
-    let mintAuthorityPda;
+    let mintAuthPda;
 
-    /********************************************************
-     * 3) On Page Load: Create Connection
-     ********************************************************/
-    window.addEventListener("load", () => {
-      connection = new solanaWeb3.Connection(NETWORK_URL, "confirmed");
-      console.log("Connected to devnet.");
-    });
-
-    /********************************************************
-     * 4) Connect Phantom
-     ********************************************************/
+    /*********************************************************
+     * 2) Connect Phantom
+     *********************************************************/
     async function connectPhantom() {
       if (!window.solana) {
-        alert("Phantom wallet not found. Install or enable it first!");
+        alert("Phantom not found!");
         return;
       }
       try {
         await window.solana.connect();
-        userPublicKey = window.solana.publicKey;
-        console.log("Phantom connected as:", userPublicKey.toBase58());
+        const pubkey = window.solana.publicKey;
+        console.log("Phantom connected:", pubkey.toBase58());
         document.getElementById("status").textContent =
-          "Connected to Phantom: " + userPublicKey.toBase58();
+          "Connected to Phantom: " + pubkey.toBase58();
       } catch (err) {
         console.error("Phantom connect error:", err);
         document.getElementById("status").textContent =
@@ -79,150 +101,130 @@
       }
     }
 
-    /********************************************************
-     * 5) Initialize Instruction
-     ********************************************************/
+    /*********************************************************
+     * 3) Setup Anchor
+     *********************************************************/
+    function setupAnchor() {
+      // Create the connection
+      const connection = new solanaWeb3.Connection(NETWORK_URL, "confirmed");
+      // Build a wallet object from Phantom
+      const wallet = {
+        publicKey: window.solana.publicKey,
+        signTransaction: (tx) => window.solana.signTransaction(tx),
+        signAllTransactions: (txs) => window.solana.signAllTransactions(txs)
+      };
+
+      // Create the AnchorProvider
+      provider = new anchor.AnchorProvider(connection, wallet, {
+        preflightCommitment: "confirmed",
+      });
+      // Make a Program from the IDL + Program ID + provider
+      program = new anchor.Program(IDL, PROGRAM_ID, provider);
+    }
+
+    /*********************************************************
+     * 4) Initialize
+     *********************************************************/
     async function onInitialize() {
-      if (!userPublicKey) {
+      if (!window.solana || !window.solana.publicKey) {
         alert("Connect Phantom first!");
         return;
       }
+      if (!program) {
+        setupAnchor();
+      }
 
-      // Create local signers for "airdrop" and "mint"
+      // Example: create new Keypairs for "airdrop" + "mint"
       airdropKeypair = solanaWeb3.Keypair.generate();
       mintKeypair = solanaWeb3.Keypair.generate();
 
       // Derive seeds = [airdropPubkey, "mint_authority"]
-      let seeds = [
-        airdropKeypair.publicKey.toBuffer(),
-        Buffer.from("mint_authority")
-      ];
-      const [pdaPubkey, _bump] = await solanaWeb3.PublicKey.findProgramAddress(
-        seeds,
-        PROGRAM_ID
+      const [pdaPubkey, bump] = await solanaWeb3.PublicKey.findProgramAddress(
+        [airdropKeypair.publicKey.toBuffer(), Buffer.from("mint_authority")],
+        program.programId
       );
-      mintAuthorityPda = pdaPubkey;
+      mintAuthPda = pdaPubkey;
 
-      // Build the keys array (7 accounts in IDL's order):
-      const initKeys = [
-        // 1) airdrop (signer, writable)
-        { pubkey: airdropKeypair.publicKey, isSigner: true, isWritable: true },
-        // 2) mint (signer, writable)
-        { pubkey: mintKeypair.publicKey, isSigner: true, isWritable: true },
-        // 3) mintAuthority (not signer, not writable)
-        { pubkey: mintAuthorityPda, isSigner: false, isWritable: false },
-        // 4) authority (Phantom user)
-        { pubkey: userPublicKey, isSigner: true, isWritable: true },
-        // 5) systemProgram
-        { pubkey: solanaWeb3.SystemProgram.programId, isSigner: false, isWritable: false },
-        // 6) tokenProgram
-        { pubkey: solanaWeb3.TOKEN_PROGRAM_ID, isSigner: false, isWritable: false },
-        // 7) rent
-        { pubkey: solanaWeb3.SYSVAR_RENT_PUBKEY, isSigner: false, isWritable: false },
-      ];
-
-      // The data is just the 8-byte "initialize" discriminator
-      const initIx = new solanaWeb3.TransactionInstruction({
-        programId: PROGRAM_ID,
-        keys: initKeys,
-        data: initializeDisc, 
-      });
-
-      // Create and partial-sign transaction
-      let initTx = new solanaWeb3.Transaction().add(initIx);
-      initTx.partialSign(airdropKeypair, mintKeypair);
-
-      // Let Phantom sign & send
       try {
-        const signed = await window.solana.signTransaction(initTx);
-        const txSig = await connection.sendRawTransaction(signed.serialize());
-        await connection.confirmTransaction(txSig, "confirmed");
+        await program.methods
+          .initialize()  // no args
+          .accounts({
+            airdrop: airdropKeypair.publicKey,
+            mint: mintKeypair.publicKey,
+            mintAuthority: mintAuthPda,
+            authority: provider.wallet.publicKey,
+            systemProgram: anchor.web3.SystemProgram.programId,
+            tokenProgram: anchor.utils.token.TOKEN_PROGRAM_ID,
+            rent: anchor.web3.SYSVAR_RENT_PUBKEY,
+          })
+          .signers([airdropKeypair, mintKeypair]) // local signers
+          .rpc();
 
-        document.getElementById("status").textContent =
-          "Initialize success!\nTxSig: " + txSig;
-        console.log("Initialize txSig:", txSig);
+        document.getElementById("status").textContent = "Initialize successful!";
       } catch (err) {
-        console.error("Initialize tx error:", err);
+        console.error("Initialize error:", err);
         document.getElementById("status").textContent =
           "Initialize failed: " + err.message;
       }
     }
 
-    /********************************************************
-     * 6) Claim Instruction
-     ********************************************************/
+    /*********************************************************
+     * 5) Claim
+     *********************************************************/
     async function onClaim() {
-      if (!airdropKeypair || !mintKeypair || !mintAuthorityPda) {
-        alert("No airdrop + mint found. Did you run 'Initialize'?");
+      if (!program) {
+        setupAnchor();
+      }
+      if (!airdropKeypair || !mintKeypair || !mintAuthPda) {
+        alert("No airdrop+mint PDAs. Did you run Initialize?");
         return;
       }
-      // Derive seeds = [airdrop, userPubkey, "ticket"]
-      const seedTicket = [
-        airdropKeypair.publicKey.toBuffer(),
-        userPublicKey.toBuffer(),
-        Buffer.from("ticket"),
-      ];
-      const [ticketPda, _tbump] = await solanaWeb3.PublicKey.findProgramAddress(
-        seedTicket,
-        PROGRAM_ID
-      );
 
-      // For "recipientTokenAccount", 
-      // We'll create a random Keypair (not a real ATA) just for demonstration.
-      // Real usage would derive the ATA or rely on the SPL assoc. token program logic.
-      const recipientTokenKeypair = solanaWeb3.Keypair.generate();
-      
-      // For "gatewayToken", we pass a random pubkey. 
-      // Real usage => pass the actual user's gateway token from Civic or another gating program.
+      // Derive a "ticket" pda [airdrop, user, "ticket"]
+      const [ticketPda, tbump] = await solanaWeb3.PublicKey.findProgramAddress(
+        [
+          airdropKeypair.publicKey.toBuffer(),
+          provider.wallet.publicKey.toBuffer(),
+          Buffer.from("ticket")
+        ],
+        program.programId
+      );
+      // Derive associated token account for the user
+      const recipientTokenAccount = await anchor.utils.token.associatedAddress({
+        mint: mintKeypair.publicKey,
+        owner: provider.wallet.publicKey
+      });
+      // Fake "gatewayToken"
       const gatewayToken = solanaWeb3.Keypair.generate().publicKey;
 
-      // IDL says (12 accounts) in order:
-      const claimKeys = [
-        { pubkey: airdropKeypair.publicKey, isSigner: false, isWritable: false },
-        { pubkey: userPublicKey, isSigner: true, isWritable: true },  // payer
-        { pubkey: mintAuthorityPda, isSigner: false, isWritable: false },
-        { pubkey: ticketPda, isSigner: false, isWritable: true },
-        { pubkey: mintKeypair.publicKey, isSigner: false, isWritable: true },
-        { pubkey: recipientTokenKeypair.publicKey, isSigner: false, isWritable: true },
-        { pubkey: gatewayToken, isSigner: false, isWritable: false },
-        { pubkey: userPublicKey, isSigner: false, isWritable: true }, // "recipient"
-        { pubkey: solanaWeb3.SystemProgram.programId, isSigner: false, isWritable: false },
-        { pubkey: solanaWeb3.TOKEN_PROGRAM_ID, isSigner: false, isWritable: false },
-        {
-          pubkey: new solanaWeb3.PublicKey("ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"), 
-          isSigner: false, 
-          isWritable: false 
-        },
-        { pubkey: solanaWeb3.SYSVAR_RENT_PUBKEY, isSigner: false, isWritable: false },
-      ];
-
-      const claimIx = new solanaWeb3.TransactionInstruction({
-        programId: PROGRAM_ID,
-        keys: claimKeys,
-        data: claimDisc,
-      });
-
-      let claimTx = new solanaWeb3.Transaction().add(claimIx);
-
-      // We won't partialSign here because the only signer is the Phantom user, 
-      // except if "recipientTokenKeypair" is actually isSigner: true—but we set isSigner: false.
-
       try {
-        const signed = await window.solana.signTransaction(claimTx);
-        const txSig = await connection.sendRawTransaction(signed.serialize());
-        await connection.confirmTransaction(txSig, "confirmed");
+        await program.methods
+          .claim()
+          .accounts({
+            airdrop: airdropKeypair.publicKey,
+            payer: provider.wallet.publicKey,
+            mintAuthority: mintAuthPda,
+            ticket: ticketPda,
+            mint: mintKeypair.publicKey,
+            recipientTokenAccount,
+            gatewayToken,
+            recipient: provider.wallet.publicKey,
+            systemProgram: anchor.web3.SystemProgram.programId,
+            tokenProgram: anchor.utils.token.TOKEN_PROGRAM_ID,
+            associatedTokenProgram: anchor.utils.token.ASSOCIATED_PROGRAM_ID,
+            rent: anchor.web3.SYSVAR_RENT_PUBKEY,
+          })
+          .rpc();
 
-        document.getElementById("status").textContent =
-          "Claim success!\nTxSig: " + txSig;
-        console.log("Claim txSig:", txSig);
+        document.getElementById("status").textContent = "Claim successful!";
       } catch (err) {
-        console.error("Claim tx error:", err);
+        console.error("Claim error:", err);
         document.getElementById("status").textContent =
           "Claim failed: " + err.message;
       }
     }
 
-    // Wire up the UI
+    // Hook up the UI
     document.getElementById("connectBtn").onclick = connectPhantom;
     document.getElementById("initBtn").onclick = onInitialize;
     document.getElementById("claimBtn").onclick = onClaim;
