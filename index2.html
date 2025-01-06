@@ -2,242 +2,109 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Anchor 0.29.0 + Buffer Polyfill (Module)</title>
+  <title>Anchor 0.29 + Buffer Polyfill (Browser)</title>
+
+  <!-- 1) Load Solana Web3 for Phantom usage -->
+  <script src="https://unpkg.com/@solana/web3.js@1.84.1/lib/index.iife.js"></script>
+
+  <!-- 
+    2) Load a known-dist buffer polyfill that attaches to window. 
+    We'll use buffer@5.2.1 "dist/buffer.min.js" (an older version tested 
+    to attach itself to `window.buffer`).
+    
+    If you see "Buffer polyfill not found", try a different pinned version
+    or a different CDN link. The key is we need `window.buffer.Buffer`.
+  -->
+  <script src="https://cdn.jsdelivr.net/npm/buffer@5.2.1/dist/buffer.min.js"></script>
+  <script>
+    // Attempt to attach Buffer globally
+    if (window.buffer && window.buffer.Buffer) {
+      window.Buffer = window.buffer.Buffer;
+      console.log("Buffer polyfill assigned to window.Buffer successfully!");
+    } else {
+      console.error("Could not find window.buffer.Buffer. The buffer polyfill might not match this build.");
+    }
+  </script>
+
+  <!-- 3) Anchor 0.29.0 IIFE build -->
+<script src="https://unpkg.com/@project-serum/anchor@0.26.0/dist/browser/index.js"></script>    // Check if 'anchor' is defined
+    if (typeof anchor === 'undefined') {
+      console.error("anchor is undefined even after loading anchor@0.29.0 script.");
+    } else {
+      console.log("anchor is defined. Version info:", anchor);
+    }
+  </script>
 </head>
+
 <body>
-  <h1>Anchor 0.29.0 + Buffer Polyfill (Module)</h1>
+  <h1>Anchor 0.29 + Buffer Polyfill in Browser (Updated)</h1>
 
   <!-- Buttons -->
   <button id="connectBtn">Connect Phantom</button>
-  <button id="initBtn">Initialize</button>
-  <button id="claimBtn">Claim</button>
+  <button id="testBtn">Test Anchor</button>
 
-  <!-- Status Display -->
   <pre id="status"></pre>
 
-  <!-- Module Script -->
-  <script type="module">
-    // 1. Import Buffer from buffer polyfill (ES Module)
-    import { Buffer } from 'https://unpkg.com/buffer@5.7.1/index.js?module';
-
-    // 2. Import Anchor as an ES Module
-    import * as anchor from 'https://unpkg.com/@coral-xyz/anchor@0.29.0/dist/browser/index.js';
-
-    // 3. Assign Buffer globally so Anchor can access it
-    window.Buffer = Buffer;
-
-    // 4. Verify Anchor is loaded
-    if (typeof anchor === 'undefined') {
-      console.error("Anchor failed to load.");
-      document.getElementById("status").textContent = "Anchor failed to load. Check console for details.";
-    } else {
-      console.log("Anchor loaded successfully:", anchor);
-    }
-
-    // 5. Phantom Wallet Connection Setup
+  <script>
+    /*********************************************************
+     * 0) Phantom Connect
+     *********************************************************/
     let userPublicKey;
-    let provider;
-    let program;
-    let airdropKeypair;
-    let mintKeypair;
-    let mintAuthPda;
 
-    // 6. Connect to Phantom Wallet
     async function connectPhantom() {
-      if (!window.solana || !window.solana.isPhantom) {
-        alert("Phantom wallet not found. Please install or enable it!");
+      if (!window.solana) {
+        alert("Phantom wallet not found. Please install/enable it!");
         return;
       }
       try {
-        const response = await window.solana.connect();
-        userPublicKey = response.publicKey;
+        await window.solana.connect();
+        userPublicKey = window.solana.publicKey;
         document.getElementById("status").textContent =
           "Phantom connected: " + userPublicKey.toBase58();
-        console.log("Phantom connected as:", userPublicKey.toBase58());
       } catch (err) {
-        console.error("Phantom connection error:", err);
+        console.error("Connect error:", err);
         document.getElementById("status").textContent =
           "Connect error: " + err.message;
       }
     }
 
-    // 7. Initialize Anchor Provider and Program
-    async function initializeAnchor() {
+    /*********************************************************
+     * 1) Test Using Anchor
+     *********************************************************/
+    async function testAnchor() {
       if (!userPublicKey) {
         alert("Please connect Phantom first!");
         return;
       }
-      if (typeof anchor === 'undefined') {
-        alert("Anchor is not loaded properly.");
-        return;
-      }
       try {
-        // Create Solana connection
-        const connection = new solanaWeb3.Connection("https://api.devnet.solana.com", "confirmed");
+        // Confirm anchor is loaded
+        if (typeof anchor === 'undefined') {
+          throw new Error("anchor is still undefined.");
+        }
 
-        // Create Anchor provider
-        provider = new anchor.AnchorProvider(connection, window.solana, {
+        // Create a minimal provider
+        const connection = new solanaWeb3.Connection("https://api.devnet.solana.com", "confirmed");
+        const wallet = {
+          publicKey: userPublicKey,
+          signTransaction: (tx) => window.solana.signTransaction(tx),
+          signAllTransactions: (txs) => window.solana.signAllTransactions(txs)
+        };
+        const provider = new anchor.AnchorProvider(connection, wallet, {
           preflightCommitment: "confirmed",
         });
 
-        // Define your IDL (replace with your actual IDL JSON)
-        const IDL = {
-          "version": "0.1.0",
-          "name": "daily_facescan",
-          "instructions": [
-            {
-              "name": "initialize",
-              "accounts": [
-                { "name": "airdrop", "isMut": true, "isSigner": true },
-                { "name": "mint", "isMut": true, "isSigner": true },
-                { "name": "mintAuthority", "isMut": false, "isSigner": false },
-                { "name": "authority", "isMut": true, "isSigner": true },
-                { "name": "systemProgram", "isMut": false, "isSigner": false },
-                { "name": "tokenProgram", "isMut": false, "isSigner": false },
-                { "name": "rent", "isMut": false, "isSigner": false }
-              ],
-              "args": []
-            },
-            {
-              "name": "claim",
-              "accounts": [
-                { "name": "airdrop", "isMut": false, "isSigner": false },
-                { "name": "payer", "isMut": true, "isSigner": true },
-                { "name": "mintAuthority", "isMut": false, "isSigner": false },
-                { "name": "ticket", "isMut": true, "isSigner": false },
-                { "name": "mint", "isMut": true, "isSigner": false },
-                { "name": "recipientTokenAccount", "isMut": true, "isSigner": false },
-                { "name": "gatewayToken", "isMut": false, "isSigner": false },
-                { "name": "recipient", "isMut": true, "isSigner": false },
-                { "name": "systemProgram", "isMut": false, "isSigner": false },
-                { "name": "tokenProgram", "isMut": false, "isSigner": false },
-                { "name": "associatedTokenProgram", "isMut": false, "isSigner": false },
-                { "name": "rent", "isMut": false, "isSigner": false }
-              ],
-              "args": []
-            }
-            // ... add other instructions as needed ...
-          ],
-          // ... include other IDL sections like accounts, errors, etc. ...
-        };
-
-        // Your program ID (replace with your actual program ID)
-        const programId = new solanaWeb3.PublicKey("6FhraHnUCBLHUXyKypmZPv67VbbWb1GtPzmyrGLsZ7EV");
-
-        // Initialize the program
-        program = new anchor.Program(IDL, programId, provider);
-
-        console.log("Anchor provider and program initialized.");
         document.getElementById("status").textContent =
-          "Anchor provider and program initialized successfully.";
+          "Anchor loaded and provider created!\nPublicKey: " + userPublicKey.toBase58();
+        console.log("Provider:", provider);
       } catch (err) {
-        console.error("Anchor initialization error:", err);
+        console.error("Test anchor error:", err);
         document.getElementById("status").textContent =
-          "Anchor initialization failed: " + err.message;
+          "Test anchor error: " + err.message;
       }
     }
 
-    // 8. Initialize Instruction
-    async function initialize() {
-      if (!program) {
-        alert("Initialize Anchor first!");
-        return;
-      }
-      try {
-        // Generate local keypairs for demonstration
-        airdropKeypair = solanaWeb3.Keypair.generate();
-        mintKeypair = solanaWeb3.Keypair.generate();
-
-        // Derive PDA for mint authority
-        [mintAuthPda, _bump] = await solanaWeb3.PublicKey.findProgramAddress(
-          [airdropKeypair.publicKey.toBuffer(), Buffer.from("mint_authority")],
-          program.programId
-        );
-
-        // Call the initialize instruction
-        await program.methods.initialize()
-          .accounts({
-            airdrop: airdropKeypair.publicKey,
-            mint: mintKeypair.publicKey,
-            mintAuthority: mintAuthPda,
-            authority: provider.wallet.publicKey,
-            systemProgram: anchor.web3.SystemProgram.programId,
-            tokenProgram: anchor.utils.token.TOKEN_PROGRAM_ID,
-            rent: anchor.web3.SYSVAR_RENT_PUBKEY,
-          })
-          .signers([airdropKeypair, mintKeypair])
-          .rpc();
-
-        document.getElementById("status").textContent =
-          "Initialize successful!\nAirdrop Pubkey: " + airdropKeypair.publicKey.toBase58() +
-          "\nMint Pubkey: " + mintKeypair.publicKey.toBase58();
-        console.log("Initialize successful.");
-      } catch (err) {
-        console.error("Initialize error:", err);
-        document.getElementById("status").textContent =
-          "Initialize failed: " + err.message;
-      }
-    }
-
-    // 9. Claim Instruction
-    async function claim() {
-      if (!program || !airdropKeypair || !mintKeypair || !mintAuthPda) {
-        alert("No airdrop+mint. Did you run Initialize?");
-        return;
-      }
-      try {
-        // Derive ticket PDA
-        const [ticketPda, _bump] = await solanaWeb3.PublicKey.findProgramAddress(
-          [
-            airdropKeypair.publicKey.toBuffer(),
-            provider.wallet.publicKey.toBuffer(),
-            Buffer.from("ticket")
-          ],
-          program.programId
-        );
-
-        // Derive recipient's associated token account (ATA)
-        const recipientTokenAccount = await anchor.utils.token.associatedAddress({
-          mint: mintKeypair.publicKey,
-          owner: provider.wallet.publicKey
-        });
-
-        // Fake gateway token (replace with actual gateway token if applicable)
-        const gatewayToken = solanaWeb3.Keypair.generate().publicKey;
-
-        // Call the claim instruction
-        await program.methods.claim()
-          .accounts({
-            airdrop: airdropKeypair.publicKey,
-            payer: provider.wallet.publicKey,
-            mintAuthority: mintAuthPda,
-            ticket: ticketPda,
-            mint: mintKeypair.publicKey,
-            recipientTokenAccount,
-            gatewayToken,
-            recipient: provider.wallet.publicKey,
-            systemProgram: anchor.web3.SystemProgram.programId,
-            tokenProgram: anchor.utils.token.TOKEN_PROGRAM_ID,
-            associatedTokenProgram: anchor.utils.token.ASSOCIATED_PROGRAM_ID,
-            rent: anchor.web3.SYSVAR_RENT_PUBKEY,
-          })
-          .rpc();
-
-        document.getElementById("status").textContent =
-          "Claim successful!\nTicket PDA: " + ticketPda.toBase58() +
-          "\nRecipient ATA: " + recipientTokenAccount;
-        console.log("Claim successful.");
-      } catch (err) {
-        console.error("Claim error:", err);
-        document.getElementById("status").textContent =
-          "Claim failed: " + err.message;
-      }
-    }
-
-    // 10. Event Listeners for Buttons
     document.getElementById("connectBtn").onclick = connectPhantom;
-    document.getElementById("initBtn").onclick = initialize;
-    document.getElementById("claimBtn").onclick = claim;
+    document.getElementById("testBtn").onclick = testAnchor;
   </script>
 </body>
 </html>
