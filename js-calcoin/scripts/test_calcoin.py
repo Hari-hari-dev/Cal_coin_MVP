@@ -17,12 +17,31 @@ from solana.rpc.core import RPCException
 
 # For demonstration, we’ll assume these are pre-installed
 SPL_TOKEN_PROGRAM_ID = Pubkey.from_string("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA")
-ASSOCIATED_TOKEN_PROGRAM_ID = Pubkey.from_string("ATokenGPgLvESrcdmv8L5VbNaJ6VwYxeB6u7FP2PeHyV")
+ASSOCIATED_TOKEN_PROGRAM_ID = Pubkey.from_string("ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL")
 
 # --------------------------------------------------------------------------
 # EXAMPLE: Interacting with daily_facescan
 # --------------------------------------------------------------------------
-
+def derive_ata(owner: Pubkey, mint: Pubkey) -> Pubkey:
+    """
+    Derives the Associated Token Account (ATA) for (mint, owner).
+    This matches the same seeds Anchor uses for:
+      #[account(
+         associated_token::mint = mint,
+         associated_token::authority = owner
+      )]
+    Seeds = [owner, token_program_id, mint], with the associated_token_program as the PD program.
+    """
+    seeds = [
+        bytes(owner),
+        bytes(SPL_TOKEN_PROGRAM_ID),
+        bytes(mint)
+    ]
+    (ata, _bump) = Pubkey.find_program_address(
+        seeds,
+        ASSOCIATED_TOKEN_PROGRAM_ID
+    )
+    return ata
 async def anchorpy_demo():
     try:
         ##############################
@@ -33,7 +52,7 @@ async def anchorpy_demo():
         provider = Provider(client, wallet)
 
         # Load IDL
-        idl_path = Path("./target/idl/daily_facescan.json")
+        idl_path = Path("../target/idl/daily_facescan.json")
         if not idl_path.exists():
             print(f"IDL file not found at {idl_path.resolve()}")
             return
@@ -72,6 +91,9 @@ async def anchorpy_demo():
         # The code in lib.rs expects:
         #   initialize(ctx):
         #     airdrop, mint, mint_authority, authority, system_program, token_program, rent
+        recipient_ata = derive_ata(wallet.public_key, mint_kp.pubkey())
+    # The "recipient" public key
+
         try:
             tx_sig = await program.rpc["initialize"](
                 ctx=Context(
@@ -122,7 +144,7 @@ async def anchorpy_demo():
                         "mint_authority":         mint_authority_pda,
                         "ticket":                 ticket_pda,
                         "mint":                   mint_kp.pubkey(),
-                        "recipient_token_account": Pubkey.default(),  # let the program do "init_if_needed"
+                        "recipient_token_account": recipient_ata,  # let the program do "init_if_needed"
                         "gateway_token":          gateway_token_kp.pubkey(),
                         "recipient":              wallet.public_key,
                         "rent": Pubkey.from_string("SysvarRent111111111111111111111111111111111"),

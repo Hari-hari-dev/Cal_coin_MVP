@@ -12,7 +12,7 @@ use anchor_spl::{
 use solana_gateway::Gateway;
 use std::str::FromStr; // For Pubkey::from_str
 
-declare_id!("9xc3pmdxJwaJowekSYHB2UW1ZnS6AAgeaUqQnoQRU1vt");
+declare_id!("BSPMVPbq78vJAYSma7abTjrKqUNshq4J1kxbWwcGXxdV");
 
 // Seeds
 pub const TICKET_SEED: &[u8] = b"ticket";
