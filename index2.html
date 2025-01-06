@@ -70,27 +70,26 @@
      * 2) Connect to Phantom
      *********************************************************/
     async function connectPhantom() {
-      if (!window.solana) {
-        alert("Phantom wallet not found. Install it first!");
-        return;
-      }
-      try {
-        await window.solana.connect();
-        const userPublicKey = window.solana.publicKey.toBase58();
-        console.log("Connected to Phantom as:", userPublicKey);
-        document.getElementById('status').textContent = 
-          "Connected to Phantom: " + userPublicKey;
+        if (!window.solana) {
+            alert("Phantom wallet not found!");
+            return;
+        }
+        if (!window.solana.isPhantom) {
+            alert("Phantom not detected. Another wallet might be injecting `window.solana`.");
+            return;
+        }
 
-        // Optional: Show minted token info on the page
-        const infoDiv = document.getElementById("info");
-        infoDiv.innerHTML = `
-          <p><strong>Program ID:</strong> ${PROGRAM_ID.toBase58()}</p>
-          <p><strong>Mint Address:</strong> ${KNOWN_MINT_PUBKEY.toBase58()}</p>
-        `;
-      } catch (err) {
-        console.error(err);
-      }
+        try {
+            // Modern approach:
+            const resp = await window.solana.request({ method: "connect" });
+            console.log("Connected to Phantom:", resp.publicKey.toBase58());
+            document.getElementById('status').textContent =
+            "Connected to Phantom: " + resp.publicKey.toBase58();
+        } catch (err) {
+            console.error(err);
+        }
     }
+
 
     /*********************************************************
      * 3) Setup Anchor
