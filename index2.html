@@ -2,54 +2,112 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Daily FaceScan Airdrop Demo</title>
+  <title>Daily FaceScan Airdrop & Sign-In Demo</title>
+  
   <!-- 1) Solana Web3.js -->
   <script src="https://unpkg.com/@solana/web3.js@1.84.1/lib/index.iife.js"></script>
 
   <!-- 2) Anchor IIFE Build (0.26.0) -->
   <script src="https://unpkg.com/@project-serum/anchor@0.26.0/dist/browser/index.iife.min.js"></script>
+  
+  <!-- 3) SweetAlert for Alerts -->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  
+  <!-- 4) Web3Auth Sign-In with Solana (SIWS) -->
+  <script src="https://unpkg.com/@web3auth/sign-in-with-solana@0.0.1/dist/index.umd.js"></script>
 
   <script>
-    // Quick check if Anchor loaded:
-    console.log("Anchor loaded?", typeof anchor !== "undefined");
+    // Check if Anchor and SIWS are loaded
+    console.log("Anchor loaded:", typeof anchor !== "undefined");
+    console.log("SIWS loaded:", typeof window.SIWS !== "undefined");
   </script>
 
   <style>
     body {
-      font-family: Arial, sans-serif; text-align: center; margin-top: 50px;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+      background-color: #f0f2f5;
     }
     button {
-      font-size: 16px; padding: 10px 20px; margin: 5px; cursor: pointer;
+      font-size: 16px;
+      padding: 10px 20px;
+      margin: 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #0364ff;
+      color: #fff;
+      transition: background-color 0.3s;
     }
-    #status {
-      margin-top: 20px; font-size: 18px; white-space: pre-wrap;
+    button:hover {
+      background-color: #024ecf;
+    }
+    #status, #siws-status {
+      margin-top: 20px;
+      font-size: 16px;
+      white-space: pre-wrap;
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    input {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .hidden {
+      display: none;
     }
   </style>
 </head>
 <body>
-  <h1>Daily FaceScan Airdrop Demo</h1>
+  <h1>Daily FaceScan Airdrop & Sign-In Demo</h1>
+  
+  <!-- Wallet Connection and SIWS -->
+  <div>
+    <button id="connectWalletBtn">Connect Phantom Wallet</button>
+    <button id="siwsBtn">Sign-In with Solana</button>
+  </div>
 
-  <!-- Buttons for Connect, Initialize, Claim, Debug -->
-  <button id="connectBtn">Connect Phantom</button>
-  <button id="initBtn">Initialize</button>
-  <button id="claimBtn">Claim</button>
-  <button id="debugBtn">Debug</button>
+  <!-- Display SIWS Status -->
+  <div id="siws-status" class="hidden">
+    <h3>Sign-In Details</h3>
+    <p><strong>Public Key:</strong> <span id="siws-publicKey"></span></p>
+    <p><strong>Signature:</strong> <span id="siws-signature"></span></p>
+    <button id="verifySiwsBtn">Verify Signature</button>
+  </div>
 
+  <!-- Airdrop Interaction -->
+  <div>
+    <button id="initBtn">Initialize Airdrop</button>
+    <button id="claimBtn">Claim Airdrop</button>
+    <button id="debugBtn">Debug Airdrop</button>
+  </div>
+
+  <!-- Display Airdrop Status -->
   <div id="status">Not connected</div>
 
   <script>
     /*********************************************************
      * 1) Program + IDL Info
      *********************************************************/
-    // We'll use devnet or localnet; update to your liking
-    const NETWORK_URL = "https://api.devnet.solana.com"; 
+    // Network Configuration: devnet or localhost
+    const NETWORK_URL = "https://api.devnet.solana.com"; // Change to "http://127.0.0.1:8899" for localhost
+
+    // Program ID: Replace with your deployed program ID
     const PROGRAM_ID = new solanaWeb3.PublicKey("6FhraHnUCBLHUXyKypmZPv67VbbWb1GtPzmyrGLsZ7EV");
 
-    // Paste your daily_facescan IDL below (shortened for brevity).
+    // IDL: Paste your daily_facescan IDL JSON here
     const IDL = {
       "version": "0.1.0",
       "name": "daily_facescan",
-      // ... (rest of the instructions, accounts, and errors)
       "instructions": [
         {
           "name": "initialize",
@@ -82,7 +140,7 @@
           ],
           "args": []
         }
-        // ... plus addOwner, deleteOwner, etc. if you want extra instructions
+        // Add other instructions (addOwner, deleteOwner, etc.) if needed
       ],
       "accounts": [
         {
@@ -109,33 +167,39 @@
       ],
       "errors": [
         {"code":6000,"name":"InvalidPass","msg":"Invalid gateway token or gating check not satisfied"},
-        {"code":6001,"name":"Unauthorized","msg":"You are not an authorized owner"}
-        // ...
+        {"code":6001,"name":"Unauthorized","msg":"You are not an authorized owner"},
+        {"code":6002,"name":"OwnersFull","msg":"Owners array is full"},
+        {"code":6003,"name":"AlreadyOwner","msg":"That pubkey is already an owner"},
+        {"code":6004,"name":"OwnerNotFound","msg":"Owner not found in the array"},
+        {"code":6005,"name":"CannotRemoveSelf","msg":"Cannot remove yourself"},
+        {"code":6006,"name":"InvalidPubkey","msg":"Could not parse gatekeeper network as a valid Pubkey"}
       ]
     };
 
     /*********************************************************
      * 2) Global Variables
      *********************************************************/
-    let program;   // Anchor Program
-    let provider;  // Anchor Provider
-    let airdropKP; // Keypair for "airdrop" account
-    let mintKP;    // Keypair for the SPL mint
-    let mintAuthPda; // PDA for the mint authority
+    let program;       // Anchor Program
+    let provider;      // Anchor Provider
+    let airdropKP;     // Keypair for "airdrop" account
+    let mintKP;        // Keypair for the SPL mint
+    let mintAuthPda;   // PDA for the mint authority
+
+    // SIWS Variables
+    let siwsMessage;   // SIWS Message Object
 
     /*********************************************************
-     * 3) Connect Phantom
+     * 3) Connect Phantom Wallet
      *********************************************************/
-    async function connectPhantom() {
+    async function connectWallet() {
       if (!window.solana) {
         alert("Phantom wallet not found. Please install it first!");
         return;
       }
       try {
-        await window.solana.connect();
-        const pubkey = window.solana.publicKey.toBase58();
-        document.getElementById('status').textContent =
-          "Connected to Phantom: " + pubkey;
+        const response = await window.solana.connect();
+        const pubkey = response.publicKey.toBase58();
+        document.getElementById('status').textContent = "Connected to Phantom: " + pubkey;
         console.log("Phantom connected:", pubkey);
       } catch (err) {
         console.error("Phantom connect error:", err);
@@ -148,7 +212,7 @@
      *********************************************************/
     function setupAnchor() {
       if (typeof anchor === "undefined") {
-        alert("Anchor not loaded. Check your script references.");
+        alert("Anchor library not loaded. Check your script references.");
         return;
       }
       // Create a connection to the cluster
@@ -171,7 +235,7 @@
     }
 
     /*********************************************************
-     * 5) Initialize
+     * 5) Initialize Airdrop
      *********************************************************/
     async function onInitialize() {
       // Must have Phantom connected
@@ -212,6 +276,7 @@
           "Initialize successful!\n" +
           "AirdropPubkey: " + airdropKP.publicKey.toBase58() + "\n" +
           "MintPubkey: " + mintKP.publicKey.toBase58();
+        console.log("Initialized with airdropPubkey:", airdropKP.publicKey.toBase58());
       } catch (err) {
         console.error("Initialize failed:", err);
         alert("Initialize error: " + err.message);
@@ -219,7 +284,7 @@
     }
 
     /*********************************************************
-     * 6) Claim
+     * 6) Claim Airdrop
      *********************************************************/
     async function onClaim() {
       if (!program) {
@@ -246,7 +311,7 @@
           owner: provider.wallet.publicKey
         });
 
-        // Fake a gateway token (replace w/ real if you integrate Civic)
+        // Fake a gateway token (replace with real if you integrate Civic)
         const gatewayToken = anchor.web3.Keypair.generate().publicKey;
 
         // Call daily_facescan::claim
@@ -269,6 +334,7 @@
 
         document.getElementById("status").textContent =
           "Claim successful! Check your token account for minted tokens.";
+        console.log("Claim successful!");
       } catch (err) {
         console.error("Claim failed:", err);
         alert("Claim error: " + err.message);
@@ -276,7 +342,7 @@
     }
 
     /*********************************************************
-     * 7) Debug: fetch Airdrop state
+     * 7) Debug: Fetch Airdrop State
      *********************************************************/
     async function onDebug() {
       if (!program) {
@@ -297,11 +363,96 @@
       }
     }
 
-    // Attach button handlers
-    document.getElementById("connectBtn").onclick = connectPhantom;
+    /*********************************************************
+     * 8) Sign-In with Solana (SIWS)
+     *********************************************************/
+    async function signInWithSolana() {
+      if (!window.solana || !window.solana.publicKey) {
+        alert("Connect Phantom first!");
+        return;
+      }
+
+      // Initialize SIWS Message
+      const header = new window.SIWS.Header();
+      header.t = "sip99";
+      
+      const payload = new window.SIWS.Payload();
+      payload.domain = window.location.host;
+      payload.address = window.solana.publicKey.toBase58();
+      payload.uri = window.location.origin;
+      payload.statement = "Sign in with Solana to the app.";
+      payload.version = "1";
+      payload.chainId = "1"; // Change if using a different chain
+
+      siwsMessage = new window.SIWS.SIWSMessage({
+        header,
+        payload,
+      });
+
+      const preparedMessage = siwsMessage.prepareMessage();
+      const encodedMessage = new TextEncoder().encode(preparedMessage);
+
+      try {
+        // Request signature from wallet
+        const signedMessage = await window.solana.request({
+          method: "signMessage",
+          params: {
+            message: encodedMessage,
+            display: "text",
+          },
+        });
+
+        // Display the signed message details
+        document.getElementById("siws-status").classList.remove("hidden");
+        document.getElementById("siws-publicKey").textContent = signedMessage.publicKey.toString();
+        document.getElementById("siws-signature").textContent = signedMessage.signature;
+        
+        console.log("Signed Message:", signedMessage);
+      } catch (err) {
+        console.error("SIWS sign error:", err);
+        alert("Sign-In with Solana failed: " + err.message);
+      }
+    }
+
+    /*********************************************************
+     * 9) Verify SIWS Signature
+     *********************************************************/
+    async function verifySignature() {
+      if (!siwsMessage) {
+        alert("No SIWS message found.");
+        return;
+      }
+      const signatureString = document.getElementById("siws-signature").textContent;
+      const publicKey = document.getElementById("siws-publicKey").textContent;
+
+      const signature = {
+        t: "sip99",
+        s: signatureString,
+      };
+      const payload = siwsMessage.payload;
+      payload.address = publicKey;
+
+      const resp = await siwsMessage.verify({ payload, signature });
+      if (resp.success === true) {
+        swal("Success", "Signature Verified", "success");
+      } else {
+        swal("Error", resp.error.type, "error");
+      }
+    }
+
+    /*********************************************************
+     * 10) Event Listeners for Buttons
+     *********************************************************/
+    window.addEventListener("load", function () {
+      console.log("Page loaded");
+    });
+
+    document.getElementById("connectWalletBtn").onclick = connectWallet;
     document.getElementById("initBtn").onclick = onInitialize;
     document.getElementById("claimBtn").onclick = onClaim;
     document.getElementById("debugBtn").onclick = onDebug;
+    document.getElementById("siwsBtn").onclick = signInWithSolana;
+    document.getElementById("verifySiwsBtn").onclick = verifySignature;
   </script>
 </body>
 </html>
