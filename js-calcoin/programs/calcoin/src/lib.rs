@@ -26,10 +26,8 @@ pub const MINT_AUTH_SEED: &[u8] = b"mint_authority";
 pub mod daily_facescan {
     use super::*;
 
-    // ---------------------------------------------------------------
-    // (1) Initialize: Creates the Airdrop account & a new SPL Mint
-    // ---------------------------------------------------------------
-    // Hard-coded daily_amount = 1440
+    /// (1) Initialize: Creates the Airdrop account & a new SPL Mint.
+    /// Hard-coded daily_amount = 1440. Also sets `initialized = true` to freeze re-init.
     pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
         let data = &mut ctx.accounts.airdrop;
 
@@ -39,7 +37,7 @@ pub mod daily_facescan {
             return err!(ErrorCode::AlreadyInitialized);
         }
 
-        // Hard-coded Gatekeeper Network
+        // 2) Hard-coded Gatekeeper Network
         let fixed_gatekeeper_network = Pubkey::from_str("uniqobk8oGh4XBLMqM68K8M2zNu3CdYX7q5go7whQiv")
             .map_err(|_| error!(ErrorCode::InvalidPubkey))?;
 
@@ -49,9 +47,9 @@ pub mod daily_facescan {
         data.last_claim_timestamp = 0;
 
         // Initialize owners array. We'll consider the payer's key as the first owner
-        let signer_key = ctx.accounts.authority.key();
-        data.owners[0] = signer_key;
+        data.owners[0] = ctx.accounts.authority.key();
         data.owners_count = 1;
+        // Zero out the rest
         for i in 1..data.owners.len() {
             data.owners[i] = Pubkey::default();
         }
@@ -62,13 +60,11 @@ pub mod daily_facescan {
         Ok(())
     }
 
-    // ---------------------------------------------------------------
-    // (2) Claim
-    // ---------------------------------------------------------------
+    /// (2) Claim: Requires a valid gateway token + time-based daily logic + mint.
     pub fn claim(ctx: Context<Claim>) -> Result<()> {
         let data = &mut ctx.accounts.airdrop;
 
-        // 1) Gateway token check
+        // 1) Gateway token check (Civic gating).
         Gateway::verify_gateway_token_account_info(
             &ctx.accounts.gateway_token.to_account_info(),
             &ctx.accounts.recipient.key(),
@@ -85,11 +81,11 @@ pub mod daily_facescan {
         if delta < 0 {
             delta = 0;
         }
-        // cap at 7 days
+        // Cap at 7 days
         if delta > 7 * 86400 {
             delta = 7 * 86400;
         }
-        let tokens_per_second = data.daily_amount as f64 / 86400.0; // 1440 / 86400
+        let tokens_per_second = data.daily_amount as f64 / 86400.0; // e.g. 1440 / 86400
         let minted_float = tokens_per_second * (delta as f64);
         let minted_amount = minted_float.floor() as u64;
 
@@ -97,6 +93,7 @@ pub mod daily_facescan {
 
         // 3) Mint if minted_amount > 0
         if minted_amount > 0 {
+            // Derive the PDA seeds
             let airdrop_key = data.key();
             let seeds = &[
                 airdrop_key.as_ref(),
@@ -105,6 +102,7 @@ pub mod daily_facescan {
             ];
             let signer = &[&seeds[..]];
 
+            // Mint to the user's token account
             token::mint_to(
                 CpiContext::new_with_signer(
                     ctx.accounts.token_program.to_account_info(),
@@ -126,26 +124,17 @@ pub mod daily_facescan {
         Ok(())
     }
 
-    // ---------------------------------------------------------------
-    // (3) Add Owner
-    // ---------------------------------------------------------------
-    // Any current owner can add a new owner if there's space.
+    /// (3) Add a new owner if space is available
     pub fn add_owner(ctx: Context<AddOwner>, new_owner: Pubkey) -> Result<()> {
         add_owner_logic(ctx, new_owner)
     }
 
-    // ---------------------------------------------------------------
-    // (4) Delete Owner
-    // ---------------------------------------------------------------
-    // Any current owner can remove another owner.
+    /// (4) Delete an existing owner
     pub fn delete_owner(ctx: Context<DeleteOwner>, target_owner: Pubkey) -> Result<()> {
         delete_owner_logic(ctx, target_owner)
     }
 
-    // ---------------------------------------------------------------
-    // (5) Change Gateway Network
-    // ---------------------------------------------------------------
-    // Any current owner can change the gatekeeper network address
+    /// (5) Change the gatekeeper network if the signer is an owner
     pub fn change_gateway_network(ctx: Context<ChangeGateway>, new_gatekeeper: Pubkey) -> Result<()> {
         change_gateway_logic(ctx, new_gatekeeper)
     }
@@ -225,8 +214,7 @@ pub struct Claim<'info> {
     pub recipient_token_account: Account<'info, TokenAccount>,
 
     /// CHECK:
-    /// We'll still do a runtime check (Civic). 
-    /// If you want it to be signer, add `signer` attribute. 
+    /// We'll do a runtime check with solana_gateway
     #[account(mut)]
     pub gateway_token: UncheckedAccount<'info>,
 
@@ -239,9 +227,9 @@ pub struct Claim<'info> {
     pub associated_token_program: Program<'info, AssociatedToken>,
     pub rent: Sysvar<'info, Rent>,
 
-    // Bump seeds for the claim
+    // Optionally verify system program if needed
     #[account(address = anchor_lang::system_program::ID)]
-    pub system_prog: Program<'info, System>, // optional if needed
+    pub system_prog: Program<'info, System>,
 }
 
 #[derive(Accounts)]
@@ -282,16 +270,16 @@ pub struct Airdrop {
     pub daily_amount: u64,          // Hard-coded to 1440 in `initialize`
     pub last_claim_timestamp: i64,
 
-    // *All* owners live in a single array with the same privileges
+    // *All* owners live in a single array with same privileges
     pub owners: [Pubkey; 6],
     pub owners_count: u8,
 
-    // NEW: freeze initialization after first run
+    // Freeze re-init
     pub initialized: bool
 }
-
 impl Airdrop {
     // old ~281 + 1 (bool) => 282
+    // Here we gave a bit more overhead (300) in case we want future expansions
     pub const SIZE: usize = 300;
 }
 
@@ -327,7 +315,7 @@ pub enum ErrorCode {
     #[msg("Could not parse gatekeeper network as a valid Pubkey")]
     InvalidPubkey,
 
-    // NEW: Already initialized
+    // Already init
     #[msg("Airdrop is already initialized")]
     AlreadyInitialized,
 }
@@ -349,15 +337,14 @@ fn add_owner_logic(ctx: Context<AddOwner>, new_owner: Pubkey) -> Result<()> {
     let airdrop = &mut ctx.accounts.airdrop;
     let signer_key = ctx.accounts.signer.key();
 
-    // 1) Must be an existing owner
+    // Must be an existing owner
     require!(is_authorized(&signer_key, airdrop), ErrorCode::Unauthorized);
 
-    // 2) Ensure we have space
+    // Ensure we have space
     require!(airdrop.owners_count < 6, ErrorCode::OwnersFull);
 
-    // 3) Check for duplicates
+    // Check for duplicates
     if new_owner == signer_key {
-        // If you want to allow adding yourself, remove this check
         return err!(ErrorCode::AlreadyOwner);
     }
     for i in 0..airdrop.owners_count {
@@ -366,7 +353,7 @@ fn add_owner_logic(ctx: Context<AddOwner>, new_owner: Pubkey) -> Result<()> {
         }
     }
 
-    // 4) Insert into next free slot
+    // Insert into the next free slot
     let idx = airdrop.owners_count as usize;
     airdrop.owners[idx] = new_owner;
     airdrop.owners_count += 1;
@@ -380,15 +367,15 @@ fn delete_owner_logic(ctx: Context<DeleteOwner>, target_owner: Pubkey) -> Result
     let airdrop = &mut ctx.accounts.airdrop;
     let signer_key = ctx.accounts.signer.key();
 
-    // 1) Must be an existing owner
+    // Must be an existing owner
     require!(is_authorized(&signer_key, airdrop), ErrorCode::Unauthorized);
 
-    // 2) Disallow removing yourself (optional)
+    // Disallow removing yourself (optional)
     if target_owner == signer_key {
         return err!(ErrorCode::CannotRemoveSelf);
     }
 
-    // 3) Find target_owner in owners
+    // Find target in owners
     let mut found_index = None;
     for i in 0..airdrop.owners_count {
         if airdrop.owners[i as usize] == target_owner {
@@ -401,7 +388,7 @@ fn delete_owner_logic(ctx: Context<DeleteOwner>, target_owner: Pubkey) -> Result
         None => return err!(ErrorCode::OwnerNotFound),
     };
 
-    // 4) Remove by swapping with last
+    // Remove by swapping with last
     let last_idx = airdrop.owners_count as usize - 1;
     if idx != last_idx {
         airdrop.owners[idx] = airdrop.owners[last_idx];
