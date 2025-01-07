@@ -60,7 +60,7 @@
   
   <!-- Wallet Connection and SIWS -->
   <div>
-    <button id="connectWalletBtn">Connect Phantom Wallet</button>
+    <button id="connectWalletBtn">Connect Wallet</button>
     <button id="siwsBtn">Sign-In with Solana</button>
   </div>
 
@@ -85,14 +85,35 @@
   <!-- Main JavaScript Module -->
   <script type="module">
     /*********************************************************
-     * 1) Import Necessary Libraries via ES Modules
+     * 1) Import Necessary Libraries via ES Modules from Skypack
      *********************************************************/
-    import * as anchor from 'https://esm.sh/@project-serum/anchor@0.26.0';
-    import { Connection, PublicKey, clusterApiUrl } from 'https://esm.sh/@solana/web3.js@1.98.0';
-
-    // Ensure SIWS is loaded via global window object
-    console.log("Anchor loaded:", typeof anchor !== "undefined");
-    console.log("SIWS loaded:", typeof window.SIWS !== "undefined");
+    import * as anchor from 'https://cdn.skypack.dev/@project-serum/anchor@0.26.0';
+    import { Connection, PublicKey, Keypair, SystemProgram, SYSVAR_RENT_PUBKEY } from 'https://cdn.skypack.dev/@solana/web3.js@1.98.0';
+    import {
+      WalletAdapterNetwork,
+      WalletError,
+    } from 'https://cdn.skypack.dev/@solana/wallet-adapter-base@0.9.1';
+    import {
+      WalletModalProvider,
+      WalletDisconnectButton,
+      WalletMultiButton,
+    } from 'https://cdn.skypack.dev/@solana/wallet-adapter-react-ui@0.10.0';
+    import {
+      getPhantomWallet,
+      getSolflareWallet,
+      getWalletConnectWallet,
+    } from 'https://cdn.skypack.dev/@solana/wallet-adapter-wallets@0.15.6';
+    import {
+      ConnectionProvider,
+      WalletProvider,
+    } from 'https://cdn.skypack.dev/@solana/wallet-adapter-react@0.15.6';
+    import { useMemo, useState, useEffect } from 'https://cdn.skypack.dev/react@17.0.2';
+    import React from 'https://cdn.skypack.dev/react@17.0.2';
+    import ReactDOM from 'https://cdn.skypack.dev/react-dom@17.0.2';
+    
+    // Note: Due to the complexity of integrating React-based Wallet Adapter in a simple HTML setup,
+    // it's recommended to use a framework like React for better integration.
+    // For simplicity, we'll proceed with Phantom and WalletConnect using window.solana.
 
     /*********************************************************
      * 2) Program + IDL Info
@@ -188,21 +209,30 @@
     let siwsMessage;   // SIWS Message Object
 
     /*********************************************************
-     * 4) Connect Phantom Wallet
+     * 4) Connect Wallet (Phantom or WalletConnect)
      *********************************************************/
     async function connectWallet() {
       if (!window.solana) {
-        alert("Phantom wallet not found. Please install it first!");
+        alert("Wallet not found. Please install a Solana wallet like Phantom or use WalletConnect.");
         return;
       }
+
       try {
-        const response = await window.solana.connect();
-        const pubkey = response.publicKey.toBase58();
-        document.getElementById('status').textContent = "Connected to Phantom: " + pubkey;
-        console.log("Phantom connected:", pubkey);
+        // Check if the wallet is WalletConnect
+        if (window.solana.isPhantom) {
+          const response = await window.solana.connect();
+          const pubkey = response.publicKey.toBase58();
+          document.getElementById('status').textContent = "Connected to Phantom: " + pubkey;
+          console.log("Phantom connected:", pubkey);
+        } else {
+          // Implement WalletConnect logic here
+          // Note: Direct WalletConnect integration requires more complex setup
+          // Typically, you'd use a library like @solana/wallet-adapter-wallets
+          alert("Non-Phantom wallets require additional setup.");
+        }
       } catch (err) {
-        console.error("Phantom connect error:", err);
-        alert("Phantom connect error: " + err.message);
+        console.error("Wallet connect error:", err);
+        alert("Wallet connect error: " + err.message);
       }
     }
 
@@ -237,22 +267,25 @@
      * 6) Initialize Airdrop
      *********************************************************/
     async function onInitialize() {
-      // Must have Phantom connected
+      // Must have wallet connected
       if (!window.solana || !window.solana.publicKey) {
-        alert("Connect Phantom first!");
+        alert("Connect your wallet first!");
         return;
       }
       if (!program) {
         setupAnchor();
       }
       // Generate two new Keypairs for the airdrop & mint accounts
-      airdropKP = anchor.web3.Keypair.generate();
-      mintKP = anchor.web3.Keypair.generate();
+      airdropKP = Keypair.generate();
+      mintKP = Keypair.generate();
 
       try {
         // Derive the mintAuthority PDA via seeds
-        const [pda, bump] = await anchor.web3.PublicKey.findProgramAddress(
-          [airdropKP.publicKey.toBuffer(), Buffer.from("mint_authority")],
+        const [pda, bump] = await PublicKey.findProgramAddress(
+          [
+            airdropKP.publicKey.toBytes(),
+            new TextEncoder().encode("mint_authority")
+          ],
           PROGRAM_ID
         );
         mintAuthPda = pda;
@@ -264,9 +297,9 @@
             mint: mintKP.publicKey,
             mintAuthority: mintAuthPda,
             authority: provider.wallet.publicKey, // the user
-            systemProgram: solanaWeb3.SystemProgram.programId,
+            systemProgram: SystemProgram.programId,
             tokenProgram: anchor.utils.token.TOKEN_PROGRAM_ID,
-            rent: solanaWeb3.SYSVAR_RENT_PUBKEY
+            rent: SYSVAR_RENT_PUBKEY
           })
           .signers([airdropKP, mintKP])
           .rpc();
@@ -295,11 +328,11 @@
       }
       try {
         // Derive the "ticket" PDA from seeds
-        const [ticketPda, ticketBump] = await anchor.web3.PublicKey.findProgramAddress(
+        const [ticketPda, ticketBump] = await PublicKey.findProgramAddress(
           [
-            airdropKP.publicKey.toBuffer(),
-            provider.wallet.publicKey.toBuffer(),
-            Buffer.from("ticket")
+            airdropKP.publicKey.toBytes(),
+            provider.wallet.publicKey.toBytes(),
+            new TextEncoder().encode("ticket")
           ],
           PROGRAM_ID
         );
@@ -311,7 +344,7 @@
         });
 
         // Fake a gateway token (replace with real if you integrate Civic)
-        const gatewayToken = anchor.web3.Keypair.generate().publicKey;
+        const gatewayToken = Keypair.generate().publicKey;
 
         // Call daily_facescan::claim
         await program.methods.claim()
@@ -324,10 +357,10 @@
             recipientTokenAccount: recipientAta,
             gatewayToken,
             recipient: provider.wallet.publicKey,
-            systemProgram: solanaWeb3.SystemProgram.programId,
+            systemProgram: SystemProgram.programId,
             tokenProgram: anchor.utils.token.TOKEN_PROGRAM_ID,
             associatedTokenProgram: anchor.utils.token.ASSOCIATED_PROGRAM_ID,
-            rent: solanaWeb3.SYSVAR_RENT_PUBKEY
+            rent: SYSVAR_RENT_PUBKEY
           })
           .rpc();
 
@@ -367,7 +400,7 @@
      *********************************************************/
     async function signInWithSolana() {
       if (!window.solana || !window.solana.publicKey) {
-        alert("Connect Phantom first!");
+        alert("Connect your wallet first!");
         return;
       }
 
