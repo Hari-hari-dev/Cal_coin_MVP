@@ -4,24 +4,12 @@
   <meta charset="UTF-8">
   <title>Daily FaceScan Airdrop & Sign-In Demo</title>
   
-  <!-- 1) Solana Web3.js -->
-  <script src="https://unpkg.com/@solana/web3.js@1.84.1/lib/index.iife.js"></script>
-
-  <!-- 2) Anchor IIFE Build (0.26.0) -->
-  <script src="https://unpkg.com/@project-serum/anchor@0.26.0/dist/browser/index.iife.min.js"></script>
-  
-  <!-- 3) SweetAlert for Alerts -->
+  <!-- 1) SweetAlert for Alerts -->
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   
-  <!-- 4) Web3Auth Sign-In with Solana (SIWS) -->
+  <!-- 2) Web3Auth Sign-In with Solana (SIWS) -->
   <script src="https://unpkg.com/@web3auth/sign-in-with-solana@0.0.1/dist/index.umd.js"></script>
-
-  <script>
-    // Verify that Anchor and SIWS are loaded
-    console.log("Anchor loaded:", typeof anchor !== "undefined");
-    console.log("SIWS loaded:", typeof window.SIWS !== "undefined");
-  </script>
-
+  
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -94,15 +82,26 @@
   <!-- Display Airdrop Status -->
   <div id="status">Not connected</div>
 
-  <script>
+  <!-- Main JavaScript Module -->
+  <script type="module">
     /*********************************************************
-     * 1) Program + IDL Info
+     * 1) Import Necessary Libraries via ES Modules
+     *********************************************************/
+    import * as anchor from 'https://esm.sh/@project-serum/anchor@0.26.0';
+    import { Connection, PublicKey, clusterApiUrl } from 'https://esm.sh/@solana/web3.js@1.84.1';
+
+    // Ensure SIWS is loaded via global window object
+    console.log("Anchor loaded:", typeof anchor !== "undefined");
+    console.log("SIWS loaded:", typeof window.SIWS !== "undefined");
+
+    /*********************************************************
+     * 2) Program + IDL Info
      *********************************************************/
     // Network Configuration: devnet or localhost
     const NETWORK_URL = "https://api.devnet.solana.com"; // Change to "http://127.0.0.1:8899" for localhost
 
     // Program ID: Replace with your deployed program ID from lib.rs
-    const PROGRAM_ID = new solanaWeb3.PublicKey("BSPMVPbq78vJAYSma7abTjrKqUNshq4J1kxbWwcGXxdV");
+    const PROGRAM_ID = new PublicKey("BSPMVPbq78vJAYSma7abTjrKqUNshq4J1kxbWwcGXxdV");
 
     // IDL: Paste your daily_facescan IDL JSON here
     const IDL = {
@@ -177,7 +176,7 @@
     };
 
     /*********************************************************
-     * 2) Global Variables
+     * 3) Global Variables
      *********************************************************/
     let program;       // Anchor Program
     let provider;      // Anchor Provider
@@ -189,7 +188,7 @@
     let siwsMessage;   // SIWS Message Object
 
     /*********************************************************
-     * 3) Connect Phantom Wallet
+     * 4) Connect Phantom Wallet
      *********************************************************/
     async function connectWallet() {
       if (!window.solana) {
@@ -208,7 +207,7 @@
     }
 
     /*********************************************************
-     * 4) Setup Anchor
+     * 5) Setup Anchor
      *********************************************************/
     function setupAnchor() {
       if (typeof anchor === "undefined") {
@@ -216,7 +215,7 @@
         return;
       }
       // Create a connection to the cluster
-      const connection = new solanaWeb3.Connection(NETWORK_URL, "processed");
+      const connection = new Connection(NETWORK_URL, "processed");
 
       // Construct a wallet interface from Phantom
       const wallet = {
@@ -235,7 +234,7 @@
     }
 
     /*********************************************************
-     * 5) Initialize Airdrop
+     * 6) Initialize Airdrop
      *********************************************************/
     async function onInitialize() {
       // Must have Phantom connected
@@ -284,7 +283,7 @@
     }
 
     /*********************************************************
-     * 6) Claim Airdrop
+     * 7) Claim Airdrop
      *********************************************************/
     async function onClaim() {
       if (!program) {
@@ -342,7 +341,7 @@
     }
 
     /*********************************************************
-     * 7) Debug: Fetch Airdrop State
+     * 8) Debug: Fetch Airdrop State
      *********************************************************/
     async function onDebug() {
       if (!program) {
@@ -364,7 +363,7 @@
     }
 
     /*********************************************************
-     * 8) Sign-In with Solana (SIWS)
+     * 9) Sign-In with Solana (SIWS)
      *********************************************************/
     async function signInWithSolana() {
       if (!window.solana || !window.solana.publicKey) {
@@ -415,7 +414,7 @@
     }
 
     /*********************************************************
-     * 9) Verify SIWS Signature
+     * 10) Verify SIWS Signature
      *********************************************************/
     async function verifySignature() {
       if (!siwsMessage) {
@@ -441,7 +440,7 @@
     }
 
     /*********************************************************
-     * 10) Event Listeners for Buttons
+     * 11) Event Listeners for Buttons
      *********************************************************/
     window.addEventListener("load", function () {
       console.log("Page loaded");
