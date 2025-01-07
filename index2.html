@@ -2,38 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Daily FaceScan Airdrop Demo (with Debug)</title>
-  <!-- Include Solana Web3.js library -->
+  <title>Daily FaceScan Airdrop Demo</title>
+  <!-- 1) Solana Web3.js -->
   <script src="https://unpkg.com/@solana/web3.js@1.84.1/lib/index.iife.js"></script>
-  <!-- Include Anchor library (IIFE build) -->
+
+  <!-- 2) Anchor IIFE Build (0.26.0) -->
   <script src="https://unpkg.com/@project-serum/anchor@0.26.0/dist/browser/index.iife.min.js"></script>
+
   <script>
-    // Check if Anchor is loaded
-    console.log('Anchor loaded:', typeof anchor !== 'undefined');
+    // Quick check if Anchor loaded:
+    console.log("Anchor loaded?", typeof anchor !== "undefined");
   </script>
+
   <style>
     body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin-top: 50px;
+      font-family: Arial, sans-serif; text-align: center; margin-top: 50px;
     }
     button {
-      font-size: 16px;
-      padding: 10px 20px;
-      margin: 5px;
-      cursor: pointer;
+      font-size: 16px; padding: 10px 20px; margin: 5px; cursor: pointer;
     }
     #status {
-      margin-top: 20px;
-      font-size: 18px;
-      white-space: pre-wrap;
+      margin-top: 20px; font-size: 18px; white-space: pre-wrap;
     }
   </style>
 </head>
 <body>
-  <h1>Daily FaceScan Airdrop Demo (with Debug)</h1>
-  
-  <!-- Buttons -->
+  <h1>Daily FaceScan Airdrop Demo</h1>
+
+  <!-- Buttons for Connect, Initialize, Claim, Debug -->
   <button id="connectBtn">Connect Phantom</button>
   <button id="initBtn">Initialize</button>
   <button id="claimBtn">Claim</button>
@@ -43,18 +39,17 @@
 
   <script>
     /*********************************************************
-     * 1) Global Variables & Setup
+     * 1) Program + IDL Info
      *********************************************************/
-    // We'll use the devnet cluster for demonstration:
-    const NETWORK_URL = "https://api.devnet.solana.com";
-    
-    // Program ID from your Rust code / logs
+    // We'll use devnet or localnet; update to your liking
+    const NETWORK_URL = "https://api.devnet.solana.com"; 
     const PROGRAM_ID = new solanaWeb3.PublicKey("6FhraHnUCBLHUXyKypmZPv67VbbWb1GtPzmyrGLsZ7EV");
 
-    // Your full IDL as a JavaScript object
+    // Paste your daily_facescan IDL below (shortened for brevity).
     const IDL = {
       "version": "0.1.0",
       "name": "daily_facescan",
+      // ... (rest of the instructions, accounts, and errors)
       "instructions": [
         {
           "name": "initialize",
@@ -86,31 +81,8 @@
             {"name": "rent","isMut": false,"isSigner": false}
           ],
           "args": []
-        },
-        {
-          "name": "addOwner",
-          "accounts": [
-            {"name": "airdrop","isMut": true,"isSigner": false},
-            {"name": "signer","isMut": true,"isSigner": true}
-          ],
-          "args": [{"name": "newOwner","type": "publicKey"}]
-        },
-        {
-          "name": "deleteOwner",
-          "accounts": [
-            {"name": "airdrop","isMut": true,"isSigner": false},
-            {"name": "signer","isMut": true,"isSigner": true}
-          ],
-          "args": [{"name": "targetOwner","type": "publicKey"}]
-        },
-        {
-          "name": "changeGatewayNetwork",
-          "accounts": [
-            {"name": "airdrop","isMut": true,"isSigner": false},
-            {"name": "signer","isMut": true,"isSigner": true}
-          ],
-          "args": [{"name": "newGatekeeper","type": "publicKey"}]
         }
+        // ... plus addOwner, deleteOwner, etc. if you want extra instructions
       ],
       "accounts": [
         {
@@ -132,74 +104,77 @@
         },
         {
           "name": "Ticket",
-          "type": {
-            "kind": "struct",
-            "fields": []
-          }
+          "type": {"kind": "struct","fields": []}
         }
       ],
       "errors": [
-        {"code": 6000,"name": "InvalidPass","msg": "Invalid gateway token or gating check not satisfied"},
-        {"code": 6001,"name": "Unauthorized","msg": "You are not an authorized owner"},
-        {"code": 6002,"name": "OwnersFull","msg": "Owners array is full"},
-        {"code": 6003,"name": "AlreadyOwner","msg": "That pubkey is already an owner"},
-        {"code": 6004,"name": "OwnerNotFound","msg": "Owner not found in the array"},
-        {"code": 6005,"name": "CannotRemoveSelf","msg": "Cannot remove yourself"},
-        {"code": 6006,"name": "InvalidPubkey","msg": "Could not parse gatekeeper network as a valid Pubkey"}
+        {"code":6000,"name":"InvalidPass","msg":"Invalid gateway token or gating check not satisfied"},
+        {"code":6001,"name":"Unauthorized","msg":"You are not an authorized owner"}
+        // ...
       ]
     };
 
-    // Define global variables
-    let program;
-    let provider;
-    let airdropPubkey;        
-    let mintPubkey;
-    let mintAuthorityPubkey;  
+    /*********************************************************
+     * 2) Global Variables
+     *********************************************************/
+    let program;   // Anchor Program
+    let provider;  // Anchor Provider
+    let airdropKP; // Keypair for "airdrop" account
+    let mintKP;    // Keypair for the SPL mint
+    let mintAuthPda; // PDA for the mint authority
 
     /*********************************************************
-     * 2) Connect Phantom
+     * 3) Connect Phantom
      *********************************************************/
     async function connectPhantom() {
       if (!window.solana) {
-        alert("Phantom wallet not found. Install it first!");
+        alert("Phantom wallet not found. Please install it first!");
         return;
       }
       try {
         await window.solana.connect();
-        const userPublicKey = window.solana.publicKey.toBase58();
-        console.log("Connected to Phantom as:", userPublicKey);
+        const pubkey = window.solana.publicKey.toBase58();
         document.getElementById('status').textContent =
-          "Connected to Phantom: " + userPublicKey;
+          "Connected to Phantom: " + pubkey;
+        console.log("Phantom connected:", pubkey);
       } catch (err) {
         console.error("Phantom connect error:", err);
-        alert("Failed to connect: " + err.message);
+        alert("Phantom connect error: " + err.message);
       }
     }
 
     /*********************************************************
-     * 3) Setup Anchor
+     * 4) Setup Anchor
      *********************************************************/
     function setupAnchor() {
-      if (typeof anchor === 'undefined') {
-        alert("Anchor library not loaded. Check script inclusion.");
+      if (typeof anchor === "undefined") {
+        alert("Anchor not loaded. Check your script references.");
         return;
       }
+      // Create a connection to the cluster
       const connection = new solanaWeb3.Connection(NETWORK_URL, "processed");
+
+      // Construct a wallet interface from Phantom
       const wallet = {
         publicKey: window.solana.publicKey,
         signTransaction: (tx) => window.solana.signTransaction(tx),
-        signAllTransactions: (txs) => window.solana.signAllTransactions(txs),
+        signAllTransactions: (txs) => window.solana.signAllTransactions(txs)
       };
+
+      // Create an AnchorProvider
       provider = new anchor.AnchorProvider(connection, wallet, {
-        preflightCommitment: "processed",
+        preflightCommitment: "processed"
       });
+
+      // Create the program (combines IDL, programID, & provider)
       program = new anchor.Program(IDL, PROGRAM_ID, provider);
     }
 
     /*********************************************************
-     * 4) Initialize
+     * 5) Initialize
      *********************************************************/
     async function onInitialize() {
+      // Must have Phantom connected
       if (!window.solana || !window.solana.publicKey) {
         alert("Connect Phantom first!");
         return;
@@ -207,121 +182,122 @@
       if (!program) {
         setupAnchor();
       }
-      // Generate placeholders
-      airdropPubkey = anchor.web3.Keypair.generate();
-      mintPubkey = anchor.web3.Keypair.generate();
+      // Generate two new Keypairs for the airdrop & mint accounts
+      airdropKP = anchor.web3.Keypair.generate();
+      mintKP = anchor.web3.Keypair.generate();
 
       try {
-        const [mintAuthPda] = await anchor.web3.PublicKey.findProgramAddress(
-          [airdropPubkey.publicKey.toBuffer(), Buffer.from("mint_authority")],
+        // Derive the mintAuthority via seeds
+        const [pda] = await anchor.web3.PublicKey.findProgramAddress(
+          [airdropKP.publicKey.toBuffer(), Buffer.from("mint_authority")],
           PROGRAM_ID
         );
-        mintAuthorityPubkey = mintAuthPda;
+        mintAuthPda = pda;
 
+        // Call daily_facescan::initialize
         await program.methods.initialize()
           .accounts({
-            airdrop: airdropPubkey.publicKey,
-            mint: mintPubkey.publicKey,
-            mintAuthority: mintAuthorityPubkey,
-            authority: provider.wallet.publicKey,
+            airdrop: airdropKP.publicKey,
+            mint: mintKP.publicKey,
+            mintAuthority: mintAuthPda,
+            authority: provider.wallet.publicKey, // the user
             systemProgram: solanaWeb3.SystemProgram.programId,
             tokenProgram: anchor.utils.token.TOKEN_PROGRAM_ID,
-            rent: solanaWeb3.SYSVAR_RENT_PUBKEY,
+            rent: solanaWeb3.SYSVAR_RENT_PUBKEY
           })
-          .signers([airdropPubkey, mintPubkey])
+          .signers([airdropKP, mintKP])
           .rpc();
 
-        document.getElementById('status').textContent = "Initialize successful!\n" +
-          "Airdrop PublicKey: " + airdropPubkey.publicKey.toBase58() + "\n" +
-          "Mint PublicKey: " + mintPubkey.publicKey.toBase58();
-        console.log("Initialized with airdropPubkey:", airdropPubkey.publicKey.toBase58());
+        document.getElementById("status").textContent =
+          "Initialize successful!\n" +
+          "AirdropPubkey: " + airdropKP.publicKey.toBase58() + "\n" +
+          "MintPubkey: " + mintKP.publicKey.toBase58();
       } catch (err) {
         console.error("Initialize failed:", err);
-        alert("Initialize failed: " + err.message);
+        alert("Initialize error: " + err.message);
       }
     }
 
     /*********************************************************
-     * 5) Claim
+     * 6) Claim
      *********************************************************/
     async function onClaim() {
       if (!program) {
         setupAnchor();
       }
+      if (!airdropKP) {
+        alert("No airdropPubkey known. Did you run 'Initialize' first?");
+        return;
+      }
       try {
-        // Derive the "ticket" PDA from seeds [airdrop, recipient, "ticket"]
+        // Derive the "ticket" PDA from seeds
         const [ticketPda] = await anchor.web3.PublicKey.findProgramAddress(
           [
-            airdropPubkey.publicKey.toBuffer(),
+            airdropKP.publicKey.toBuffer(),
             provider.wallet.publicKey.toBuffer(),
             Buffer.from("ticket")
           ],
           PROGRAM_ID
         );
 
-        // Derive recipient's associated token account
-        const recipientTokenAccount = await anchor.utils.token.associatedAddress({
-          mint: mintPubkey.publicKey,
+        // Associated token account for the minted token
+        const recipientAta = await anchor.utils.token.associatedAddress({
+          mint: mintKP.publicKey,
           owner: provider.wallet.publicKey
         });
 
-        // Fake gateway token (replace with real in production)
-        const gatewayTokenPubkey = anchor.web3.Keypair.generate().publicKey;
+        // Fake a gateway token (replace w/ real if you integrate Civic)
+        const gatewayToken = anchor.web3.Keypair.generate().publicKey;
 
-        // Call the claim method
+        // Call daily_facescan::claim
         await program.methods.claim()
           .accounts({
-            airdrop: airdropPubkey.publicKey,
+            airdrop: airdropKP.publicKey,
             payer: provider.wallet.publicKey,
-            mintAuthority: mintAuthorityPubkey,
+            mintAuthority: mintAuthPda,
             ticket: ticketPda,
-            mint: mintPubkey.publicKey,
-            recipientTokenAccount,
-            gatewayToken: gatewayTokenPubkey,
+            mint: mintKP.publicKey,
+            recipientTokenAccount: recipientAta,
+            gatewayToken,
             recipient: provider.wallet.publicKey,
             systemProgram: solanaWeb3.SystemProgram.programId,
             tokenProgram: anchor.utils.token.TOKEN_PROGRAM_ID,
             associatedTokenProgram: anchor.utils.token.ASSOCIATED_PROGRAM_ID,
-            rent: solanaWeb3.SYSVAR_RENT_PUBKEY,
+            rent: solanaWeb3.SYSVAR_RENT_PUBKEY
           })
           .rpc();
 
-        document.getElementById('status').textContent = "Claim successful!\nCheck your token account for minted tokens.";
-        console.log("Claim successful!");
+        document.getElementById("status").textContent =
+          "Claim successful! Check your token account for minted tokens.";
       } catch (err) {
         console.error("Claim failed:", err);
-        alert("Claim failed: " + err.message);
+        alert("Claim error: " + err.message);
       }
     }
 
     /*********************************************************
-     * 6) Debug: fetch the Airdrop state
+     * 7) Debug: fetch Airdrop state
      *********************************************************/
     async function onDebug() {
       if (!program) {
         setupAnchor();
       }
+      if (!airdropKP) {
+        alert("No airdropPubkey known. Did you run Initialize first?");
+        return;
+      }
       try {
-        if (!airdropPubkey) {
-          alert("No airdropPubkey known. Did you run 'Initialize'?");
-          return;
-        }
-
-        // Fetch the Airdrop account state
-        const airdropState = await program.account.airdrop.fetch(
-          airdropPubkey.publicKey
-        );
-
+        const airdropState = await program.account.airdrop.fetch(airdropKP.publicKey);
         console.log("Airdrop state:", airdropState);
-        document.getElementById('status').textContent =
+        document.getElementById("status").textContent =
           "Airdrop state:\n" + JSON.stringify(airdropState, null, 2);
       } catch (err) {
-        console.error("Debug fetch failed:", err);
+        console.error("Debug error:", err);
         alert("Debug fetch failed: " + err.message);
       }
     }
 
-    // Wire up the buttons
+    // Attach button handlers
     document.getElementById("connectBtn").onclick = connectPhantom;
     document.getElementById("initBtn").onclick = onInitialize;
     document.getElementById("claimBtn").onclick = onClaim;
