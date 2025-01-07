@@ -17,7 +17,7 @@
   <script src="https://unpkg.com/@web3auth/sign-in-with-solana@0.0.1/dist/index.umd.js"></script>
 
   <script>
-    // Check if Anchor and SIWS are loaded
+    // Verify that Anchor and SIWS are loaded
     console.log("Anchor loaded:", typeof anchor !== "undefined");
     console.log("SIWS loaded:", typeof window.SIWS !== "undefined");
   </script>
@@ -101,8 +101,8 @@
     // Network Configuration: devnet or localhost
     const NETWORK_URL = "https://api.devnet.solana.com"; // Change to "http://127.0.0.1:8899" for localhost
 
-    // Program ID: Replace with your deployed program ID
-    const PROGRAM_ID = new solanaWeb3.PublicKey("BSPMVPbq78vJAYSma7abTjrKqUNshq4J1kxbWwcGXxdV"); // Updated to match lib.rs
+    // Program ID: Replace with your deployed program ID from lib.rs
+    const PROGRAM_ID = new solanaWeb3.PublicKey("BSPMVPbq78vJAYSma7abTjrKqUNshq4J1kxbWwcGXxdV");
 
     // IDL: Paste your daily_facescan IDL JSON here
     const IDL = {
