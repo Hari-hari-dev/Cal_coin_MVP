@@ -88,9 +88,15 @@
      * 1) Import Necessary Libraries via ES Modules
      *********************************************************/
     import * as anchor from 'https://esm.sh/@project-serum/anchor@0.26.0';
-    import { Connection, PublicKey, clusterApiUrl } from 'https://esm.sh/@solana/web3.js@1.98.0';
+    import {
+      Connection,
+      PublicKey,
+      Keypair,
+      SystemProgram,
+      SYSVAR_RENT_PUBKEY
+    } from 'https://esm.sh/@solana/web3.js@1.98.0';
 
-    // Ensure SIWS is loaded via global window object
+    // Check that Anchor and SIWS are loaded
     console.log("Anchor loaded:", typeof anchor !== "undefined");
     console.log("SIWS loaded:", typeof window.SIWS !== "undefined");
 
@@ -98,12 +104,12 @@
      * 2) Program + IDL Info
      *********************************************************/
     // Network Configuration: devnet or localhost
-    const NETWORK_URL = "https://api.devnet.solana.com"; // Change to "http://127.0.0.1:8899" for localhost
+    const NETWORK_URL = "https://api.devnet.solana.com"; // or "http://127.0.0.1:8899"
 
-    // Program ID: Replace with your deployed program ID from lib.rs
-    const PROGRAM_ID = new PublicKey("BSPMVPbq78vJAYSma7abTjrKqUNshq4J1kxbWwcGXxdV");
+    // Replace with your actual Program ID
+    const PROGRAM_ID = new PublicKey("6FhraHnUCBLHUXyKypmZPv67VbbWb1GtPzmyrGLsZ7EV");
 
-    // IDL: Paste your daily_facescan IDL JSON here
+    // Paste your daily_facescan IDL JSON
     const IDL = {
       "version": "0.1.0",
       "name": "daily_facescan",
@@ -139,7 +145,7 @@
           ],
           "args": []
         }
-        // Add other instructions (addOwner, deleteOwner, etc.) if needed
+        // Additional instructions if needed...
       ],
       "accounts": [
         {
@@ -184,8 +190,8 @@
     let mintKP;        // Keypair for the SPL mint
     let mintAuthPda;   // PDA for the mint authority
 
-    // SIWS Variables
-    let siwsMessage;   // SIWS Message Object
+    // SIWS variables
+    let siwsMessage;   
 
     /*********************************************************
      * 4) Connect Phantom Wallet
@@ -210,11 +216,11 @@
      * 5) Setup Anchor
      *********************************************************/
     function setupAnchor() {
-      if (typeof anchor === "undefined") {
-        alert("Anchor library not loaded. Check your script references.");
+      if (!anchor) {
+        alert("Anchor not loaded. Check script references.");
         return;
       }
-      // Create a connection to the cluster
+      // Create a Solana connection
       const connection = new Connection(NETWORK_URL, "processed");
 
       // Construct a wallet interface from Phantom
@@ -224,12 +230,12 @@
         signAllTransactions: (txs) => window.solana.signAllTransactions(txs)
       };
 
-      // Create an AnchorProvider
+      // Create AnchorProvider
       provider = new anchor.AnchorProvider(connection, wallet, {
         preflightCommitment: "processed"
       });
 
-      // Create the program (combines IDL, programID, & provider)
+      // Create Program (combines IDL, programID, & provider)
       program = new anchor.Program(IDL, PROGRAM_ID, provider);
     }
 
@@ -245,14 +251,18 @@
       if (!program) {
         setupAnchor();
       }
-      // Generate two new Keypairs for the airdrop & mint accounts
+      
+      // Generate Keypairs for airdrop & mint
       airdropKP = anchor.web3.Keypair.generate();
       mintKP = anchor.web3.Keypair.generate();
 
       try {
-        // Derive the mintAuthority PDA via seeds
+        // Derive the mintAuthority PDA
         const [pda, bump] = await anchor.web3.PublicKey.findProgramAddress(
-          [airdropKP.publicKey.toBuffer(), Buffer.from("mint_authority")],
+          [
+            airdropKP.publicKey.toBytes(),
+            new TextEncoder().encode("mint_authority")
+          ],
           PROGRAM_ID
         );
         mintAuthPda = pda;
@@ -263,18 +273,16 @@
             airdrop: airdropKP.publicKey,
             mint: mintKP.publicKey,
             mintAuthority: mintAuthPda,
-            authority: provider.wallet.publicKey, // the user
-            systemProgram: solanaWeb3.SystemProgram.programId,
+            authority: provider.wallet.publicKey,
+            systemProgram: anchor.web3.SystemProgram.programId,
             tokenProgram: anchor.utils.token.TOKEN_PROGRAM_ID,
-            rent: solanaWeb3.SYSVAR_RENT_PUBKEY
+            rent: anchor.web3.SYSVAR_RENT_PUBKEY
           })
           .signers([airdropKP, mintKP])
           .rpc();
 
         document.getElementById("status").textContent =
-          "Initialize successful!\n" +
-          "AirdropPubkey: " + airdropKP.publicKey.toBase58() + "\n" +
-          "MintPubkey: " + mintKP.publicKey.toBase58();
+          `Initialize successful!\nAirdropPubkey: ${airdropKP.publicKey.toBase58()}\nMintPubkey: ${mintKP.publicKey.toBase58()}`;
         console.log("Initialized with airdropPubkey:", airdropKP.publicKey.toBase58());
       } catch (err) {
         console.error("Initialize failed:", err);
@@ -294,12 +302,12 @@
         return;
       }
       try {
-        // Derive the "ticket" PDA from seeds
+        // Derive "ticket" PDA
         const [ticketPda, ticketBump] = await anchor.web3.PublicKey.findProgramAddress(
           [
-            airdropKP.publicKey.toBuffer(),
-            provider.wallet.publicKey.toBuffer(),
-            Buffer.from("ticket")
+            airdropKP.publicKey.toBytes(),
+            provider.wallet.publicKey.toBytes(),
+            new TextEncoder().encode("ticket")
           ],
           PROGRAM_ID
         );
@@ -310,7 +318,7 @@
           owner: provider.wallet.publicKey
         });
 
-        // Fake a gateway token (replace with real if you integrate Civic)
+        // Fake gateway token if not integrated with Civic
         const gatewayToken = anchor.web3.Keypair.generate().publicKey;
 
         // Call daily_facescan::claim
@@ -324,10 +332,10 @@
             recipientTokenAccount: recipientAta,
             gatewayToken,
             recipient: provider.wallet.publicKey,
-            systemProgram: solanaWeb3.SystemProgram.programId,
+            systemProgram: anchor.web3.SystemProgram.programId,
             tokenProgram: anchor.utils.token.TOKEN_PROGRAM_ID,
             associatedTokenProgram: anchor.utils.token.ASSOCIATED_PROGRAM_ID,
-            rent: solanaWeb3.SYSVAR_RENT_PUBKEY
+            rent: anchor.web3.SYSVAR_RENT_PUBKEY
           })
           .rpc();
 
@@ -348,7 +356,7 @@
         setupAnchor();
       }
       if (!airdropKP) {
-        alert("No airdropPubkey known. Did you run Initialize first?");
+        alert("No airdropPubkey known. Did you run 'Initialize' first?");
         return;
       }
       try {
@@ -371,7 +379,7 @@
         return;
       }
 
-      // Initialize SIWS Message
+      // Prepare SIWS message
       const header = new window.SIWS.Header();
       header.t = "sip99";
       
@@ -381,18 +389,14 @@
       payload.uri = window.location.origin;
       payload.statement = "Sign in with Solana to the app.";
       payload.version = "1";
-      payload.chainId = "1"; // Change if using a different chain
+      payload.chainId = "1"; // devnet still uses chainId=1 for SIWS
 
-      siwsMessage = new window.SIWS.SIWSMessage({
-        header,
-        payload,
-      });
-
+      siwsMessage = new window.SIWS.SIWSMessage({ header, payload });
       const preparedMessage = siwsMessage.prepareMessage();
       const encodedMessage = new TextEncoder().encode(preparedMessage);
 
       try {
-        // Request signature from wallet
+        // Request signature from Phantom
         const signedMessage = await window.solana.request({
           method: "signMessage",
           params: {
@@ -401,7 +405,7 @@
           },
         });
 
-        // Display the signed message details
+        // Show SIWS details
         document.getElementById("siws-status").classList.remove("hidden");
         document.getElementById("siws-publicKey").textContent = signedMessage.publicKey.toString();
         document.getElementById("siws-signature").textContent = signedMessage.signature;
@@ -418,16 +422,13 @@
      *********************************************************/
     async function verifySignature() {
       if (!siwsMessage) {
-        alert("No SIWS message found.");
+        alert("No SIWS message found. Sign In first!");
         return;
       }
       const signatureString = document.getElementById("siws-signature").textContent;
       const publicKey = document.getElementById("siws-publicKey").textContent;
 
-      const signature = {
-        t: "sip99",
-        s: signatureString,
-      };
+      const signature = { t: "sip99", s: signatureString };
       const payload = siwsMessage.payload;
       payload.address = publicKey;
 
@@ -440,7 +441,7 @@
     }
 
     /*********************************************************
-     * 11) Event Listeners for Buttons
+     * 11) Event Listeners
      *********************************************************/
     window.addEventListener("load", function () {
       console.log("Page loaded");
