@@ -12,7 +12,8 @@ use anchor_spl::{
 use solana_gateway::Gateway;
 use std::str::FromStr; // For Pubkey::from_str
 
-declare_id!("BSPMVPbq78vJAYSma7abTjrKqUNshq4J1kxbWwcGXxdV");
+// Replace with your actual Program ID
+declare_id!("ADM5ikM5LS1ptrwFqXNyZDYazDzThSJknLNpJyw1x6c");
 
 // Seeds
 pub const TICKET_SEED: &[u8] = b"ticket";
@@ -32,6 +33,12 @@ pub mod daily_facescan {
     pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
         let data = &mut ctx.accounts.airdrop;
 
+        // 1) Check if already initialized
+        if data.initialized {
+            msg!("Airdrop is already initialized; aborting.");
+            return err!(ErrorCode::AlreadyInitialized);
+        }
+
         // Hard-coded Gatekeeper Network
         let fixed_gatekeeper_network = Pubkey::from_str("uniqobk8oGh4XBLMqM68K8M2zNu3CdYX7q5go7whQiv")
             .map_err(|_| error!(ErrorCode::InvalidPubkey))?;
@@ -42,14 +49,15 @@ pub mod daily_facescan {
         data.last_claim_timestamp = 0;
 
         // Initialize owners array. We'll consider the payer's key as the first owner
-        // but feel free to pass an argument if you want multiple initial owners.
         let signer_key = ctx.accounts.authority.key();
         data.owners[0] = signer_key;
         data.owners_count = 1;
-        // Zero out the rest
         for i in 1..data.owners.len() {
             data.owners[i] = Pubkey::default();
         }
+
+        // Mark as initialized
+        data.initialized = true;
 
         Ok(())
     }
@@ -129,8 +137,7 @@ pub mod daily_facescan {
     // ---------------------------------------------------------------
     // (4) Delete Owner
     // ---------------------------------------------------------------
-    // Any current owner can remove another owner. 
-    // If you want to *allow removing yourself*, remove the "CannotRemoveSelf" check.
+    // Any current owner can remove another owner.
     pub fn delete_owner(ctx: Context<DeleteOwner>, target_owner: Pubkey) -> Result<()> {
         delete_owner_logic(ctx, target_owner)
     }
@@ -197,7 +204,6 @@ pub struct Claim<'info> {
     )]
     pub mint_authority: SystemAccount<'info>,
 
-    // Ticket for uniqueness/tracking, if needed
     #[account(
         init,
         payer = payer,
@@ -210,7 +216,6 @@ pub struct Claim<'info> {
     #[account(mut)]
     pub mint: Account<'info, Mint>,
 
-    // The user’s token account for receiving tokens
     #[account(
         init_if_needed,
         payer = payer,
@@ -219,7 +224,10 @@ pub struct Claim<'info> {
     )]
     pub recipient_token_account: Account<'info, TokenAccount>,
 
-    /// CHECK: verified at runtime via solana_gateway
+    /// CHECK:
+    /// We'll still do a runtime check (Civic). 
+    /// If you want it to be signer, add `signer` attribute. 
+    #[account(mut)]
     pub gateway_token: UncheckedAccount<'info>,
 
     #[account(mut)]
@@ -230,9 +238,12 @@ pub struct Claim<'info> {
     pub token_program: Program<'info, Token>,
     pub associated_token_program: Program<'info, AssociatedToken>,
     pub rent: Sysvar<'info, Rent>,
+
+    // Bump seeds for the claim
+    #[account(address = anchor_lang::system_program::ID)]
+    pub system_prog: Program<'info, System>, // optional if needed
 }
 
-// --- NEW INSTRUCTIONS ---
 #[derive(Accounts)]
 pub struct AddOwner<'info> {
     #[account(mut)]
@@ -274,17 +285,14 @@ pub struct Airdrop {
     // *All* owners live in a single array with the same privileges
     pub owners: [Pubkey; 6],
     pub owners_count: u8,
+
+    // NEW: freeze initialization after first run
+    pub initialized: bool
 }
 
 impl Airdrop {
-    // Calculate the final size. 
-    // For example: 
-    // - 32 + 32 + 8 + 8 = 80 for the first 4 fields 
-    // - plus 6*32 = 192 
-    // - plus 1 = 1 
-    // - plus 8 for the account discriminator 
-    // => total ~ 281; confirm in practice
-    pub const SIZE: usize = 281;
+    // old ~281 + 1 (bool) => 282
+    pub const SIZE: usize = 300;
 }
 
 #[account]
@@ -318,6 +326,10 @@ pub enum ErrorCode {
 
     #[msg("Could not parse gatekeeper network as a valid Pubkey")]
     InvalidPubkey,
+
+    // NEW: Already initialized
+    #[msg("Airdrop is already initialized")]
+    AlreadyInitialized,
 }
 
 // -------------------------------------------------------------------
@@ -354,7 +366,7 @@ fn add_owner_logic(ctx: Context<AddOwner>, new_owner: Pubkey) -> Result<()> {
         }
     }
 
-    // 4) Insert into the next free slot
+    // 4) Insert into next free slot
     let idx = airdrop.owners_count as usize;
     airdrop.owners[idx] = new_owner;
     airdrop.owners_count += 1;
@@ -372,7 +384,6 @@ fn delete_owner_logic(ctx: Context<DeleteOwner>, target_owner: Pubkey) -> Result
     require!(is_authorized(&signer_key, airdrop), ErrorCode::Unauthorized);
 
     // 2) Disallow removing yourself (optional)
-    // If you want to allow removing oneself, remove the check below
     if target_owner == signer_key {
         return err!(ErrorCode::CannotRemoveSelf);
     }
