@@ -102,7 +102,7 @@
     const NETWORK_URL = "https://api.devnet.solana.com"; // Change to "http://127.0.0.1:8899" for localhost
 
     // Program ID: Replace with your deployed program ID
-    const PROGRAM_ID = new solanaWeb3.PublicKey("6FhraHnUCBLHUXyKypmZPv67VbbWb1GtPzmyrGLsZ7EV");
+    const PROGRAM_ID = new solanaWeb3.PublicKey("BSPMVPbq78vJAYSma7abTjrKqUNshq4J1kxbWwcGXxdV"); // Updated to match lib.rs
 
     // IDL: Paste your daily_facescan IDL JSON here
     const IDL = {
@@ -251,8 +251,8 @@
       mintKP = anchor.web3.Keypair.generate();
 
       try {
-        // Derive the mintAuthority via seeds
-        const [pda] = await anchor.web3.PublicKey.findProgramAddress(
+        // Derive the mintAuthority PDA via seeds
+        const [pda, bump] = await anchor.web3.PublicKey.findProgramAddress(
           [airdropKP.publicKey.toBuffer(), Buffer.from("mint_authority")],
           PROGRAM_ID
         );
@@ -296,7 +296,7 @@
       }
       try {
         // Derive the "ticket" PDA from seeds
-        const [ticketPda] = await anchor.web3.PublicKey.findProgramAddress(
+        const [ticketPda, ticketBump] = await anchor.web3.PublicKey.findProgramAddress(
           [
             airdropKP.publicKey.toBuffer(),
             provider.wallet.publicKey.toBuffer(),
