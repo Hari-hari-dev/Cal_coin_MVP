@@ -90,10 +90,7 @@
     import * as anchor from 'https://esm.sh/@project-serum/anchor@0.26.0';
     import {
       Connection,
-      PublicKey,
-      Keypair,
-      SystemProgram,
-      SYSVAR_RENT_PUBKEY
+      PublicKey
     } from 'https://esm.sh/@solana/web3.js@1.98.0';
 
     // Check that Anchor and SIWS are loaded
@@ -136,7 +133,6 @@
             {"name": "ticket","isMut": true,"isSigner": false},
             {"name": "mint","isMut": true,"isSigner": false},
             {"name": "recipientTokenAccount","isMut": true,"isSigner": false},
-            {"name": "gatewayToken","isMut": false,"isSigner": false},
             {"name": "recipient","isMut": true,"isSigner": false},
             {"name": "systemProgram","isMut": false,"isSigner": false},
             {"name": "tokenProgram","isMut": false,"isSigner": false},
@@ -202,9 +198,10 @@
         return;
       }
       try {
-        const response = await window.solana.connect();
-        const pubkey = response.publicKey.toBase58();
-        document.getElementById('status').textContent = "Connected to Phantom: " + pubkey;
+        await window.solana.connect();
+        const pubkey = window.solana.publicKey.toBase58();
+        document.getElementById('status').textContent =
+          "Connected to Phantom: " + pubkey;
         console.log("Phantom connected:", pubkey);
       } catch (err) {
         console.error("Phantom connect error:", err);
@@ -221,7 +218,7 @@
         return;
       }
       // Create a Solana connection
-      const connection = new Connection(NETWORK_URL, "processed");
+      const connection = new anchor.web3.Connection(NETWORK_URL, "processed");
 
       // Construct a wallet interface from Phantom
       const wallet = {
@@ -318,8 +315,8 @@
           owner: provider.wallet.publicKey
         });
 
-        // Fake gateway token if not integrated with Civic
-        const gatewayToken = anchor.web3.Keypair.generate().publicKey;
+        // We removed the "gatewayToken" argument altogether
+        // from the program's `claim` instruction.
 
         // Call daily_facescan::claim
         await program.methods.claim()
@@ -330,7 +327,6 @@
             ticket: ticketPda,
             mint: mintKP.publicKey,
             recipientTokenAccount: recipientAta,
-            gatewayToken,
             recipient: provider.wallet.publicKey,
             systemProgram: anchor.web3.SystemProgram.programId,
             tokenProgram: anchor.utils.token.TOKEN_PROGRAM_ID,
