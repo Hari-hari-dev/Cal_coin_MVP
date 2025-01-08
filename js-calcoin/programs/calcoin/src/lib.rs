@@ -1,22 +1,16 @@
 use anchor_lang::prelude::*;
 use anchor_spl::{
     associated_token::AssociatedToken,
-    token::{
-        self,
-        Mint,
-        MintTo,
-        Token,
-        TokenAccount,
-    },
+    token::{self, Mint, MintTo, Token, TokenAccount},
 };
 use std::str::FromStr;
 
 declare_id!("FAVH9pAc8Ltw6wjYukJwZhFh7fwXVL3npShRisFoyu6y");
 
-// Seeds
 pub const TICKET_SEED: &[u8] = b"ticket";
 pub const MINT_AUTH_SEED: &[u8] = b"mint_authority";
 
+// The main program.
 #[program]
 pub mod daily_facescan {
     use super::*;
@@ -24,24 +18,23 @@ pub mod daily_facescan {
     pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
         let data = &mut ctx.accounts.airdrop;
 
-        // (1) Check if already initialized
+        // 1) Check if already initialized
         if data.initialized {
             return err!(ErrorCode::AlreadyInitialized);
         }
 
-        // (2) Hard-coded gatekeeper network (remove if not needed):
+        // 2) Hard-coded gatekeeper network if needed
         let fixed_gatekeeper_network = Pubkey::from_str("uniqobk8oGh4XBLMqM68K8M2zNu3CdYX7q5go7whQiv")
             .map_err(|_| error!(ErrorCode::InvalidPubkey))?;
         data.gatekeeper_network = fixed_gatekeeper_network;
 
-        // Hard-coded daily_amount
+        // Hard-coded daily_amount = 1440
         data.mint = ctx.accounts.mint.key();
         data.daily_amount = 1440;
         data.last_claim_timestamp = 0;
 
-        // (3) Initialize owners array
-        let authority_key = ctx.accounts.authority.key();
-        data.owners[0] = authority_key;
+        // 3) Initialize owners array
+        data.owners[0] = ctx.accounts.authority.key();
         data.owners_count = 1;
         for i in 1..data.owners.len() {
             data.owners[i] = Pubkey::default();
@@ -54,18 +47,17 @@ pub mod daily_facescan {
     pub fn claim(ctx: Context<Claim>) -> Result<()> {
         let data = &mut ctx.accounts.airdrop;
 
-        // OPTIONAL: if you want only owners to claim:
+        // (Optional) If you only want certain owners to claim:
         // if !is_authorized(&ctx.accounts.payer.key(), data) {
-        //     return err!(ErrorCode::Unauthorized);
+        //    return err!(ErrorCode::Unauthorized);
         // }
 
-        // (1) Time-based logic
+        // Time-based logic
         let now = Clock::get()?.unix_timestamp;
         let mut delta = now - data.last_claim_timestamp;
         if delta < 0 {
             delta = 0;
         }
-        // Cap at 7 days
         if delta > 7 * 86400 {
             delta = 7 * 86400;
         }
@@ -75,11 +67,10 @@ pub mod daily_facescan {
 
         data.last_claim_timestamp = now;
 
-        // (2) Mint if minted_amount > 0
+        // Mint
         if minted_amount > 0 {
-            let airdrop_key = data.key();
             let seeds = &[
-                airdrop_key.as_ref(),
+                data.key().as_ref(),
                 MINT_AUTH_SEED,
                 &[ctx.bumps.mint_authority],
             ];
@@ -97,7 +88,6 @@ pub mod daily_facescan {
                 ),
                 minted_amount,
             )?;
-
             msg!("Claimed {} tokens!", minted_amount);
         } else {
             msg!("No tokens minted (insufficient time).");
@@ -106,14 +96,13 @@ pub mod daily_facescan {
         Ok(())
     }
 
+    // Additional instructions (optional) ...
     pub fn add_owner(ctx: Context<AddOwner>, new_owner: Pubkey) -> Result<()> {
         add_owner_logic(ctx, new_owner)
     }
-
     pub fn delete_owner(ctx: Context<DeleteOwner>, target_owner: Pubkey) -> Result<()> {
         delete_owner_logic(ctx, target_owner)
     }
-
     pub fn change_gateway_network(ctx: Context<ChangeGateway>, new_gatekeeper: Pubkey) -> Result<()> {
         change_gateway_logic(ctx, new_gatekeeper)
     }
@@ -124,16 +113,10 @@ pub mod daily_facescan {
 // ------------------
 #[derive(Accounts)]
 pub struct Initialize<'info> {
-    #[account(
-        init,
-        payer = authority,
-        space = Airdrop::SIZE
-    )]
+    #[account(init, payer = authority, space = Airdrop::SIZE)]
     pub airdrop: Account<'info, Airdrop>,
 
-    #[account(
-        init,
-        payer = authority,
+    #[account(init, payer = authority,
         mint::decimals = 9,
         mint::authority = mint_authority
     )]
@@ -148,8 +131,10 @@ pub struct Initialize<'info> {
     #[account(mut)]
     pub authority: Signer<'info>,
 
-    // Exactly matches the IDL: "systemProgram"
+    // Must match the IDL "systemProgram"
+    #[account(address = system_program::ID)]
     pub system_program: Program<'info, System>,
+
     pub token_program: Program<'info, Token>,
     pub rent: Sysvar<'info, Rent>,
 }
@@ -188,7 +173,8 @@ pub struct Claim<'info> {
     )]
     pub recipient_token_account: Account<'info, TokenAccount>,
 
-    // Must EXACTLY match "systemProgram" from IDL
+    // Exactly the name from IDL: "systemProgram"
+    #[account(address = system_program::ID)]
     pub system_program: Program<'info, System>,
 
     pub token_program: Program<'info, Token>,
@@ -196,7 +182,7 @@ pub struct Claim<'info> {
     pub rent: Sysvar<'info, Rent>,
 }
 
-// Additional instructions
+// Additional instructions...
 #[derive(Accounts)]
 pub struct AddOwner<'info> {
     #[account(mut)]
@@ -204,7 +190,6 @@ pub struct AddOwner<'info> {
     #[account(mut)]
     pub signer: Signer<'info>,
 }
-
 #[derive(Accounts)]
 pub struct DeleteOwner<'info> {
     #[account(mut)]
@@ -212,7 +197,6 @@ pub struct DeleteOwner<'info> {
     #[account(mut)]
     pub signer: Signer<'info>,
 }
-
 #[derive(Accounts)]
 pub struct ChangeGateway<'info> {
     #[account(mut)]
@@ -268,7 +252,7 @@ pub enum ErrorCode {
     AlreadyInitialized,
 }
 
-// Helper
+// Helper if you want owners gating:
 fn is_authorized(signer_pubkey: &Pubkey, airdrop: &Airdrop) -> bool {
     for i in 0..airdrop.owners_count {
         if airdrop.owners[i as usize] == *signer_pubkey {
@@ -277,11 +261,9 @@ fn is_authorized(signer_pubkey: &Pubkey, airdrop: &Airdrop) -> bool {
     }
     false
 }
-
 fn add_owner_logic(ctx: Context<AddOwner>, new_owner: Pubkey) -> Result<()> {
     let ad = &mut ctx.accounts.airdrop;
     let signer_key = ctx.accounts.signer.key();
-
     require!(is_authorized(&signer_key, ad), ErrorCode::Unauthorized);
     require!(ad.owners_count < 6, ErrorCode::OwnersFull);
 
@@ -299,11 +281,9 @@ fn add_owner_logic(ctx: Context<AddOwner>, new_owner: Pubkey) -> Result<()> {
     msg!("Added new owner: {}", new_owner);
     Ok(())
 }
-
 fn delete_owner_logic(ctx: Context<DeleteOwner>, target_owner: Pubkey) -> Result<()> {
     let ad = &mut ctx.accounts.airdrop;
     let signer_key = ctx.accounts.signer.key();
-
     require!(is_authorized(&signer_key, ad), ErrorCode::Unauthorized);
 
     if target_owner == signer_key {
@@ -320,6 +300,7 @@ fn delete_owner_logic(ctx: Context<DeleteOwner>, target_owner: Pubkey) -> Result
         Some(i) => i,
         None => return err!(ErrorCode::OwnerNotFound),
     };
+
     let last_idx = ad.owners_count as usize - 1;
     if idx != last_idx {
         ad.owners[idx] = ad.owners[last_idx];
@@ -329,7 +310,6 @@ fn delete_owner_logic(ctx: Context<DeleteOwner>, target_owner: Pubkey) -> Result
     msg!("Deleted owner: {}", target_owner);
     Ok(())
 }
-
 fn change_gateway_logic(ctx: Context<ChangeGateway>, new_gatekeeper: Pubkey) -> Result<()> {
     let ad = &mut ctx.accounts.airdrop;
     require!(is_authorized(&ctx.accounts.signer.key(), ad), ErrorCode::Unauthorized);
