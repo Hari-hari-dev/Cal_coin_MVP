@@ -10,7 +10,7 @@ use solana_gateway::Gateway; // If you want to call `verify_gateway_token_accoun
 use std::str::FromStr;
 
 // The program ID from `declare_id!`
-declare_id!("9w4SMkWVfhfXTkCWvohjkk58htNVBt4agLxQi42D4gV3");
+declare_id!("FAVH9pAc8Ltw6wjYukJwZhFh7fwXVL3npShRisFoyu6y");
 
 // Seeds
 pub const TICKET_SEED: &[u8] = b"ticket";
