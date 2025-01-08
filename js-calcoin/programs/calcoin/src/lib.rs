@@ -10,7 +10,7 @@ use solana_gateway::Gateway; // If you want to call `verify_gateway_token_accoun
 use std::str::FromStr;
 
 // The program ID from `declare_id!`
-declare_id!("FAVH9pAc8Ltw6wjYukJwZhFh7fwXVL3npShRisFoyu6y");
+declare_id!("9w4SMkWVfhfXTkCWvohjkk58htNVBt4agLxQi42D4gV3");
 
 // Seeds
 pub const TICKET_SEED: &[u8] = b"ticket";
@@ -72,7 +72,7 @@ pub mod daily_facescan {
             None
         ).map_err(|_err| {
             msg!("Civic gateway token check failed.");
-            ErrorCode::InvalidPass.into()
+            error!(ErrorCode::InvalidPass)
         })?;
 
         // (1) Time-based daily logic
