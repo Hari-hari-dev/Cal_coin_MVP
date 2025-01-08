@@ -9,13 +9,13 @@ use anchor_spl::{
         TokenAccount,
     },
 };
-use solana_gateway::Gateway;
-use std::str::FromStr; // For Pubkey::from_str
+use solana_gateway_anchor::Pass;  // <-- Key addition: bring in the Pass type
+use std::str::FromStr; // For Pubkey::from_str if needed
 
-// Replace with your actual Program ID
+// Replace with your actual Program ID (must match what's in Cargo.toml + declare_id!).
 declare_id!("3ArwtqNnwiUys3GmGub1NUrb4sjVbRhKQq2pKVLiFhtB");
 
-// Seeds
+// Seeds for the PDAs
 pub const TICKET_SEED: &[u8] = b"ticket";
 pub const MINT_AUTH_SEED: &[u8] = b"mint_authority";
 
@@ -26,29 +26,26 @@ pub const MINT_AUTH_SEED: &[u8] = b"mint_authority";
 pub mod daily_facescan {
     use super::*;
 
-    // ---------------------------------------------------------------
-    // (1) Initialize: Creates the Airdrop account & a new SPL Mint
-    // ---------------------------------------------------------------
-    // Hard-coded daily_amount = 1440
+    /// (1) Initialize the program: creates the Airdrop account and a new SPL Mint.
+    /// Hard-coded daily_amount = 1440. Also sets `initialized = true` to prevent re-initialization.
     pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
         let data = &mut ctx.accounts.airdrop;
 
-        // 1) Check if already initialized
         if data.initialized {
             msg!("Airdrop is already initialized; aborting.");
             return err!(ErrorCode::AlreadyInitialized);
         }
 
-        // Hard-coded Gatekeeper Network
+        // Hard-coded Gatekeeper Network for Civic pass gating
         let fixed_gatekeeper_network = Pubkey::from_str("uniqobk8oGh4XBLMqM68K8M2zNu3CdYX7q5go7whQiv")
             .map_err(|_| error!(ErrorCode::InvalidPubkey))?;
-
         data.gatekeeper_network = fixed_gatekeeper_network;
+
         data.mint = ctx.accounts.mint.key();
         data.daily_amount = 1440;
         data.last_claim_timestamp = 0;
 
-        // Initialize owners array. We'll consider the payer's key as the first owner
+        // Consider the payer's key as the first "owner"
         let signer_key = ctx.accounts.authority.key();
         data.owners[0] = signer_key;
         data.owners_count = 1;
@@ -56,46 +53,33 @@ pub mod daily_facescan {
             data.owners[i] = Pubkey::default();
         }
 
-        // Mark as initialized
         data.initialized = true;
-
         Ok(())
     }
 
-    // ---------------------------------------------------------------
-    // (2) Claim
-    // ---------------------------------------------------------------
+    /// (2) Claim tokens. We now rely on the `Pass` constraint to verify that
+    /// the user holds a valid pass for `gatekeeper_network`. If no pass or invalid,
+    /// the transaction fails.
     pub fn claim(ctx: Context<Claim>) -> Result<()> {
         let data = &mut ctx.accounts.airdrop;
 
-        // 1) Gateway token check
-        Gateway::verify_gateway_token_account_info(
-            &ctx.accounts.gateway_token.to_account_info(),
-            &ctx.accounts.recipient.key(),
-            &data.gatekeeper_network,
-            None
-        ).map_err(|_e| {
-            msg!("Gateway token verification failed");
-            ProgramError::InvalidArgument
-        })?;
-
-        // 2) Time-based daily logic
+        // Time-based daily logic
         let now = Clock::get()?.unix_timestamp;
         let mut delta = now - data.last_claim_timestamp;
         if delta < 0 {
             delta = 0;
         }
-        // cap at 7 days
+        // Cap at 7 days
         if delta > 7 * 86400 {
             delta = 7 * 86400;
         }
-        let tokens_per_second = data.daily_amount as f64 / 86400.0; // 1440 / 86400
+        let tokens_per_second = data.daily_amount as f64 / 86400.0;
         let minted_float = tokens_per_second * (delta as f64);
         let minted_amount = minted_float.floor() as u64;
 
         data.last_claim_timestamp = now;
 
-        // 3) Mint if minted_amount > 0
+        // Mint if minted_amount > 0
         if minted_amount > 0 {
             let airdrop_key = data.key();
             let seeds = &[
@@ -126,26 +110,17 @@ pub mod daily_facescan {
         Ok(())
     }
 
-    // ---------------------------------------------------------------
-    // (3) Add Owner
-    // ---------------------------------------------------------------
-    // Any current owner can add a new owner if there's space.
+    /// (3) Add new owner if there's space
     pub fn add_owner(ctx: Context<AddOwner>, new_owner: Pubkey) -> Result<()> {
         add_owner_logic(ctx, new_owner)
     }
 
-    // ---------------------------------------------------------------
-    // (4) Delete Owner
-    // ---------------------------------------------------------------
-    // Any current owner can remove another owner.
+    /// (4) Delete existing owner
     pub fn delete_owner(ctx: Context<DeleteOwner>, target_owner: Pubkey) -> Result<()> {
         delete_owner_logic(ctx, target_owner)
     }
 
-    // ---------------------------------------------------------------
-    // (5) Change Gateway Network
-    // ---------------------------------------------------------------
-    // Any current owner can change the gatekeeper network address
+    /// (5) Change gateway network if the signer is an existing owner
     pub fn change_gateway_network(ctx: Context<ChangeGateway>, new_gatekeeper: Pubkey) -> Result<()> {
         change_gateway_logic(ctx, new_gatekeeper)
     }
@@ -156,7 +131,7 @@ pub mod daily_facescan {
 // -------------------------------------------------------------------
 #[derive(Accounts)]
 pub struct Initialize<'info> {
-    // The main state account
+    /// The main Airdrop state account
     #[account(
         init,
         payer = authority,
@@ -164,32 +139,33 @@ pub struct Initialize<'info> {
     )]
     pub airdrop: Account<'info, Airdrop>,
 
-    // Create a new SPL Mint with decimals=9, authority = mint_authority (the PDA)
+    /// A new SPL mint with decimals=9, authority = PDA (mint_authority)
     #[account(
         init,
         payer = authority,
         mint::decimals = 9,
-        mint::authority = mint_authority,
+        mint::authority = mint_authority
     )]
     pub mint: Account<'info, Mint>,
 
-    // PDA used to sign future mint instructions
+    /// The PDA used to sign future mint instructions
     #[account(
         seeds = [airdrop.key().as_ref(), MINT_AUTH_SEED],
         bump
     )]
     pub mint_authority: SystemAccount<'info>,
 
-    // The wallet paying for the Airdrop + Mint creation
+    /// The wallet paying for account creations
     #[account(mut)]
     pub authority: Signer<'info>,
 
-    // Programs
+    /// Programs
     pub system_program: Program<'info, System>,
     pub token_program: Program<'info, Token>,
     pub rent: Sysvar<'info, Rent>,
 }
 
+/// The user calls claim, referencing a pass that must be valid for the user & the airdrop’s gatekeeper network
 #[derive(Accounts)]
 pub struct Claim<'info> {
     #[account(has_one = mint)]
@@ -204,6 +180,7 @@ pub struct Claim<'info> {
     )]
     pub mint_authority: SystemAccount<'info>,
 
+    /// A "ticket" for uniqueness or preventing multiple claims
     #[account(
         init,
         payer = payer,
@@ -213,9 +190,11 @@ pub struct Claim<'info> {
     )]
     pub ticket: Account<'info, Ticket>,
 
+    /// The minted token
     #[account(mut)]
     pub mint: Account<'info, Mint>,
 
+    /// The user’s associated token account
     #[account(
         init_if_needed,
         payer = payer,
@@ -224,12 +203,14 @@ pub struct Claim<'info> {
     )]
     pub recipient_token_account: Account<'info, TokenAccount>,
 
-    /// CHECK:
-    /// We'll still do a runtime check (Civic). 
-    /// If you want it to be signer, add `signer` attribute. 
-    #[account(mut)]
-    pub gateway_token: UncheckedAccount<'info>,
+    /// The pass must be valid for the `recipient` with the `gatekeeper_network`
+    #[account(
+        constraint = pass.valid(&recipient.key, &airdrop.gatekeeper_network)
+            @ ErrorCode::InvalidPass
+    )]
+    pub pass: Account<'info, Pass>,
 
+    /// The user receiving tokens
     #[account(mut)]
     pub recipient: SystemAccount<'info>,
 
@@ -238,63 +219,65 @@ pub struct Claim<'info> {
     pub token_program: Program<'info, Token>,
     pub associated_token_program: Program<'info, AssociatedToken>,
     pub rent: Sysvar<'info, Rent>,
-
-    // Bump seeds for the claim
-    #[account(address = anchor_lang::system_program::ID)]
-    pub system_prog: Program<'info, System>, // optional if needed
 }
 
+/// Add a new owner
 #[derive(Accounts)]
 pub struct AddOwner<'info> {
     #[account(mut)]
     pub airdrop: Account<'info, Airdrop>,
-
     #[account(mut)]
     pub signer: Signer<'info>,
 }
 
+/// Delete an existing owner
 #[derive(Accounts)]
 pub struct DeleteOwner<'info> {
     #[account(mut)]
     pub airdrop: Account<'info, Airdrop>,
-
     #[account(mut)]
     pub signer: Signer<'info>,
 }
 
+/// Change gateway network
 #[derive(Accounts)]
 pub struct ChangeGateway<'info> {
     #[account(mut)]
     pub airdrop: Account<'info, Airdrop>,
-
     #[account(mut)]
     pub signer: Signer<'info>,
 }
 
 // -------------------------------------------------------------------
-// DATA
+// DATA ACCOUNTS
 // -------------------------------------------------------------------
 #[account]
 #[derive(Default)]
 pub struct Airdrop {
-    pub gatekeeper_network: Pubkey, // For solana-gateway
-    pub mint: Pubkey,               // The newly created Mint
-    pub daily_amount: u64,          // Hard-coded to 1440 in `initialize`
+    /// The gatekeeper network for Civic
+    pub gatekeeper_network: Pubkey,
+
+    /// The SPL Mint created at Initialize
+    pub mint: Pubkey,
+
+    /// Hard-coded daily amount
+    pub daily_amount: u64,
+
+    /// When the user last claimed
     pub last_claim_timestamp: i64,
 
-    // *All* owners live in a single array with the same privileges
+    /// Ownership array
     pub owners: [Pubkey; 6],
     pub owners_count: u8,
 
-    // NEW: freeze initialization after first run
-    pub initialized: bool
+    /// Freeze re-init
+    pub initialized: bool,
 }
-
 impl Airdrop {
-    // old ~281 + 1 (bool) => 282
-    pub const SIZE: usize = 300;
+    pub const SIZE: usize = 300; // enough for fields + overhead
 }
 
+/// Minimal "ticket" to track unique user claims
 #[account]
 pub struct Ticket {}
 impl Ticket {
@@ -324,16 +307,15 @@ pub enum ErrorCode {
     #[msg("Cannot remove yourself")]
     CannotRemoveSelf,
 
-    #[msg("Could not parse gatekeeper network as a valid Pubkey")]
+    #[msg("Could not parse gatekeeper network as valid Pubkey")]
     InvalidPubkey,
 
-    // NEW: Already initialized
     #[msg("Airdrop is already initialized")]
     AlreadyInitialized,
 }
 
 // -------------------------------------------------------------------
-// HELPER FUNCTIONS
+// HELPER LOGIC
 // -------------------------------------------------------------------
 fn is_authorized(signer_pubkey: &Pubkey, airdrop: &Airdrop) -> bool {
     for i in 0..airdrop.owners_count {
@@ -344,20 +326,19 @@ fn is_authorized(signer_pubkey: &Pubkey, airdrop: &Airdrop) -> bool {
     false
 }
 
-// Logic for add_owner
+// Add owner
 fn add_owner_logic(ctx: Context<AddOwner>, new_owner: Pubkey) -> Result<()> {
     let airdrop = &mut ctx.accounts.airdrop;
     let signer_key = ctx.accounts.signer.key();
 
-    // 1) Must be an existing owner
+    // Must be an existing owner
     require!(is_authorized(&signer_key, airdrop), ErrorCode::Unauthorized);
 
-    // 2) Ensure we have space
+    // Ensure space
     require!(airdrop.owners_count < 6, ErrorCode::OwnersFull);
 
-    // 3) Check for duplicates
+    // Check for duplicates
     if new_owner == signer_key {
-        // If you want to allow adding yourself, remove this check
         return err!(ErrorCode::AlreadyOwner);
     }
     for i in 0..airdrop.owners_count {
@@ -366,29 +347,26 @@ fn add_owner_logic(ctx: Context<AddOwner>, new_owner: Pubkey) -> Result<()> {
         }
     }
 
-    // 4) Insert into next free slot
+    // Insert new owner
     let idx = airdrop.owners_count as usize;
     airdrop.owners[idx] = new_owner;
     airdrop.owners_count += 1;
-
     msg!("Added new owner: {}", new_owner);
     Ok(())
 }
 
-// Logic for delete_owner
+// Delete owner
 fn delete_owner_logic(ctx: Context<DeleteOwner>, target_owner: Pubkey) -> Result<()> {
     let airdrop = &mut ctx.accounts.airdrop;
     let signer_key = ctx.accounts.signer.key();
 
-    // 1) Must be an existing owner
     require!(is_authorized(&signer_key, airdrop), ErrorCode::Unauthorized);
 
-    // 2) Disallow removing yourself (optional)
     if target_owner == signer_key {
         return err!(ErrorCode::CannotRemoveSelf);
     }
 
-    // 3) Find target_owner in owners
+    // find the target in owners
     let mut found_index = None;
     for i in 0..airdrop.owners_count {
         if airdrop.owners[i as usize] == target_owner {
@@ -401,7 +379,7 @@ fn delete_owner_logic(ctx: Context<DeleteOwner>, target_owner: Pubkey) -> Result
         None => return err!(ErrorCode::OwnerNotFound),
     };
 
-    // 4) Remove by swapping with last
+    // swap remove
     let last_idx = airdrop.owners_count as usize - 1;
     if idx != last_idx {
         airdrop.owners[idx] = airdrop.owners[last_idx];
@@ -413,16 +391,13 @@ fn delete_owner_logic(ctx: Context<DeleteOwner>, target_owner: Pubkey) -> Result
     Ok(())
 }
 
-// Logic for change_gateway_network
+// Change gateway network
 fn change_gateway_logic(ctx: Context<ChangeGateway>, new_gatekeeper: Pubkey) -> Result<()> {
     let airdrop = &mut ctx.accounts.airdrop;
     let signer_key = ctx.accounts.signer.key();
-
-    // Must be an existing owner
     require!(is_authorized(&signer_key, airdrop), ErrorCode::Unauthorized);
 
     airdrop.gatekeeper_network = new_gatekeeper;
     msg!("Changed gatekeeper network to {}", new_gatekeeper);
-
     Ok(())
 }
