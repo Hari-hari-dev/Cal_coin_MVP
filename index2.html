@@ -50,7 +50,7 @@
 </head>
 
 <body>
-  <h1>Daily FaceScan Airdrop & Sign-In Demo</h1>
+  <h1>Daily FaceScan Airdrop & Sign-In Demo 2</h1>
 
   <!-- Buttons: Connect + SIWS -->
   <div>
@@ -58,7 +58,7 @@
     <button id="siwsBtn">Sign-In with Solana</button>
   </div>
 
-  <!-- SIWS Panel -->
+  <!-- SIWS Display Panel -->
   <div id="siws-status" class="hidden">
     <h3>Sign-In Details</h3>
     <p><strong>Public Key:</strong> <span id="siws-publicKey"></span></p>
@@ -76,155 +76,275 @@
   <!-- Status Panel -->
   <div id="status">Not connected</div>
 
-  <!-- Main JS -->
+  <!-- Main JavaScript Module -->
   <script type="module">
-    import * as anchor from "https://esm.sh/@project-serum/anchor@0.26.0";
-    import { Connection, PublicKey } from "https://esm.sh/@solana/web3.js@1.98.0";
+    /*********************************************************
+     * 1) Import Libraries
+     *********************************************************/
+    import * as anchor from 'https://esm.sh/@project-serum/anchor@0.26.0';
+    import { Connection, PublicKey } from 'https://esm.sh/@solana/web3.js@1.98.0';
 
-    // Debug
+    // Just to confirm they’re loaded
     console.log("Anchor loaded:", typeof anchor !== "undefined");
     console.log("SIWS loaded:", typeof window.SIWS !== "undefined");
 
-    // Devnet or local
-    const NETWORK_URL = "https://api.devnet.solana.com";
-    // Program ID from your Rust
-    const PROGRAM_ID = new PublicKey("8fJGcyaRCuQuTj12YLvLtQHiG9aQZiMqjG9iGQ9TBqyg");
+    /*********************************************************
+     * 2) Program + IDL Info
+     *********************************************************/
+    const NETWORK_URL = "https://api.devnet.solana.com"; // or local URL
+    const PROGRAM_ID = new PublicKey("calcoin = "EVr3FKuQSjozzrmzkRfbxidMiT6zwBHvf6KJYcuMqHBK"
+");
 
-    // The IDL snippet must match your Rust code's IDL fields
-    const IDL = { /* same as your daily_facescan IDL JSON */ };
+    // Must match your Rust & actual JSON IDL (with "systemProgram" & "tokenProgram" etc.)
+    const IDL = {
+      "version": "0.1.0",
+      "name": "daily_facescan",
+      "instructions": [
+        {
+          "name": "initialize",
+          "accounts": [
+            { "name": "airdrop","isMut":true,"isSigner":true},
+            { "name": "mint","isMut":true,"isSigner":true},
+            { "name": "mintAuthority","isMut":false,"isSigner":false},
+            { "name": "authority","isMut":true,"isSigner":true},
+            { "name": "systemProgram","isMut":false,"isSigner":false },
+            { "name": "tokenProgram","isMut":false,"isSigner":false },
+            { "name": "rent","isMut":false,"isSigner":false }
+          ],
+          "args": []
+        },
+        {
+          "name": "claim",
+          "accounts": [
+            { "name": "airdrop","isMut":false,"isSigner":false },
+            { "name": "payer","isMut":true,"isSigner":true },
+            { "name": "mintAuthority","isMut":false,"isSigner":false },
+            { "name": "ticket","isMut":true,"isSigner":false },
+            { "name": "mint","isMut":true,"isSigner":false },
+            { "name": "recipientTokenAccount","isMut":true,"isSigner":false },
+            { "name": "recipient","isMut":true,"isSigner":false },
+            { "name": "systemProgram","isMut":false,"isSigner":false },
+            { "name": "tokenProgram","isMut":false,"isSigner":false },
+            { "name": "associatedTokenProgram","isMut":false,"isSigner":false },
+            { "name": "rent","isMut":false,"isSigner":false }
+          ],
+          "args": []
+        }
+      ],
+      "accounts": [
+        {
+          "name": "Airdrop",
+          "type": {
+            "kind": "struct",
+            "fields": [
+              { "name": "gatekeeperNetwork","type":"publicKey" },
+              { "name": "mint","type":"publicKey" },
+              { "name": "dailyAmount","type":"u64" },
+              { "name": "lastClaimTimestamp","type":"i64" },
+              {
+                "name": "owners",
+                "type": { "array":["publicKey",6] }
+              },
+              { "name": "ownersCount","type":"u8" },
+              { "name": "initialized","type":"bool" }
+            ]
+          }
+        },
+        {
+          "name": "Ticket",
+          "type": { "kind":"struct","fields":[] }
+        }
+      ],
+      "errors": [
+        { "code":6000,"name":"InvalidPass","msg":"Invalid gating or pass check not satisfied" },
+        { "code":6001,"name":"Unauthorized","msg":"Not an authorized owner" },
+        { "code":6002,"name":"OwnersFull","msg":"Owners array is full" },
+        { "code":6003,"name":"AlreadyOwner","msg":"Pubkey is already an owner" },
+        { "code":6004,"name":"OwnerNotFound","msg":"Owner not found in the array" },
+        { "code":6005,"name":"CannotRemoveSelf","msg":"Cannot remove yourself" },
+        { "code":6006,"name":"InvalidPubkey","msg":"Could not parse gatekeeper network as valid" },
+        { "code":6007,"name":"AlreadyInitialized","msg":"Already initialized" }
+      ]
+    };
 
-    let program, provider;
-    let airdropKP, mintKP, mintAuthPda;
+    /*********************************************************
+     * 3) Global Variables
+     *********************************************************/
+    let program;
+    let provider;
+    let airdropKP;
+    let mintKP;
+    let mintAuthPda;
+
+    // SIWS variables
     let siwsMessage;
 
+    /*********************************************************
+     * 4) Connect Phantom
+     *********************************************************/
     async function connectWallet() {
       if (!window.solana) {
-        alert("Phantom wallet not detected!");
+        alert("Phantom wallet not found!");
         return;
       }
       try {
         await window.solana.connect();
         const pubkey = window.solana.publicKey.toBase58();
-        document.getElementById("status").textContent = "Connected: " + pubkey;
+        document.getElementById('status').textContent = "Connected to Phantom: " + pubkey;
+        console.log("Phantom connected =>", pubkey);
       } catch (err) {
+        console.error("Phantom connect error:", err);
         alert("Connect error: " + err.message);
       }
     }
 
+    /*********************************************************
+     * 5) Setup Anchor (Provider + Program)
+     *********************************************************/
     function setupAnchor() {
       if (typeof anchor === "undefined") {
-        alert("Anchor not loaded.");
+        alert("Anchor not loaded. Check references.");
         return;
       }
       const connection = new anchor.web3.Connection(NETWORK_URL, "processed");
+
       const wallet = {
         publicKey: window.solana.publicKey,
         signTransaction: (tx) => window.solana.signTransaction(tx),
         signAllTransactions: (txs) => window.solana.signAllTransactions(txs),
       };
+
       provider = new anchor.AnchorProvider(connection, wallet, {
         preflightCommitment: "processed",
       });
+
       program = new anchor.Program(IDL, PROGRAM_ID, provider);
     }
 
+    /*********************************************************
+     * 6) Initialize
+     *********************************************************/
     async function onInitialize() {
       if (!program) setupAnchor();
-      if (!window.solana.publicKey) {
+      if (!window.solana || !window.solana.publicKey) {
         alert("Connect Phantom first!");
         return;
       }
-      try {
-        airdropKP = anchor.web3.Keypair.generate();
-        mintKP = anchor.web3.Keypair.generate();
 
-        // Derive mintAuthority PDA
+      // 1) Generate Keypairs
+      airdropKP = anchor.web3.Keypair.generate();
+      mintKP = anchor.web3.Keypair.generate();
+
+      try {
+        // 2) Derive mintAuthority
         const [pda, bump] = await anchor.web3.PublicKey.findProgramAddress(
-          [airdropKP.publicKey.toBytes(), new TextEncoder().encode("mint_authority")],
+          [
+            airdropKP.publicKey.toBytes(),
+            new TextEncoder().encode("mint_authority"),
+          ],
           PROGRAM_ID
         );
         mintAuthPda = pda;
 
+        // 3) Call `initialize`
         await program.methods.initialize()
           .accounts({
-            airdrop: airdropKP.publicKey,
-            mint: mintKP.publicKey,
-            mintAuthority: mintAuthPda,
-            authority: provider.wallet.publicKey,
-            systemProgram: anchor.web3.SystemProgram.programId,
-            tokenProgram: anchor.utils.token.TOKEN_PROGRAM_ID,
-            rent: anchor.web3.SYSVAR_RENT_PUBKEY,
+            airdrop:         airdropKP.publicKey,
+            mint:            mintKP.publicKey,
+            mintAuthority:   mintAuthPda,
+            authority:       provider.wallet.publicKey,
+            systemProgram:   anchor.web3.SystemProgram.programId, // must match "systemProgram"
+            tokenProgram:    anchor.utils.token.TOKEN_PROGRAM_ID,
+            rent:            anchor.web3.SYSVAR_RENT_PUBKEY,
           })
           .signers([airdropKP, mintKP])
           .rpc();
 
-        document.getElementById("status").textContent = 
-          "Init success!\nAirdropPubkey: " + airdropKP.publicKey.toBase58() + 
+        document.getElementById("status").textContent =
+          "Initialize success!\nAirdropPubkey: " + airdropKP.publicKey.toBase58() + 
           "\nMintPubkey: " + mintKP.publicKey.toBase58();
+        console.log("Initialized => airdrop:", airdropKP.publicKey.toBase58());
       } catch (err) {
+        console.error("Initialize failed:", err);
         alert("Init error: " + err.message);
       }
     }
 
+    /*********************************************************
+     * 7) Claim
+     *********************************************************/
     async function onClaim() {
       if (!program) setupAnchor();
       if (!airdropKP) {
-        alert("Initialize first, no airdrop key?");
+        alert("No Airdrop Keypair (Initialize first).");
         return;
       }
       try {
+        // Derive "ticket" PDA
         const [ticketPda, ticketBump] = await anchor.web3.PublicKey.findProgramAddress(
           [
             airdropKP.publicKey.toBytes(),
             provider.wallet.publicKey.toBytes(),
-            new TextEncoder().encode("ticket")
+            new TextEncoder().encode("ticket"),
           ],
           PROGRAM_ID
         );
+
+        // ATA for minted SPL
         const recipientAta = await anchor.utils.token.associatedAddress({
           mint: mintKP.publicKey,
-          owner: provider.wallet.publicKey
+          owner: provider.wallet.publicKey,
         });
 
+        // 2) Call `claim`
         await program.methods.claim()
           .accounts({
-            airdrop: airdropKP.publicKey,
-            payer: provider.wallet.publicKey,
-            mintAuthority: mintAuthPda,
-            ticket: ticketPda,
-            mint: mintKP.publicKey,
-            recipientTokenAccount: recipientAta,
-            recipient: provider.wallet.publicKey,
-            systemProgram: anchor.web3.SystemProgram.programId,
-            tokenProgram: anchor.utils.token.TOKEN_PROGRAM_ID,
+            airdrop:              airdropKP.publicKey,
+            payer:                provider.wallet.publicKey,
+            mintAuthority:        mintAuthPda,
+            ticket:               ticketPda,
+            mint:                 mintKP.publicKey,
+            recipientTokenAccount:recipientAta,
+            recipient:            provider.wallet.publicKey,
+            systemProgram:        anchor.web3.SystemProgram.programId,
+            tokenProgram:         anchor.utils.token.TOKEN_PROGRAM_ID,
             associatedTokenProgram: anchor.utils.token.ASSOCIATED_TOKEN_PROGRAM_ID,
             rent: anchor.web3.SYSVAR_RENT_PUBKEY,
           })
           .rpc();
 
-        document.getElementById("status").textContent = 
-          "Claim successful! Check your token account.";
+        document.getElementById("status").textContent =
+          "Claim successful! Check your token account for minted tokens.";
+        console.log("Claim successful!");
       } catch (err) {
+        console.error("Claim failed:", err);
         alert("Claim error: " + err.message);
       }
     }
 
+    /*********************************************************
+     * 8) Debug
+     *********************************************************/
     async function onDebug() {
       if (!program) setupAnchor();
       if (!airdropKP) {
-        alert("Initialize first, no airdrop key?");
+        alert("No airdrop Keypair. Please run Initialize first!");
         return;
       }
       try {
         const state = await program.account.airdrop.fetch(airdropKP.publicKey);
-        document.getElementById("status").textContent = 
+        console.log("Airdrop state:", state);
+        document.getElementById("status").textContent =
           "Airdrop state:\n" + JSON.stringify(state, null, 2);
       } catch (err) {
+        console.error("Debug failed:", err);
         alert("Debug error: " + err.message);
       }
     }
 
-    // SIWS
+    /*********************************************************
+     * 9) SIWS
+     *********************************************************/
     async function signInWithSolana() {
       if (!window.solana || !window.solana.publicKey) {
         alert("Connect Phantom first!");
@@ -250,23 +370,27 @@
           method: "signMessage",
           params: { message: encoded, display: "text" },
         });
+
         document.getElementById("siws-status").classList.remove("hidden");
         document.getElementById("siws-publicKey").textContent = sig.publicKey.toString();
         document.getElementById("siws-signature").textContent = sig.signature;
+        console.log("SIWS signed =>", sig);
       } catch (err) {
-        alert("Sign-In error: " + err.message);
+        console.error("SIWS sign error:", err);
+        alert("Sign-In with Solana failed: " + err.message);
       }
     }
+
     async function verifySignature() {
       if (!siwsMessage) {
-        alert("No SIWS message to verify.");
+        alert("No SIWS message. Sign in first!");
         return;
       }
       const sigStr = document.getElementById("siws-signature").textContent;
-      const pubk  = document.getElementById("siws-publicKey").textContent;
+      const pubk = document.getElementById("siws-publicKey").textContent;
 
       const signature = { t: "sip99", s: sigStr };
-      const payload   = siwsMessage.payload;
+      const payload = siwsMessage.payload;
       payload.address = pubk;
 
       const resp = await siwsMessage.verify({ payload, signature });
@@ -277,7 +401,13 @@
       }
     }
 
-    // Event Listeners
+    /*********************************************************
+     * 10) Event Listeners
+     *********************************************************/
+    window.addEventListener("load", () => {
+      console.log("Page loaded");
+    });
+
     document.getElementById("connectWalletBtn").onclick = connectWallet;
     document.getElementById("siwsBtn").onclick = signInWithSolana;
     document.getElementById("verifySiwsBtn").onclick = verifySignature;
