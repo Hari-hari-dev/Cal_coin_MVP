@@ -1,397 +1,451 @@
-use anchor_lang::prelude::*;
-use anchor_spl::{
-    associated_token::AssociatedToken,
-    token::{
-        self,
-        Mint,
-        MintTo,
-        Token,
-        TokenAccount,
-    },
-};
-use std::str::FromStr;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Daily FaceScan Airdrop & Sign-In Demo</title>
+  
+  <!-- 1) SweetAlert for Alerts -->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  
+  <!-- 2) Web3Auth Sign-In with Solana (SIWS) -->
+  <script src="https://unpkg.com/@web3auth/sign-in-with-solana@0.0.1/dist/index.umd.js"></script>
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+      background-color: #f0f2f5;
+    }
+    button {
+      font-size: 16px;
+      padding: 10px 20px;
+      margin: 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #0364ff;
+      color: #fff;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #024ecf;
+    }
+    #status, #siws-status {
+      margin-top: 20px;
+      font-size: 16px;
+      white-space: pre-wrap;
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    input {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Daily FaceScan Airdrop & Sign-In Demo</h1>
+  
+  <!-- Wallet Connection and SIWS -->
+  <div>
+    <button id="connectWalletBtn">Connect Phantom Wallet</button>
+    <button id="siwsBtn">Sign-In with Solana</button>
+  </div>
 
-// Replace with your actual Program ID
-declare_id!("ADM5ikM5LS1ptrwFqXNyZDYazDzThSJknLNpJyw1x6c");
+  <!-- Display SIWS Status -->
+  <div id="siws-status" class="hidden">
+    <h3>Sign-In Details</h3>
+    <p><strong>Public Key:</strong> <span id="siws-publicKey"></span></p>
+    <p><strong>Signature:</strong> <span id="siws-signature"></span></p>
+    <button id="verifySiwsBtn">Verify Signature</button>
+  </div>
 
-// Seeds used for PDAs
-pub const TICKET_SEED: &[u8] = b"ticket";
-pub const MINT_AUTH_SEED: &[u8] = b"mint_authority";
+  <!-- Airdrop Interaction -->
+  <div>
+    <button id="initBtn">Initialize Airdrop</button>
+    <button id="claimBtn">Claim Airdrop</button>
+    <button id="debugBtn">Debug Airdrop</button>
+  </div>
 
-// -------------------------------------------------------------------
-// PROGRAM
-// -------------------------------------------------------------------
-#[program]
-pub mod daily_facescan {
-    use super::*;
+  <!-- Display Airdrop Status -->
+  <div id="status">Not connected</div>
 
-    /// (1) Initialize: Creates the Airdrop account & a new SPL Mint.
-    /// Hard-coded `daily_amount = 1440`.
-    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
-        let data = &mut ctx.accounts.airdrop;
+  <!-- Main JavaScript Module -->
+  <script type="module">
+    /*********************************************************
+     * 1) Import Libraries
+     *********************************************************/
+    import * as anchor from 'https://esm.sh/@project-serum/anchor@0.26.0';
+    import {
+      Connection,
+      PublicKey,
+      Keypair
+    } from 'https://esm.sh/@solana/web3.js@1.98.0';
 
-        // 1) Check if already initialized
-        if data.initialized {
-            msg!("Airdrop is already initialized; aborting.");
-            return err!(ErrorCode::AlreadyInitialized);
+    // Check that Anchor and SIWS loaded
+    console.log("Anchor loaded:", typeof anchor !== "undefined");
+    console.log("SIWS loaded:", typeof window.SIWS !== "undefined");
+
+    /*********************************************************
+     * 2) Program + IDL Info
+     *********************************************************/
+    // 2a) Network (devnet or localhost)
+    const NETWORK_URL = "https://api.devnet.solana.com";
+
+    // 2b) Program ID from your `declare_id!`
+    const PROGRAM_ID = new PublicKey("ADM5ikM5LS1ptrwFqXNyZDYazDzThSJknLNpJyw1x6c");
+
+    // 2c) IDL matching your `lib.rs`
+    const IDL = {
+      "version": "0.1.0",
+      "name": "daily_facescan",
+      "instructions": [
+        {
+          "name": "initialize",
+          "accounts": [
+            {"name": "airdrop","isMut": true,"isSigner": true},
+            {"name": "mint","isMut": true,"isSigner": true},
+            {"name": "mintAuthority","isMut": false,"isSigner": false},
+            {"name": "authority","isMut": true,"isSigner": true},
+            {"name": "systemProgram","isMut": false,"isSigner": false},
+            {"name": "tokenProgram","isMut": false,"isSigner": false},
+            {"name": "rent","isMut": false,"isSigner": false}
+          ],
+          "args": []
+        },
+        {
+          "name": "claim",
+          "accounts": [
+            {"name": "airdrop","isMut": false,"isSigner": false},
+            {"name": "payer","isMut": true,"isSigner": true},
+            {"name": "mintAuthority","isMut": false,"isSigner": false},
+            {"name": "ticket","isMut": true,"isSigner": false},
+            {"name": "mint","isMut": true,"isSigner": false},
+            {"name": "recipientTokenAccount","isMut": true,"isSigner": false},
+            {"name": "systemProgram","isMut": false,"isSigner": false},
+            {"name": "tokenProgram","isMut": false,"isSigner": false},
+            {"name": "associatedTokenProgram","isMut": false,"isSigner": false},
+            {"name": "rent","isMut": false,"isSigner": false}
+          ],
+          "args": []
         }
-
-        // 2) Optionally set a gatekeeper network if you want a reference
-        //    or remove it if you don’t use Civic gating. Hard-coded example:
-        let fixed_gatekeeper_network = Pubkey::from_str("uniqobk8oGh4XBLMqM68K8M2zNu3CdYX7q5go7whQiv")
-            .map_err(|_| error!(ErrorCode::InvalidPubkey))?;
-        data.gatekeeper_network = fixed_gatekeeper_network;
-
-        data.mint = ctx.accounts.mint.key();
-        data.daily_amount = 1440;
-        data.last_claim_timestamp = 0;
-
-        // Initialize owners array; we’ll store the `authority` as first owner
-        data.owners[0] = ctx.accounts.authority.key();
-        data.owners_count = 1;
-        for i in 1..data.owners.len() {
-            data.owners[i] = Pubkey::default();
+      ],
+      "accounts": [
+        {
+          "name": "Airdrop",
+          "type": {
+            "kind": "struct",
+            "fields": [
+              {"name": "gatekeeperNetwork","type": "publicKey"},
+              {"name": "mint","type": "publicKey"},
+              {"name": "dailyAmount","type": "u64"},
+              {"name": "lastClaimTimestamp","type": "i64"},
+              {"name": "owners","type": {"array": ["publicKey",6]}},
+              {"name": "ownersCount","type": "u8"},
+              {"name": "initialized","type": "bool"}
+            ]
+          }
+        },
+        {
+          "name": "Ticket",
+          "type": {"kind": "struct","fields": []}
         }
-
-        // Mark as initialized
-        data.initialized = true;
-        Ok(())
-    }
-
-    /// (2) Claim: time-based daily logic.  
-    /// No `gateway_token` param; we rely on the `payer` signature as the gating factor.
-    pub fn claim(ctx: Context<Claim>) -> Result<()> {
-        let data = &mut ctx.accounts.airdrop;
-
-        // (Optional) Check if `payer` is authorized in some way.
-        // For instance, if you want only “owners” to claim:
-        /*
-        if !is_authorized(&ctx.accounts.payer.key(), data) {
-            msg!("Signer not authorized to claim");
-            return err!(ErrorCode::Unauthorized);
-        }
-        */
-
-        // 1) Time-based daily logic
-        let now = Clock::get()?.unix_timestamp;
-        let mut delta = now - data.last_claim_timestamp;
-        if delta < 0 {
-            delta = 0;
-        }
-        // cap at 7 days
-        if delta > 7 * 86400 {
-            delta = 7 * 86400;
-        }
-        let tokens_per_second = data.daily_amount as f64 / 86400.0;
-        let minted_float = tokens_per_second * (delta as f64);
-        let minted_amount = minted_float.floor() as u64;
-
-        data.last_claim_timestamp = now;
-
-        // 2) Mint if minted_amount > 0
-        if minted_amount > 0 {
-            // Derive the PDA seeds for the mint authority
-            let airdrop_key = data.key();
-            let seeds = &[
-                airdrop_key.as_ref(),
-                MINT_AUTH_SEED,
-                &[ctx.bumps.mint_authority],
-            ];
-            let signer_seeds = &[&seeds[..]];
-
-            // Use `token::mint_to` to mint into the user’s associated token account
-            token::mint_to(
-                CpiContext::new_with_signer(
-                    ctx.accounts.token_program.to_account_info(),
-                    MintTo {
-                        authority: ctx.accounts.mint_authority.to_account_info(),
-                        to: ctx.accounts.recipient_token_account.to_account_info(),
-                        mint: ctx.accounts.mint.to_account_info(),
-                    },
-                    signer_seeds,
-                ),
-                minted_amount,
-            )?;
-
-            msg!("Claimed {} tokens!", minted_amount);
-        } else {
-            msg!("No tokens minted (insufficient time).");
-        }
-        Ok(())
-    }
-
-    /// (3) Add a new owner if space is available.
-    pub fn add_owner(ctx: Context<AddOwner>, new_owner: Pubkey) -> Result<()> {
-        add_owner_logic(ctx, new_owner)
-    }
-
-    /// (4) Delete an existing owner.
-    pub fn delete_owner(ctx: Context<DeleteOwner>, target_owner: Pubkey) -> Result<()> {
-        delete_owner_logic(ctx, target_owner)
-    }
-
-    /// (5) Change gatekeeper network if the signer is an existing owner.
-    pub fn change_gateway_network(ctx: Context<ChangeGateway>, new_gatekeeper: Pubkey) -> Result<()> {
-        change_gateway_logic(ctx, new_gatekeeper)
-    }
-}
-
-// -------------------------------------------------------------------
-// ACCOUNTS
-// -------------------------------------------------------------------
-#[derive(Accounts)]
-pub struct Initialize<'info> {
-    /// Airdrop account, storing the mint info, daily amount, etc.
-    #[account(
-        init,
-        payer = authority,
-        space = Airdrop::SIZE
-    )]
-    pub airdrop: Account<'info, Airdrop>,
-
-    /// A new SPL Mint with decimals=9, authority = the “mint_authority” PDA
-    #[account(
-        init,
-        payer = authority,
-        mint::decimals = 9,
-        mint::authority = mint_authority
-    )]
-    pub mint: Account<'info, Mint>,
-
-    /// Derive the mint authority via seeds = [airdrop, "mint_authority"]
-    #[account(
-        seeds = [airdrop.key().as_ref(), MINT_AUTH_SEED],
-        bump
-    )]
-    pub mint_authority: SystemAccount<'info>,
-
-    /// The user paying for account creations
-    #[account(mut)]
-    pub authority: Signer<'info>,
-
-    // Programs
-    pub system_program: Program<'info, System>,
-    pub token_program: Program<'info, Token>,
-    pub rent: Sysvar<'info, Rent>,
-}
-
-/// The user claims daily minted tokens. 
-/// They must be the “payer” (and can also be the one gating).
-#[derive(Accounts)]
-pub struct Claim<'info> {
-    /// The airdrop config must point to the same `mint`
-    #[account(has_one = mint)]
-    pub airdrop: Account<'info, Airdrop>,
-
-    /// The user paying for (and gating) the claim instruction
-    #[account(mut)]
-    pub payer: Signer<'info>,
-
-    /// The “mint_authority” PDA
-    #[account(
-        seeds = [airdrop.key().as_ref(), MINT_AUTH_SEED],
-        bump
-    )]
-    pub mint_authority: SystemAccount<'info>,
-
-    /// A “ticket” for uniqueness, if needed.
-    #[account(
-        init,
-        payer = payer,
-        seeds = [airdrop.key().as_ref(), payer.key().as_ref(), TICKET_SEED],
-        bump,
-        space = Ticket::SIZE
-    )]
-    pub ticket: Account<'info, Ticket>,
-
-    /// The minted SPL
-    #[account(mut)]
-    pub mint: Account<'info, Mint>,
-
-    /// The user’s token account for receiving minted tokens
-    #[account(
-        init_if_needed,
-        payer = payer,
-        associated_token::mint = mint,
-        associated_token::authority = payer
-    )]
-    pub recipient_token_account: Account<'info, TokenAccount>,
-
-    /// Programs
-    pub system_program: Program<'info, System>,
-    pub token_program: Program<'info, Token>,
-    pub associated_token_program: Program<'info, AssociatedToken>,
-    pub rent: Sysvar<'info, Rent>,
-}
-
-// -------------------------------
-// Additional instructions
-// -------------------------------
-#[derive(Accounts)]
-pub struct AddOwner<'info> {
-    #[account(mut)]
-    pub airdrop: Account<'info, Airdrop>,
-    #[account(mut)]
-    pub signer: Signer<'info>,
-}
-
-#[derive(Accounts)]
-pub struct DeleteOwner<'info> {
-    #[account(mut)]
-    pub airdrop: Account<'info, Airdrop>,
-    #[account(mut)]
-    pub signer: Signer<'info>,
-}
-
-#[derive(Accounts)]
-pub struct ChangeGateway<'info> {
-    #[account(mut)]
-    pub airdrop: Account<'info, Airdrop>,
-    #[account(mut)]
-    pub signer: Signer<'info>,
-}
-
-// -------------------------------------------------------------------
-// DATA
-// -------------------------------------------------------------------
-#[account]
-#[derive(Default)]
-pub struct Airdrop {
-    pub gatekeeper_network: Pubkey, // If you want to reference a Civic network
-    pub mint: Pubkey,               // The minted SPL
-    pub daily_amount: u64,          // Hard-coded to 1440 in `initialize`
-    pub last_claim_timestamp: i64,
-
-    // Optional multi-owner array
-    pub owners: [Pubkey; 6],
-    pub owners_count: u8,
-
-    // Freeze re-init
-    pub initialized: bool,
-}
-
-impl Airdrop {
-    /// Enough space to store the data + 8 for account discriminator. 
-    /// We put 300 as a safe overhead if you want to add more fields later.
-    pub const SIZE: usize = 300;
-}
-
-/// Ticket for tracking one claim or unique usage
-#[account]
-pub struct Ticket {}
-impl Ticket {
-    /// 8 bytes for the account discriminator, no fields
-    pub const SIZE: usize = 8;
-}
-
-// -------------------------------------------------------------------
-// ERRORS
-// -------------------------------------------------------------------
-#[error_code]
-pub enum ErrorCode {
-    #[msg("Invalid gating or pass check not satisfied")]
-    InvalidPass,
-
-    #[msg("Not an authorized owner")]
-    Unauthorized,
-
-    #[msg("Owners array is full")]
-    OwnersFull,
-
-    #[msg("Pubkey is already an owner")]
-    AlreadyOwner,
-
-    #[msg("Owner not found in the array")]
-    OwnerNotFound,
-
-    #[msg("Cannot remove yourself")]
-    CannotRemoveSelf,
-
-    #[msg("Could not parse gatekeeper network as valid")]
-    InvalidPubkey,
-
-    #[msg("Already initialized")]
-    AlreadyInitialized,
-}
-
-// -------------------------------------------------------------------
-// HELPER
-// -------------------------------------------------------------------
-fn is_authorized(signer_pubkey: &Pubkey, airdrop: &Airdrop) -> bool {
-    for i in 0..airdrop.owners_count {
-        if airdrop.owners[i as usize] == *signer_pubkey {
-            return true;
-        }
-    }
-    false
-}
-
-// Logic to add a new owner if space
-fn add_owner_logic(ctx: Context<AddOwner>, new_owner: Pubkey) -> Result<()> {
-    let ad = &mut ctx.accounts.airdrop;
-    let signer_key = ctx.accounts.signer.key();
-
-    require!(is_authorized(&signer_key, ad), ErrorCode::Unauthorized);
-    require!(ad.owners_count < 6, ErrorCode::OwnersFull);
-
-    if new_owner == signer_key {
-        return err!(ErrorCode::AlreadyOwner);
-    }
-    for i in 0..ad.owners_count {
-        if ad.owners[i as usize] == new_owner {
-            return err!(ErrorCode::AlreadyOwner);
-        }
-    }
-    ad.owners[ad.owners_count as usize] = new_owner;
-    ad.owners_count += 1;
-    msg!("Added new owner: {}", new_owner);
-    Ok(())
-}
-
-// Logic to remove an owner
-fn delete_owner_logic(ctx: Context<DeleteOwner>, target_owner: Pubkey) -> Result<()> {
-    let ad = &mut ctx.accounts.airdrop;
-    let signer_key = ctx.accounts.signer.key();
-
-    require!(is_authorized(&signer_key, ad), ErrorCode::Unauthorized);
-
-    if target_owner == signer_key {
-        return err!(ErrorCode::CannotRemoveSelf);
-    }
-
-    // Find target in owners
-    let mut found_index = None;
-    for i in 0..ad.owners_count {
-        if ad.owners[i as usize] == target_owner {
-            found_index = Some(i as usize);
-            break;
-        }
-    }
-    let idx = match found_index {
-        Some(i) => i,
-        None => return err!(ErrorCode::OwnerNotFound),
+      ],
+      "errors": [
+        {"code":6000,"name":"InvalidPass","msg":"Invalid gating or pass check not satisfied"},
+        {"code":6001,"name":"Unauthorized","msg":"Not an authorized owner"},
+        {"code":6002,"name":"OwnersFull","msg":"Owners array is full"},
+        {"code":6003,"name":"AlreadyOwner","msg":"Pubkey is already an owner"},
+        {"code":6004,"name":"OwnerNotFound","msg":"Owner not found in the array"},
+        {"code":6005,"name":"CannotRemoveSelf","msg":"Cannot remove yourself"},
+        {"code":6006,"name":"InvalidPubkey","msg":"Could not parse gatekeeper network as valid"},
+        {"code":6007,"name":"AlreadyInitialized","msg":"Already initialized"}
+      ]
     };
 
-    // Remove by swapping with last
-    let last_idx = ad.owners_count as usize - 1;
-    if idx != last_idx {
-        ad.owners[idx] = ad.owners[last_idx];
+    /*********************************************************
+     * 3) Global Variables
+     *********************************************************/
+    let program;       // Anchor Program
+    let provider;      // Anchor Provider
+    let airdropKP;     // Keypair for the Airdrop account
+    let mintKP;        // Keypair for the SPL Mint
+    let mintAuthPda;   // PDA for the Mint Authority
+
+    // SIWS variables
+    let siwsMessage;   
+
+    /*********************************************************
+     * 4) Connect Phantom
+     *********************************************************/
+    async function connectWallet() {
+      if (!window.solana) {
+        alert("Phantom not found. Please install the wallet extension!");
+        return;
+      }
+      try {
+        const resp = await window.solana.connect();
+        const userPubkey = resp.publicKey.toBase58();
+        document.getElementById('status').textContent = "Connected to Phantom: " + userPubkey;
+        console.log("Phantom connected as:", userPubkey);
+      } catch (err) {
+        console.error("Phantom connect error:", err);
+        alert("Phantom connect error: " + err.message);
+      }
     }
-    ad.owners[last_idx] = Pubkey::default();
-    ad.owners_count -= 1;
 
-    msg!("Deleted owner: {}", target_owner);
-    Ok(())
-}
+    /*********************************************************
+     * 5) Setup Anchor
+     *********************************************************/
+    function setupAnchor() {
+      if (!anchor) {
+        alert("Anchor not loaded. Check script references.");
+        return;
+      }
+      // Connect to devnet or localnet
+      const connection = new anchor.web3.Connection(NETWORK_URL, "processed");
 
-// Logic to change gateway network
-fn change_gateway_logic(ctx: Context<ChangeGateway>, new_gatekeeper: Pubkey) -> Result<()> {
-    let ad = &mut ctx.accounts.airdrop;
-    let signer_key = ctx.accounts.signer.key();
+      // Construct a wallet interface from Phantom
+      const wallet = {
+        publicKey: window.solana.publicKey,
+        signTransaction: (tx) => window.solana.signTransaction(tx),
+        signAllTransactions: (txs) => window.solana.signAllTransactions(txs)
+      };
 
-    require!(is_authorized(&signer_key, ad), ErrorCode::Unauthorized);
+      // AnchorProvider
+      provider = new anchor.AnchorProvider(connection, wallet, {
+        preflightCommitment: "processed"
+      });
 
-    ad.gatekeeper_network = new_gatekeeper;
-    msg!("Updated gatekeeper network => {}", new_gatekeeper);
-    Ok(())
-}
+      // Program with IDL & ProgramID
+      program = new anchor.Program(IDL, PROGRAM_ID, provider);
+    }
+
+    /*********************************************************
+     * 6) Initialize Airdrop
+     *********************************************************/
+    async function onInitialize() {
+      // Check Phantom
+      if (!window.solana || !window.solana.publicKey) {
+        alert("Please connect Phantom first!");
+        return;
+      }
+      if (!program) {
+        setupAnchor();
+      }
+
+      // Generate Keypairs
+      airdropKP = anchor.web3.Keypair.generate();
+      mintKP = anchor.web3.Keypair.generate();
+
+      try {
+        // Derive the Mint Authority PDA
+        const [pda, bump] = await anchor.web3.PublicKey.findProgramAddress(
+          [
+            airdropKP.publicKey.toBytes(),
+            new TextEncoder().encode("mint_authority")
+          ],
+          PROGRAM_ID
+        );
+        mintAuthPda = pda;
+
+        // Call "initialize"
+        await program.methods.initialize()
+          .accounts({
+            airdrop: airdropKP.publicKey,
+            mint: mintKP.publicKey,
+            mintAuthority: mintAuthPda,
+            authority: provider.wallet.publicKey,
+            systemProgram: anchor.web3.SystemProgram.programId,
+            tokenProgram: anchor.utils.token.TOKEN_PROGRAM_ID,
+            rent: anchor.web3.SYSVAR_RENT_PUBKEY
+          })
+          .signers([airdropKP, mintKP])
+          .rpc();
+
+        document.getElementById("status").textContent =
+          "Initialize success!\nAirdropPubkey: " + airdropKP.publicKey.toBase58() +
+          "\nMintPubkey: " + mintKP.publicKey.toBase58();
+
+        console.log("Initialized with airdrop:", airdropKP.publicKey.toBase58());
+      } catch (err) {
+        console.error("Initialize failed:", err);
+        alert("Initialize error: " + err.message);
+      }
+    }
+
+    /*********************************************************
+     * 7) Claim Airdrop
+     *********************************************************/
+    async function onClaim() {
+      if (!program) {
+        setupAnchor();
+      }
+      if (!airdropKP) {
+        alert("No known airdropPubkey. Did you call Initialize first?");
+        return;
+      }
+      try {
+        // Derive the "ticket" PDA
+        const [ticketPda] = await anchor.web3.PublicKey.findProgramAddress(
+          [
+            airdropKP.publicKey.toBytes(),
+            provider.wallet.publicKey.toBytes(),
+            new TextEncoder().encode("ticket")
+          ],
+          PROGRAM_ID
+        );
+
+        // Associated token account for the minted SPL
+        const recipientAta = await anchor.utils.token.associatedAddress({
+          mint: mintKP.publicKey,
+          owner: provider.wallet.publicKey
+        });
+
+        // Call "claim"
+        await program.methods.claim()
+          .accounts({
+            airdrop: airdropKP.publicKey,
+            payer: provider.wallet.publicKey,
+            mintAuthority: mintAuthPda,
+            ticket: ticketPda,
+            mint: mintKP.publicKey,
+            recipientTokenAccount: recipientAta,
+            systemProgram: anchor.web3.SystemProgram.programId,
+            tokenProgram: anchor.utils.token.TOKEN_PROGRAM_ID,
+            associatedTokenProgram: anchor.utils.token.ASSOCIATED_PROGRAM_ID,
+            rent: anchor.web3.SYSVAR_RENT_PUBKEY
+          })
+          .rpc();
+
+        document.getElementById("status").textContent =
+          "Claim successful! Check your token account on devnet explorers.";
+        console.log("Claim successful!");
+      } catch (err) {
+        console.error("Claim failed:", err);
+        alert("Claim error: " + err.message);
+      }
+    }
+
+    /*********************************************************
+     * 8) Debug: Fetch Airdrop State
+     *********************************************************/
+    async function onDebug() {
+      if (!program) {
+        setupAnchor();
+      }
+      if (!airdropKP) {
+        alert("No known airdropPubkey. Did you call Initialize first?");
+        return;
+      }
+      try {
+        const airdropState = await program.account.airdrop.fetch(airdropKP.publicKey);
+        console.log("Airdrop State:", airdropState);
+        document.getElementById("status").textContent =
+          "Airdrop state =>\n" + JSON.stringify(airdropState, null, 2);
+      } catch (err) {
+        console.error("Debug error:", err);
+        alert("Debug fetch error: " + err.message);
+      }
+    }
+
+    /*********************************************************
+     * 9) Sign-In with Solana (SIWS)
+     *********************************************************/
+    async function signInWithSolana() {
+      if (!window.solana || !window.solana.publicKey) {
+        alert("Connect Phantom first!");
+        return;
+      }
+
+      // Prepare an SIWS message
+      const header = new window.SIWS.Header();
+      header.t = "sip99"; 
+      
+      const payload = new window.SIWS.Payload();
+      payload.domain = window.location.host;
+      payload.address = window.solana.publicKey.toBase58();
+      payload.uri = window.location.origin;
+      payload.statement = "Sign in with Solana to the app.";
+      payload.version = "1";
+      payload.chainId = "1"; 
+
+      siwsMessage = new window.SIWS.SIWSMessage({ header, payload });
+      const preparedMessage = siwsMessage.prepareMessage();
+      const encodedMessage = new TextEncoder().encode(preparedMessage);
+
+      try {
+        // Request signature from Phantom
+        const signedMessage = await window.solana.request({
+          method: "signMessage",
+          params: {
+            message: encodedMessage,
+            display: "text",
+          },
+        });
+
+        // Show details
+        document.getElementById("siws-status").classList.remove("hidden");
+        document.getElementById("siws-publicKey").textContent = signedMessage.publicKey.toString();
+        document.getElementById("siws-signature").textContent = signedMessage.signature;
+        
+        console.log("Signed Message =>", signedMessage);
+      } catch (err) {
+        console.error("SIWS sign error:", err);
+        alert("SIWS sign error: " + err.message);
+      }
+    }
+
+    /*********************************************************
+     * 10) Verify SIWS Signature
+     *********************************************************/
+    async function verifySignature() {
+      if (!siwsMessage) {
+        alert("No SIWS message found. Sign In first!");
+        return;
+      }
+      const sigStr = document.getElementById("siws-signature").textContent;
+      const pubStr = document.getElementById("siws-publicKey").textContent;
+
+      const signature = { t: "sip99", s: sigStr };
+      const payload = siwsMessage.payload;
+      payload.address = pubStr;
+
+      const resp = await siwsMessage.verify({ payload, signature });
+      if (resp.success) {
+        swal("Success", "Signature Verified", "success");
+      } else {
+        swal("Error", resp.error.type, "error");
+      }
+    }
+
+    /*********************************************************
+     * 11) Event Listeners
+     *********************************************************/
+    window.addEventListener("load", () => {
+      console.log("Page loaded");
+    });
+
+    document.getElementById("connectWalletBtn").onclick = connectWallet;
+    document.getElementById("initBtn").onclick = onInitialize;
+    document.getElementById("claimBtn").onclick = onClaim;
+    document.getElementById("debugBtn").onclick = onDebug;
+
+    document.getElementById("siwsBtn").onclick = signInWithSolana;
+    document.getElementById("verifySiwsBtn").onclick = verifySignature;
+
+  </script>
+</body>
+</html>
