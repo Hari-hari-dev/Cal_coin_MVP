@@ -6,7 +6,7 @@ use anchor_spl::{
 use std::str::FromStr;
 
 // Replace with your actual Program ID
-declare_id!("FAVH9pAc8Ltw6wjYukJwZhFh7fwXVL3npShRisFoyu6y");
+declare_id!("8fJGcyaRCuQuTj12YLvLtQHiG9aQZiMqjG9iGQ9TBqyg");
 
 // Seeds used for PDAs
 pub const TICKET_SEED: &[u8] = b"ticket";
