@@ -33,4 +33,5 @@ sha3 = "0.10" # Added sha3 crate
 #rand = "0.8"
 #tokio = { version = "1", features = ["full"] }
 chrono = { version = "0.4", features = ["serde"] }
+solana-gateway-anchor = "0.1.3"
 solana-gateway = { version = "0.6.0", features = ["no-entrypoint"] }
