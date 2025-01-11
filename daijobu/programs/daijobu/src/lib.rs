@@ -66,7 +66,7 @@
      * 2) Program + IDL info
      *******************************************************/
     // Put your actual program ID from declare_id! here:
-    const PROGRAM_ID = new PublicKey("CNTSKJs5rw2xvY2e2ccCxJxce791LXyHPkwGC7zSTgGV");
+    const PROGRAM_ID = new PublicKey("4DJBep6Jm34REZUnjr1NjEZiwqzm2pS1cjpiejvG2iUF");
 
     // Devnet cluster (or localnet / mainnet)
     const CLUSTER_URL = "https://api.devnet.solana.com";

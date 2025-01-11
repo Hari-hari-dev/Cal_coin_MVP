@@ -6,7 +6,7 @@ resolution = true
 skip-lint = false
 
 [programs.localnet]
-daijobu = "CNTSKJs5rw2xvY2e2ccCxJxce791LXyHPkwGC7zSTgGV"
+daijobu = "4DJBep6Jm34REZUnjr1NjEZiwqzm2pS1cjpiejvG2iUF"
 
 [registry]
 url = "https://api.apr.dev"
