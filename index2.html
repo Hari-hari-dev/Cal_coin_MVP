@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <title>Civic Pass Gating Demo</title>
 
-  <!-- 1) Optional: SweetAlert for popups -->
+  <!-- 1) SweetAlert for optional popups -->
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
   <style>
@@ -43,7 +43,7 @@
 <body>
   <h1>Civic Pass Gating Demo</h1>
 
-  <!-- Buttons -->
+  <!-- Buttons to connect Phantom + call checkgated -->
   <div>
     <button id="connectBtn">Connect Phantom</button>
     <button id="checkGatedBtn">Check Pass</button>
@@ -51,6 +51,7 @@
 
   <div id="status">Not connected</div>
 
+  <!-- Main Script -->
   <script type="module">
     /*******************************************************
      * 1) Import libs
@@ -64,16 +65,19 @@
     /*******************************************************
      * 2) Program + IDL info
      *******************************************************/
-    // The Program ID from your `declare_id!` in Rust:
-    const PROGRAM_ID = new PublicKey("uniqobk8oGh4XBLMqM68K8M2zNu3CdYX7q5go7whQiu");
+    // Put your actual program ID from declare_id! here:
+    const PROGRAM_ID = new PublicKey("CNTSKJs5rw2xvY2e2ccCxJxce791LXyHPkwGC7zSTgGV");
 
-    // Devnet cluster
+    // Devnet cluster (or localnet / mainnet)
     const CLUSTER_URL = "https://api.devnet.solana.com";
 
-    // Minimal IDL for the `checkgated` instruction
+    // Minimal IDL snippet for a `checkgated` instruction
+    // that expects:
+    //   fn checkgated(ctx: Context<CheckGated>) -> Result<()>
+    // with accounts: [ user, pass, systemProgram ]
     const IDL = {
       version: "0.1.0",
-      name: "calcoin", // or whatever name
+      name: "your_program_name",
       instructions: [
         {
           name: "checkgated",
@@ -130,12 +134,9 @@
         signAllTransactions: (txs) => window.solana.signAllTransactions(txs),
       };
 
-      // Create a provider
       provider = new anchor.AnchorProvider(connection, wallet, {
         preflightCommitment: "processed"
       });
-
-      // Create Program instance
       program = new anchor.Program(IDL, PROGRAM_ID, provider);
     }
 
@@ -143,7 +144,6 @@
      * 6) checkgated
      *******************************************************/
     async function onCheckGated() {
-      // Setup anchor if not done yet
       if (!program) setupAnchor();
       if (!window.solana?.publicKey) {
         alert("Connect Phantom first!");
@@ -151,24 +151,22 @@
       }
 
       try {
-        // Replace below with your actual pass account 
-        // (the real Civic gateway token address, if any)
-        //
-        // You mentioned "6awvSWyeJ4Y5u3ZX7soDJ23jQVkg25qLHxqeQssmELMJ"
-        // is your "pass". We'll attempt to use that as the pass address:
+        // Example pass address: 
+        //  - In practice, you'd discover the user's actual Civic pass (gateway token).
+        //  - This is just a placeholder and will likely fail if not a real pass.
         const passAddress = new PublicKey("6awvSWyeJ4Y5u3ZX7soDJ23jQVkg25qLHxqeQssmELMJ");
 
-        // Send the checkgated instruction
+        // Attempt to call "checkgated"
         await program.methods.checkgated()
           .accounts({
-            user: window.solana.publicKey,        // the signer
-            pass: passAddress,                    // the pass account
+            user: window.solana.publicKey,
+            pass: passAddress,
             systemProgram: anchor.web3.SystemProgram.programId,
           })
           .rpc();
 
         document.getElementById("status").textContent =
-          "Civic pass check => SUCCESS! The pass was valid for this user!";
+          "Civic pass check => SUCCESS! (The pass was valid for this user!)";
         console.log("Checkgated success!");
       } catch (err) {
         console.error("Checkgated failed:", err);
