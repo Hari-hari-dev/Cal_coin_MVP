@@ -71,7 +71,7 @@ declare_id!("4DJBep6Jm34REZUnjr1NjEZiwqzm2pS1cjpiejvG2iUF");
 pub const HARDCODED_PASS_TYPE: &str = "uniqobk8oGh4XBLMqM68K8M2zNu3CdYX7q5go7whQiv";
 
 #[program]
-pub mod calcoin {
+pub mod daijobu {
     use super::*;
 
     /// Simple instruction that checks if the user's Pass is valid for them,
