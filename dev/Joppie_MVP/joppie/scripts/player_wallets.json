@@ -1,0 +1,2264 @@
+{
+    "Brolly": {
+        "player_authority_private_key": "47cab73620c74c8a0f2bf876d345b3969c52e5bcfacad3f4ee02a2425231fa87",
+        "player_authority_address": "214fVUfJenY6Y9rVFL63m9GnjJFWZH4HDL4Lg5hxZM8G",
+        "player_info_acc_private_key": "4f4ddde88c09e486da0069eaa1d636af06a1cbf488edb232305ca4903f0f205f",
+        "player_info_acc_address": "HMZqx7obgocoyQqcGbtsKVWVaaMNckUJs1rqhD5e649Q"
+    },
+    "Rere": {
+        "player_authority_private_key": "ffcb115076fc1731eb0356223aa75d6537252695d555367303824d6873fe4457",
+        "player_authority_address": "EcLB4ZDE8hDXKdYCyfsHrArg5msXAMhufu9P1JtUGFyP",
+        "player_info_acc_private_key": "f9436494ec952ef294e48a61f6eb5be6821863e046887429452993595b7a0f63",
+        "player_info_acc_address": "E2rmohqvDgEfRdTNwLi9Ez77vR2hUJo5dmYwmuXJtyEJ"
+    },
+    "BotTronics": {
+        "player_authority_private_key": "b9615baa776add579a8e224d1b0dd25154e53312150220fbf29bfcfb6ecb91de",
+        "player_authority_address": "DMcV6WMYZejJsRXXGdtzcD77cDfa8toW1aE9d3ejckPe",
+        "player_info_acc_private_key": "ff14a398edcfc451d5b3bcc5871a6c38d182a6bc096f76dc27fa45100a590cd0",
+        "player_info_acc_address": "EkqzivXn6kmURCiz3dgtzCcgJWMY1qCy4MZJ3SfqMt68"
+    },
+    "Jeep": {
+        "player_authority_private_key": "d5155d79d4fb0726c48853098a7adad736d121798b87163e3aee59e9bbd7e1b5",
+        "player_authority_address": "CEGt5ZUgoCYjn25vb332qU6HMtBb8Y5kKezrU5daMEyK",
+        "player_info_acc_private_key": "62f8214c6ea4f19cb147b3248dac3861f328e19f75d83cb397ff767b169bd763",
+        "player_info_acc_address": "HMWz8EYqqUDUjMAfcyLmbdRNd2AeMf6QHwkX1YPFSA2K"
+    },
+    "Dead_Cold": {
+        "player_authority_private_key": "901814875077ebeb1c2a6cef266caee30dc1a638c8c236f06fa761f42c0a1f54",
+        "player_authority_address": "6JA7hiW48Ahn6UicwXJmyBEJpWhJdajtZoGgXy3Ci5EA",
+        "player_info_acc_private_key": "ad3436332a8d5eaa097dcc4452cad6f4dd99adb100c404a5f2c4cfd6fe3384e0",
+        "player_info_acc_address": "HU9fYnPeoKQRqgogAYrYXGZyE6qWdvEah3V7PV6yHWai"
+    },
+    "TheUndying": {
+        "player_authority_private_key": "4731d5d089acde3928a02e263c6b3a8c39df8906d73b03956c53bdf95fe14988",
+        "player_authority_address": "Fomq3qsd5MqzCnygtwzxki7hWMrCLgkZ4xoXEhL8emcc",
+        "player_info_acc_private_key": "405e2a0dafe7c5199fc77c37067e1498e576a01515ffe10410e21a043e5aefac",
+        "player_info_acc_address": "3zSqqv687dYYuhxMStEJoimP5i9QEPAxL6DViqY5qErz"
+    },
+    "Devi0us": {
+        "player_authority_private_key": "aa35cec982fb38936bb63494faf31f66769796caa4f6f49770eb7208a5b1cd7e",
+        "player_authority_address": "BrYTtHcKT3RBMRvAzXzJPTgq7J4m39vegSz2pD5mdYri",
+        "player_info_acc_private_key": "3f77f01cab18e751a7edeb6c6aca9c4f415c381899b193046b1ebd8f293316ec",
+        "player_info_acc_address": "BHbtnsukj316yrxq3iJAZCuBf2bs8wwXKCLUJz6Kuug2"
+    },
+    "satman2499": {
+        "player_authority_private_key": "b0af6caaa35c96bbad15b39984e765bab1e10b5c0784335e183241749583e3a9",
+        "player_authority_address": "H88o5n1pm3Ueb16yTsRQFEw52dFNwPzYwZMvGApP5EGM",
+        "player_info_acc_private_key": "ee09b360f2ec3950c5751a767c8fd9ab1a14d06c0c5ece93612e9e826c4dd67f",
+        "player_info_acc_address": "EnJxKehiVRuBXXNbD1CajWRykKWhMH3zkHgaJTsxPBwn"
+    },
+    "oneredflag": {
+        "player_authority_private_key": "0dfd1bc6580235969df7e193c94afdaf4954a2709ed6120d30e76db0a1fdcf77",
+        "player_authority_address": "7u9odYeA1ckXURKiouMTii4sgKg4bZUBM12zFF14Y3yr",
+        "player_info_acc_private_key": "a11ee0076a53de021f0f82cca87cfc23329a425f348f93288d8f2097250c87ca",
+        "player_info_acc_address": "DkMNzmHj394JYnBdLUgrUdkksYCYkDriffjyYtuEjjFT"
+    },
+    "smokeyhermit": {
+        "player_authority_private_key": "2ae8be2bcb4a303418c75d216794250a73f108e00daa7fe6bd727273ebe1dff0",
+        "player_authority_address": "Rnk3Z3jAYDdtPanyJZYGsSXxWvty27DHTCZHKQtcFp5",
+        "player_info_acc_private_key": "cd8af21027af153d8984c39a13d3dc3188ad96c6ed21e14ea24a7894197c4503",
+        "player_info_acc_address": "87HKTfKCQ8aoofHhz4DeKGfVQqGn6a4ocniFQz1CMien"
+    },
+    "mudbogger2": {
+        "player_authority_private_key": "9a38e296c4e490cc1409f1665c2f67ecee922ae5f0db3a0b9dbe72f9fb4b39eb",
+        "player_authority_address": "C6aZXEBnHrer3uTDGRijjec6g2wu9fXYrELEEA9Pruxf",
+        "player_info_acc_private_key": "752a4c05c13fbd1c3034d97bef2f77477017c2d85843e7842dfa854d4bcaeeed",
+        "player_info_acc_address": "6ZwUP3XdX8RVCcDsxWWya14Revi5iHDxCyiEVScZ5NcD"
+    },
+    "Tis": {
+        "player_authority_private_key": "02e38e3249b9e31f0dbb4f48fe0f57ede2e6e44b8a19e86808f92e93d1b5467e",
+        "player_authority_address": "J6eT4VLBRbJYWCQxrb2kAc4fT44C2tP9qKDnvZc9ne7K",
+        "player_info_acc_private_key": "6d7ffa67a17364f98b6b2b2504e713e8ea80a8f6ea974ee564cd56de38308614",
+        "player_info_acc_address": "3HPu7GcJkDFPu8AEYFMiTqTaZ11VdZMxVMhtUgXDHMjq"
+    },
+    "WornOutTire": {
+        "player_authority_private_key": "0b93e6f08dd024842c903a8b1ad2199774c1a9e194fc26de014fffe762af6e99",
+        "player_authority_address": "7ocJQisa5g7e4tkYbwe3ZPNzcWnCqa5uqYaD3HsSuSEZ",
+        "player_info_acc_private_key": "f40c27e3016c94d5fe9c4951c8ed17626407df963da9d915d55e21f9add33369",
+        "player_info_acc_address": "J2esgvpXEKjbNnPbQ1eY1baVLR2DfYUTdhS85vU4QneQ"
+    },
+    "eecjr0914": {
+        "player_authority_private_key": "f1e65c93fa2f3ff32254af716d8feef868ab535d99ec8b58b512258bd4b22942",
+        "player_authority_address": "6PzzRU6cu5M33boVz9gLurZCvGv97aukvpn99iVijruK",
+        "player_info_acc_private_key": "aab18f09a2b773e12b144266d6bf6cd1afbf005162c819e479d23a4a4d479976",
+        "player_info_acc_address": "FaYqrhmRa9DK7cpafRrZPWHk4DcRopaHeo2u1bJFjxtB"
+    },
+    "yashua": {
+        "player_authority_private_key": "27ec9946b5f3be0b2ce8ebba903292ac65e654bd8bf0125c81a83d982f41adb8",
+        "player_authority_address": "91eR2aTLHqmQhqd7JsfxXjjivcWCBgL6nhiiLiPYWGgx",
+        "player_info_acc_private_key": "bd45a9160488385a5417abef0042d6cc7fb459ff36c64a86f1db36e0b5e719ab",
+        "player_info_acc_address": "2sm2YGrCZJSaBkKHAkyjJYVnFpoLzRYMC9Zz3cunPE4Y"
+    },
+    "HoNduH": {
+        "player_authority_private_key": "bb5e67deb3d21d422298d3ad6a9a1e018e146652a06d54632c63b36891fb0674",
+        "player_authority_address": "ATed3AqdT12mEGHuw11PQj1aX46J1omrtCnqkiRY8cSY",
+        "player_info_acc_private_key": "9b134ca1fb37dc13e44d76bd91091345a1731071a639bc2d5af49f085d01ebfd",
+        "player_info_acc_address": "J6tkZKLdzUFPqFM9RxHTSjXM6QFvg97wDhVY5L4K58RF"
+    },
+    "Beetlebomb": {
+        "player_authority_private_key": "551929a8dfea10d3e65706cfdda4a5ced59a2454f6ebdca408763b3026c58cd3",
+        "player_authority_address": "byd9EHSr1qckLXXwPb7wvGJFvRbaywvABUkJZWnHdjh",
+        "player_info_acc_private_key": "1be4090a1fb8995b96998922e97fce95796da4c973191c4f690ff8d0821423c4",
+        "player_info_acc_address": "Htg2Aft2Hnp2TgtHcNdQELJWwA7WZgyqr9zXdCHbPdy3"
+    },
+    "Steve": {
+        "player_authority_private_key": "3fb54e2e7fd9749ad6367ca63c85eee2897d2ed99964500f361e40da3584010c",
+        "player_authority_address": "GpUDZnBp9bQvAJrW8e9rpvCTN97wU1tFkmRrrR75wKEx",
+        "player_info_acc_private_key": "efb91475fa4a3aed81e83202ff96b2b946ab535ae4600aedb5bec1a8708ccc30",
+        "player_info_acc_address": "2K33Yk9mXqMcrfZkryRptx4an8Y3Gw99JsjWJg8Nksef"
+    },
+    "aaronsbarons": {
+        "player_authority_private_key": "b41370d801601e28929ec4efc7ba0af697ea2e15e6c949ae8ac21917198d6a6a",
+        "player_authority_address": "CMd69xNmpYxR8mm7ABW5JpnSoAcSDeiYtRVfKP7Nf6Gu",
+        "player_info_acc_private_key": "0fd8b89300a32afe6836755c2d34b18587b8cab2315864877a30e89f19b8221e",
+        "player_info_acc_address": "76SzmVG98ABqw7f9YFDar2KwoeGtLhXd7QM3E4uVWa9d"
+    },
+    "astrocreep2000": {
+        "player_authority_private_key": "5525c39e4afb340d246c178f8e08b06f30dba845ba5ca29444b641d93226a76a",
+        "player_authority_address": "5XhdutbAgA1UsyStc797GAaFYYNjZsbEG5C8DZRQuZ4i",
+        "player_info_acc_private_key": "f4c8645854b67c01cc9bf311d2b7d99bf80d0a87090236b01cd6bc81504fbd70",
+        "player_info_acc_address": "CJKwR8akjijTCu4iWMKZzFDRdwwjX23wkn8m8rAPELHs"
+    },
+    "KenMll": {
+        "player_authority_private_key": "6fd2684a72df46ec7f0c75e6b0afc9aa0ca07253a634ce3cfe06dc7d783cfa02",
+        "player_authority_address": "B8WNnWWomN3HbDmGihXz8EU2R8qtm4abwfXyTctw7JdM",
+        "player_info_acc_private_key": "86fc216a47009b7c6fd5cf2d6710b6cde17d5b86e584b74debd9ce104b5f7c8d",
+        "player_info_acc_address": "J3EYSy5mQAbrXxyEUjMGtgRQaeP81nYL6P3BMEM5oM4c"
+    },
+    "nathanll382": {
+        "player_authority_private_key": "e06ab2f596001986feea29ea6ec48c5b129f4ee8c2b7038ef93072d9bf5f1ff9",
+        "player_authority_address": "3jS72HE5HL2aCNJ9VceCp41Ub7wUF43Bvq3U9cBU4Zuf",
+        "player_info_acc_private_key": "f3c990d4b1ec1a9712ae66b8610dd1622fb03fdab7ae41b0d449c3e1b64520b4",
+        "player_info_acc_address": "wVx9AsAuHnQA5UNRtoAFV6LHzqDQGReR1mykm2ApFsf"
+    },
+    "Nitr0s0x": {
+        "player_authority_private_key": "789886716b60b353761c3e8070046507e1db99356af1d246432dde380ad3f326",
+        "player_authority_address": "4X2JHT5gdZ5KfbeSeh3cwviNseBiRtBuERFSDH2WXh1r",
+        "player_info_acc_private_key": "e86b5a1c50e7b9662c48465973e06a40200416549f69d94e9a1a88c3c6d3ba10",
+        "player_info_acc_address": "HLYeFkwh8iQ6oPWMKFjFJpypMqsRsXK1ncoBXfTLPVhq"
+    },
+    "Mars19": {
+        "player_authority_private_key": "2cc615e4e81fce9c2ca95cbc85766f360d52551bfca07df1d73c0575dc7010bf",
+        "player_authority_address": "FisGcpSdMzk5QuuK1MdJtasB1wmMbRSr1Fj8Xrna2SDF",
+        "player_info_acc_private_key": "e2f726b973d62c07ca2307939357e0c684128e5f42a303aed7bbc49aae65cb97",
+        "player_info_acc_address": "DUpDG85gCo5n9RKtRJAMoaUh2Edx2UjKdx3RBxxnMh91"
+    },
+    "Makaveli": {
+        "player_authority_private_key": "b38153ec927048f24c3f5dd671a5190c50dadb43e974dddcc7a516f200d98520",
+        "player_authority_address": "HhTTrqueQzYpuwN2Sr6TE61TZAS5L1JsnoJzog4ybrgW",
+        "player_info_acc_private_key": "3fe8a0d403da7d57a813103c911d864802e9945f61b380c3a98bfba182ac62b1",
+        "player_info_acc_address": "czXaVSp1UFtWSJPAR6gABKP4UJPjELTeRdhRoNbLyUv"
+    },
+    "Limpan": {
+        "player_authority_private_key": "ef76a9990a18f3ebcbebb301ae94ecbb278c9d6d6c33a010278178371b194843",
+        "player_authority_address": "Bp2SSLXSoa9j3t5yptmc38B3o4iyhaVhdXYRpKjM7Kmb",
+        "player_info_acc_private_key": "53928271a42ab770d2010d9b512d11e67f5d4b314d8b029073ab82b26004a5a5",
+        "player_info_acc_address": "FjdFbRwdkzQqUDJRw5HxUEjiyCFkbGKK3Ni1WAEeRDx2"
+    },
+    "Bradley1968": {
+        "player_authority_private_key": "f5cc6cb6712c7bc3d838402ba9162667a5a9b1ec6b65404c6b9ae2f6b117254d",
+        "player_authority_address": "BLajjWYyPxmu61btL7duFPctEL1qvPkbXbpbQF7QBSqK",
+        "player_info_acc_private_key": "01dc8b247b7dd70c9a8807e8f8880c204a123448828cbd52fd9af823b6230228",
+        "player_info_acc_address": "2r6utvCd5iuhNZerQ9WPpzpHNDhURe8wfp7R6ujqi2XJ"
+    },
+    "Raidden": {
+        "player_authority_private_key": "1ea428a2ca12e2d838272e1d30be5b08673468c7f6af52a214188000771d97a6",
+        "player_authority_address": "7heuVsCWCQzvsb9EGQMrEC1veiMuZoz2aYGipLobnoxK",
+        "player_info_acc_private_key": "f7137cb1d4c7c98176826e8f31192935219297e4de8cb7087d4babf74e1411a3",
+        "player_info_acc_address": "73LtaiwFYBXmUvdXCoF5Pc8EGrzNgi9cwCQym6yMXrDZ"
+    },
+    "drjeckyl": {
+        "player_authority_private_key": "c5b14930a19494738d251d01041876e68588c589680337c4b84daef31c2640e5",
+        "player_authority_address": "8u8JLLUMBHWijDdDRTneQyQrJAXraW3nw8mu2HWEqLkm",
+        "player_info_acc_private_key": "395414ada049c793d38a564721f8982df037b155a6d1e7469612f22c10e75a47",
+        "player_info_acc_address": "9MWTZLUjbrCNVNtknnQuYpxHthy6t3u8TwWNNuf7E7qt"
+    },
+    "exige": {
+        "player_authority_private_key": "66b018de2b00add0fe2dd20a27a33604624e043abc7e97e008f873fe2fcc9648",
+        "player_authority_address": "tKdXhEAcuJCfRu3haXZrWncK2NkZ5XMRePxHUSFfTAy",
+        "player_info_acc_private_key": "86fcf81bee0fe35fe3f9fd545cd7a5cc9306c7e17a7d322f64382911e56832f0",
+        "player_info_acc_address": "Cdw3rTTrSP3XZRfmFFeWpK6gtsobPyS1jGauVKU97H1x"
+    },
+    "LiLPimP": {
+        "player_authority_private_key": "b30aa82c42c0764c00fe20d31cf790844810342190e7edb7b6e05e990396b993",
+        "player_authority_address": "8sCDisZEt36LLtCu6PYPUPBRHXe7JY2SSuxyyVfQRRkL",
+        "player_info_acc_private_key": "1fc1cec3de204f1b52be6f9924d17699c5471321442198efcb4d7425c009e635",
+        "player_info_acc_address": "FcSHF79n6ceKtiQmmTRynzDStmJYq8hyP1WkTbwoVo8u"
+    },
+    "CofCTV": {
+        "player_authority_private_key": "ed2ccfdd4bb801e0f1d1f568f8033740a22d566780125f42d2bd306da5bcce88",
+        "player_authority_address": "2KrwFbR7zaz6AV3HQHi18ZmWYCKc5GdTpWktj3PncU8F",
+        "player_info_acc_private_key": "e389c8db6378570e2890038e7368c9e18122982b9f310114eb04d0f45b583456",
+        "player_info_acc_address": "BNi6KJbCua6LCzwANsp6P4wdJWT9D69uqnftzG2K12Dc"
+    },
+    "KTP-Dallas1-HLTV": {
+        "player_authority_private_key": "3290163a8eea07194459a44b6ed69281d7a987f93e89010cd30b27917a8d1f3c",
+        "player_authority_address": "HddUEaQZRneJZUAjc6eEd14zJML4UR5h5Xa7hpRh8buB",
+        "player_info_acc_private_key": "c6d14953f321a1b4ad9dc61569e94aa2a3f04ac64bb2c46c9960ac3f9828f36e",
+        "player_info_acc_address": "79G3Gkduvp57cYvPvEKrsHisHw8Tx3rjp4GmFJwv7MCr"
+    },
+    "TFPugsWESTHLTV": {
+        "player_authority_private_key": "b65eaae1fafe2ae0fdd60dbaa1d77cc5331e4029d7ea9df232f1eec2d083af08",
+        "player_authority_address": "9scakuuV6KGY5ZDKgqL7Thedb6kJ2pi5FqxBrKNfTwym",
+        "player_info_acc_private_key": "d57f7638e81bd5b745344ab1121294731419d29f29e7cfdf3cf81d9ad6a7f2a0",
+        "player_info_acc_address": "5r3aNDEvjw9VQgWUw5DdXyoE3zNKMzGkNobktC6PGfPH"
+    },
+    "BoBtheServercom27021": {
+        "player_authority_private_key": "b1cb3a98da8446bf1faf4a85166f0f6d94d6ce1aaa3827f446791bac7557c0f2",
+        "player_authority_address": "AshduwPmUivNfhggqhM9KyeKy8BZuVprdWhsbm9kAWva",
+        "player_info_acc_private_key": "53407ad561df939acca7844cfbafd0918a1bc449a8346b669c3557cc799d843d",
+        "player_info_acc_address": "HXFNahzjpt48tLU9MsRfTyxwrqYPnzxK5B6xVzgWMCnY"
+    },
+    "Sterling": {
+        "player_authority_private_key": "6da0b8130c76a7fca44075c24788808693568899043e22774e1b82266564090a",
+        "player_authority_address": "4NSGTeerVRYWN2AjqPfcipTEEQb1kERMHYT9UPSU9p81",
+        "player_info_acc_private_key": "216f31c491d600c7b0d3ca46bdffebfaf45fd0f62c95aaad35d534fbc1c7fdf1",
+        "player_info_acc_address": "HhR9xKkGbymqDyJTbE1A6nK9znzuPvQuUtVqFLh2Qno"
+    },
+    "Bobbolo": {
+        "player_authority_private_key": "7633ebb9be7c1e3549b83882fd3c310835666daeabc745adb569fb40954439a8",
+        "player_authority_address": "7NJTmmPpeBwv85qu5KPLVnBzkH6VnSrSMs9bNTBE2TjH",
+        "player_info_acc_private_key": "e9815e6e027dbf194b69cfc459169563b85165e4b755f9603f06d201da20aca4",
+        "player_info_acc_address": "Ftyj8x4cp6BQomXkX7B8BUynm9oh7bPwHEBMmDz4hWXX"
+    },
+    "Highlander": {
+        "player_authority_private_key": "602ab55ecbbe4585b6fb532ba00d8395609e8fd77ee3dd2dd3eb25951cc9b644",
+        "player_authority_address": "8qHfaCZLzPjouZyTMCiTGm39r7ge2QFVME1Pbjcdtuw3",
+        "player_info_acc_private_key": "c8109ac3a98bafc5c430b30ad042fcbfaae7e02229641c6ef9b94bc1d2e7fa0e",
+        "player_info_acc_address": "4BCR7hhZ251ie4q8PbVN32vxtDgqFLFGcBwWqDmbjTVe"
+    },
+    "Grizz": {
+        "player_authority_private_key": "4d281577c69538eb36b65496e1e949859c09c3de0024bc4e2a4715b81f0017e5",
+        "player_authority_address": "HQdpzg89QyoLUPbeX5M72zPfxetFDSAaoneNsHG2kngb",
+        "player_info_acc_private_key": "42ee8037d120d2365331a875b1ea81a19ea95d60a5220be9423aff106a62d635",
+        "player_info_acc_address": "7fsmRz5MChY61g6jYuMzghDCr2yKrmmeaWfEX2bcNT95"
+    },
+    "BrockSampson": {
+        "player_authority_private_key": "95e36a8b5f819a8bb623b6428fec8b7a3fc02c56ba80ba33d890dd7dd4b3cc89",
+        "player_authority_address": "GpkGStva3szrmW9M7jLCRLCPktSm4BrbQHVW5yEsv4xZ",
+        "player_info_acc_private_key": "61f4ed211f371776451b10e4754752189a574ba7de32b5c4bee2f6d4ebd45fc8",
+        "player_info_acc_address": "3CimtfPTXYAMBFTEU4VrWwfWFrA95ryWPXyYMPj7BChs"
+    },
+    "Cherrybomb": {
+        "player_authority_private_key": "ef2b4e5f230d515fc9070462797ab466e6f3546b278fbaaa2ad61b8390f2dc75",
+        "player_authority_address": "EKoj5LgRXpD3hTgmQoNZgoTxjd3aAgd92yw3V5adtwkd",
+        "player_info_acc_private_key": "7617e3af4b61b437d5619557cdc6cc6207abdad66891e15353f5ea2f4e7b8b90",
+        "player_info_acc_address": "2cZ2ZjaHfFANMMd3H3PHdSo7SNrLZiU6gS1kVodueboB"
+    },
+    "Dean": {
+        "player_authority_private_key": "917430f12fc955d32f9ae749a7b62138ed0caa6e08f5f5a4e36164d536149f25",
+        "player_authority_address": "HVFicisXpegfbgWPbrSRU9wULnwmpTuXpzMBQsrgXit9",
+        "player_info_acc_private_key": "602364c7769071235dca61fd1eb3b8dc5685bdbeb15bf5afed47d6165c271bb8",
+        "player_info_acc_address": "AGphNShsTKrdicFrYqszKUhLscTM32JP19jFREVGBDM5"
+    },
+    "OtherBarry": {
+        "player_authority_private_key": "d110e3ed409f33a685923bfdcb2580dfc5618842926f5e4190f08e9c81c3afc6",
+        "player_authority_address": "2D7uVvbMmSC4CSzxqg5czqMv3qHyez8TA2uaRWzEEr5p",
+        "player_info_acc_private_key": "9a772a0d414726cded09f33fef9d0a653bfa0e838c256705441e01eca4733376",
+        "player_info_acc_address": "DFrJqBb1nFu79fJ6RCF3wMink3GLvjMDnKv8AFHdibWL"
+    },
+    "Moose": {
+        "player_authority_private_key": "e7b56cbd8a4af82b8700356cb1fdad35ba11fabc0927ba0e50c0574abace53ce",
+        "player_authority_address": "EyqPqHkuL4JNb25W8xeZwF5omtVSJFJsraP9jxoGQYFA",
+        "player_info_acc_private_key": "57462cd8cfdecfe3e134d9801c51221d16a917b621bfe6967fde3d5f033d3ac3",
+        "player_info_acc_address": "BiQML6NASaVnnNem5NNbDffWPcA1uweMtZCbYQQt4RJS"
+    },
+    "Lana": {
+        "player_authority_private_key": "9cf158c2e99ae342f691222146c266b99987a58a67e9a46da0b169036f46ee08",
+        "player_authority_address": "7oqf12ZCiBb91UKA6mfFqj1h55JuYmCdVgmLjy6UyEmJ",
+        "player_info_acc_private_key": "702a676de7cede8862726f1e5d6084b45eb2bebb9c808a49b18ecc7db1c65f6a",
+        "player_info_acc_address": "6MYJeBKkn9PnwtsYB9LCjGd1HvDQenQtgKdZsE2NAGxn"
+    },
+    "Pam": {
+        "player_authority_private_key": "aa0499642cf8cd5557745074384386822c8ac0bacb0750c110ef1490817be41e",
+        "player_authority_address": "J3VEsMPSA1EEh3Z7H9GYZy6eyeALaY1rxTwjEDUYo66J",
+        "player_info_acc_private_key": "199312176a14c3fbe8dd5e490c3b963960a8a2e102c1f0667f65466573d511cb",
+        "player_info_acc_address": "2fwuotydUh2wnWYQwjTq56F3SaJUqd9cbeuUkkrdRzhU"
+    },
+    "Kreiger": {
+        "player_authority_private_key": "1dec885893544b1fcec5abd458a8cd2ce5dee957c45d659ac5278635e4d67a63",
+        "player_authority_address": "4XNsoH4fGoNoB83sYzLfFNdz6MxQEQLEsLtLFkAoJDBD",
+        "player_info_acc_private_key": "a1476ccc4eca173a071e653b9c5875a2e3e9e0889905e06234e1ea04ba443326",
+        "player_info_acc_address": "7w6LdUQHQ4ar3W159QxDYi6mhnvi7vNzBALT6niHr7Uk"
+    },
+    "DrVenture": {
+        "player_authority_private_key": "58cd84c17d5b4f497dfe17406baa99998dcad42f72c50aecf1e750dc3ede1d43",
+        "player_authority_address": "6EKzFtgZWKUSTLiLFUV6GhW5GRdmF692FjvUW8qsJffk",
+        "player_info_acc_private_key": "776d0dad6cd977350c6cc7c90a08ffff8f5ac47f93655f0297d6bc1e837986e9",
+        "player_info_acc_address": "BXGRWzLizzujCBYswotGPFJvCUsQt4jnA48o5S3qC2X7"
+    },
+    "choad": {
+        "player_authority_private_key": "6a595b9c5fd2507bf52062ea86692d1da2b98ed4d8582e25e7def37886a1df05",
+        "player_authority_address": "BEqv3hutxK43zcFgfssYGB93ZsC5M1WxVKLHwi42DQAN",
+        "player_info_acc_private_key": "57f856af8923f9d8934fac6e3f5549b7855fbcc6216041a1532e30a9242ff297",
+        "player_info_acc_address": "CHX2EagQnZasevZpWpQwni11wDy5Fb84aT3hrmcNoweL"
+    },
+    "Rebel_Friend": {
+        "player_authority_private_key": "b8ee0ef3c5ca21424286774f766c8ef3c9479155c548d75b7fffcc25a7ccf758",
+        "player_authority_address": "3MX9nHEV6TccPV3s6Cyeq9rX36r9CqS1Qth4yyqwPpo8",
+        "player_info_acc_private_key": "b1507ebb2e449ba1b112afa6601295602a803dfc560d0ed06cf2011cef684636",
+        "player_info_acc_address": "4hozvL6UMo874dDSqMPs178GbfeRbf6GudSX4UP5G1tU"
+    },
+    "SilverPickaxe": {
+        "player_authority_private_key": "d944f4bcf2c26c978f21ff08b6110b738fe470d7a8b0864b4b908791b32081e1",
+        "player_authority_address": "HortydvEcTvmckB9dciCAs6E7uEkHDrH56xyJvgqA3Mk",
+        "player_info_acc_private_key": "531b9061768f4f6a4aed554f7d84c60eae1bbe935b0467df814ff774ea4a8754",
+        "player_info_acc_address": "GfXCe6z6JYWsXMcnZZ62TPmm9s1sPbUNCYP5jTjo5NPE"
+    },
+    "SPROKE_DRINKER": {
+        "player_authority_private_key": "fe874f6d7a260b851942acf85d853c6b2554dfcf5eceb62ca207e7788ba4d5b7",
+        "player_authority_address": "HzbZoxrPy9726q51cYea4XHGcNaD9Ajrmez3mSuwak4S",
+        "player_info_acc_private_key": "ee608cb52dfaf05ad1794e0134b24254a288dbb90d324faba47d3a15689232c2",
+        "player_info_acc_address": "ERQyCapiMauJzznqrPZXgGs3oBSoQnha8AxVJWzBkZ4i"
+    },
+    "Robocop": {
+        "player_authority_private_key": "f9bf68962f9b5d8200efb91ff3466cca35a53785dfd82ad0d75f5d8036d9226d",
+        "player_authority_address": "2fMx4PnyzcKA8VADLw9MqXG7iciv1pvWbkLuZ8sYDxr3",
+        "player_info_acc_private_key": "a9685cebae29bd06e829c7d2634cdb32070de0d388760412b2b6fb7454005ecf",
+        "player_info_acc_address": "GieWmL9tWXL2w1sjpC1dqhF1wgSTR7TePzBCzz8pzkic"
+    },
+    "Senor_Cardgage": {
+        "player_authority_private_key": "297ce3c5cd257d8cfd97c6a5b32eae6a10a13d7f44ba526338b5cdf64f6fbb5b",
+        "player_authority_address": "48nBSnHtA6kHjzi5JiKfLTqdjmuXueqVFKCLjkKdtskT",
+        "player_info_acc_private_key": "037602c21c80a49946a88382c85d4bd338303107358dca82b093623834c3e787",
+        "player_info_acc_address": "32m9tNYLE9JG7Vr1GUhXXzD2VyzbRt49ge4ToUsPvx2f"
+    },
+    "Mr_Deathmatch_Classic": {
+        "player_authority_private_key": "dad80837537ea96a2e672c76702ed58fc342b6bfcce04cc19c58dbdd134f9334",
+        "player_authority_address": "6XfiFftjZN9y8opWEgTFiwJ7YrAXJUJh2FbknmExXeQ8",
+        "player_info_acc_private_key": "33f3a53a918bf7f1141667ae048dfdca54ef8a3cfc3f519a944909dc658ca248",
+        "player_info_acc_address": "YYYB5Sq1aNiwv3RzpDcNkVT3QdUhjrgFvZzNoDLfdFh"
+    },
+    "MovieSkeleton": {
+        "player_authority_private_key": "3c03ef0d49b10506f6f32cb808bd58c4161a1b870a8bec020cfa77cda8d0e2cc",
+        "player_authority_address": "8UdzYUEhDPgoBPGh8czakFqZs7QkCzTHakxbqNrEiw5",
+        "player_info_acc_private_key": "83fa36eeb307e72afc14d046b6048f03360939a35d5979840285c1d5434bafbe",
+        "player_info_acc_address": "D7AwSTkaHUvUH8cct5GqjQ9HWQcF6i7r3kZbdxi2Qmxm"
+    },
+    "Glumbocoin_Shill": {
+        "player_authority_private_key": "53a8567067ebef3ee09728f0f97e7443b437a9e54b7a244b0e010b37c469db5b",
+        "player_authority_address": "Cx4we8538Sy3e29wCGNa7MVZw12oHhfCfrMMoTUeLCHt",
+        "player_info_acc_private_key": "4a674108968ccec4f0d507272f59c1f1a7d9fa291751adaf2ae9502b6ed63e15",
+        "player_info_acc_address": "8bm5NVWXHaTrfgAztxRge2k99xqkQ77jPWVW8TYHMRFx"
+    },
+    "BoBtheServercom27020": {
+        "player_authority_private_key": "d316bd800386ea4a5e68e85c844fe442a6b5497df42cbad6790b728ee0793701",
+        "player_authority_address": "CFU73R3U3V4av3gY42jmowwqFgibDcf9o984xuRv7urU",
+        "player_info_acc_private_key": "8f8d0bb83718d8e41764625dd71630fb9bddc3303a26576abc5694c5cb9553f4",
+        "player_info_acc_address": "6JMVGJAiW38enmoFaZ2eSxBvVdACdA2TcgrhCq9Z8gxL"
+    },
+    "Cheryl": {
+        "player_authority_private_key": "6e97b7a5b845cc3b6d245ff48aa6debb834a6781a58bf433c55ca8e939365a26",
+        "player_authority_address": "BpDqgp1EUrVXMi9zJ8Dcvw5sPQXbEZnS4km8uNVDP9gU",
+        "player_info_acc_private_key": "3e0217e1c0529fb14e0c32065ab21f3a5885cfa52db1099095df24033aea6861",
+        "player_info_acc_address": "8zknKXSU39JhTbY2qQUSpD1v2jB5RA1EfEWE8pn1ixdw"
+    },
+    "Viper": {
+        "player_authority_private_key": "df38d7af61dc13e7bab59704f74bf47c12ac19b65fb813d01efe528eff674e2b",
+        "player_authority_address": "8BtfYaTJhwsrR29MroLGn189zQnPT8DLnYUzrBiwWBRT",
+        "player_info_acc_private_key": "723817d7151887d56649a52161a882871003d8d9a56e8e496dfa7cacd4871432",
+        "player_info_acc_address": "FHqon1ps52C68w1YRvPZzDpNpPBrvi98fs4nVWaf1KyN"
+    },
+    "Ray": {
+        "player_authority_private_key": "a063137a740da3bbd86c6eeac7d8f6f39d32d60461a1b2016297c31d53af3ad4",
+        "player_authority_address": "4Zh5EVGnXQRoA3LhJcHE8hQiZCkab9XjBqjkbagkKvpH",
+        "player_info_acc_private_key": "afaa2dd7fda14e9ef1d2b82249c7dad4d9d94b7c7d6d9743d154ae33d3a53ac6",
+        "player_info_acc_address": "9dtYopBnMhaRW9w9f9kabs8a4CqV8MEKn8crBS8eXzy5"
+    },
+    "Barry": {
+        "player_authority_private_key": "d6248bbeb62fb0f1303b7e04ff2b39ff37091710cc9ac185564b239a04557182",
+        "player_authority_address": "DEDkpU6RUZ4iVDFfcDLoWg5WxWprTzRKMMYrhL66Vxeu",
+        "player_info_acc_private_key": "b1942b2afd7d215f5f51d10b77153e6fb6f3052fec871265859bfe3baa6c3597",
+        "player_info_acc_address": "2QWVpwUUc58a93r6WgqxSUxUi4m8b67BhQ4PBJ5P4kKx"
+    },
+    "TheMonarch": {
+        "player_authority_private_key": "ed80c39ce8eef95bf8cb0bc629f906b8a7b1d8c7b222eaeb5c3097d05370377b",
+        "player_authority_address": "41JKMFdGuEnfyK4xDvv5W9gaVFqXGUz58tG5h8T3QfEF",
+        "player_info_acc_private_key": "cfd46cfd8439b763222daa936dd756227b109b4d79f129642e632ad60fd55e0a",
+        "player_info_acc_address": "2Y7xxA71uJHYWY2XLY8AuCoPZF2bAqgBJKqDCaqxUCit"
+    },
+    "DrEvil": {
+        "player_authority_private_key": "163710dfa9918aa12d37b04cf4cea0456b56b2380b4b5bb1452784cac331fbd3",
+        "player_authority_address": "GBiLPnJ1zeWo6eTkRQqbbpBwK2spchNaoFKywjWfqaWH",
+        "player_info_acc_private_key": "036ce8582b12b7153ec0a8da0c4d536e5e509276142eb2f46d8b95930a746351",
+        "player_info_acc_address": "9SDK2SN5aKioSeXodatLZSsmV1J3R8H8mo6UgYG49mSx"
+    },
+    "DrMrsTheMonarch": {
+        "player_authority_private_key": "fd4265fdc02b26ff67c4c4e8584b2afc643f792e9fd36abdedd30d6732f85787",
+        "player_authority_address": "ASRwcqPC2vEpJia7atymcbk53LZtR9eQTVj8L9NhGhLd",
+        "player_info_acc_private_key": "e08c339d902e8cc468097364357f57cdacc8e86775586e1b2d043c94f34fdb38",
+        "player_info_acc_address": "bdCLpESJBXYup7mKBPMwazMHngse4PopVBmMAQWd6JE"
+    },
+    "Hank": {
+        "player_authority_private_key": "306b6f0add430bb26cc537b1e1310f2be076ac65ac4dade37fab49c9d8a79829",
+        "player_authority_address": "2iuwyakdNBJx5Hx8F427k6e9yw7WsJH7CSCE3mMSFJ8w",
+        "player_info_acc_private_key": "6a2b344509e1bc2f38c36cecac12aacbbc1fbb5e2273efe223ca0efb612802d3",
+        "player_info_acc_address": "7Aq6U1ZE7LigH5WYWWMAyYz9KvTbcuQ6Ept6EQzrYDyb"
+    },
+    "Pugsley": {
+        "player_authority_private_key": "ff3be58d6d07c2d5059eae87059071db9a68381eff3055922da174d4ca4f9467",
+        "player_authority_address": "CtBUxeYsLNWxHj61qzMpYYdHX5YQs9rwRYeEYbUgoQSa",
+        "player_info_acc_private_key": "05338fe076f9f26615c05078ea011948ac1800dc49ac4f534709bb5df5632a79",
+        "player_info_acc_address": "4bjbeKne8K1kH59GGLbWfEcDnhxUarNPvkjSbgukeubq"
+    },
+    "Woodhouse": {
+        "player_authority_private_key": "f725639778329b3472ee4deee43266ca129266d720988297696a3643ee243b88",
+        "player_authority_address": "FqnfLQ1EXdcq7mtn6MqyUn8eLFHLTz8bmM9zzyfRVvop",
+        "player_info_acc_private_key": "0f7344277e7886ab64294689b0f9d0dd5064ad6819fcd9020bcfc4d3cfb180d2",
+        "player_info_acc_address": "7cQvS29UQrAJJTXUrHGZARydueXAi97d2W7NmimyXBHi"
+    },
+    "Hey": {
+        "player_authority_private_key": "b87d0918b1ca98834d80f53a105596046347f33b593caef09caa2a6e0a983887",
+        "player_authority_address": "5KsffoXd3gnpowWSpDVCXFuE8jcujYwLVzHvwPHdwPiu",
+        "player_info_acc_private_key": "ed7275e46aaef1d8145097ba7a7bf2c12699c06f01a614147c096b301d089fdd",
+        "player_info_acc_address": "NGV7FJ72aRFwwB9D8oRCvYyBEJsqxTAfuMkwBwAdBjf"
+    },
+    "Jack": {
+        "player_authority_private_key": "89dc348ad60db7b8e9c0b8c905b437117e9dd721dabeb718add4f7625d8f5507",
+        "player_authority_address": "EQGFZw3DhhV6rRW9v7N3TXL35ikumjzRTwRXLZ6FVFsi",
+        "player_info_acc_private_key": "611be04358d99ad8dbe236132741bab0b5605237cc950336c73ca533894b94b9",
+        "player_info_acc_address": "GUe1HdejEhHWts4eE9Q49Wnu4kur843oKQM36jiD4pRf"
+    },
+    "No": {
+        "player_authority_private_key": "bbf4952ff4c1f82e340802237c8fb7f7f0b5d0b2a2554660c2067a9e61133ca8",
+        "player_authority_address": "DmSBqc2Vg32RWbZMs3BgVjH1tivQMqAMk9Uz1cyDAqk5",
+        "player_info_acc_private_key": "9e652027f86296ffc91b0f07c8c4bc2d3d5e8d753f82d9b8fd18aad972d4db00",
+        "player_info_acc_address": "5BujEcW6DWMiT9a7PAHyzzNEpqgDgfDwPZpce3koFKmX"
+    },
+    "Ass": {
+        "player_authority_private_key": "3e41b446b48ba4618998a34fad304a2987f2e31410fcfbccd57a8da8c181cd96",
+        "player_authority_address": "8fsiz9JGqtZct5sY1pxpLqntPz92zU4rWvKogwTM46VP",
+        "player_info_acc_private_key": "54e56fbc58a5e9b2159b15974172bf8ddd4922224534e3e43f0affccbaccb9ab",
+        "player_info_acc_address": "AH3Q27T8w3CZb1D65fEZnpZ9y5HUCvnDH4CPc3kzCcGg"
+    },
+    "ESN": {
+        "player_authority_private_key": "6e51f420b00bdde3a8d623c8aebcf6631f708f1e93b0cc6cc7922aa4f79355b4",
+        "player_authority_address": "6WAJdZgHeVqEZH2jcPXnyMUPMNddz48VUVNMNrpgmNjv",
+        "player_info_acc_private_key": "8fd2395d82cf8e26c56a1ebf7c78e060b31c729e0a43d6eb895f79f079af9edc",
+        "player_info_acc_address": "79scZbm3JEYmmJeRMqLvuAWLgMcdF8roBzbtRn7XMqKa"
+    },
+    "CleeTorres": {
+        "player_authority_private_key": "247211e14cb98c80fca89b36114ab20b0f03c0e1cb453d570a680e811df22c09",
+        "player_authority_address": "9qn2wW6HpiWy1j1er6Pt1Ss5xdWG3yQoyXnUSPQhtSvJ",
+        "player_info_acc_private_key": "6a36065928234ebcc158a4e5878e6a05a71cae0da36828632779a5522c5cd4f3",
+        "player_info_acc_address": "47VSGafY6KTyDS1wnS4ZafvyoPSCgzsiC6xeisJKHrsb"
+    },
+    "HughMungus": {
+        "player_authority_private_key": "3525d8b5e7707ab59df6769c065597a560e20b6d7d1881981035c31cc9dd3a64",
+        "player_authority_address": "HYDtkPod6dR218agibS8Yx2cZiT4y3qPvar2c6pjzjJ6",
+        "player_info_acc_private_key": "e857d4bb02bb6ca11825cf68f7d1a636e02d6137f51b4ef5d641e6434078b12e",
+        "player_info_acc_address": "Fn5dytp5vBp1QaG53KBeSbWkcSZ4aU3gTciCL4MhRdQP"
+    },
+    "HarryCox": {
+        "player_authority_private_key": "bf7e3d06bf53f596c16a6bc7fdca34987326729d597a0aa7785370b246f740ac",
+        "player_authority_address": "H4LcbprHQGpLPb4QKCHiMPp8kQJm2M6RPcQ4BDi7eZtA",
+        "player_info_acc_private_key": "c02d8b01a8630d68d5eb099b733110ef00f2565ff0ab1d57263aa7db4a61c5c1",
+        "player_info_acc_address": "EU3b1PYuQm4BfpzBhZztjXuqpjtsuorH56GDb5G7CUgY"
+    },
+    "BenDover": {
+        "player_authority_private_key": "8aa0d07e456e61a105f3a926097f99282828dfee1797db7a11894d446fffc7da",
+        "player_authority_address": "GcEniGjZeT5Jm7X9oBbh1taw4LPSSJJbowX6Lucb4K4b",
+        "player_info_acc_private_key": "1ebd2c625212da433e6f40ab20a02d99bbfffb3e5bbd80d4875b59696b8c2f28",
+        "player_info_acc_address": "66yujFjbBihhZZBmx5F9fAcG4eaKVwRo1yNZ44P7NvJA"
+    },
+    "DillDoe": {
+        "player_authority_private_key": "a060da5e93dbedd3877245c10b9f9a21738ad1425a11253514efef562b7d6507",
+        "player_authority_address": "3aLs3W1L7y7hQGCc9yDjFVs2aJpVoTR9WLTrDwygkYFS",
+        "player_info_acc_private_key": "680d4a87ea8c4dde8fade54052a23a2d050cd19c45cab4ea78f46ac5222cb50b",
+        "player_info_acc_address": "3Tqf8FhWz4g5QzkeMLAttSJvSP98hcuvyA51nkdcvgMp"
+    },
+    "DixieNormus": {
+        "player_authority_private_key": "9412a09dfc504831a21270e8cfc39e0708c8695323812b2b55c2d91110f68097",
+        "player_authority_address": "A8FwG5Y2gw839289ToHAVcXb3XzwNEyPyLbkKPhw1Lym",
+        "player_info_acc_private_key": "527cbc9d603bd975469ca2741ca7b70cc6e004a426ee52cfa8c3b8939939c3d2",
+        "player_info_acc_address": "3GPgo5sWwmCesjUootQoo15N41M6ufThrvy6ZRFjTGgM"
+    },
+    "BlackDragon": {
+        "player_authority_private_key": "8885eb4f5f91193a3d71a0d272f409bf8a4b39c3266e6f59b6a5ef8d4d91e5fc",
+        "player_authority_address": "EribtoY4FvC1iNitGqNmUPSv9ARbD71CnUyTRzkigJ9p",
+        "player_info_acc_private_key": "01325f2c35d50fe8d2f0a01185adaecb259e3fd456455f3621d31a7ff4a09783",
+        "player_info_acc_address": "ffaETpvJk7k34zeUH3PcxEcMozgagK2aZ4PPMFBAQmq"
+    },
+    "Minax": {
+        "player_authority_private_key": "7e91af95c373adb3d412ad054fef59201fc344c90dc79ece548b0e09760ae0b8",
+        "player_authority_address": "6pU8CtDPFkPCSvGYKaJHUA8uvAcNGaW8ccQzot6p3i5C",
+        "player_info_acc_private_key": "8f7434da7eb37dd23a39e20b6a58820182cfbfe3181b1c4b11c4ab1cf472b27c",
+        "player_info_acc_address": "84b8MqFUjQq4uoc81mymbBqjnQr2bFFPcmDYDYQF7uFe"
+    },
+    "Antos": {
+        "player_authority_private_key": "7645d97f177c9ebdf5618b166760ff43d4a049398d8aa6021dd313f969cc668b",
+        "player_authority_address": "3e2f8uZfjx3dCx8HV9HmxLj6mfL73BWFE8bY9iWr5mEm",
+        "player_info_acc_private_key": "c6121282eb1be9f394270a0c7c008d889b4629f2aab417eab11f39ca0fff1d69",
+        "player_info_acc_address": "EsBAMAgLmUdZmUK2xdDPvRfP1fUzH2v2KzDR7AwdDFQ3"
+    },
+    "Naana": {
+        "player_authority_private_key": "686d8d741705c2ac1af5f54312f575ca93323016bfbbc914d75b83f1292903c5",
+        "player_authority_address": "oE4VyKefiQXvfGNmX4FVxf8wWmJptJ13v5SB1t9CR7e",
+        "player_info_acc_private_key": "1f879c25225866b0590bb2acebcd41376f2d0ba583e9ffc146faa46b26f91cfc",
+        "player_info_acc_address": "7rZB4aR2fMr8E3NUEHDV3woiWgGY5bWidmutJAaMkeBc"
+    },
+    "Elizabeth": {
+        "player_authority_private_key": "bf45ed4f3fb610afc33223b596e1f65943ba809b67618cd6603b0b7ccb866833",
+        "player_authority_address": "H51nLPPncwegBshZk57AJFV9vmwSoiMpn9xwQn5CJCx8",
+        "player_info_acc_private_key": "e782d512ba753d8817e7d61f0278f5cf62a63ad9da4652676f4cb4fddd4cecac",
+        "player_info_acc_address": "4biyTFLv9xVH19bDUCviHJDFUTqsYc9dVCtZen5x7ief"
+    },
+    "SinVraal": {
+        "player_authority_private_key": "18c0b019a8b11a7d04eb28e9de2c04d324723a7a28053723aeb2d2b6ebb3720b",
+        "player_authority_address": "FkRHmtbNdQygdru2qA3GubqEs3k33Co9xYYPBf1uPLNQ",
+        "player_info_acc_private_key": "2c21362581046753e8fe825f5d5466506ecc71da99ac56424b1ba4fea2c572a6",
+        "player_info_acc_address": "Ee7mRSifQ5gVEmcUAEH7FPfLE7qmTE1ZYGgd1gGDKZVH"
+    },
+    "Utomo": {
+        "player_authority_private_key": "3ff1bad35481fe6ca28d38010880f6794e937cf2befa206823e8695c9f0edca7",
+        "player_authority_address": "9h512Z8gKgUxqJEH2qKzDfawgMnjeRh3LcFu47WE7nJF",
+        "player_info_acc_private_key": "3d113dbbcefa26284ece1c58e876665cf2ab7a40c8dcee10989af2e4973d00c2",
+        "player_info_acc_address": "2EGu4fixCdkEEAywNtbpbmtvwYFq1jBn2GNJbDrX65za"
+    },
+    "Shamuru": {
+        "player_authority_private_key": "4fd585f4fe1803b5f2ce7eb40972ea90ceefd31eed2e8feb2cbe3700bfc194a0",
+        "player_authority_address": "2mLW3YAf3GJpbEi3RoyZusRHMhrXqkDbZUCRkqXtDAVy",
+        "player_info_acc_private_key": "f50ccaae6c8f329714799a418a63f026854c235db7c7a57091f90960d8033e9f",
+        "player_info_acc_address": "AbeoJNkaGUKU83ECQTPR9VFVKpKfhhy6wR4weQWoEa6q"
+    },
+    "Lexington": {
+        "player_authority_private_key": "46e6b53d17f95dd8cfedbd224eddbc58417df19dabb13d81384c2228f111b3b7",
+        "player_authority_address": "8jv4GDPdECCCatZG2bo5PbBzKKtW3BZKMju4ZfnSyqR4",
+        "player_info_acc_private_key": "273fee62c51debc82642cc3af257523fa73ba44c0d62163a7cea7de8554f8af4",
+        "player_info_acc_address": "Go9WwRngDER55jGyMeBo575xrqewnGhbT5jsDsQkECG5"
+    },
+    "Wantoness": {
+        "player_authority_private_key": "a50bd747cb65cc40f21cde160a8559c01853feaef275e0f4c47aa570a0def81b",
+        "player_authority_address": "GtYQ2A9ofdad6JYpv4mEV843sZf5Nqvs1zdsTK1MtZ3c",
+        "player_info_acc_private_key": "fd96e811cce1ddcfcd25608fa1d776278fcd199f29bd57901cb82978875c0cc8",
+        "player_info_acc_address": "AywQBoete4sKXSpWZivq55kHiMnqsngrB8FMsExVtPJP"
+    },
+    "botch": {
+        "player_authority_private_key": "2c447ef173b6b072ef8da744df8fb21a4956c01597c95d5b5a71a0314855ac83",
+        "player_authority_address": "HapjtvWmmrVz7DXuknt2mSUCm4wn3YB6wYPao9MaRRK7",
+        "player_info_acc_private_key": "7067346e5dd85272474914eafeb48f7658a772881096ca7c56a241cc05a3bb78",
+        "player_info_acc_address": "G84A4GQaggNRrknEi7y2rmSR3em6trzFQPtr79FPfmzK"
+    },
+    "Doug": {
+        "player_authority_private_key": "9fd08bf7e06f3a7e94923718fcd578e133bd2f497702348ae360c71dd58c04b9",
+        "player_authority_address": "2kakH6npnPatJ25zzJ3ivWQ6AYVKrkdjLYAgcbEbxogr",
+        "player_info_acc_private_key": "3861cf2397dd2ee8f16629436e701308993070b7875343524f3177615ce0d835",
+        "player_info_acc_address": "rX2d2AGNJ2tbqJSWEuqGCVCP2iFHh6aaytv9Hr8cHd2"
+    },
+    "kix": {
+        "player_authority_private_key": "c44ca8d943ec36cc87e0e5bdb6932b873dded7a4575ecb865835ca9c71041d7c",
+        "player_authority_address": "Bfmx9FLUoWZyB3GrkubiRez1bq62RQJhRM2jCcVywYwe",
+        "player_info_acc_private_key": "ef54deadb5cfe46d7bd45d9f2c9927485118cf1d525e2b188a28b86512d2af03",
+        "player_info_acc_address": "DL1cWD8MCPLMyeoxiZC6GsYySNeMNTUg112Num762fsu"
+    },
+    "Death": {
+        "player_authority_private_key": "a8047a1a6340677bec2ea269e2dc80ba7d02daaac8aaeea7d1d77c5f1d31b3bf",
+        "player_authority_address": "CkGzzz7o7WozoAKdKZ7RyqbYWeWAC9pJuvd7dMKMb8JG",
+        "player_info_acc_private_key": "f79864388a9b5a6e936a3d108d69585d6a886c972cbf4e46adc25301e2cf3c94",
+        "player_info_acc_address": "DojvH6Tjp4x6T8ZkXxAiKhTB9oqQ2zkrU74EfAdeP6my"
+    },
+    "twitchtvgamewatchparty": {
+        "player_authority_private_key": "5e5097838b7e5647f393e50a563341ea2aae3a380095fb777ff5ae95b7928f0d",
+        "player_authority_address": "6TFzu64dmKjQ5to8wDCCSQazmepNhbXc1QgezJVtkxXb",
+        "player_info_acc_private_key": "bcad23df40f0134ed59b79cf78a5e5483df293ac1f2923d754a6972892bb7615",
+        "player_info_acc_address": "9SAKutuTTVaj7ioeesc9uoWqqyBAGFyyRvHDnvvQNCph"
+    },
+    "pichon": {
+        "player_authority_private_key": "b764d135a90b2169ed070e334a7612155fd07c6ef6a91eb6bb9705060dde415e",
+        "player_authority_address": "7kGU8PpkvNk4REwFLKdFWq4tXuAT3FxZGzo4G2YHR8nP",
+        "player_info_acc_private_key": "02f0c5d92daed9db4e6e486a7be02b8301fd79fa6a6d04388adc39070870370d",
+        "player_info_acc_address": "5dkb442bzpxL87pDFDH9dkgZ8E6JgdmDAJx8FU4unsQr"
+    },
+    "karms": {
+        "player_authority_private_key": "e853d04ac76584a41a342f2077289ca96c711d7479208f60a1ef0c4b1866e3c8",
+        "player_authority_address": "DYMGTtmfvKavcRMTZDX9AgF1qA8F338sUwG2gwzBD4LZ",
+        "player_info_acc_private_key": "4d682e63f57509a79c939d58f9139720867891a3c6276dc329622ae02c1fea8f",
+        "player_info_acc_address": "DnhrVqFKwgyQQpsJMEs8bVemszjLwJ2ko7QAqsyTPfsp"
+    },
+    "RealDeal": {
+        "player_authority_private_key": "ced24257c68aab8242263d6d5c7e136dd9e8d5b871838661e93edf3a62f679a1",
+        "player_authority_address": "BvPU5kgAKnx6NPwPApPJ4LNgSqZtCJkRNUcX16HmnFAv",
+        "player_info_acc_private_key": "9f44b938c664d8a3c89d09d75b6e44d47b17e0a95406804b0b8cf78b27f17d9e",
+        "player_info_acc_address": "9KAjewfKL9QLCnYtTNEku3DXF3SZWX9zNZHu3QjNTLRv"
+    },
+    "Nemsy": {
+        "player_authority_private_key": "b8465f207d2a423dd996304c8395df436406db861c64bd1ab362d49d6988bc5d",
+        "player_authority_address": "2Mgw6JSqVFEESNkAk96Hhq4wBJoVsEfPTwpnTQ3U8aDs",
+        "player_info_acc_private_key": "47ce9e6f9c2cbd403b48e5f5d5e62c506eac30f1d48908ab838545075f9114df",
+        "player_info_acc_address": "2tZJFWmPDXWGkgtuZqamjrWhebYeuYGve6Zq4MPRCAKn"
+    },
+    "TFPugsCentralHLTV": {
+        "player_authority_private_key": "db0542c0d01c72242e406c6ad61ce4170d6cc4757a1becf833660abc6b75e3b6",
+        "player_authority_address": "DpPQpegwimJaN1QYFht2Y645WqSWf9VzMyBFr6Ptt4Wi",
+        "player_info_acc_private_key": "bb06d2bd8cd38b8b43055af883d09b38f41c8975a7ab90bdf116872482e64daf",
+        "player_info_acc_address": "GCtURAuRcCfdeSCodkCAcWTUnU6EFkPDDA1vQk8beeq5"
+    },
+    "Haunt": {
+        "player_authority_private_key": "a9183a9d45e0573d2d5a999de01bd8f8cc243cac205e0d19851bd6c24a024234",
+        "player_authority_address": "HiAC1ELxwrjRsLkJi3k7kZMHECanntR2RZbH85HfQWeg",
+        "player_info_acc_private_key": "3fb211ecdb3b67d8097ef4465fa09332a06c5264c3b1249d3211c52293ec29f5",
+        "player_info_acc_address": "8m61yEXqUSazTZcbYtDjW2z4sa1h79izDjTZ9zLNDY73"
+    },
+    "Schtoofa": {
+        "player_authority_private_key": "cf3f891de2101ae125c7829c7d65131cacc6b60e10f7c83581bf6a0e7c073d07",
+        "player_authority_address": "6or3Q9K7oG4hyWcHRSEBnmiXajJehoNoJXXPnyG3iHp9",
+        "player_info_acc_private_key": "3e41ea7e34fe80f5fd2ce731ce3ec34c1f7bdda0784f3d6310248a54ce018926",
+        "player_info_acc_address": "8LFa1icbgcDT6Q812w2sURaXbB7PSTBCFNcRNFgFBdVp"
+    },
+    "Kangaka": {
+        "player_authority_private_key": "dd6b9bb3847125a1ce15d5f22f2e84c556419009c109818adb69a026c646b517",
+        "player_authority_address": "DUP4T7GMdFhoVvi7rcNEH1s87PTdoUhxApow5BPmHUYc",
+        "player_info_acc_private_key": "08b7862a3477a7ab8fad880450534304438d0afc8ccac9e1c6d13faa675d640b",
+        "player_info_acc_address": "2ESgmuX2b2Eae69NXKaz5gNFwHoapzxiCWGwzGYDuRug"
+    },
+    "Bishop": {
+        "player_authority_private_key": "aa5c52387baddf5de4419dce2a68eea748e38dd3b4f62e06b0fa24925c7429d5",
+        "player_authority_address": "5uoRT9rbbLczioDMgmjE7SS4q7beiJu2fDZLZHN23LuS",
+        "player_info_acc_private_key": "ed7f6cfc247c3304c642975512bab4a3f46c42601a18cea899fa30d326967224",
+        "player_info_acc_address": "6tCHE4kAdRRoVx9K9RkrENkHtZ2c9y88CRvHPDE4RZsq"
+    },
+    "Mankind": {
+        "player_authority_private_key": "61240223a7f6cf6956f1f538b15a9ddaa849f124eec0cbb485dea93c958f6c0e",
+        "player_authority_address": "6JLqZDCTXvPQ1LTFGxRgEvkBBrmeC5dGoj46Yj1CahCc",
+        "player_info_acc_private_key": "ef8e58cb1a67a85543b7df042f7502115fd6c6711e8496b68bf6679b606b2753",
+        "player_info_acc_address": "AULbW8b4ZjvnNz1QjYXRNCc84qe94ymJo9u4tpHCErxr"
+    },
+    "Angi3": {
+        "player_authority_private_key": "a43924f04c27761fd8dd03087e570533118edce99ead0a99834c90148879cea6",
+        "player_authority_address": "HLzG5Z3uyVDBfZwtRqTmMn1YqRmt36TGvYj9EzyZJRxM",
+        "player_info_acc_private_key": "69e389399789fdbc25306e7ba3792c938ec53100fd798362b5da1b1ac3e79435",
+        "player_info_acc_address": "DpdffaqaZM6rPsKFyXBSwxLnbNvP1VGiBtHz5mo7Tv6N"
+    },
+    "YO5H": {
+        "player_authority_private_key": "569f2881298dab6453d1de8166590395bea6793fd35c3d52dc1400aa9d2f1926",
+        "player_authority_address": "9ZWa59g7fyhGRXz6gXpH7ENKXMra1PwM3tdBb9JHpkYH",
+        "player_info_acc_private_key": "a588922238155c1ccc3189d99b2d18e8b08a57565310624bfb5332ad24846678",
+        "player_info_acc_address": "8sxisywXc4c4RwFtGTNat6HReu9j2yVwCL3389KXgRvL"
+    },
+    "Oleum": {
+        "player_authority_private_key": "b9af94b2a368bab744b3373d66a6579086acaa9e8c8518ef7dea4db78f8e29e4",
+        "player_authority_address": "GYKiXB4C9cAVsDJsmGhCw95QNSeBU3iBKJoL6xfZfmDd",
+        "player_info_acc_private_key": "1a15d568673d86a6c5ff21bd428fb56d880cb235398421ff6e5234a7d11ca333",
+        "player_info_acc_address": "8ax8LyT9NDugRy5Fk4P7oR5hHkxaVNmMbVMUnYB8AwRa"
+    },
+    "MATRIXNEXTLEVEL": {
+        "player_authority_private_key": "5e5e7c2721153b2750e0b936aa5b2679c76b48a2d617ea8c4d6e718a99364f51",
+        "player_authority_address": "NmQQEb4ptevFUaGePs41i363i6rKkmeV5LxdbSUkaCP",
+        "player_info_acc_private_key": "ec8a6b7c0eba9d984d67de90d62c6df26819319e94fa37b52cbb2bceff7f8cf2",
+        "player_info_acc_address": "5vhpxhLFRVCaUKtMYJ5gy51RMoXNy7Jw513TaCUJaLcu"
+    },
+    "Sylvester": {
+        "player_authority_private_key": "1ea7e8e492317b863505f0b1817d5ab8f98acec8d5ae614ec0132ed06a5ba4c3",
+        "player_authority_address": "7QL5Csx6uao2nKTJ45TuEGDyH3dEWHQy4wRFmNHuqBnG",
+        "player_info_acc_private_key": "eda3ddea9e173a799bc22d239fdecb6f4ef585f55f0b0601e616dda5d32a980a",
+        "player_info_acc_address": "B5fLWENiWEWqQE7dWqd9SYgjZC6zyrfufGaoL6vAV7TA"
+    },
+    "OttoAmes": {
+        "player_authority_private_key": "f79293c41a1f37b2da2a706668f7881b8adcb97371e87bd15ea9de8d6dc05c00",
+        "player_authority_address": "AapiMm6W11iVDmBLVccP7PxxYhJfFR8SYGLLm3mNWPVc",
+        "player_info_acc_private_key": "6dd9c826c85a7d216c9bdd8e4cf966677c7eab7ddc48437090fe0b49470ef86b",
+        "player_info_acc_address": "2h4kKx63txkUdS9GE2SYKACXfQEgoc6VbCDwtgoHzQAV"
+    },
+    "Iridium77": {
+        "player_authority_private_key": "7be735740f9d43642e439432f3af4d3a7e6cd19c855f91f4129b5065888c7531",
+        "player_authority_address": "DLW4GH2kjSUDFBxD1w6GVzNiGnZtLUgvUZcy6h7y71KF",
+        "player_info_acc_private_key": "3b669a6731fd6d8c9ebf7b8a09d41610931675873efc816c0b0911ed42f6922f",
+        "player_info_acc_address": "ABzoArYtmbDUTo4aocemhjqnqW9w19JRY3ZmzdtZ1Qg8"
+    },
+    "Target": {
+        "player_authority_private_key": "2ebfd01afa39a2577233287d2b6fca8da3eca505eaedb5dd27bed8dd1418bc25",
+        "player_authority_address": "2BJs2iNThZrNieBPZfeYtxobd4Vq413Ym1wrXCirnu6H",
+        "player_info_acc_private_key": "dc16adbd1a31cf003ce3d6af09bc71e0c8bdf702067e897edc7b8092238b6d8d",
+        "player_info_acc_address": "5zwj3JkXHuE3guntq1MPRp8Ea8x57rwZoEgs4s4XkUd6"
+    },
+    "Picklefart": {
+        "player_authority_private_key": "23bc69dc28d5d20b412aac7726a02571cf258ab1cf2d496d7041d03d75e2af8f",
+        "player_authority_address": "HCXJCiEg7weDuYrnMQGdirpWQScAmj96KrfdFSPDL51r",
+        "player_info_acc_private_key": "23be7c3290d26a3fa4bc8e34722930a711861f7bec8a26018ffdbe76515a5092",
+        "player_info_acc_address": "84nbuFdJEATNPm3gdmZg6CqnDdcjUttT1aVpZx6P9oev"
+    },
+    "PayneNDiaz": {
+        "player_authority_private_key": "12a229c354bcdac44a6aeeab3f125dcafcebb39a13cf153ecb9b1a2e138ec20f",
+        "player_authority_address": "73r9gUuPzY5vteR7tAKKfrYTADeJH6aw8QQLw6z5e4cx",
+        "player_info_acc_private_key": "692bfa10783caea37d3e416a453292e9d55e829979222bea4d8c2b3695567716",
+        "player_info_acc_address": "7Ws4JsBmvdXN9rSU8ZtYRizcWnBRVqMWdwTKe7DZhv5g"
+    },
+    "pantics": {
+        "player_authority_private_key": "2da13ffd324b18bfd50bb7a20de6d5bd528b46ab8dd0da5aa5ec804748da41ae",
+        "player_authority_address": "CgBZ5cgsrnBijQG3UZWpU2NUN1ii6Fi2fbzwYaqaKWcU",
+        "player_info_acc_private_key": "c460ea3ed49e35880a25d611ca7ba7cb8e7e13a4f86e7c944b37af9e41c138ff",
+        "player_info_acc_address": "3PRL177QGVhfqGcffF3v4xkQEu3TvenGfR5tHidr1Dbe"
+    },
+    "WellWench": {
+        "player_authority_private_key": "2ff2ebdaeeeab33231ba5526d4f7a8e96d1b8210da13d9b96ca299a6f53837e2",
+        "player_authority_address": "FdPV3WfYTE3Vy2Ch6zrUupzeEfEydGdA1YnnZTFn8Gd6",
+        "player_info_acc_private_key": "7657fade2e1ca6f174dac4efc8293ba87235eff441241712e3b42d03050556e3",
+        "player_info_acc_address": "AREwzXbAwpKXn7kxfJaHDRdopX4YtzJxNEsbyfTzE8pa"
+    },
+    "BOTid": {
+        "player_authority_private_key": "71d6bd9382c8214393479851df1bddc528255643036f453b46c948786061443a",
+        "player_authority_address": "GusV7HysukHnFQUTHz6vrchdEGLQYiSD9innV5ZDdgFP",
+        "player_info_acc_private_key": "ca37493b1f0528d8f1ac52704f94478fa802eec305215416c82b5ea79b919b5d",
+        "player_info_acc_address": "GtpuHWoJegaXDPc8A6SG8mAeSxVv2C31ktoVSeUvUee4"
+    },
+    "FragThis": {
+        "player_authority_private_key": "81c75875f93886d20c19438a0edc387ab282e2fafda6aa0c7556b944c0a66853",
+        "player_authority_address": "BUnA2XvZL7WRACGHDmuGiSY1cxWqd2c2KcqoUPvzgPmk",
+        "player_info_acc_private_key": "b365ce7c81fbdff49093042a6134629295d092f119421e986281cfd048da5d55",
+        "player_info_acc_address": "EwSvX4V3Wq3bHCxP4YDp9yFs79u2P3WhmTphCJFP3Q1H"
+    },
+    "Liquifire": {
+        "player_authority_private_key": "d2d294d1f801ca9f18b4c23df1ef5a6d7d5b8c772f5f463c602238c5ff6f2b9d",
+        "player_authority_address": "BMeBNmRXMQpGxpstXunjeuRqohW8mw73uvqw7boB2Y2u",
+        "player_info_acc_private_key": "e05dc919f31a1187515f69e56ac0e595429674fa4a387272cf8ee30070f903a8",
+        "player_info_acc_address": "GkubAjzngpacrCu1YExkvjFTbwA7vYBjJGEA6CKkM49A"
+    },
+    "SAMUELLJACKSON": {
+        "player_authority_private_key": "a90786f6277bff8132a3830cb3b03f6103459c823862d02f8c39262a23e0db9b",
+        "player_authority_address": "77MTpcfksEn9tgSDNAe1MikCU3pdAEmP9SQQYHn6NxRZ",
+        "player_info_acc_private_key": "0b4925f64f438324369f275a154c8050eb6efbf61c3c490d90f30a097852f58b",
+        "player_info_acc_address": "C85BgNBhgPxnmhuLbEA46UCwbxEnyj1C6ovp5HZK4snG"
+    },
+    "HowieKilmy": {
+        "player_authority_private_key": "e8c5eedab52ddf96eba2280b6e4afc95eaeadf45e2ffdf831cf3e2c4b5c7a041",
+        "player_authority_address": "Ckktp79HQKuMP68WVNKiVaDkbrZwepJ6VyuV9FyYjVjp",
+        "player_info_acc_private_key": "cab5a8a3a61695dc2c4e4f0e9494f8bb4234bf6d4e74a61970e259e7b81f61b8",
+        "player_info_acc_address": "36pjPLcPpGSbVcTgKStx5UND2NSL6v9ZoWDoumrunstk"
+    },
+    "SkillzOptional": {
+        "player_authority_private_key": "ff56bd230d2d4df9d06a25d9296f3ce736c1a8acc5ad8ab0edf156d045668cbc",
+        "player_authority_address": "8pVr6cxBSZi9Aw6yDtqHxkqatnKCXUW7qnC4ZpjnUHHD",
+        "player_info_acc_private_key": "a1cdbccb1ac7cde8a23b6c09d2e8215b89cae9b6c2cb5e91dc60f967ed270869",
+        "player_info_acc_address": "G3zkE9oaiD9WjwNi1QZb9b9NaJzu1WgtBfQmfgWYzjQE"
+    },
+    "GeneralBot": {
+        "player_authority_private_key": "597b451751146a0168d3e2f9775b1fe1c8ebca8488118b7653ea59efc9b8c5ac",
+        "player_authority_address": "Efaokkd7JZiEnuT3rW7RK19ntRUTAaeNkZ7EEhCVPoCh",
+        "player_info_acc_private_key": "9d761c1841073ccc479a9c0ceb86f30f93eeb02b3d77305ae2ea17e0166c974f",
+        "player_info_acc_address": "EU6KHnpxza1JM9iYuYHBTrep5fPGafXUZds5KTeLohUb"
+    },
+    "1999-TV": {
+        "player_authority_private_key": "298eaba34a5f11b80cbee639915ded3e9b2ac33a1b723bf3bc71391dbc1bac8b",
+        "player_authority_address": "Duqqm3niAiri4eVLGsVEa2cT6XcAwKsRCXS6wUZC8kF7",
+        "player_info_acc_private_key": "e27cbbe92ea861bf19025dae0fbd44925cc8f3da7b463c2d2e9364a0a2cdf98a",
+        "player_info_acc_address": "3QYUJcvdMS5EQ1eYZMowVkA6uJP1pEmD7nj2rcxHZ1jw"
+    },
+    "Mr_Black": {
+        "player_authority_private_key": "664dbedbb92547a2fe95e383117a9725b87b4a2164b36507c96d518a80ca791f",
+        "player_authority_address": "ArVuAeNhMHgogmRetnBeHM55iNYYQ9t1CJiWPEmr6M2o",
+        "player_info_acc_private_key": "701e5bad6626a1e5fb6a499e8b4442f4b0bf704a014ef3a47b1809c316a37645",
+        "player_info_acc_address": "12PNhx5QiDTAXFDVCqY3aVQhY2wFfYax9TKnXRX5hUCN"
+    },
+    "Kawaigirl_": {
+        "player_authority_private_key": "25b3223fc3bfbe3a1c59a575db53283228a15bd89f8b3a8d8fcbe61bc782ef8d",
+        "player_authority_address": "A6DQCVXWJR7DL6gpS5FptXu3iPxfvafXyzRUL7qLNxAp",
+        "player_info_acc_private_key": "a14e7d3cc071691420a08c46583cffced2e629e826f7c54825bac04c00e2b735",
+        "player_info_acc_address": "2gJQX1fNwkfaSCB8sKvP84aViHjZBh4c3cW73KTaZxNo"
+    },
+    "lark": {
+        "player_authority_private_key": "e0e32096291d47723edc72d8fad9a169fb50c6d0aca0f8b7499447ec75a48b23",
+        "player_authority_address": "S5PpwL8Pz5RVZ7REgQgVrbHZwp3jA8a1YMdZ1WDezhb",
+        "player_info_acc_private_key": "7a235aa2abf26826ca9b80056cbd1a816617cb4d5c354b58b390335cb76b3a22",
+        "player_info_acc_address": "4uMjRyjabC5jhhGkYD5PvVZHW7Ff8GY51gjaBHhoFQyu"
+    },
+    "sercesbalmo": {
+        "player_authority_private_key": "5e508b91c112031dc451f635a1f9891d5f5d3fee462e66542fb35a48035cd7a9",
+        "player_authority_address": "QyyEim8b5BWTqJpL6imB8kXF97VG7hDz1DurhZwjALK",
+        "player_info_acc_private_key": "6ceea341155e97c4c0839e43997f68a6fe34f7ca870185ae2513efd0021d7ec9",
+        "player_info_acc_address": "CMqoDwUcyqcWmq5LUW1NTVwsjtxKT7APU4c4EaWJ3Ekz"
+    },
+    "XEN": {
+        "player_authority_private_key": "6fd21f6faee9f8d61245af6ef87f44ad2c1811dff30eedd807ef4f5a7ee79775",
+        "player_authority_address": "HPbwCR9JJBCJbCtfQWGbrMD4emxTEuwrHfXFmXphojFL",
+        "player_info_acc_private_key": "ec46be9fa710991744bb30e668d695df0c2c0afdd4ce74b53d20272588370288",
+        "player_info_acc_address": "A6mXncAzrR8hfTQGPcwdDNTzBfmaD9b6bcwmzdQKEB4s"
+    },
+    "tfhero": {
+        "player_authority_private_key": "1fd816087c7d45d8b3fcf1333099da7f9a7f0e1431bff35af79f0d3c5977e49a",
+        "player_authority_address": "aJVbCq349ogh2bQ3YFE5Nh4n71yt4J6b4DjsomJkfjC",
+        "player_info_acc_private_key": "27acbf0cd0b6e901414e5961c3383fce657fc193a307a2b16a8bd193c0cbc2de",
+        "player_info_acc_address": "2WDr7yBXobJstvAAszDpHpRzEaigTpaeKFDvruemUXoH"
+    },
+    "BENnl": {
+        "player_authority_private_key": "d60c6af14e2d58fbb1f1eb35db93db4a2092ef4d595d0a91f22fad9513cf4727",
+        "player_authority_address": "6zznPhe4YpALPmVc5UPDWHzyoHS1sr9HeuModujPnxSy",
+        "player_info_acc_private_key": "a795526b281a036976304051c5d36722b096d68bb594d4176f06a1ab75f0b7b7",
+        "player_info_acc_address": "Gm3Z6uvWduyGqXJTbuUpMVHGcgAQBmpv7p6sBasXpnEa"
+    },
+    "Soldi": {
+        "player_authority_private_key": "0c807d48457019e79af421fce5ac3bdb9698074b9a39153777a2ad8ec8dc78a1",
+        "player_authority_address": "69RtxkSkEpenA287mzq87J79X9JbXcRVpPdBBN4DonHN",
+        "player_info_acc_private_key": "e9429d040496fb029579851f8979deb9e45116e88e3455fb27d572de12791ced",
+        "player_info_acc_address": "4U8EdjWChzPwzofmkxJvKrsqG9H5HyV6TYfhgFCGthvJ"
+    },
+    "unnamed": {
+        "player_authority_private_key": "a80e0e169705dff1180ed26eb283dd8ddd1b9b53cf60361d95834464ea32ad84",
+        "player_authority_address": "4E2qPAEDnz2TTd2iKDBzV9KqJwwj27H49FzGChMLrGbw",
+        "player_info_acc_private_key": "5aacb9ed92f7b25f879e932c2da91ea295aaad746b661a48c53032c1be40e9da",
+        "player_info_acc_address": "9Z5DpPtcQfEJfaaeXgjYvS52LwM6VnQncxDsM2GLtv1c"
+    },
+    "BlitZeN": {
+        "player_authority_private_key": "9a69924f0e41b27781dab7a2dfc9029f8adc58cd3e5311ad1ca676bac49cc0ed",
+        "player_authority_address": "7Q332FikgxvkxbDnvTNaKfBN6YVNeEYSo4NfQ4HPjwq4",
+        "player_info_acc_private_key": "7b2a47a4531a1cdee485ac9fa25afaae690614ada3fc81c683c34a5e0a2fa448",
+        "player_info_acc_address": "G6bpkJ8cakEghi5qFHrB458kUEfnBc5xg2CqVUdXeFCt"
+    },
+    "D0NN3R": {
+        "player_authority_private_key": "2d163400fb6f24f50ba243710f27d830af342274b97136917325bf87b5fe3713",
+        "player_authority_address": "FjGmFqrMjmGqzsx3biKFRJzg8WJicYcyGs44CuwKi658",
+        "player_info_acc_private_key": "c3b5c00c30f268a3b93b90794a752ac4c2fb92a4edcfb3103f91415763218b6d",
+        "player_info_acc_address": "8f3b5BrTRPzbmtMKZ3rLcEkVzudkNALdnLP4js7mA8pg"
+    },
+    "hellohltv": {
+        "player_authority_private_key": "c9c8f090fbfa281b9cad7d2eb2550db26de1316772722b81456189491596002d",
+        "player_authority_address": "GBDc3c1vDvG4MvNAtQUMKQRNQx1opP7B2uPhqPqbhRUg",
+        "player_info_acc_private_key": "800c69c00ab484c7483eb7290e86f303b75abc5257f8aadb2ee1e67219dd3b07",
+        "player_info_acc_address": "8HR21DitcMFjaAR4yecnRUR88B5BLw56dS7BwUWr4Qo5"
+    },
+    "FUBAR": {
+        "player_authority_private_key": "ac50ed4208f3379c6e84288f5f6515e9fbd7ce61c5fc9f75b2978f403839ba40",
+        "player_authority_address": "DQ6v1NnY59q9Wn8Rk3LxeD3pnh79PaLa9eAFbUTf21Kv",
+        "player_info_acc_private_key": "80ff1c9faddb674acd6e2737645c3813d7e70a1fd55fa50c8559bc5d202897e5",
+        "player_info_acc_address": "BDfPcTGCUB2zyh48zJ68FiSfs7kCZ2F4XtJ8ctcuByXb"
+    },
+    "NXS": {
+        "player_authority_private_key": "5f4a9e0988ad2dc7217f42a6aa58b64ec71134ada358bae7e1662a97fbe8bcef",
+        "player_authority_address": "BMACYWjndsQhyC6X73xnd7Yk7LqvhqsYQDbKabLn2Mt9",
+        "player_info_acc_private_key": "9db822fb5b83f2af81babc8016a3c884e763321574c0483dfd21131049447371",
+        "player_info_acc_address": "9xJvxBf8kPu3yCSR8whSrnh9ma4RTJ882CwzLx8a8GsF"
+    },
+    "Earp": {
+        "player_authority_private_key": "d530d33442e2adb67d46eb8d37c658edcd0b2dfbe1cef43b9f3d6931007453c7",
+        "player_authority_address": "FfpubaVZBf21PyMtnfBaU6y4N5eHmfPFSbbFGw4X5wAA",
+        "player_info_acc_private_key": "e0d11245c836793fb6470de0370c2b1308563ebf269603a30672f0c531640b03",
+        "player_info_acc_address": "7fi9jyiJS1YeCZT5uHqH7K7mQTPTcsYRj3U2CcfWnH1E"
+    },
+    "RainMan": {
+        "player_authority_private_key": "5e34feec8284eceb8bd98ca3b5c6daa75bf163a23977ab308180f4f7d97df723",
+        "player_authority_address": "3s7xHy5G6GzwDr68oowSyqPjxFYSVE8v9TwLv9CxHeBM",
+        "player_info_acc_private_key": "69118611c7a92ef8498e75067ebac6ae41ec535ad1ffe7023b0da8994382bb71",
+        "player_info_acc_address": "GB3QAtfXYCN7F32MVJNuiakYszq1AXX3Xpfnp1g4F8Eb"
+    },
+    "FoxBotnet": {
+        "player_authority_private_key": "db9734b531dd546df989e8a638c1f20e9053ea264f6488ccc6a11cdb2df07b3c",
+        "player_authority_address": "6VKpdgbHoK3NJytV63bGmPgRDXJBKdtbfv38FLpyf1NF",
+        "player_info_acc_private_key": "d264112d1a3831db13d1c0994b140741fbb3048f272d8ef871fbf45e3b18e287",
+        "player_info_acc_address": "6byNj1pSLd3t7VAaNhxxCWfc8AhaJR7akbwmusyGrgor"
+    },
+    "FootJob": {
+        "player_authority_private_key": "9dc8833dc2ff025e9ed3f0df90fac987c5a50bb5d3dc8087fea611230031a47d",
+        "player_authority_address": "G7Knr6mmRZkN3iK6Gv1ZosStcu3PxWHJAtrkJ1EuUo8e",
+        "player_info_acc_private_key": "98c379b896be90630bce1db8c516f95138b81f157b8f148de53bd75c3fbc308b",
+        "player_info_acc_address": "9g9dm79MeNKQ23cesTSiiD3CHbekDNPyQtnWbVYnoibG"
+    },
+    "Steave": {
+        "player_authority_private_key": "946c2d6c1f030d2cb92e6080881ea2a693548798f1e2dc55968caacc7e391de3",
+        "player_authority_address": "qJiZtyNMzjD2Y3Hfow9LgFye4p2sc4b7wWdgPsGoZMc",
+        "player_info_acc_private_key": "e36db82f74e4e85e5d09021e363617851ee0fa9ec80ce301e798358a25224822",
+        "player_info_acc_address": "ByPvxyjouEgrFB5X7KxdAgmNPnzLjqFBR2sEMCreKkW6"
+    },
+    "Playa": {
+        "player_authority_private_key": "72f6e4f32b49dab578cda3be88a9946097f3f448077c2428f18facf7f1acb823",
+        "player_authority_address": "7rP9pbFLdmTbPq1DrRXPsBN3gbpGGP8joUojuYbS7GAm",
+        "player_info_acc_private_key": "0c631b153299037f45c647f045a5f055b079a7fcdd62a3d5c39e43fee9533f0e",
+        "player_info_acc_address": "FNJmx1RDWj8nAtHQoGVUtq7gEVSh19qypP42zTLbJTgH"
+    },
+    "InhouseHLTV": {
+        "player_authority_private_key": "4fa4772be9e223005db172c620a3214d609ca29baae4a5f45521adc0ffbe8628",
+        "player_authority_address": "Ag2LXGSB2YAYifYrod1ELATToPu9yNoJD4x3orcmv4du",
+        "player_info_acc_private_key": "054d9852145eaf386fb1b185ff96d044fd94795b51eb14a27036222382666f01",
+        "player_info_acc_address": "AB8e5F7s8KzArws1mL9AGHreDRFzNzLqw3gE4x1Q8yDi"
+    },
+    "FFL-TV": {
+        "player_authority_private_key": "0c3744d71e680866e6daea69e5819792e9a267d745f46b924e8425567f8abc22",
+        "player_authority_address": "F58ff4aNzLf9v9vaYCW25r6wByPp2zg4LNy6p7R8XvmX",
+        "player_info_acc_private_key": "655af8f799815fe87feb9b6706eb9a2d3ec17aa25215a2fe9bb972ab0e1ec2ec",
+        "player_info_acc_address": "Hk78ACYcRJZcCkXj1fiMMiGP693jSU1zf9u1siAm6cjk"
+    },
+    "HLTV": {
+        "player_authority_private_key": "db89178b57527d7ec5e6806bbdf90fdf973c8313456f74324fba7de3896bf458",
+        "player_authority_address": "9vUSTCUmG8GyHHB7cBiGjqQrf1Spb9xNcRvEy7kWryYm",
+        "player_info_acc_private_key": "6ba5b451552d0b6c5e20928d707c240860caa6e54d6ba6b31c1379ba88d16ae0",
+        "player_info_acc_address": "ieAijSGBz3dm8ozE4xkzG4yPgoYviaCyBwaFGTn4RVx"
+    },
+    "MrFloorPie": {
+        "player_authority_private_key": "1e1957a9e42739ea70337d927a379a8f651a9647992cd8a301548688c910213c",
+        "player_authority_address": "AHUMVw4VkK88mkyK2b1hWdqJqQU8fBMX6ZxQiumDcV2U",
+        "player_info_acc_private_key": "47ab0e1e03ed96f16a993ccf9b318ea7c003453a689ac9fafa93e50df5cae4eb",
+        "player_info_acc_address": "FrUdjDyQjZYXuvdesk7ordqrXQhVE1DAQGUMGSA1VwHT"
+    },
+    "MrMani": {
+        "player_authority_private_key": "2ebd90000078e55bf6f3ff6639e50e1195dc2058bc364dece8f08655f266ff7c",
+        "player_authority_address": "2TWt8YizNu2GdLPh2QMv4jQjDALyVP9MNfcDJ5LsK8rt",
+        "player_info_acc_private_key": "896b62a6e1ead369b8a100d8c8e27ceb12440fa2496afb59e1a3b110ff0bad2b",
+        "player_info_acc_address": "o3eoAbqZKd86w4HUbGYuVCQj6UHj6XA7VfSFX1UCHv2"
+    },
+    "MrPhalanx": {
+        "player_authority_private_key": "9d6d811a9f4b6b8b933532032dc736da61d773c45a037a93caa8bb86b7e9a3c5",
+        "player_authority_address": "xseCkNdt2q3YiyGwUdGcY3WNaLGApvp3d2snuSSkyJt",
+        "player_info_acc_private_key": "da4329e7bb233adf81a0bf96a691b6c17ed34b2d084e405ea9b7eb187fa7bd19",
+        "player_info_acc_address": "BMcQEeQXmiyqn6LudNuq86pDjnBQ6thNfRn8y8Duu5py"
+    },
+    "MrBruno": {
+        "player_authority_private_key": "e1460e13e66c8e0b57ddf27a5797f15a39d31d879d569a201275abf35f944693",
+        "player_authority_address": "AFwXdNFpBXRP2zqhNpFbxd9YcWZtG8jf1iQ2zNky71bx",
+        "player_info_acc_private_key": "7a352a245eb7250cc4225535f581c42c07029c1472cb61fa724a6ca8a0ac2c03",
+        "player_info_acc_address": "AaJ2btP4TR673p7DBhnF3JviPiayxntipC8vNafR8mrZ"
+    },
+    "MrGhey": {
+        "player_authority_private_key": "6876f772517296ead0704a61d63a03b3ff8c96d6fdafb350150da6a9c002fa0f",
+        "player_authority_address": "ADTdBvMm8jexGacwS7pp112PKkYPreLSDKT9Jg8ae78f",
+        "player_info_acc_private_key": "3e1c3586596b550217ea49732feda8bdadc86bd214e81f265e60710ca936bd37",
+        "player_info_acc_address": "J4VmDDrHXH1XSiQYEmteWzxD6XcDEP7pcCGrwyTx7Hy6"
+    },
+    "MrOpossum": {
+        "player_authority_private_key": "9d0044007cc385e2d7e2328f78810890c544a15da860230f25ee5679996bc6ab",
+        "player_authority_address": "54QJvNZb4an1bgn1FfVaZnzhopiZMP2JDKncra52SiqL",
+        "player_info_acc_private_key": "6881ec17f344c18f73b31969aaddff8976aed72a9d9616155332924f619d5a9b",
+        "player_info_acc_address": "CfFJVGSKfzYe6Fv2KgkRYRvQHE9HE5VbASioWsHn3Nt5"
+    },
+    "MrThunder": {
+        "player_authority_private_key": "4727f5a2a7d4ffb38eada173fa8be8c564a7e3d55763ca0ee75f01fb9bdb7ec5",
+        "player_authority_address": "4idVUGx5SVNbtB29RxZk4icDtaiLp9ToMYVgS4t72nsc",
+        "player_info_acc_private_key": "c94eace642bb883721abbe4b09e8c1b52445006ac37aeec0388728d8fd02290a",
+        "player_info_acc_address": "DiT25dK7raCPD1JYJCqeJZwDVQ7deuXYYm13o49jh1oA"
+    },
+    "MrGiga": {
+        "player_authority_private_key": "cbef9ff111ab1683debeea61b7e6edc79a4931148f3e63f88e4f1dddd3d0f63a",
+        "player_authority_address": "2gUMjc5HxJ6L4QKdd9eQwRnmwgKtpB4bjVFrVuKvSvr2",
+        "player_info_acc_private_key": "9861b88010ba82952b182b09845c73466249b6bcc095785c690665525ef4461a",
+        "player_info_acc_address": "BR8UFPSDnpp7hPXXU4twKCozZMR96cqrheGtG9X38iRV"
+    },
+    "MrNimda": {
+        "player_authority_private_key": "35ff48ae9d6e82849a0966ed7a45604be7dabda94875d5ca6e1d9d7922a10d57",
+        "player_authority_address": "4ExBFhGV7tab7uQNVyRS23GdRb6T86MP6vxVYKXbY6PX",
+        "player_info_acc_private_key": "3847464429e2dcebed0ccb917093f73c9e60cb0ca0512c2f98df86d262d9358e",
+        "player_info_acc_address": "AuKwg1v9hQZGrCrXxs7ffeTGb5WChgWH6GQeHdPZD74Y"
+    },
+    "MrP4r4l4x": {
+        "player_authority_private_key": "24e61ddd3b5a582bc925b46565d87dd71a6c9ea147b2272a421096d02b8e6aa7",
+        "player_authority_address": "kPJrUwtB23ccvNFmetxs9A7hXcQEgT2qoDyoN4Wy6XV",
+        "player_info_acc_private_key": "02f0472193532a58032813e157caef09a9f664f3ca162ad4687b80395e59594e",
+        "player_info_acc_address": "4QSeLGxaQ2MLJxNLiZLrPQmZ9nWPeA8TzoVXRpp5ZEiD"
+    },
+    "MrWhat": {
+        "player_authority_private_key": "2eda24f1350f0556884c0bf89f6956d2e5d27bcf84cedba23b28a569de8d526b",
+        "player_authority_address": "HTKgVis5rQr7fdHDBkA7To8ePhwziDsvB9KkbhoBiHj5",
+        "player_info_acc_private_key": "f72d89811b2a10e061ce39c928ae715bed184283f6b9dfb9d5f5f59a1cd53016",
+        "player_info_acc_address": "4eE1dJrRxEGQ7vwHH4JopahfGy6KFQHai8TTPXc2VgNP"
+    },
+    "MrOrtega": {
+        "player_authority_private_key": "e42542398d4f53ccadffaf640b736538e2c9ea884441c68f86a2f521227d7763",
+        "player_authority_address": "9aVuMVFAgKryVRFTASAzg6Nv2MdYc19EDuw9ZUhNxfii",
+        "player_info_acc_private_key": "a07e876566ef856118acf103c3a011c61b0ea9fc05552e5a02504ee5c94dbb1b",
+        "player_info_acc_address": "CcoxrDnpNBAUuF3qujJFsCxR12qzUzk34mwhq4i6pPa2"
+    },
+    "MrSwede": {
+        "player_authority_private_key": "1282c6af4e0065c70be21b289ac5d24c6918c5ec1c5133e3af2c13ab2bc6c9e2",
+        "player_authority_address": "EAja14eteuggbWU7rLur2R7MLJBBebpGdRwJQDUitEkF",
+        "player_info_acc_private_key": "15c1c9eef823992fb4ecb20f0eec57ee54ba044131d5545aed342e3cfc68cc38",
+        "player_info_acc_address": "93DjxbQBshGCZ4cWxyHoUgDMN58aszqyc3A8wjJnrD4F"
+    },
+    "MrTom": {
+        "player_authority_private_key": "1d9515d6c09d71f4fbf038debbdcba492654c734cca85e59c06e48cbed6ec385",
+        "player_authority_address": "EyHyub68QmrdFzmwvhKot497sCnrvphFcim6s1RkMKpB",
+        "player_info_acc_private_key": "cb8d2ae884c6f51fdf0ede14152031a82c556dfaf11ea1d878830e4465fd7701",
+        "player_info_acc_address": "1Wn3czyUQJi41pxCmyosEE5Nsj4aUCuhhwJiKcqYWgc"
+    },
+    "MrNuggs": {
+        "player_authority_private_key": "b9421eab8674b1303b693567de5717c24b78f21423cdc6ad2b6e3cc00317b4b8",
+        "player_authority_address": "FUgynbTfeWhAD2uGWyeuBHTYRqBJH6WogDDQgVZQU58E",
+        "player_info_acc_private_key": "0ee1148b30006b66c8caa02c8b2fe9c43dcd12134816412d9731231b1bb7f04b",
+        "player_info_acc_address": "GXQBfsjjrmLy5SPd9rmr6GvfEfR3p6tqUYmLfP9C8paQ"
+    },
+    "Mr-X-": {
+        "player_authority_private_key": "f1176a6b3d4e738dc2e1253dfbdd282afc05059b294b820bdea7f4277f13e0dc",
+        "player_authority_address": "EP9S9wuDkyEoTPYSeu4sbXPZGdjqsVbmKQLK9qLC8ZVt",
+        "player_info_acc_private_key": "c8f64ec6e39123228e89f7ac19e7f88eb4f2b3af53d64944793d24c15dcdf377",
+        "player_info_acc_address": "3c1YycnKuvzgbUL1ZPUEjNUD1nTPjEHnfm4TDmx83pKB"
+    },
+    "OOP": {
+        "player_authority_private_key": "73bad5c920b21f8328fcb6a67d572a510c26d9cf0f4d5e528d45ba5dd84e8261",
+        "player_authority_address": "7zMwn1vHc3MLRp9fFSB2WYB7NZTCd5J1vCSszLRPYLcy",
+        "player_info_acc_private_key": "d2e19347f9223f2ec9f08f7ea2a35270fd8ff8fe1a67defa81d541d64ef42480",
+        "player_info_acc_address": "iVU65oHHAxoowJCWMDGKSMKU7ZpsboMRMHDmrPJTjMn"
+    },
+    "8ballamibald": {
+        "player_authority_private_key": "764fa3c397b6959d96d5de9aa7f69b32c128a2351d648e706ad8fe8e9482a33e",
+        "player_authority_address": "8R4cPXLHnRxAeuqRizsYrxFJNXjLRFcUfZ4VEA7dFM9E",
+        "player_info_acc_private_key": "4525cb9de836baca960c9aedac49a0c6a350a38e6e11f53880dbfe3ae264892c",
+        "player_info_acc_address": "4crNkE1AeAHtpWhttAoUm31yKeFdsBAMfiwpKGdd5vZq"
+    },
+    "Villagerkiller": {
+        "player_authority_private_key": "516bf253b61b5ff181ff8a824ff374e9ca397bf0ee02db012ade0c726832df8c",
+        "player_authority_address": "4YXhhw8wqn7MtzD4SYxD187wovMnCg1c7UGYKkbvBehU",
+        "player_info_acc_private_key": "be5c83130b17157ec4036fb84567b6fb1737b063ad946b98e6f473c60d65daaa",
+        "player_info_acc_address": "DRGjY8ZG51fJLt5YJVRNxkVBiXeSV3KZNtSPxGKK2BSn"
+    },
+    "TheirateGamer": {
+        "player_authority_private_key": "8bd2b28f2e3dade51ecb29ba5fd1ea78656637921c0b90bce697b0c527dfc1d2",
+        "player_authority_address": "5J7PbsZqbuhcAvZsmMRfKuKrY9qHJWhQ8zxnHz1SZWhE",
+        "player_info_acc_private_key": "d7528093d6a213b2c5515994294cfb7b78550defb314baa812f07791e673b844",
+        "player_info_acc_address": "4HSH527NHZVbudTLAtjms1UpQjLkTg4nFSafko7RAAKL"
+    },
+    "LiquidSt00pid": {
+        "player_authority_private_key": "e5dbde15e42414351e8afb22b6712938cc0912ac2fddb4c6388c3394c7742afa",
+        "player_authority_address": "6x1a7cGS2UkGmxApXFt7BU1kqRAjpP8rxe3Htw5FvDp3",
+        "player_info_acc_private_key": "3919d67d84b66648de3f77367213d9fb1829599cddd922ad2d7d92b25ded026c",
+        "player_info_acc_address": "FPvQEdFvZRbTCCjoy5AnYVKtDSFL3jubGeLXw9eDjwFG"
+    },
+    "SideshowBob": {
+        "player_authority_private_key": "37fa2a844a02bb00ec6ca81996775513820e472a588a6e63ee4758a1da7c3ff3",
+        "player_authority_address": "FW5N9VXC59vhFPXqjDwxpJirgutfY5LBFvo3bjvX3jhs",
+        "player_info_acc_private_key": "03b5e6c482430b696c39997dd222d7e863c2851014f3cfd3125dd941bcb65ae9",
+        "player_info_acc_address": "9x3uJF8JkSrQha1j16ATfgh4ddKe4sADGw9gg279Kyug"
+    },
+    "FluffyBunny": {
+        "player_authority_private_key": "20195334976fbed22bf6dcaaa445082cc69c23c018ae4e3df699ea6d6041ed11",
+        "player_authority_address": "CaZrqmHAmthZuKdnKNc775uWkUYJLujq62P5g16pHrWd",
+        "player_info_acc_private_key": "5e69803cf057ee3f08bd94f9eed44dd956887944a30b8667109a2f05813824b6",
+        "player_info_acc_address": "FxLo1DFvwwBNXL9UXZBbbLkgjNQksRMMUZCrY8acDxuS"
+    },
+    "booya": {
+        "player_authority_private_key": "6a7f3fed675ee314d1907b9ba5e9fd90d12052b0e21ec53d9696f33b53c728c4",
+        "player_authority_address": "DVwxCsENXATe1Bu4QX6HktN5WJiYr8Q1rQ4LgsczyCof",
+        "player_info_acc_private_key": "bd7aca1f31ddbcee8f1d58c4ef76bad7958eba3165f0d84b05b6f8c1e6339e91",
+        "player_info_acc_address": "Cyjck9z33AjwFoTyUSmkEsD1rWQfNzHYax8JfGyWmrxF"
+    },
+    "Bruno": {
+        "player_authority_private_key": "8a4b25773b98b39afd593b4adc0c6ea2acb474f578a33568d30dfb9027cd3331",
+        "player_authority_address": "EFWjxN7Xxs8mxtwRXpaZ6h1vD1k3PYn5g6JhDFDw8ohw",
+        "player_info_acc_private_key": "74c39a66da4d6abd7e48c938ce3dfdcd6554d5e5a53418ddd66346cb9d942388",
+        "player_info_acc_address": "EJBBEQnjiUs8s47nFnTAcukwLvvePiu7hgymhrYf8pFS"
+    },
+    "Phalanx": {
+        "player_authority_private_key": "5e5ab4ce8a0631d9d1a2be06af557173f75d6450c060ac8c2a1a4d272dd9ae32",
+        "player_authority_address": "FaEsVXAdVz1u5H2DqHdgks7xPWTcARJdd7FAGVrYkmka",
+        "player_info_acc_private_key": "935a616c94cbbadebc982e99d2d4950b439fb058372d83cc4bd8324e8dbf1a87",
+        "player_info_acc_address": "Ahnk1zeCu4phXXR9QvG8VQi2b36tNSqxJa6B27EHFYcd"
+    },
+    "AR": {
+        "player_authority_private_key": "35e91898463d3aad8fcc04673a4501a31055b19d853915f8c33ed6f865a48f2f",
+        "player_authority_address": "E8b9zAwpggn7LoKUGsTXDfn9EXk6JUCGSm6DjFJG682W",
+        "player_info_acc_private_key": "70b320a6ee408bcca15f97d17589da8f91b85886e1f7e95b7b69c43c0ed86c6f",
+        "player_info_acc_address": "6tja3UdF8jpvRXTKcABy2QEeRrfE4Jd469KVmvWtmcRZ"
+    },
+    "RiFFRaFF": {
+        "player_authority_private_key": "0040d8dc40da2ac168964b192b272bead46848e4b818e4dc0c2da0af5f4de85b",
+        "player_authority_address": "BmDtdLkHyRNFDETA6v1qRXhkEiiaKEtMZ2g4tyEfSCcF",
+        "player_info_acc_private_key": "8cdb4f9bbdbefecd9af964a6376d6ef772cc0e5517503cabbbfbc64170016341",
+        "player_info_acc_address": "CZHXmTC1uAde4Zc72U1pRURuU2HQaRGCrLmcjoy8m1BJ"
+    },
+    "Jehster": {
+        "player_authority_private_key": "b9cd1240912b2bbcb27bdd52d7d85c5b314f110fa99f770b196b763e5015948f",
+        "player_authority_address": "3QnjmUmxhVgXSURtvJBrKBJrRoEzs81FEqpRaoukKibz",
+        "player_info_acc_private_key": "478d9e6e878cc462b8681784a3071dabfe8188580b6f10f9e187b6899c179624",
+        "player_info_acc_address": "Gw6Lg3EUpFNG38Ei8B78EVoQd2h4taJMEW96ThpP1NYR"
+    },
+    "DePo": {
+        "player_authority_private_key": "47f0003779cad0817c5fb5e4fa6e869b3c85179e5c4ad84e82aea79403a73821",
+        "player_authority_address": "C65huHgLMLoyBGZG7pggJzKXHrYcsd1qDkosn5jJUN8g",
+        "player_info_acc_private_key": "4b13912a0912286e703701b98009137303016342853abec819cf237f1c9ea16e",
+        "player_info_acc_address": "G3yxjJPJzYDT5RS49wcQjVR7eJ4c8bBDsAHCDm3q7VJf"
+    },
+    "MighTy": {
+        "player_authority_private_key": "d518b12ea312d7f9ec963c253b26d31ae3c75c0c5937b4aa5160ed99779cc2af",
+        "player_authority_address": "GnL6VU6DPUr1JuM1fZ2GGNXGG1d8A8gX2t7QaEFZJ2Sy",
+        "player_info_acc_private_key": "5f7433a62e0b1258c09eb99f3d7b413f48133c223b8441e3cb6fef24944296d0",
+        "player_info_acc_address": "AwneT7MRMs2iYzRdni4RiHEdBntz4R5PTdinnzYRQUjh"
+    },
+    "SheDevil": {
+        "player_authority_private_key": "882db2e1e1bc9f85b438ad8168bf068f5903086fb65552455540fa00c51f1d28",
+        "player_authority_address": "8qq2fXtvDiUwR7jfeqNvcwoR4e3GaPS2pirNyEhHV3U9",
+        "player_info_acc_private_key": "846415c31bd47eae676d387ac44bc8b0258d2d8179980e9518bb97b233c7799a",
+        "player_info_acc_address": "De5wc5xqmVthdNkyDpZYST4gbvjUajo6UhSgbKj21pR4"
+    },
+    "Nimda": {
+        "player_authority_private_key": "24b9f86453c478e4921d368164b00b3426865ea31ecb110c05c7e2f9d2f91828",
+        "player_authority_address": "6ZGmGysJDRjjvLwKH8zZruH2v6q9P6Wcosx39kaMtFJg",
+        "player_info_acc_private_key": "fb1bec615727a7781654a24ff5102f5654736cd7b775f1b83107092be27f10d8",
+        "player_info_acc_address": "CSr3YbAVu5UDptgFE7aAo6mdutg4N7hZoNuGovpxZixK"
+    },
+    "-X-": {
+        "player_authority_private_key": "77af0b532145c3cbcc2267d52322ea0ea61a36f4469c26dad7ea5399fd62b651",
+        "player_authority_address": "9jtR4jme3iiBXrh3jcL55ZT3KcyBAbxNzjcgD5sgiZwU",
+        "player_info_acc_private_key": "98a6f4fc1255372253719ab57fe2b4ed4fcbe6ecb1a2279c00005b93d442833b",
+        "player_info_acc_address": "Fmj5DrdUam9mwi9iZoJY1CKkZ6gXcGvzVdVYAjQFjpgY"
+    },
+    "Avenger": {
+        "player_authority_private_key": "008615b2d305a084d5a5ea538383550c55445be24ab6b7cf31aa8db2892c0f2b",
+        "player_authority_address": "HoUwZYDkqiuQUaw7dJHj6wbPqjQFqT8eqQJCLNvhkJtR",
+        "player_info_acc_private_key": "a93d545ea37a83892ad2f039b559d0d019650d6bc548953cff6172bf0d4117d2",
+        "player_info_acc_address": "FDuuJ89pKausfYjJaPaNbn4kvhbpMWZQSmSoScCbcAgj"
+    },
+    "PaRallax": {
+        "player_authority_private_key": "c31d950e84212aa64c5e9c0cdbd0bc5c0ff1082fb4db3d64515efe8eab34144c",
+        "player_authority_address": "F2nGomDsVg8hqxX9pENGabHbv5ewPraTP5EUwkPzNSKx",
+        "player_info_acc_private_key": "c7234a9e89d1f178316caad02a4a87156eb848a79aa7b583c84b84994d79230a",
+        "player_info_acc_address": "D3YLAZr3KJZahFBusMKqyeC3iGMDdqLKDWLSJTd7x7Pe"
+    },
+    "eve": {
+        "player_authority_private_key": "44a3caa885e3108e60000d931ebff133b1b73effcd6f05e3f254b7c66b4b2ff0",
+        "player_authority_address": "A7k41SgDFfC6YBNdnSBhoeNDwG2JRaP1dLdTad8UnkiX",
+        "player_info_acc_private_key": "ec45d5c10f67c8c25c1383af741d4b0b4d07c691a83f0b4f5d206ff04d9fd495",
+        "player_info_acc_address": "FZfKS2UJB9D2m5gdtPCcvVf9HeVFjhh8eCgeXnKzmciR"
+    },
+    "What": {
+        "player_authority_private_key": "5d7a1f8ca9f0578e492aea3e6e989d7e7018c789f9b82cacc387a3ab8e0f14f2",
+        "player_authority_address": "4PvG1FqLPBQQZLg6f5QH6esDjZHBSeGWeNbaHW4kzDUd",
+        "player_info_acc_private_key": "9b4529304213911ad0504ebeb7b63cb3c656bcc9a373560c3da9beddac58416c",
+        "player_info_acc_address": "27V7g1vjk987iTibt9eFbVFKB2QeFDbRMibexZ9n984u"
+    },
+    "SF49ers": {
+        "player_authority_private_key": "f0806398ae6d84b416b38776bc2c2b19471518a01aef2543a4cac248e7ab54e1",
+        "player_authority_address": "4XFNLM9uCdXWaHg4QEem3Za2XNCtfox2Xv1WESmWCRoX",
+        "player_info_acc_private_key": "523f47b85ea427e318ddf4b6ddc7d5f0cac38ba1ca148d265ff740009efa7eae",
+        "player_info_acc_address": "DavtV4Hrhvta8CswpJeKA3fHwociLZYqD22vqU7H4SrH"
+    },
+    "Merrick": {
+        "player_authority_private_key": "01497317f47abfa5965310716280ad16c48209e9da577812e771a2b3d0588e7c",
+        "player_authority_address": "4LN6TVxovyVceUiPYhTUEExDRzXTiRNBzYJVMzD6a5hZ",
+        "player_info_acc_private_key": "961161798f329e0b917c823fd68f0a62ee2b9e9161cc1fb33b00b80cc95b7168",
+        "player_info_acc_address": "6iYkimhDSjGHcaSh8ELaiPmCcBxtytYS3PeE2ZAz7NKB"
+    },
+    "TFPugsEASTHLTV": {
+        "player_authority_private_key": "ebbbb6ce2717eded9b6a8b67f3d1b56a7500f71de493359c95e02e8df365c4ab",
+        "player_authority_address": "AzZKAHGkUmSccwtLmBP7qbRQhkRCSJew3ZHT1ZdfYvCa",
+        "player_info_acc_private_key": "6395a7c07e1bb18fa7e2f37a1dda7773e2068a27e70fbcfcf7911072ac5e3539",
+        "player_info_acc_address": "22WoCk6XFJ4H2PfUNq1z5YnZnD7oJ5R2YBDofk5p4ssx"
+    },
+    "BigDaddy": {
+        "player_authority_private_key": "45f1773f503bfe83d72ccb10078c4e663d68b2880441745f94cc409587f9268b",
+        "player_authority_address": "HkKJd7k1jMcB5KzoeBigT8P4UkUVArS98nHwHcsqXPQX",
+        "player_info_acc_private_key": "4516928450bad82b2b659f5c3bbade5ea1602fe1bca94002556ecaa8c9e862fe",
+        "player_info_acc_address": "DCd6JQy19ZqkUGJ336Bgnb85ai8vZs6EQxtzxd42tmcR"
+    },
+    "SmellULater": {
+        "player_authority_private_key": "27429dc3ef82e3af471e46bb85a74abc637ecdfb937a99dd1e83df823c01523f",
+        "player_authority_address": "6abmiScQ7UuXbkyEj6jfFKfAN85N6ePaE7C671bgbvDf",
+        "player_info_acc_private_key": "3577e20c3b9b838d1c8f44ef92fcf499031200d39aa15087fffbd117ee091d4a",
+        "player_info_acc_address": "JDtfXzmLEtgdw7NQZanQoZ4fn5AFibwnuwB4txKRG39k"
+    },
+    "DeadSurfer": {
+        "player_authority_private_key": "a8b7ae70ecd6b0092148383a0550ebb3f3f981e8df4fbb16774eac375cc5bb32",
+        "player_authority_address": "67CwkcQERYE7mK5bnzX7mvxFfGHeiAqHH6fiP6JH6xn6",
+        "player_info_acc_private_key": "0588d308fac7fac0a7a3194b0ea6461a55f9fc4bef64072d9420cd71772170bb",
+        "player_info_acc_address": "6CeFntLwXQ9BYBvj9XzBNwkjEM9bKB5JCZyVob9BvtHx"
+    },
+    "Glenn": {
+        "player_authority_private_key": "146ece7a90b56629bcf15f93a3cd8564f090e914b7bd04fe7854737fbf992051",
+        "player_authority_address": "AYnTznMMk4ccrZxvN9u1Ch456QrevrLSRShXJbcVDJ2f",
+        "player_info_acc_private_key": "87319a248b02ceed7fbcbf1273772518b814ce5e6d632e1264b454f74ee55fe2",
+        "player_info_acc_address": "9VS2CXz9jMtqLGodF47H24Pn3YP4vrbTZsPLvsYQG3Ly"
+    },
+    "PlayaHata": {
+        "player_authority_private_key": "2e9fef2e254a857fa502df96f9d95a4b5d9478d956dfa5ae7e4f0e22836572d1",
+        "player_authority_address": "3ToFwezVG9Y3eWv3P4TdD2PTcz8bfdxc5bJvDj1dYD9B",
+        "player_info_acc_private_key": "5be486b175b5e0f43c0372148645f9fae5eef322253621a15a9fb45528f64001",
+        "player_info_acc_address": "EiGkrA7cyqcXkg5RX3QDroFb9Bztoi8s5NaaGRkNi63J"
+    },
+    "Kenny": {
+        "player_authority_private_key": "523e92dc29cbfcadc80d0d3d459648b5e6805820c23fe28c71bf338dff54c6c7",
+        "player_authority_address": "C9g35nWUYPq1K6dGuTGgbhsK3ifmM8kYFzbEXUJ7tvGh",
+        "player_info_acc_private_key": "6460d4b95c2630e071efe9be355e07ab367cab46ffe79292dde2c9972b90ca24",
+        "player_info_acc_address": "4oe8cLm2pG9pNaYDWS388aisKQYojh5izJB9YPNH6aAx"
+    },
+    "Herb": {
+        "player_authority_private_key": "90e782e90ef102552d6398d1862a54eed5115b866606cd63d1a2210b8f45d3e3",
+        "player_authority_address": "DiYUk3ZUzimEMPGyR3UGaMMAs8yag6VEkBzb1vvif5oT",
+        "player_info_acc_private_key": "2a02bd27ff96ba82139557a375c511b82e35c3960642e1b33d2c385fe366bb3c",
+        "player_info_acc_address": "5omh4VFaVH9Tqyok6QLpTgbtLF4LhpdPVPYwBjCSNPRz"
+    },
+    "TheDevil": {
+        "player_authority_private_key": "13bb35aabe1a17fefc6a84a9fc72ceb96fbbb1a8cbdbb993a68bff4923b2d13c",
+        "player_authority_address": "rft16NXydggW4J35Gk3P8DYxRon22oy17eA9SU9hz1u",
+        "player_info_acc_private_key": "c9a6e5734e0906525474b00da327a409d75ac5f8938e99f90d37a38c854e54c5",
+        "player_info_acc_address": "dCVk2qhEKPJhajwTyvXQc99zYmWygC9VeH8vDPMgpnn"
+    },
+    "MrMan": {
+        "player_authority_private_key": "df8a885c710d6e56b2472fa2410648769545daf9e31f12792f3fb6a18a501987",
+        "player_authority_address": "5PcEx8Wq59rz5j6fH5zTSDvS8Yy4mk7x2ybWkWUHxvzP",
+        "player_info_acc_private_key": "1f5cdb399debf529a1462dbda95e14466dcffc4d138922bf72e4387c841e316d",
+        "player_info_acc_address": "D7DjPCXt6BZpwbEpuKT9Z97oQUvQMVZ1TKQcgvsGzZjK"
+    },
+    "Jose": {
+        "player_authority_private_key": "73b210c829c871f010fdaa6e2283c0e5ffb8eddc380d679f39d39957add706a1",
+        "player_authority_address": "Diq7jd3SWe7BiSdrDVZK9VvBWDQ2BH6vRVPRszEV7TH8",
+        "player_info_acc_private_key": "85a3b0c18099b91b1a1bb5d62d54bb268c8aa4662ed2cb39c7d12073c6aae2ee",
+        "player_info_acc_address": "AXdtLuerMaGdo11xkqAv5czwJuQCL4syqWaccFdWi8eL"
+    },
+    "Spama": {
+        "player_authority_private_key": "995fadc059122781551f42e465ce0dc4f590cace3e07a281f222e7baa3c12549",
+        "player_authority_address": "FqnxNpKj421XrnMFp71SVcgnAkG1VNpfKjUSGv9TTGRW",
+        "player_info_acc_private_key": "eff9f1951f71ceb9c8c5909cd3a5853299deafcf28db1c97c63e16a5025c390a",
+        "player_info_acc_address": "8gq1RNjqQn46NPKU34wXCTDtsFB4HY4uCLrexTQFtsUs"
+    },
+    "USuck": {
+        "player_authority_private_key": "009288748491b3e7a79eec4d1903b2b43e0e252e3d00d29eeff7f3e7c9355b77",
+        "player_authority_address": "4GEx52HgeNnuNFDFF1RaNNM7mg3agFK9F8WUFzypdNNk",
+        "player_info_acc_private_key": "b91fe8ae852aeecd5161e0c2bf912185a979e1e318b9cfe9b913df60527d137a",
+        "player_info_acc_address": "DVdzBArdcfi9YFwrXeX5FzaHiGp6v716ueG3hrnLh7vb"
+    },
+    "Spanner": {
+        "player_authority_private_key": "82888637fecbb001ef91e633eda8fd9e1f75494bc2bb2c933a91bb057a5b3097",
+        "player_authority_address": "FxcYe9mW9nch3kuzRKsRbBV72mmDG5Z62kzujJ3RYTFU",
+        "player_info_acc_private_key": "3610e3d272ac38779a29ed712d99e66ea9b686fb29d4e1f518c9b5fc01a57b92",
+        "player_info_acc_address": "2LiAdhac4Um2Qa9ZN9EVATfvJ6gRrLQDmQnxv1XYBW5x"
+    },
+    "Timmy": {
+        "player_authority_private_key": "e91d9ccdc139ac9d8ebd5f068b9eea6bc787e40b2a7ac207c10c52490eac86b4",
+        "player_authority_address": "4ZWkwiNKjejKgCjUDxUzWNbyLXA5pEZYEvGeGgJvm64P",
+        "player_info_acc_private_key": "af18f9202e4555a7d8b00d286220cfa91b29e1e114623d865445ac3468536c4f",
+        "player_info_acc_address": "Fyt2ds7ziLsuPCVDrVGgbY2CPNNtRKF19UgXsW5sKFWN"
+    },
+    "TFPugsEASTNYCHLTV": {
+        "player_authority_private_key": "480a91ebd149ef35e28b3c4b48802243de5263161ce76f7d8bb2cc27d098b39a",
+        "player_authority_address": "DitzNLrLumNE5AimGELsjPYF9W2optUC2RuULaZsW5nj",
+        "player_info_acc_private_key": "f1d5cde000488a95af663133012fc4dadce3300c5347925737982adbd1b00808",
+        "player_info_acc_address": "3sTqs3bUggE29e3VBENQi2VPPFoD9R8xmuD3X5FG4Qin"
+    },
+    "FBTV": {
+        "player_authority_private_key": "76171a4120ce9ee7c5ff226aacc54ad57ae11cf22a98e99f121c0c54c391afee",
+        "player_authority_address": "Ho3rwszQBcz1w9X2dGrE1KoHHPVqW5e4TbdNaeaxv5ZS",
+        "player_info_acc_private_key": "b10f663f65fef3bb1a7699846cba75bbd3b4101a96e356a205db0b946d2132c2",
+        "player_info_acc_address": "4Hwh27Bniy39Uf3C3rAnqkRTKJyRPqAhBgEutNRP4pp7"
+    },
+    "Tancred": {
+        "player_authority_private_key": "5fe5d5d0902fdf95964be6bdc6b4e9e31ca58d749cf3cd2cbf8f4df7415d8677",
+        "player_authority_address": "7GPyYFF6DaD2ASSvW9Sq52s7fMwCrMZRDqcRYQe6Nik2",
+        "player_info_acc_private_key": "aefcc38ce0673877df9419a6ac84677fb57db9a799955d1c5179a346d762a39a",
+        "player_info_acc_address": "C432dCQPgKF3V6zQecXpUZ42LMiYEzZyhXpwgu7GCXmW"
+    },
+    "HeloisedArgenteuil": {
+        "player_authority_private_key": "f4a32071bd520109e90262a9a5b36816e5935d752e1aae81651d538dc9cda91f",
+        "player_authority_address": "GzjjbiNx6NT97GkKRF5GzgPuWRmtWHiFpTPxQPJdpumk",
+        "player_info_acc_private_key": "8f7591cc5653fe73aabfef05ae51a95790fbd563939dfe08093aa00ceb891a05",
+        "player_info_acc_address": "35nvjpCf5dJE9LbAGxp9xNsLTwDu1sFai7KUWCvYHdxr"
+    },
+    "GodfreyofBouillon": {
+        "player_authority_private_key": "e6d82ea249c872d2f62baa332d7812628bfa2a0f9206ff5b3dca1e4d640cf351",
+        "player_authority_address": "HvdQU9PGkEUp6HPSQQZnmrdfX7caZpzu2CpbE3yNiUAU",
+        "player_info_acc_private_key": "89931e4cd1a8acf26f4ef1169d34993df013bb10afe7e3fdfec1b159d7021f89",
+        "player_info_acc_address": "3KX25NdTxQHEZEnx8yBKmvsXUfFDGJE1rodFAYcVLuaF"
+    },
+    "AlexiosIKomnenos": {
+        "player_authority_private_key": "e5c772df51726b3451a8dfed76e002c99c46354c74b97e3fcfcc6450f36fdec2",
+        "player_authority_address": "FuoZ9WXSQC75J8cQFmaZN3gVeGmVNMKh8yxWJCJY4KDB",
+        "player_info_acc_private_key": "35f842c182b5541999774f3e0d9cd71a98bc6f220dda44680b999d6e8475dc40",
+        "player_info_acc_address": "EP4tkkvqLSdrjm2Ro6KqXshhT6LjpMW7jv9nLoLrXa9j"
+    },
+    "ArthurHaselrig": {
+        "player_authority_private_key": "aed2cd28c952d2c45846da5b7c96df697d9dd6a65b6a3f183667e932f0b1f3ca",
+        "player_authority_address": "GMYcAUHjuejLPtTQ2NSrkStb8AnGzV4dHajx5A1JH6PQ",
+        "player_info_acc_private_key": "88781aa1a3d68503e5d7359e08713f7c0dd752277fa47ed8317845e928bbc0f0",
+        "player_info_acc_address": "5qvHFDYA8F2bXd4VtBvNK65ZvkgfyvNMpm53mDbwvJ22"
+    },
+    "BaldwinofBoulogne": {
+        "player_authority_private_key": "cd4565f3bb3515ab8f334afd8e5ebed393cffeb6b9cf204f3fa659ac691f8728",
+        "player_authority_address": "J5c3LjvVcKaXjsoNXcmRkf87iPP4MnYa7VxTko1EbEn8",
+        "player_info_acc_private_key": "5492ed41731812fd9c71a5fad0ef810caae1a1456409758df65d67413cdb3e9e",
+        "player_info_acc_address": "Ch4kMMpWuAPsDi9b2gocgpgVmVMC3UJ3EZMr6rLz3iJ1"
+    },
+    "InnocentIII": {
+        "player_authority_private_key": "b7f09af76414b29eb9ab879d90d42f22043445c8d7b11b3e3a7cbefb95f33e9b",
+        "player_authority_address": "HqUEHt28BVM9SP7kNacKAsYSQ59vRqTbMRRpTfhahz8X",
+        "player_info_acc_private_key": "5c8b4832ca81dbb9ee1413c80a9aff5ab43d5a763ba05eb9f137cf4094065eaf",
+        "player_info_acc_address": "13HGoDQEiBJbVeRyb1c1PzVGzGBxfXKwVkcwkRKJS9jG"
+    },
+    "PetertheHermit": {
+        "player_authority_private_key": "af248cffa4b03f89da41b14bb7de4ea5b577eeee79c5f2dff85da59d94ab5df6",
+        "player_authority_address": "61RFzZvdQpx1vABc5HYGYjojESo61JtVz6usbBLxKnX",
+        "player_info_acc_private_key": "6a300614b4bb653e5cf0fd5d43d10b7ab8078b364e3a187cad43ba42e02e0498",
+        "player_info_acc_address": "HVsv249dsXHfyL7gzQSfBrECFrXUUVRjvm7Xn5ShsRL4"
+    },
+    "RaymondIVofToulouse": {
+        "player_authority_private_key": "ede35a3a25f17c45fa0afff9fb0fb23dfd17f96b5ce4dcb0554df9f454fc47b7",
+        "player_authority_address": "GNaWCfxPdMB4qmiGwSs6jCRm8tZMaTsBwoGkVSfvVVyp",
+        "player_info_acc_private_key": "ffaf65ffb29931baeab72760612f19b59f339bb8d3fa8720dd48f8d6f831bcd2",
+        "player_info_acc_address": "GvN1fjCCGUnaXZRwmhQFa6z4ZHQQ2LXjqFys7SouW73M"
+    },
+    "HughCountofVermandois": {
+        "player_authority_private_key": "887c652b2102580e917aabfd6573c5ef9d6b338b1efd3d38aec744b4a71920df",
+        "player_authority_address": "4T8HsRsdnRPzPYnesmqT5vHXdxahDPDXmb3sh3zRrq5P",
+        "player_info_acc_private_key": "aeee115854a52012755a70dd37d61da5dddff1823fd628c471a3032e8286095f",
+        "player_info_acc_address": "DjMbFKJ9tSUZqFe1dBphaJV6jufENMC215k769Xsqx5H"
+    },
+    "EdwardIII": {
+        "player_authority_private_key": "374146e68c96bf5b47cffc4f70752481a92bd5cf088e848b89617d1e9731e8b6",
+        "player_authority_address": "6RYwLRHH213mgeWtG8pNaJJcZx65T7m3CJoTCMA35r6F",
+        "player_info_acc_private_key": "e89ba072fd92842809d7f4349359a28360411d2d8ad46dc644ebcdeaa58a66f5",
+        "player_info_acc_address": "7ky5adMc7L1pSCkWPL75ucTPWCxSAij6EaoapNfaKfQp"
+    },
+    "WilliamMarshal": {
+        "player_authority_private_key": "7ff6059ec97d52a6210dfc669ea60a09e49c04c6337af8382c62ec10520c68a3",
+        "player_authority_address": "8FtEVWUw1yH5fGXSGJJ7uDWvUpjB7C1GEsgN8t5furAq",
+        "player_info_acc_private_key": "beedd4be9bb4a8d1a91ffa9e6e6b0f5e58b9c9d3187dfa5e42b0e457fc4bbb72",
+        "player_info_acc_address": "FrthtUBi3wvaG2D4XGBLLxPhFdkhksJziQzz9xKxNyQm"
+    },
+    "EleanorofAquitaine": {
+        "player_authority_private_key": "f20af8c35065a5b113c8122f26d50bdd414f55293032fe071c5226917830e2e1",
+        "player_authority_address": "31dAKgqL1TsFbbSxZGTetptctFX7fTwCfCVKn9kVsbxW",
+        "player_info_acc_private_key": "53fa143959210b2e4d721a45ddfbaffbb4f5e5280c208ad8088ea4aa6d2ccedc",
+        "player_info_acc_address": "Cw5nQKC2VNQr1ps4p8h6YDCXgnFkjixVzYurSJiCWPJB"
+    },
+    "IgnatiusJReilly": {
+        "player_authority_private_key": "6676678ea3f43b1a59b4d49c209540db0c850aab53670c91444436154f9e208a",
+        "player_authority_address": "2X5FjWH2Jtg2d3zPNZhKxGmJwbJMu8vUog2TXsDJSyTe",
+        "player_info_acc_private_key": "0d42e7927d27e2b70d22de5ba523b01e0460c9694142e5f5c0402d982c65f8b2",
+        "player_info_acc_address": "B9etH1CWTGGmCdpJH1vjmhiGWMMC85zgUvSBMaCp2kCx"
+    },
+    "RobertGuiscarddeHauteville": {
+        "player_authority_private_key": "f2d288da4b53bdbb17ba9fd8c7dc62feee3244944ddd00b5daad9e913fbab176",
+        "player_authority_address": "ANMkTz27Dmxs2jKBXvb5rJdDwjLMnw71oyzGZSgormXy",
+        "player_info_acc_private_key": "78235d1e092d86e260e279f433a1aa4e24aeb0a1dbf590d8a7015086d49cbc20",
+        "player_info_acc_address": "7FboqAHxkKSgUPbBo4T3p4UPPjjYurcb8MuXZq8NujWU"
+    },
+    "Dragonair": {
+        "player_authority_private_key": "d0571a56c5c97922607c72f6f79eae050adee90ee4dd40f58f0f9c522d57952e",
+        "player_authority_address": "44PoupqqSgDn1sd4G7f4Mw94frCUaEwPQJ4qX7rj8jzK",
+        "player_info_acc_private_key": "bdf44107575fe84d4b428288401f896cc7ba6b204227eb9333450d549a20f98f",
+        "player_info_acc_address": "6Y8fte7gAYW1gVDCNz1oc2GPUxi3WCWTX9GjkiBiePDa"
+    },
+    "tiffler-XR": {
+        "player_authority_private_key": "aec907c4d178f1fa0460f2726a01ed6587428212247ac07ad02efbd8ae5ef2b6",
+        "player_authority_address": "2VUc4eTYmexbkZz46g83dG7gsg7KdCuimdtgVcDmt22i",
+        "player_info_acc_private_key": "854644ad84d515881b0f895cab3f30df47a6004ea953ccc77f92d9d9d2be69b0",
+        "player_info_acc_address": "4U9P9u6Q2vXAh6jzvoCPGSxcPLfq4eXJUAmwqf88EFnX"
+    },
+    "Chef": {
+        "player_authority_private_key": "bc1494f54722ddd410d631f05a0d2bf4fb8e2bd9817b3442c0dd3d4733c8d56e",
+        "player_authority_address": "3c7CRXuymb1tKFQYRVAESoc5KiJQC3TfpV7xuR2F1GVF",
+        "player_info_acc_private_key": "a978a556c9d2e793eab5a3cec9532be54a90287be1915f5bb1b4acf16e659243",
+        "player_info_acc_address": "2E8hghMQYGZzZSmATsUUhPJ5DQyTLjVRHh6agfowGD3W"
+    },
+    "nauticalbands": {
+        "player_authority_private_key": "e55890bbc9e65854d3615eb314cb14c9ba0d5d592a88357c94e55020c589bcd9",
+        "player_authority_address": "2y3DjUKBfeWehShJSpeLu554DdYQHpJt45ydPEuYzdFh",
+        "player_info_acc_private_key": "e863fdd3eafcefeb08e2e0126bf0ecdfa6bb4aba980dd5b7862155662071860a",
+        "player_info_acc_address": "3pgpFKTnbi7arjSUeQ7jR8TxZ2FFAzFJkj771HNrFm4n"
+    },
+    "MaTTy": {
+        "player_authority_private_key": "11d8a4a4fc13d886208577c91baa100d890e2ea9e06eaaed52eac8732f5540cd",
+        "player_authority_address": "f59TV9qf28n4Zv9RiWDSS1D6k5nX1WmAg7b96tMcPbf",
+        "player_info_acc_private_key": "1868955710bce9b067a03cbbe2f57046e91a2dab62bf2a4f6032ace7d8a21b0c",
+        "player_info_acc_address": "E6LZiVcXetejSmSPULoeS1LRz9C4FFhCv5dUQtBV5kZ2"
+    },
+    "Aidan": {
+        "player_authority_private_key": "3f38b5cfa05c65ce4786042d6fa2f774b33ad1865d38f561e406016a8768f2a1",
+        "player_authority_address": "5Ny28gY2Do1KBzsB35ZD7wgAV58QW2T5qksJc2PNmgGU",
+        "player_info_acc_private_key": "963b8473f465010a3d563016377edfef8fff6e646f460ff2e3e7649e7bcad7f4",
+        "player_info_acc_address": "HaK4TkjHLkKWFgdbc88u7EUnsbgPwjYpurL6JKQDt1b9"
+    },
+    "PV-XR": {
+        "player_authority_private_key": "e6a0cc0d9da12162ac0a22687819381d8ca432a4dc7a705ac89d060538a26de5",
+        "player_authority_address": "7UZGYnDSDttvWQWdqkxKx1y9VpifehmQRQEBx7GGpgRA",
+        "player_info_acc_private_key": "d56145480e7c5c7a38a07e325903b6554c3a89d7f195187f4689acfb310e926b",
+        "player_info_acc_address": "3hS84SpVa12cm3KESPXSuziz7opogPnPtVHSygbjmrCt"
+    },
+    "wolfeet1337": {
+        "player_authority_private_key": "b57743f071e70866281396c54ec968a0b5d5e75c75690c0ebd701a3d9b422db0",
+        "player_authority_address": "BDkL5Q3qtm3GKahXopPpoFupza9ZdEuhP8rZzAMsFS9R",
+        "player_info_acc_private_key": "1aaddc697479a8eea4509562875aacd302b504bb18524324a550da544f82cd76",
+        "player_info_acc_address": "8gj1g9j5d8Rq3p2fApgoWTW7CnqVN7ei8aMDr8GFqxpc"
+    },
+    "Dawn": {
+        "player_authority_private_key": "90215d10e2cf9abb9ca2940707ed637f9232183318cf78f6f6cd0591d8eb171a",
+        "player_authority_address": "3ewDmtssRYtWTTjfAWZSnrz8BboYw1Bx3SowyDQM2Mei",
+        "player_info_acc_private_key": "4ce7bf88bf06f68b5b4e868daf231f99926ecf8ba7941daa85b39b46c846625c",
+        "player_info_acc_address": "EjaYTEVkSupbNqnvc1sxLd44nHwmoUcPbtRJ1jknJ93k"
+    },
+    "C69420": {
+        "player_authority_private_key": "42602ba91f5409084740f8171d9902bf3545ed1c871fbde256bed5cd6f6584e0",
+        "player_authority_address": "GSxwsEKp6RFhrWfjPe7SRNoxE3uLMMSvABMm3bKAriwC",
+        "player_info_acc_private_key": "af1198480b47794cc717a59617a41ce0cdec7cc823e4b82868f60e61c8789e74",
+        "player_info_acc_address": "7vJYipeFNEMWDRVb12B5WPb87sN9rNuLnXESBSAYRmg5"
+    },
+    "D2F-HLTV": {
+        "player_authority_private_key": "b2022cae812481439a1a03aa11f134ff2ef101666a2d5d1299085ba7563c2364",
+        "player_authority_address": "D4c1FzE5zUdZs8iRwBtYR9mnAv1s5BRsZ9biasv4hRgp",
+        "player_info_acc_private_key": "891404d59b4651a534eb845ea42b40610c3b6b2490a26ff821ade5c646d000df",
+        "player_info_acc_address": "8mqnGamAKvVGNCEgxZrMtM8vgpXJ7ZhbTAtnzSanR2jU"
+    },
+    "Richard": {
+        "player_authority_private_key": "47a102fe5204b37abb7377ce4257f252516fe8fc3e25b7f88885b2a0eb6735fa",
+        "player_authority_address": "9Ru1zfevyQYYdAi1A1Hoji5RR35xnFr3VrEuue43fBW4",
+        "player_info_acc_private_key": "c9c691185eedf26e251ef443da2eb4fb0b6fd23f6a7fcd7e43bb4e299f855375",
+        "player_info_acc_address": "AyXy6J1iGXg2k48nzwSz97kjoMzMnst5TxtNQHJfcf2y"
+    },
+    "Kevin": {
+        "player_authority_private_key": "ecf4ae50a2f721e8be2905430ef1d7755aafe2f61b1187446520521582051b60",
+        "player_authority_address": "954MEBP5KgcNqJXmcsJWUdSypS98asmhbkw3DozhvZHF",
+        "player_info_acc_private_key": "bba67caf6081f9fb945fcc8348c13651b8210cd0d3d7cee6e38fc0c57af2ac52",
+        "player_info_acc_address": "8dQyGTrMdmFjdwUfWX9RAuRm4jfrcRCvtTjx5iexEiPd"
+    },
+    "Russell": {
+        "player_authority_private_key": "b5ae6f9dbea1352335b31211babfac3c06ae847b35b68e6218f4ee46c39d74b9",
+        "player_authority_address": "77p7xe1ZDMADnEHG3MzcMsK8ymVRhnE2c6kLqcXV4Ma9",
+        "player_info_acc_private_key": "d82040141363a4fc614bfb4eb8f5ffbb001d8318986b85879e31e4e65a78703d",
+        "player_info_acc_address": "46psY2ycE4bvVnkWQQmXSnh7Z3DNrVWVd1TWvGxz7Gdx"
+    },
+    "Samuel": {
+        "player_authority_private_key": "43625bfd5ffe4c00289f19226724d741728a41b598a81ddcfc5f0a9794d77766",
+        "player_authority_address": "82qb6L26hZFUeTWkhhqTHyzem47LCqmNZPwjiHhrHFB4",
+        "player_info_acc_private_key": "d28ca26e1fc35d7653cd3e579a4a6b5a7b4f399a80d9f9764e459791a7c1b6fc",
+        "player_info_acc_address": "8ViWiUJUPQaqzFLsJyBGXaSF6qCk2q27ahU6UrjpPx43"
+    },
+    "Josh": {
+        "player_authority_private_key": "8432f43040586959f00f8e32ff3e6371ed4d27cf23917449a5500c886211502f",
+        "player_authority_address": "929Uf2jYNRq2Vu4VZR67vZY7VtooBHGG9KMsbAGhuW9c",
+        "player_info_acc_private_key": "880316a6a459dac8975e936eaf9db526aaf32ac56acb89c53869ce22188be012",
+        "player_info_acc_address": "JBPDAHi6jZLdHUatbJXAh2bxTgtHR6GEWTwPPKimsqAz"
+    },
+    "Nathan": {
+        "player_authority_private_key": "e1d1b2480a5a2fabdcbbf801a34829131163a3f4d1b3f2b2ead7b61f471cbc64",
+        "player_authority_address": "CSSPo1Pdy2aLufmGfGHPKk1zjCTdtiW8hbbFgg6XDnPm",
+        "player_info_acc_private_key": "c21ebd1ae9d4241007afd2e2f0d9e79e812269f3b36e36fe4fe5baeef8ae0286",
+        "player_info_acc_address": "4g2eRxZeg7LemGGXHyjPk7kEnL7TpWtxrMfH9Y4P61jy"
+    },
+    "Tex": {
+        "player_authority_private_key": "059044ef626e1abfd560dd5ed5f0b967720c6d728569a6bf58ff2790ee3521ad",
+        "player_authority_address": "DKxkuEJYEHCu9yDuKyCTH6daU98daN9cPXykgkZq965P",
+        "player_info_acc_private_key": "184bcacde3d1b4308df404ea2df7716a9f4ca9442974ac5589f40448f9ac1af7",
+        "player_info_acc_address": "G8vqaYzr7fnXLw18qrLsUAqYADYDwwhx8TdnvsXb1ZNn"
+    },
+    "Percy": {
+        "player_authority_private_key": "52a7e7234772ec5c2d1a279e766d41d6a2b0824f5780f64ded3b012bdbdf61c5",
+        "player_authority_address": "8mRQL3M7V56RSQ7MHkSD9B4a8A9x2Cy6Ti55MPvDjAru",
+        "player_info_acc_private_key": "a13d598ee173767ba817476eafd4e7a7d3da761a67c8e174477925331b0a33ef",
+        "player_info_acc_address": "EjAnTRmsAZ564vqD4DV1YZsbdAreAyM34LWR36zgXNdy"
+    },
+    "Charles": {
+        "player_authority_private_key": "3546384041ef31c9b2017b72d42715df5248710a3c5c7f8a0d55bab76cec31d6",
+        "player_authority_address": "KuPP72cRUZduyBgXkGoZSXp5nzW31ssnuARkk4qPZiH",
+        "player_info_acc_private_key": "cc749d99f9ee1123b6907051a9f1f8fd1a3190ed8c7f47aca813400e63eeca2c",
+        "player_info_acc_address": "LXPc3v9K6zyynyyJrPPLEYmXoL3ZKaXaLYNuDPuJKgd"
+    },
+    "Bill": {
+        "player_authority_private_key": "a979c90e740ac46c679bdd0baf9df393b699b03fe0b268be3cf589df64477a52",
+        "player_authority_address": "D7Cd8xnujXuhkqok8ii3W1pKcBgdwVU1Ex2Nz71Zq7E2",
+        "player_info_acc_private_key": "f076bbb6239e1d16058a114915854ea980be43d6e4c57c6f53a91d570b879213",
+        "player_info_acc_address": "BJd4mNLN46Ua9PvKGm1SpfmRYWxbQL9bXu9D6bWCphyW"
+    },
+    "Desmond": {
+        "player_authority_private_key": "82991f6c4c4f56475ccfba44e85b394a70f35ab01266a47c1523c7702bd3027d",
+        "player_authority_address": "DrEeSh5rkvimW9AE6iFWHB7k1tRApmmeiBQdFVf2wNHj",
+        "player_info_acc_private_key": "7a7525685b4ab622fa149d0acc8c16d71bede3f9cdb7cf0898abd815a3ae12c8",
+        "player_info_acc_address": "FMNHdrKWdGzzxVCS896TazSnjqUtHTHqcXRgscEQqEgu"
+    },
+    "Melvin": {
+        "player_authority_private_key": "6bc5fc2d67fe441d03ce5b71ca9d2102af1d34f218185b0a39eccd2707383e26",
+        "player_authority_address": "5p2Jdrbm6mpp94cXs3ndEtM9Qjz2yXBDQZworQpHtKyC",
+        "player_info_acc_private_key": "0373e46f972719db4d1714f1bf94b7a177fabdea06eed83a6b1ac25b4092af27",
+        "player_info_acc_address": "9CPwXB5Nmmf9DG9YCq39rALdphQxfuqGWcz19VyYG97Q"
+    },
+    "Reloaded-Staff": {
+        "player_authority_private_key": "9d45a66f260af7153dc37b6734cf4f4362a76e1e9618a1c382ab7b21ca70b27e",
+        "player_authority_address": "98pqKtbrnjTqAS5Q8PYbb6iFWEZ8T4ZAtTYMZRmiCV8v",
+        "player_info_acc_private_key": "2484494b98658134c3ae98079683469f5f3431773f9ea0ee5c9b0f116fb0274a",
+        "player_info_acc_address": "6WeNJHLYDpR1Ksnvi5ikRJmqWh1MuJya4qbFcVxG5c4B"
+    },
+    "MasterChief": {
+        "player_authority_private_key": "24460250ada55b4d5b521e195b7533bcb71184c3f8f7f6e75ea7cb0abdb272e5",
+        "player_authority_address": "9z4ULwKxVEPRf6aTKoY5vUQ4GbM3eWfHgVcZE8Dinmy3",
+        "player_info_acc_private_key": "fbc2a91f0941b24b89b17975e0b7182d8ca028f179becadcf7738e5484bbde95",
+        "player_info_acc_address": "3fMnAGB3MLTeVyi7dtYd2zDsxPLyqiwQ2fnRhLGxNAjJ"
+    },
+    "NintendoHater": {
+        "player_authority_private_key": "f36190d55fa7166c0859dd1f9825a1071c1761b6595d67c4189cd7ffb82789f8",
+        "player_authority_address": "7ccDQeq4pzNaDgTvnFtCYUJJM7YZpfWyvAh4gGTBs3yu",
+        "player_info_acc_private_key": "59f2ec2db033b0bbd74b02217a8f0433e2c73c87fd7653ddd4a429691ecc2eef",
+        "player_info_acc_address": "CLtCFgPfPnb472WtJxJVCvv4Zy8nVTPReK3e5XpkAYPz"
+    },
+    "FredtheBaker": {
+        "player_authority_private_key": "6fe2aa9854211a65d73dad950b76ae84c161b54ce67133b5313e3f06bef7367c",
+        "player_authority_address": "5nx3rFrKWBCFvz6Bopswf2Gs7Q1FVDqUEw6qhr97gwMb",
+        "player_info_acc_private_key": "004785a5672dda24f6b221745d02f93c0f840b1753c09fb813b2ac053a3a3005",
+        "player_info_acc_address": "B5iXZ2MJ92bcmf5oW3sCARnmizhMqDhGQmE9MCsqEhSt"
+    },
+    "Mario": {
+        "player_authority_private_key": "5cad6cc629c07aa99a10d5d16b8039eb88d566f7509d1036600f0c5cf42b0a89",
+        "player_authority_address": "82sC4Js8WjvibBJD5Cb2ACbKk7SFV2QazbySxKRNakKr",
+        "player_info_acc_private_key": "7cfe305c8966f313272c081d416958516ad2f3cfd858ebef97a31849434a2e66",
+        "player_info_acc_address": "8zpU8dRRRTfAKLWiFYKRZXKw23oMVbvbm93snsKNXQYe"
+    },
+    "DaleCooper": {
+        "player_authority_private_key": "f2b8342faa302bf622febdf5ec47113636012f8c7430f2660232c4d65db45683",
+        "player_authority_address": "GBUi5aQ6mgYAtFQ31GhmZripLqrax6NVST77BVMWeker",
+        "player_info_acc_private_key": "d3ee4ee02d86c45a6157defaba5dd02f1aa919247842ac4128396ec4c362365c",
+        "player_info_acc_address": "AUGTAZhs5wJVXWyD8szeP51dujoRm8LSxUA6u4kERpos"
+    },
+    "Beavis": {
+        "player_authority_private_key": "472858ca813cae801ae9ad29905d4f64890b260acb0ba945f5257b239aff4985",
+        "player_authority_address": "FSiZhdyiYLZfKTBmSQLXPzam84Vg13W3W536LyebGTdu",
+        "player_info_acc_private_key": "bf814aee2b9a704751f05cc3b56677031d9cf11133cd8724120e0c3fed319512",
+        "player_info_acc_address": "4wsikC2vzMmouwcPvnSFU2UUGfk1NnTAUdpXKQzfnv6R"
+    },
+    "UnclePhil": {
+        "player_authority_private_key": "d2aab6ca91c41b0d092c17fbd027c9fb2d67c6a7f16bd9773400fe79df9009b1",
+        "player_authority_address": "F4cyu4J3mr45D4xhK9RX44mw5McdWcb4PhsCwrmmUQXk",
+        "player_info_acc_private_key": "f7f50d382036af26171e802584efc1f74ae33888be45216e4f8a19a14da45dbf",
+        "player_info_acc_address": "8YCmpoWvLJD5wADJ4cmfJ7SEzyfFFUMRqYthyUr9rQU3"
+    },
+    "Caleb": {
+        "player_authority_private_key": "fe81242c6c5c22e9dafc27436d8d772ad83f3f3eba271182c3917a96ac9991e7",
+        "player_authority_address": "HdEnzpDv7b8wdgXfsqESefEDQ94i2A45AHTp5WYzcPTM",
+        "player_info_acc_private_key": "30e66ec9ffb31a903db8cd6f83700700ca5f8b29718ba904b167c1999915626c",
+        "player_info_acc_address": "DNvQB2JYj7e3KrCempfxeLbURrRvBHeAduBkun9fJSoX"
+    },
+    "FuzzyBunny": {
+        "player_authority_private_key": "71474b80bbd804087900f7684756064224bfceab0d9ef4da14d37df519257e0e",
+        "player_authority_address": "6thXvMTAYpgc1y68yhGL4zccMSAHufoEuEuPUyeY5BMu",
+        "player_info_acc_private_key": "804e543d49ba947dbfa83a4ce7b800dcaa49467e38ad7da71d014c401a4b7195",
+        "player_info_acc_address": "EQ2nWxeBNgfsqqsYh9RCUt2XSCDDTreamnK36zSbuq7o"
+    },
+    "Alfonzo": {
+        "player_authority_private_key": "247056e49227edde48263093defc57b02520466b606cb21ff8609986dbf3e87e",
+        "player_authority_address": "EJSQPr5DG1Z7FuaMz65ThCsnvkeDJkjQqF7H4wtUhuXx",
+        "player_info_acc_private_key": "7a75829acc7e59305945d9165d574ecff724e22420b61315f65a8933b7bcebd5",
+        "player_info_acc_address": "DeLhSVw6uzWig5kfWPmHLBWSpYnJ3yS2fSNshiBM3h9w"
+    },
+    "Romeo": {
+        "player_authority_private_key": "67af223312c23f39dc727e3aa9239d72b1ef4ba28a2481dd7d79408943b56070",
+        "player_authority_address": "B1r8ncH2nS5SqumhR2CAvNDJ4F3GWYYMF6mmUZS2Bg1K",
+        "player_info_acc_private_key": "9e16c9ac8bca9c4bc4560a0c5587cce3a29d1d5bb49978c373399cf7cb066818",
+        "player_info_acc_address": "2WV1UVQbBYTrPvVBMbahmdxxGQvFQuom6tGczhEMuPLi"
+    },
+    "JesseJames": {
+        "player_authority_private_key": "5051d42c83fade5131bf881a77b461d3c6831f3a4be591a1424e470e5cebf40f",
+        "player_authority_address": "B3ueSNpEohD4Y5Phiq6fHLCHXW9Vyv1yEpJbHUYM29mM",
+        "player_info_acc_private_key": "d25c7c145c6524858533da7245c9a10690a3819888b4119fb3ec9fd733e35050",
+        "player_info_acc_address": "EtmjLeeoH3XqNVj8vud831hmAY9xECtMWKdsWYMMpNTb"
+    },
+    "AOL": {
+        "player_authority_private_key": "bd5b9870608010791bc0fe81473e2e2124e735922744acb84fb8bf277b864a57",
+        "player_authority_address": "7H8NZN8vFyw957k9p6YPL8K71ZHiLL72dJ2Bz4frBffs",
+        "player_info_acc_private_key": "601d9efc00fbaca60563f1d3d73ca9def5d5310735d1bddfcccb457e93a7f59a",
+        "player_info_acc_address": "3Sfh2K3Cip6YeWHif1kgyUvphxYhmhzDzXTbLCoNRr71"
+    },
+    "Martin": {
+        "player_authority_private_key": "b08841f76c9101bd9e895403f4fd233af2f2f801dbbc0393edc4acfbf1e3750b",
+        "player_authority_address": "GBJxZ5fTbm1cXd4R12aUnYyGNtw7aXbBsGJvbJr4WKWG",
+        "player_info_acc_private_key": "0f6f61b670ad8877bc68cfb210b93e5accca7de62e51662c47ddd2b155fae1e7",
+        "player_info_acc_address": "24wfaDKs4oEWrcMCALGg6mYFnbgTcjkJPDQYmNLbZaXB"
+    },
+    "REDDOG": {
+        "player_authority_private_key": "21dd009bae2d3072de471226d8836e2f5ef36315c168721d293fd79f745cc0fa",
+        "player_authority_address": "2JmCsNbe9jZJZ7zZRwwrGji4Er1XV7iuLRvzpyBKrnN1",
+        "player_info_acc_private_key": "cdd2276527e653b5bb2e8dd2f3950f75aa3fa04e24f9838c8ef04616f8b44473",
+        "player_info_acc_address": "3VUM9eik9LifiVnnj2ELNjpfSDbVwcYdSrJztXDyxFNb"
+    },
+    "Cartman": {
+        "player_authority_private_key": "ba5e41acf3175846307f2773bf614be4d6ec503ceba9f9adf7cb4addc87db83a",
+        "player_authority_address": "Ao47dghHWnyLB1ks1pRNJXJfYDvYPdq43LVuxvJUud4h",
+        "player_info_acc_private_key": "b5416410732fb2a0f2f0b2e65ae8c92f1d5c1acc9e0c70d5af1a1521a1737449",
+        "player_info_acc_address": "8PeTrYGkKwmU6DnfeqJu4eQbGrW3oxCdBsPu44emV4M7"
+    },
+    "Kyle": {
+        "player_authority_private_key": "9278c1d823579a48b05980d1f467a995cae010bb7fb303429833fc2e9c93e6b7",
+        "player_authority_address": "nzjdUdEEdMjH2aRcY28FXCoC5bSf5vmza7v9QrD4JZU",
+        "player_info_acc_private_key": "89d926c7f1002994ee987dc87a10eda074271e712a2f34e19f43ea08b8d050ea",
+        "player_info_acc_address": "GRAH9SvAnwPtpTqPFbc48tbCjqXqJVVtr8q6K7PXGQe4"
+    },
+    "Stan": {
+        "player_authority_private_key": "cb2366c7624d73a9b029113bc378eee3ba388600cdcb580fbf5b6725a6c1edf9",
+        "player_authority_address": "9PsZidj6AMXetqo4HbmSDxueHhJSNU55WyHhKv3gVaVN",
+        "player_info_acc_private_key": "65500e438344f21a0d91cccec47993fa21ca67578fac7472c9d79c3f3a2ae74b",
+        "player_info_acc_address": "A3L6ku22zGTaS3CL6EyWGpj5CdKyxaoJPc1xmqEWQRmh"
+    },
+    "Jimbo": {
+        "player_authority_private_key": "2451cad25b5f09dc9b4e6b19a9a52b42921ad8735fea7a89a920a9b7ae376893",
+        "player_authority_address": "HAWjzyMUqsxkTESDx1kNxaoQgD481rQXBny3qiESURRP",
+        "player_info_acc_private_key": "65a01e4248e8fcef1f79a3b2fc55f9e004986d97a3fa644f1a4c8bbc7be56a79",
+        "player_info_acc_address": "2LhcTvpEkNpxdQs3ib8PTadFeTyPSDubcKspfz7fNYc2"
+    },
+    "Ned": {
+        "player_authority_private_key": "b705ddfef63afbac298b356b5fc263f56db62c04903357641f5c40fd0d787447",
+        "player_authority_address": "3hWvjCCqUvrK5hrKqgwiTLQk1JrwujeS8wTeRQvJ6j4S",
+        "player_info_acc_private_key": "ac51a49cecc4697fd463dbc23c65d158ee586a3dd362836d0b05ec79ee51bf81",
+        "player_info_acc_address": "B2Tr41pHwLFy4fMHidq1o9tFGTQqxb4VjUPfnxR4uCcG"
+    },
+    "Butters": {
+        "player_authority_private_key": "d998da250564ed68b4554942c32c4782d717236f9d8ce80bab6c942791c5fca5",
+        "player_authority_address": "8NbJgs6cczm9Se62k19ZzzEZqSn7YkVDfppsAA2q1AuT",
+        "player_info_acc_private_key": "81e9dc2460cb8a915a8909154767b91a9652a25c4c7d2f8b11ad8448abe54c39",
+        "player_info_acc_address": "4dTgtpEYmTMuNwCU7YZsq9QoBwRuD4LHbbd4HU9CLZmG"
+    },
+    "Tweak": {
+        "player_authority_private_key": "35fd9281bb01167c69dd540a42547c06b2388316ef38e872937a9ca3edd35ea6",
+        "player_authority_address": "B4wWm5gGLXfpyES5rrznY5CpkTDduM8pB9kq9f9udSV1",
+        "player_info_acc_private_key": "55ccbc557a8a254c186b4ccfb7f6b92f2c3b4f9b0014d3d462ee9295823b02f4",
+        "player_info_acc_address": "2PujUK6KQJ85YRsi8ZQSGXEpYtfqAJdcohLqCtJyt9Hi"
+    },
+    "RoystonVaseyTV": {
+        "player_authority_private_key": "e141285442502a511b598a74ee1a5a285f0407930b2b9b0db05ce6c5125796c6",
+        "player_authority_address": "2n8rqrUVi9R8KV7ph8ttRg1npWoAU5BePCMTMJXr1eZj",
+        "player_info_acc_private_key": "4b864f2f2dea1080d64f4fefcccc21cfb8538900738d02e4995515b208d50bc2",
+        "player_info_acc_address": "4oTKAnLTLqqr9qg8T9A2NWbzRg2FHtQmXAn9jhvTYXbo"
+    },
+    "WORLDSbestskillServertv": {
+        "player_authority_private_key": "0290e79cb8624f77ca58e5d9f8cab9d90199c8165ffa999d269bf1d33a273ab3",
+        "player_authority_address": "A5zt7nXy8UZH6aqW8nJuCpd4FPhuoMWuEHAYWXWTkV8v",
+        "player_info_acc_private_key": "3406617b6b81adc7d44f3140ddf165854742989f02ec525be7db97f28fbcd4b3",
+        "player_info_acc_address": "9bR9K7j4PtD61maX9NA9NHrgVDToNxJL7JsPWQvWEenT"
+    },
+    "JuliuS_CaesaR": {
+        "player_authority_private_key": "f84a875a4d02e71ea734b0077b9aedd2a55d5b4fdbadc9bd3864b59f5da7b03c",
+        "player_authority_address": "ByVLjToJrPVXaaptcX5TMETPjs8pUPSyARzF6N8gYHY6",
+        "player_info_acc_private_key": "a6e11da03de5ce05fdd4caf31e89554afc16f7c2657a58b27f426552400a6812",
+        "player_info_acc_address": "4VLxaJmcg2hhPevxcZjgv4UAwemfU4AeyR2EMPLQ3Ss9"
+    },
+    "chinodechina": {
+        "player_authority_private_key": "fd5d36faad56b76338a12c5b31fcefdbd89915fb28f0fde637654ad361383deb",
+        "player_authority_address": "HeK3FmnZgAMGzUChuuQ7QNUAK5RHQX6fwMKfm71dvbWw",
+        "player_info_acc_private_key": "3b21155f2e32313191610266bf2fd2bc6e994740ad20c74ec8ca010d296714b3",
+        "player_info_acc_address": "793LHTipUb1cSPDNLPVZNDUk7jWJiquezSntWdSBwwV8"
+    },
+    "EUHLTV": {
+        "player_authority_private_key": "c4b6ead53c1bb8772dc06a259fbd3d78dfb2d1e1c321ae1840e8470a6a5a2828",
+        "player_authority_address": "GAiPFh59idUoea1dTidxrq4j3TtoTpKtKnuNXAERjgiS",
+        "player_info_acc_private_key": "0db1088c2f8d44a84dff424b957e1f1699ce80a9028c18ce50bb979ab5abf5b1",
+        "player_info_acc_address": "4XnYKe3kyzBjS1sFM7gPJGFxK66PQZU9Hzmns6rFUaFx"
+    },
+    "ElLobstero": {
+        "player_authority_private_key": "552e38763a6e87711649c84c1a8ebc83c687cf1456dcff2167e9bf68747f3cc3",
+        "player_authority_address": "7xpXdRVuLrmZHoddJZXaRbWdWvXjh8YD9NX6Qxswf31t",
+        "player_info_acc_private_key": "6bf66d03aa3ddaf5a50f5aa9e50d98a116c16c5d2b18745947824c6c9b9c5345",
+        "player_info_acc_address": "AY65N2njFC8e7U2bgZSfNbZGRKY14tstqrWAZ5khRbv3"
+    },
+    "CheatsRGay": {
+        "player_authority_private_key": "5620803aead3556ea54f8fda3ced36243d32bae5d36c60bc41444435f3180ca4",
+        "player_authority_address": "Fn5HEzwoF6Ef4Mnuk2Zv15btG2TVqZe98pdoHdpyfy2F",
+        "player_info_acc_private_key": "b406c556869ac1023c63a45757f999afd1f28274eb19e032ae32a12b53a6f6d6",
+        "player_info_acc_address": "Co1fsqAJFFzPGFnYFUbJ9fgC3Rw18NvMHK9Htnonh9A1"
+    },
+    "Gordon": {
+        "player_authority_private_key": "3edf3ca24797d02f12b4eee990b549601b1deefa59b2d91fe24cca7e75c92c68",
+        "player_authority_address": "FS3SxbL6RvzCtN6qsAjwFZZkkYBf5omYY6FNn4iPGZDT",
+        "player_info_acc_private_key": "0676a0df200ecb77ef657c78169758842b1e18e775ea2e080da2f386aa91f7f5",
+        "player_info_acc_address": "Ead5NVRr4SRUUgptALbhRbiHnGZ513pp8XwVJ9yZfa8R"
+    },
+    "Dotcom": {
+        "player_authority_private_key": "77ba5778d16c8938eac31aed68f3e7fbeae837b13bc11a0644e03eac5b4a15de",
+        "player_authority_address": "GTPFVUVbTPsG1bZGyd76x3Wt1iYWmBvRb36VQxhXUSNh",
+        "player_info_acc_private_key": "782f2a4a4b375e3e9542ca4a655e9ed4dc13ee3d76cea7536cc67057a78609f7",
+        "player_info_acc_address": "BsycFVSBYGQB41QG6j2d84qULS2BRCVF3ffiGoG5RwWk"
+    },
+    "Ian": {
+        "player_authority_private_key": "af613417f6ffcd9fb5f0e5bbcb5a6278847185299622183ea3d6fc2794473aaf",
+        "player_authority_address": "2uzWxbg6ypCyMEEky1n1pcBVTk87b9g9pAoiaFdvJcWN",
+        "player_info_acc_private_key": "ac87ad4524477694aa3d6f1bd313fa09725ec310faac70d4a9fa91ba7fb96010",
+        "player_info_acc_address": "4gE6meKCC8JDHKUwqzgAaR9C8QudvtSx6e6fdkn4wupy"
+    },
+    "Grubber": {
+        "player_authority_private_key": "6b7c454a57bc1052a0d96cc83e76b3db3cb18a6895795113085936d9381e402f",
+        "player_authority_address": "9FppNspsLhekV16KkkkmBFcvSntpZ8ojt3dtiBLgkPpc",
+        "player_info_acc_private_key": "654731729ce9d56988aee048299ce11562db8546153681ebb8bcce870353b8b2",
+        "player_info_acc_address": "88bvAZGExTmpLfabVZ3eJyfvNm5QA8Ygpx4UiKuh1cKd"
+    },
+    "DrDeath": {
+        "player_authority_private_key": "4d9c5a62734b5030095041aa3d44f4dedaf0d614f5cc7d68224f1086f050676d",
+        "player_authority_address": "GQps9DRh6wAuMAGrnsNP6bDPg1bDSsGW3tuyyEZFTayM",
+        "player_info_acc_private_key": "12d43d7c78eee1d838a1a908a618ccadd3c2c8bc83facbcb271a8d9c36449054",
+        "player_info_acc_address": "7BkzxALqTLErWxqKEx3tHJ5Hn6MBMji9BigSiAsDRemK"
+    },
+    "Rojola": {
+        "player_authority_private_key": "89470e34bf1245b0ea81f930eb41ee220395ffb8f1dc7c31dba3ad8d2bbfd15a",
+        "player_authority_address": "9hTcactkrRSPHV8pgyWYUCjDnhDK6ByCcjEqVxkF9KW6",
+        "player_info_acc_private_key": "9f48616f8690f53dc417daf08f8f314b005660903b1cfd4c3ec66b1b2e11f7fe",
+        "player_info_acc_address": "B8TF8PvMmfE2V64tjkbcyRdVHHft1DqPBFH4WCqTepeV"
+    },
+    "HLTV-discordgggTxXDuGGTg": {
+        "player_authority_private_key": "1bd035906537cb03e9abad772e3c00b0fad998fd75d72bfe08ce40bf098cbbf7",
+        "player_authority_address": "5HiJsA24JUyzrUCtR8o1QkYvAUFb2y7jjih52wcWSszH",
+        "player_info_acc_private_key": "83647a7df099ba2f749a79c25ec2a63867ce4b0c8ecd9418ef44a33fcdff2377",
+        "player_info_acc_address": "57LwnEGc7to15wdm7aDbYniMDb3jN7Vw8xUPrGXmr3FS"
+    },
+    "TVS": {
+        "player_authority_private_key": "c222f6626cd997236fd662d5c3c6011c739b1499d540c55e637a559472a81767",
+        "player_authority_address": "5ZbZ2SX258dKgbZ5SGH8VA21E6j8UiutL4StPJbLUQwN",
+        "player_info_acc_private_key": "a8886659c578553bb0799550d3731807e21d64b88746fa3bc93dc46ae6426690",
+        "player_info_acc_address": "9CU14Vfc8HuiFq6tVUkGVDsXw6x2hMhm38TazhSp4uhv"
+    },
+    "Huxley_Pig": {
+        "player_authority_private_key": "eee26dc108e0fbf98b6557eaf61ba4ee1da21b5759f5144c1fd2723a866a47db",
+        "player_authority_address": "7NRmdKiiC3UdMnUKeT9UWQn5fQsJ87yP93ViMoHazFmH",
+        "player_info_acc_private_key": "9df9e73d3dd67a7fa39e008383238992218a609a3223962767a01d62d829deb0",
+        "player_info_acc_address": "8SMYyvhMYzdyZvQNATPkYY2Q3Y8UQsijN3fjsasj2feZ"
+    },
+    "Shrek": {
+        "player_authority_private_key": "cfa3d5f2fbc561ebe5ac2ff13a939bcc27dd2ed1b0f9bbbc6b659043e5a08d0b",
+        "player_authority_address": "32mAcvhP159FYL9c2XSfZ3b5MvLe6Kn1mCFLg19fQy1R",
+        "player_info_acc_private_key": "402406519917c49b2ef4fc091cfea414741511eb489f72629f1a598bb8122dbc",
+        "player_info_acc_address": "9TyoLb8BL7RD3Uo3tJtF9fwZVfT2pP6DRtkFcj3E1oWy"
+    },
+    "Sonic": {
+        "player_authority_private_key": "434613b035b95988a357b2deffcdba4f036fb90530fd8311757c076b8c2104c5",
+        "player_authority_address": "BjPJ6DEAjR8aGub3STLK8AbGzoraHsyLTVPZszsM9mSz",
+        "player_info_acc_private_key": "308c71cfd85bab4f18b96598de7f975e12e1ce5a8bed767149a72650a3923f68",
+        "player_info_acc_address": "E8BZ7y56wjXxz3BVYyYWxVmHkNqvjrkWUkCBpE4akRoZ"
+    },
+    "Barry_Gibb": {
+        "player_authority_private_key": "15d022a65cff7351da7062ce523b4d1de2b080192b2f7b945fc69e63812a8235",
+        "player_authority_address": "777Mv6gCnqHQGB8ADwB44EffS74i4mRfoieszURvg2zu",
+        "player_info_acc_private_key": "fabc2df3e71cdba46cca6c78b63c182984184201025d0a432b0237b617e7a542",
+        "player_info_acc_address": "FnptdJZ4UF89Pr72EszfgUwT4mK62jNm3HaJcb5w8qom"
+    },
+    "MedicBot": {
+        "player_authority_private_key": "4d1d579b927cb5519055f4419f97a4d4cdcf2d7be582ec565db7b52e68ad8184",
+        "player_authority_address": "2VbQDsFNteT1LiWhFMxn3WRcByerSoTsCEiatedrUNYd",
+        "player_info_acc_private_key": "37c0d5e086dca6cdd95cfd2f3c1127c7891acabbb598fadc85f804e77cf45fed",
+        "player_info_acc_address": "GtE7MHvqgNQsbW3krkKxSYN12XGLzPEFVBf4GEjgKb3v"
+    },
+    "BlinkyBill": {
+        "player_authority_private_key": "fb5e33b3a9c085e026ac0e10b8bc18afd478ab1acbbd13c5fe307a971b400fcc",
+        "player_authority_address": "AQpVvK2QiyYkSn4BupugMAWR9JcYygAwLSnu4LsEGs1k",
+        "player_info_acc_private_key": "33662efc45c8ee4460e99d0e4e7abcce4a05b3d9727829a6e4f3e92ee6f7f363",
+        "player_info_acc_address": "CFHTSifeWBectvKDkHSf2dgDZEsqsKJuxCfMfHuSZNvj"
+    },
+    "NtF": {
+        "player_authority_private_key": "a0af2c902d62739dcb8113fcd365b98d3e430c3ad2101b3ffb46375332b957cf",
+        "player_authority_address": "J7FkTyZJXDiFJfzd4fyqRA4NkgxyGEi989t19dz91sGd",
+        "player_info_acc_private_key": "147872401097be80cb26e733abdb418e10dbb36961c95a7d1310880e887b9bf3",
+        "player_info_acc_address": "Goh67CALSsVKTVEdHGhiR6ysjEtRraPupnLo5bnmFP74"
+    },
+    "HeadShot": {
+        "player_authority_private_key": "5289c9697f3bee0d7f0466e42755e3006f1755e6f2db76bc807b3e73f01688f8",
+        "player_authority_address": "HcLr28kchS8E3o49dM3hZp45Phhwvo7ePmDyBfa3LSeY",
+        "player_info_acc_private_key": "e919523407e23da67beb3bf0e3c33921cb91b8d11c680a51081e0d524e30c815",
+        "player_info_acc_address": "858S87SkyHLCVMbTbiy7p3bRK6Roip6UNpEmzHY3UmQ8"
+    },
+    "Ten_Cents": {
+        "player_authority_private_key": "c28e514f7f0462bd21c8c8161bea3d2e29dbabcf759853902b49210cbcae29a8",
+        "player_authority_address": "8fDpyb7AfVfjFrD4BMzjd4WrY1n55o8kYBHNvLPDHxWi",
+        "player_info_acc_private_key": "37c1f2359a7266664baf22a65c63c5c2621abbf5a204822a9648cfe5aa195138",
+        "player_info_acc_address": "722Bgm5YGoJPybMdrpJ1Vapwx1AnrtDaw2MioSvxKY4W"
+    },
+    "S-Trouper": {
+        "player_authority_private_key": "b4a2a78198e2de1cbb7084c36c9b4258343b496cd1bc05bebc202a87e02073bd",
+        "player_authority_address": "9bsHkgT3svNrb6kuKfcnhvTj79YULv2z1ocLnmoYnrLP",
+        "player_info_acc_private_key": "7af99a69efebba2411c5e8f5280ab3b9ec2a2cc05bc989e8bb82ebe27b36649c",
+        "player_info_acc_address": "FKTfafci197h5vxnCuHXG7exzQA1JUoPyw9cLAyinGwT"
+    },
+    "Titan": {
+        "player_authority_private_key": "6a54e5f10c0dbf3672af6fee671339f7586e59002088fbcb2209215a534ea40d",
+        "player_authority_address": "GshPkUeZYrDkN9Y9CTVz4HENbQQpENbs2gGk5CUWjSJs",
+        "player_info_acc_private_key": "515dcc7dd6a324b258b6e6ab4613b1104dfa9433efd5961e87512ee9cca979f9",
+        "player_info_acc_address": "72ZRp7aeg3FEkkrx1tc7TTfP47k5utYtPTBLZyhVNm6v"
+    },
+    "BillGates": {
+        "player_authority_private_key": "9ddb4553e87008c6417ca09ee1958a9376ead7d420cf5f33f373f02cf6bcfaa6",
+        "player_authority_address": "FFYFTNByjprBA3B3KGwuauPa73k1SGhgNMYxgmgmh2ZV",
+        "player_info_acc_private_key": "3607cc1295a54b0a13b3671dac61689cc53835e239e6e114efe5aeb62acf7278",
+        "player_info_acc_address": "G13ocLJbE49p3ZfjdTkaLXdJg1yYN2Y1f3Ti7UiJcxS7"
+    },
+    "YoMama": {
+        "player_authority_private_key": "c260f55f9b06d5ac0fc632f0e6f9ca28b4ef9f0c03f2c310ced81fc5d965638b",
+        "player_authority_address": "CRknfpgUThUsJURMG22KKyPt9GgycoNTbk5FkrtFp4HJ",
+        "player_info_acc_private_key": "6a5baf21a79193ec0d0375248e6de0e635c3ae7a75cf31abd93ecc70932710f9",
+        "player_info_acc_address": "FvsNdwdrZpwwRrx6Z5Hf9wZeNPDLFgocsDy51mibhLP8"
+    },
+    "Ted": {
+        "player_authority_private_key": "147bae55fb6128ed4f823e9f964775d364088e0742a8ac05ea49fd75473f551c",
+        "player_authority_address": "HqV3YHxRvSzQfPLtvv6SZUQu72jfG8fs4aRdARhwcxB8",
+        "player_info_acc_private_key": "2f7cdecb2fc5b5f7b1ce167bbb9380ad3afb26560999af2860e00c3a4d0e8ab2",
+        "player_info_acc_address": "3YypAK1SPEyoKXUTDXXYxRsYYeCZgcM7YYSw9FZhU5jh"
+    },
+    "Stimpy": {
+        "player_authority_private_key": "43b188c874bd86b39ccf22a4882b01b1390ea8eccada06595f265f656b6a2777",
+        "player_authority_address": "8i2XzH1trq93ucVeaPo9JN4jN5Vxtc2mEWjp1RQjEk6J",
+        "player_info_acc_private_key": "e77a5642de881921a05596f8beee2eab9ea0f08b8614d01fdd409887ed5d7f1f",
+        "player_info_acc_address": "H8gL4uU1jVpuJrRz8c3b2aLXzZRd2RfN2hnDHyrbZ8nb"
+    },
+    "Albert": {
+        "player_authority_private_key": "fd1e02c0963ebd7e4dadd8dc4f8904b73be13a9d19003a00a6c6eacd3aeb2461",
+        "player_authority_address": "Hrxq689caYjm5FSZKLtCGCgy8rrruLaykusCztbJaaQp",
+        "player_info_acc_private_key": "b749f1c3c3edb738963f2df3ab12bf476b513710ddf1dff4410f4f53c5565288",
+        "player_info_acc_address": "8a2onbWn4uCsydedY8x6nW91AiBUUJCRWCSHJ7qAYaMX"
+    },
+    "ElonMusk": {
+        "player_authority_private_key": "0e8795365331b020f250f3a919a43d1ae269473761be747cd21fb9c46e6d872b",
+        "player_authority_address": "6Q1UAELfcwTYQpARAXsoDFvzkQqzijZDEKZZLGpED5Bs",
+        "player_info_acc_private_key": "6d29e63d60cc8136fb4d568d7c64a5c17461e0f2501be7ed1bf61cad0fc52a52",
+        "player_info_acc_address": "CGnrttMQfQ11zHN4Z4YHHXYg1zTGp7fGeTaG3wjDU3pD"
+    },
+    "Doge1": {
+        "player_authority_private_key": "5818e41a600db1de93ac6ba4429bdf542562fae34046be04e866ac2119e4ac0f",
+        "player_authority_address": "3iv4S6f6GaoLr9TKEgdLr6r3zfSJ57VFYRpCW8GCEN6a",
+        "player_info_acc_private_key": "a84cbd405f922e747f68b9607c4132da4244859cbf0a48e20911290dc48eff06",
+        "player_info_acc_address": "3CwG483o6inmdAiwz1MJaMedgSHnzjsS32abdidGJxWh"
+    },
+    "Doge5": {
+        "player_authority_private_key": "f38af64f8c0d451bec5964d8231947774cabef297ffcc1847c840f83a0e4ade5",
+        "player_authority_address": "9HxjfUHWHcqzZviGNYLv9cSff14Ep2PgSNbPMV4qBe8c",
+        "player_info_acc_private_key": "8eca7c87e585a3d6418e24a565d84fc4f4d8a2b5ebb654dfe08517c84412609b",
+        "player_info_acc_address": "2xuYixDP6d2TmXwFDfAopE3JRcAytN9SZUquyRBiXUpG"
+    },
+    "Doge2": {
+        "player_authority_private_key": "a77302ff7cf3bd6eed5367627ef49beaaa1f63259170bf50ec337c896fb7c33f",
+        "player_authority_address": "EmQRnUPUYrGPh6ocqJGLMdWH2N6raomWkSLix5ximWRX",
+        "player_info_acc_private_key": "85412f62d8a1afaff7ce7e312bdfe11c79afc920b46f6a272a19a51a7284b708",
+        "player_info_acc_address": "ALJiN6eS8zhPM4y3xWdewzSuBSozJsc77NPYtriYdmuK"
+    },
+    "Doge6": {
+        "player_authority_private_key": "4cd83ff5a6c936b3b84597a8fc4fb3c1b33429c84d2b534205438e8da8b8bf4a",
+        "player_authority_address": "FigXST7QxzwR3QjVMRxTnr7D7M85wjJFpr1i8Axb8rqb",
+        "player_info_acc_private_key": "e92b9abafb36c342c399c86f43ed2367b66f62100dbe58d39d52e8f7dc7e8c94",
+        "player_info_acc_address": "2QA3sgkJL4Xspq7sEtiJdJhorybpXG2CzntagzPMeyfn"
+    },
+    "Doge3": {
+        "player_authority_private_key": "5068361d0c78ecf3778c0e9e49f773b925a5b4e190600953d45d7af08289f77f",
+        "player_authority_address": "HBnx3ErJfcXU2drFtseg9rqKr9k4nWQJYr3kGQj4nUSR",
+        "player_info_acc_private_key": "c3f6f8c7972c6be7e7379ac582a99017c56eac1ddd0537f07ba5120492427e75",
+        "player_info_acc_address": "4NzL1EHczB8BU9GbBcSBvmVGWPW9kejMXcjwewgdJUkQ"
+    },
+    "Doge7": {
+        "player_authority_private_key": "1ca231b3574b4995a0278099a3e612e415c642d3bc1fe735cef5b21701c06c3e",
+        "player_authority_address": "6tMeVWgLKqny5E53DybiHcvtEenxJN8M8MyPNNBYVibp",
+        "player_info_acc_private_key": "31b6101858ca1190b61613fff5d1a38d1d4d5bb5d69bd2adcf8ebdc413ed55c6",
+        "player_info_acc_address": "7sek8389q666rrmz55F9btJkdHovjY8wEfu8pRQNDYnK"
+    },
+    "Doge4": {
+        "player_authority_private_key": "8c484c901f36af0297265a794b2cef79a27c7c58a7185fcd91ca91bb872baa3f",
+        "player_authority_address": "852TAxDqVUWVqEJxB7kypd4ifezw3eTiopSzt3QMsL76",
+        "player_info_acc_private_key": "ffd580741beb94d2c8c75576a1c39309585adcbd2049a2aae418a3f17f9f0dfe",
+        "player_info_acc_address": "53CxJcGwxesuSjR8yAugkd1bc4oweD3pPJ9Em2s8L8zq"
+    },
+    "StealthSapper": {
+        "player_authority_private_key": "c19eeda2f5106100c300d236cfbf5fc8a6fcef3adfec8797239216c1bacac966",
+        "player_authority_address": "cfBgobE3kmvYsjRaX3dbSbjZuUKoiLVdb68dy3mQ4Xp",
+        "player_info_acc_private_key": "8dd8529ec2db910a3ab729ad8ad731ab10379c96ff74324775753389eafb6c0d",
+        "player_info_acc_address": "DzdT2Wqio4VfGcMWbEDd21UXgXtyqm5AmKUSaeSrAnWs"
+    },
+    "SpeedyScout": {
+        "player_authority_private_key": "cc9147db178bd519571371c6f81a7e3e123d315d0e732081c309900bb325e49a",
+        "player_authority_address": "2NZD1ecm7Je1EAfwS7N5XQHQw77Rt4kPPUkKzWRnz31X",
+        "player_info_acc_private_key": "2a8c02ed797ed0d50f07d1c854d2534473b927342ac48a72a592d2d07e1bf0c1",
+        "player_info_acc_address": "3waGeEiKSXb1p3egdh36sxi8wMBcDXh6BNbuVFuPJqoM"
+    },
+    "BOT_JesseJames": {
+        "player_authority_private_key": "dae41d0d4fea130de2db9a8e86cce4a183cce34025b7e2c282378d50f68a9292",
+        "player_authority_address": "AN5jRv6Y8PoDSxPyYKq7zJkAogZ4peWA8QYptdzHveGV",
+        "player_info_acc_private_key": "f94b19cf56e8df6fbe7c1c050f7fbe8a01692f0ab2eeb0fd09b35ece6534050e",
+        "player_info_acc_address": "8FfkzmfsHHxt3JezdiFVmbqsF9ZU54bjNnsGxADKcvL4"
+    },
+    "BOT_Gordon": {
+        "player_authority_private_key": "4350c6a5a38933a3c24fff0af3fd2b86e9e868ea4126f8de8dff7657dcdb7d9b",
+        "player_authority_address": "3JydiSj5YRrDhJwqoFTTcA2MbuoB89JEzNDnv8bzNWNw",
+        "player_info_acc_private_key": "50a5de04dcceab0465ab6c7f5a2115086705aef3d12644b78ad68b9806f2a802",
+        "player_info_acc_address": "DyJ4uKwBynY6vfSbcdgncp6xXH7TiMHAUHZuKeFAemvW"
+    },
+    "BOT_PyroPanic": {
+        "player_authority_private_key": "c667a401809f3ed984be7051d34af7f4ca8af32b6dd4af07dbb7b31b8cb76357",
+        "player_authority_address": "HvCr2BVPZtQLRpJZLFdY4zZ65VGmm3UCDtEwfn8E7KnF",
+        "player_info_acc_private_key": "b1e583d177c87529402c71e39e8ee23d048789b2f9c9a668e732781efb1cb383",
+        "player_info_acc_address": "FXDRmmD51UsK5aKbEzZ3y6hrxpqnQ6EJYAh4cdJ1T18a"
+    },
+    "BOT_TurboTerrorist": {
+        "player_authority_private_key": "a2d284946d191ecc34cdf6dad9c8586dd5d14e4fe03bed734c8d18bcef40d227",
+        "player_authority_address": "38qPVh9SCfr1AJiRybDNSZ1KGFkWKz24ht4hxRfYKzMm",
+        "player_info_acc_private_key": "e35fba0f9d738590eb53c417c4bc5dbc995e75fcad3960b216efc213ccd0ba63",
+        "player_info_acc_address": "5dPo1ixaYzQmebjULqtn3YRDuMnbFnPYLHHfsagRLqkf"
+    },
+    "BOT_Kippa": {
+        "player_authority_private_key": "d2a88bee2fb65003edad02072375ea8f94c4ee3f9086d97aeed7193b6e9d7d2a",
+        "player_authority_address": "BqsAVnDCjp1G7XrEMQ2kTZAmYgXMakxXaNNmjgQt9ZXK",
+        "player_info_acc_private_key": "284d572d2d710edcc7965cdd417535b5bd410c13a6367b62530d83fc7d14cebe",
+        "player_info_acc_address": "EEFiuD8zveDgNWGXWV2QDJdX688srqp1D2rrJdnbTaFE"
+    },
+    "BOT_Clay": {
+        "player_authority_private_key": "fbb86f6f0ebb898825a143ade071928f6dadc205857d1db723478ff345cbb8ff",
+        "player_authority_address": "8VtDoJuGVEAVD4w8zs31LJc9C2QYjmyT8aCmULdccpun",
+        "player_info_acc_private_key": "b9c735a4f70d475e13817d5302a034ccd53221d51a9ff918d7fc5d70391a5cf1",
+        "player_info_acc_address": "7iE3kjjJPmJWfM1MR3qAcSNt7nt5UFARdcoBKtS1rMzW"
+    },
+    "BOT_RainMan": {
+        "player_authority_private_key": "f4748316788681565043060b2a0f03c32a31d8a3ee15833a59fb35de81f4f8c3",
+        "player_authority_address": "6Z9NcDZgMFnS93bNgJiMcuD48wxe2VvjVXbENTSGPvB2",
+        "player_info_acc_private_key": "bca8b4db33add2a4be7d22e08a1cd3e2ff40a861af448af568433639631b9dd0",
+        "player_info_acc_address": "DsXDoMyYy56PsueEj7FQ1UujEPMKSXDFnburzEKB4J43"
+    },
+    "BOT_HeavyHitter": {
+        "player_authority_private_key": "d56848fc28251d23bea7df4e7f7048e2ac6171af73f478500aa89a4e80fa5017",
+        "player_authority_address": "8gN9NCzYJ8VHmgBNKZw1SkT451aLZNjzYj8MqnVs9a8X",
+        "player_info_acc_private_key": "c7a6149da57739a97230d2d7b3083c605b14e63ff7a12c23634576558b0841bc",
+        "player_info_acc_address": "AiQCj9Yy2txzWK2ktAFvPHXsFZ39iubJMP6QZv2PVC3T"
+    },
+    "BOT_Dotcom": {
+        "player_authority_private_key": "8888613a70400c06aecc9363a669cf3bbe88d9519856ebed50b600a9e7136792",
+        "player_authority_address": "3iBpmkHxwnRqnZ9U51YeXQCvtz3irXbWr6tWjUxPvNuF",
+        "player_info_acc_private_key": "cb5937df5439d6c84b7337910972dcd43bfb268158c205bde756280e9c0dc74d",
+        "player_info_acc_address": "sJTq6BGyT9pHt9uGdtEjUvsenZWUBe5pABob3yh9UoQ"
+    },
+    "BOT_Barry": {
+        "player_authority_private_key": "26a25842e97e90bd6f8dbb240771d633ca07d586074ab3895c38f27a109ef2e7",
+        "player_authority_address": "A2Q93CuF21rnK6tkSVKHAb1QQ6fprKP8KJ8To3DqEniU",
+        "player_info_acc_private_key": "3ed2345b9ac8ecc1ef07a0deb4bf5f678777f9ba5372e3829c926e822459241c",
+        "player_info_acc_address": "93Wn3CtXKwySJphCxhXz7FRvtpTi3HMd9p5r163er8h1"
+    },
+    "BOT_Cartman": {
+        "player_authority_private_key": "3685c62403f5b2b64ca841482275be1498b37c45128255dbb897de64fe49d308",
+        "player_authority_address": "6BufAj1Ar9nPGyPtuY3QRsrwujko8TDt3JjL5CaA9g8f",
+        "player_info_acc_private_key": "8f3c0263c19d26e9634ade3e93ba010bc463080508456e430d19d36351cbf792",
+        "player_info_acc_address": "3QyCChymnxuGKBYNLU2WSS1X6qu1HQzWawKbwUnRFCfX"
+    },
+    "ClutchMedic": {
+        "player_authority_private_key": "7e4842bed42e4e7c9fa7c5082ea483c754264edadc2385da950f1004b5440b1e",
+        "player_authority_address": "HHaDT8FJZFfAvAhkirjuD2De6WczmiGhqS9Ag46HdJtB",
+        "player_info_acc_private_key": "f2eabe2f06912d2228d1382666b42458ec85ff9f98ef07195f17b9b1644a661c",
+        "player_info_acc_address": "6HmditgaKVJzuNoJ5wwHWYFVF3tc8eTToKBwbYvkM4zg"
+    },
+    "SpannerSpree": {
+        "player_authority_private_key": "084167b8c95291a61ef0f6ab932cca2d7c52164a0effaa442093c8b9a7bc9816",
+        "player_authority_address": "J9dE5DdhHyoTyyAii8XXH6y7RTw6w4Xw1wjkbZbMSkf3",
+        "player_info_acc_private_key": "95a118a55c6e359cb040146d876378ecd503edbb60b08405071cf93337b53a6b",
+        "player_info_acc_address": "DcadFpszXNZ5KU5usPw8DgEQdZFsaVsrvNwAzHpb86mt"
+    },
+    "DemomanDevious": {
+        "player_authority_private_key": "9ebd72abcd569b733c4d997dfef02cd100086be1e8e9b385ef506f5a0d2f0abc",
+        "player_authority_address": "BFAqwssDm4VpqgkR1rVFUoua6y2GjFJvekcEWDNSbV6e",
+        "player_info_acc_private_key": "c113894d43cfc8a9008ba6a6cd23d9699e0b0298fd0f4c681497dbf0061f1280",
+        "player_info_acc_address": "J21EN3j69zLmzq4TWkPLPvpXJXaq9aErxbnG11pGv2YU"
+    },
+    "fragmachine": {
+        "player_authority_private_key": "7f6f41084e8e0a138497b82f7f98d31841b8ce8f4ca3fa807ccf1dcc4a98a8e6",
+        "player_authority_address": "ACng2if8D6qESzdQPGBnbLHwJT6DuFSsgdFitoTUcHXK",
+        "player_info_acc_private_key": "ed37307e82857f7e9dad6ffeaa78d949d3e1e932e73dc504cbb5c646446a89d7",
+        "player_info_acc_address": "JL2XhgVeujAFhE9DMbyRDgZ1TZa5rABNDDCRTJ4wqXm"
+    },
+    "BOT_StickyMines": {
+        "player_authority_private_key": "3dbb275b1a69078d490e9d1cb1d5bbd826c44ab93ee8e9408b9c6fe5de08314b",
+        "player_authority_address": "E1PB5qE72mdDeGH1YtPsu445DZLVgFx52gqbXRYdRWJ7",
+        "player_info_acc_private_key": "6994c09515560b9a016344764206e294b6c9df0121fdf6566036c01d25dd4ad3",
+        "player_info_acc_address": "2GQp6eCQfppqansuEE9y9uZ8KkVVaRqrpioTXgtynWqc"
+    },
+    "BOT_Spaminator": {
+        "player_authority_private_key": "7ae990ed8dfb301976de08a5b0fbb0ff72b2b969fa308444eb1ece850d56d7f5",
+        "player_authority_address": "3BSt8Bq3RuWRJw5Va7uyR8MBhhxdWozxx3nF4m7AixZ1",
+        "player_info_acc_private_key": "75005b86f6ca025b5a9e57ea118fcefff6f448b7f2189353d0218e89544449d5",
+        "player_info_acc_address": "BAGZpNpXYmoPPKbP1hKLemidiWM57bYV4LJfDZGDJai1"
+    },
+    "InstaFrag": {
+        "player_authority_private_key": "b591316fb284b7c88aa35fd00f4bc515e4e68caf4e0d824aabf2460f192242b0",
+        "player_authority_address": "36C8u6sschhNUm69TmmphbRYMbMT6zFDCAfZju11fjM3",
+        "player_info_acc_private_key": "453b861bb210115b9d746f8da99a3226a82bb96b1f75a68f9cd132fbdc9b0b5f",
+        "player_info_acc_address": "FUafzCP21ZWahzNSP3oProNg9WMwJVxX7gmC2H78nYDX"
+    },
+    "m3dicMaestro": {
+        "player_authority_private_key": "255194b9541b44c7eae66889606e8dcfc9e07131f8f2db691b06d9e53776b246",
+        "player_authority_address": "3usrLjd7Lio8vWFp21pCpBGCJbvp8kDFSS72Nosvemkp",
+        "player_info_acc_private_key": "b8030ab150e5593f53952acf5fc209f652561296eb925f5732427a7dcec2e730",
+        "player_info_acc_address": "FFYhdLQSCd3vwnfXuwiJbBuFc9wqVk48TMbiypNai3aj"
+    },
+    "BOT_BlunderbussBoss": {
+        "player_authority_private_key": "2651be9543ff1886cdff1a336cd5d7dea108a3b839ed93a92f7e9e51e98c5d34",
+        "player_authority_address": "9zUb9pydgtaZ9ZNYhyXXr5m5EovpfXacFyAXFtc8ebJV",
+        "player_info_acc_private_key": "57a58390f3a86c5f4d7a472840594d870cddf31c2b2765d2c95367d132c6b77f",
+        "player_info_acc_address": "HpghtQgBy5iSKk2FFwhrPvJPH3Fde98ANLwyDZuXQTjh"
+    },
+    "FlagSnatcher": {
+        "player_authority_private_key": "b1b7156ece8bbb23b47b8224d012f111d1bec6a37cf690ede7701467fdc5e457",
+        "player_authority_address": "Gpko26GSJjwW48xu7EVP1vawBy63G9RTubMYNpQ4n8Jf",
+        "player_info_acc_private_key": "c26d47133c3ff330646d1cf180851434f98ecb92c16bc5088328eff155a72ce7",
+        "player_info_acc_address": "2voW2x6pn9PHdY7j1dhZutBNjcgv5TbiJrUaVynhWHyW"
+    },
+    "BOT_SilentSaboteur": {
+        "player_authority_private_key": "d913e6901274f9713f48bb3cb53040cf8c63cf99559af02e5649856547f6c5ae",
+        "player_authority_address": "FTh2szycvQkjw1upD8M9SsDHwmYC8qQ5Us97X8JMPPcQ",
+        "player_info_acc_private_key": "df8b8709d882af953649b2dc7195527ff0496f3a26129fe8e9388cf89c7bda55",
+        "player_info_acc_address": "C2BfUrbUrDYs4vyiWLfcRhdv9RJcJVU3TWKKHqzQQecT"
+    },
+    "BOT_Cardinal": {
+        "player_authority_private_key": "c057631a9236afe132d23ef5b92c5f68fee54bbea30b6c3aaadef0eb18a051dc",
+        "player_authority_address": "8fmWQ9UnZaGjRGivXqCu2G1P7QNa3MJ1xi3qbo6V3Tp9",
+        "player_info_acc_private_key": "cf1d7981e5359c3a9b319305d6d749485a4054f5c66fddb93e50a860ee4d7b6e",
+        "player_info_acc_address": "BXaHeheCeb4NrjBeFrpi686TMvJgffwGmsMQaVLd8RUF"
+    },
+    "BOT_Jose": {
+        "player_authority_private_key": "bfbd8029d980bd64f2810f34cd5123aada95be327018f45ed20f9fe793ebdb89",
+        "player_authority_address": "9dDJTf5HkZnsw1yf2NJyhfjYXPZAo3Rt7NR1ptg5XkNH",
+        "player_info_acc_private_key": "d32705e8b2e8c8bd650c3760ca839b2fec157cf358662d9c20f63b1ec9dde0ac",
+        "player_info_acc_address": "4wpUXK2NjycS4ooYB7JCF3XPE9fiC6m4CWUBF2iNvTLj"
+    },
+    "ScoutSniper": {
+        "player_authority_private_key": "743d7eea4547797e39116f5913c3ba3d03e791df0adf53ea5e83dab3bf712a70",
+        "player_authority_address": "E9N74CisjWdGH1VDcbEaeC9GLR1Z9ffrvHBBAmRGyDUx",
+        "player_info_acc_private_key": "7ecded4ac3edde06c617137d979151332265675563ca538d5a3925ba611ec759",
+        "player_info_acc_address": "2zyBo1Ahz94pFSt8Vie6VRe4SFAhgER1X1JCTZR3iYsD"
+    },
+    "BOT_Muon": {
+        "player_authority_private_key": "fcd0882f8bea9ec18df5d3ec7d5813ca70d68b8ba542c63eb050687636494bbc",
+        "player_authority_address": "BjmKGCCFJPC7xH5pFis3o1ErSwa6MmappPbyLfCXRy3",
+        "player_info_acc_private_key": "19bc754a6b7d5226598629583bd055499ee24c97f9f30ae66d6905af3a9e93f0",
+        "player_info_acc_address": "FM4haUs9RrE8TzkSvYNN6Qj4gA6k5Rd1Zejzj3YRWU8D"
+    },
+    "BOT_SmellULater": {
+        "player_authority_private_key": "5a5850ef27d06400c492fc4f08a48026594138d207a37c4386009ef666e272ed",
+        "player_authority_address": "13XqkXAyZvKRXDprob8hYee5R5nitYkiW1EkqJpopode",
+        "player_info_acc_private_key": "ed21fe837589228029427d76c97bf2d0b4ac80bed92b9e24801861e6d20400f8",
+        "player_info_acc_address": "ENYANaTtLFzeYD593vkoVeeEJwc8KM7SC44RudSYtJzV"
+    },
+    "BOT_Romeo": {
+        "player_authority_private_key": "3fc6351e20f45e632f94d367879a39fa713dea013792fe3b83937b3f7345bd4c",
+        "player_authority_address": "CkGqq3wh4sGRzAdEL5LjyuhejHpE93vwkgpaVmo1Tf9d",
+        "player_info_acc_private_key": "31bf26a04a7d5b37e6c6c4e64b78a85c0398ac5d513233bf4f171af471eabf00",
+        "player_info_acc_address": "EnFNYc9ywDA8PjHKSvTGCLfwduECxiZTUyALQPHmFUiH"
+    },
+    "BOT_Albert": {
+        "player_authority_private_key": "b3479c9efaf5fe20d4f438f0a473958687453c5f293dca26bbf19a395e4941d5",
+        "player_authority_address": "5gKjnrbnPmiZE3AswKtmZZq599F4TeAxbe9gyHeexrML",
+        "player_info_acc_private_key": "eec33e8a67cfc29cea9dcd81609d348e14003d6fbf8449ea714bf9449067054d",
+        "player_info_acc_address": "G3mRpc5bKm9RVkaeRD9hv8saNLi3aPYBV4MF8SwG5rT2"
+    },
+    "bambish0": {
+        "player_authority_private_key": "8bd9bcdde4edd8dca74cd27e174fe8c8d775e81afdf9f7d468b3382b72b1e33c",
+        "player_authority_address": "4pFtJEdbrkpQ16dL4WNfFTrpzNa1tHfbxiiJQLpsPu6Q",
+        "player_info_acc_private_key": "434ff594c7f5019c0f27d8fc94a3794fe8bd5bbd0cecdafb662bb8b96b6a84eb",
+        "player_info_acc_address": "ANqVDL9q1iKE7uJFAshkd46Ge8FqsYyhjfyHsq6gg8L4"
+    },
+    "static": {
+        "player_authority_private_key": "c03a3fc0223d182491a9bbfebd299a402c0a9a0d1cfe2d6d85c740bbeae2b2ec",
+        "player_authority_address": "BEzisRYP9Wg1wdku83T86W1MY3MvkhzLnReKigJ2kXiW",
+        "player_info_acc_private_key": "3d78ae47ae009ed0544c052c146c6d7e4894aaed8ec8f77a24ec2169cf8c1f98",
+        "player_info_acc_address": "5gjUgZ8xZpEXaVtuMhCcCzETcYiDg4aC38imN4tWdRYi"
+    },
+    "professor-x": {
+        "player_authority_private_key": "36e274a34f79c7d1ebf3a9e4b18f108f9514e7cd205f8ed3b9eb9809480dbe07",
+        "player_authority_address": "G8jUT7f6ieXhpBf59zvUcqr4eujQvpH7bVKWKgsKGkDQ",
+        "player_info_acc_private_key": "3040a34d00f8fb30aebf97e2cb20b0c118c124bb1a095a7f8f5255cf039e2712",
+        "player_info_acc_address": "BTX7DGkjAE9PWsj874zZLabpmxKEjHh5virHmDX2VQim"
+    },
+    "stan1a2": {
+        "player_authority_private_key": "793a221d63b17c36991987829afc911d2f03fef61aba64473fddbdcd00af0ae8",
+        "player_authority_address": "6e6fkZ9UTb5zwbGNBo3nEZv9JqmGnFJRsaTQBa5rMsgZ",
+        "player_info_acc_private_key": "e49776cbaaf4a8d5157376700a2823662033f48259578eaf97c1ca1e12e37d61",
+        "player_info_acc_address": "3HxYQrd5A1V8hfnrHpaddA9N2Btdk6jNpDd6chHEQ7o1"
+    },
+    "Exclusive_player": {
+        "player_authority_private_key": "e5e8aa3edbc10d9b49076f32f979050189e3ba7a210ab81a8021f898642301f7",
+        "player_authority_address": "BbKpKhXZftG23KuzMiE9SR7A6dN1VQbZKWLP3pToiPUq",
+        "player_info_acc_private_key": "8a77523a9e15b433f3d9c6b77e2052303826024fdac6b862a416e51d77377f9e",
+        "player_info_acc_address": "FWzotEF12YidXJAeqTeoJkCNKJAwqptfqPHUGjctFsKt"
+    },
+    "Russian_Dude": {
+        "player_authority_private_key": "1f8abbfead15f19d8ef417942172f075d44c2aed22b98d9e46bc1db3f208deef",
+        "player_authority_address": "2z9RhpfVhja4H6TxDFQhDVoMKYPDrSLxe8B4bMJr787m",
+        "player_info_acc_private_key": "97593dd896522b68572a75c8ca7ef18333e8bc6ded555e9879d3ad5d95b91c3e",
+        "player_info_acc_address": "512Uj5zJt6L1Db8YiRqLQK8ZcZepXruCBxYxMamKxuzR"
+    },
+    "TyOmIcH": {
+        "player_authority_private_key": "f3bdc4dfd3620476c2660055c9a93118ab11d40d1843ea5c7803a97c1c35880d",
+        "player_authority_address": "Ga6PkmhKNAkkXAtMSeH5sccPgusvPrUAcRzQAKLbJaTQ",
+        "player_info_acc_private_key": "c6c16f78456819af786757c42ee5572431421f97ddf56e1004bb0d9a7313a814",
+        "player_info_acc_address": "3hQ2nt9jYjSJKbvwVhp7hziW215cfr9gARoRLUvauGbP"
+    },
+    "SOBOx": {
+        "player_authority_private_key": "a6aa3206bd58957a6e8e4c590e78e9ef02f3d8f593aa74bff77e863a3d267e88",
+        "player_authority_address": "29txD44rK91hxtdhMBgyLG1et1YCa4ARz6oxvvHFzdfB",
+        "player_info_acc_private_key": "2ab0a028ee3d731aeced8be86ebef7ef748876e600098b5bb9d3c5eb7a9dfda1",
+        "player_info_acc_address": "2YekjfkjNkGGiAGdjN37P9Q5g93NFzD912hgurZF7Joc"
+    },
+    "L0ST": {
+        "player_authority_private_key": "2881d9d9f67d15c2ae162b97d0fb5614dcf202b48d0e992d0dc84ad248bb1d09",
+        "player_authority_address": "AZUHWrmioDbivWQeQeBP79AJSa3BBBcXV7fkErLuktnj",
+        "player_info_acc_private_key": "36e5d4a985a60c865e16f0e58b98d128c94494ec7d38d012533d509a6775ed3c",
+        "player_info_acc_address": "FzKisVZqUahXb8ZPFTDbZ5rguAXpCk5q2TvpdAjzfqJQ"
+    },
+    "4eter": {
+        "player_authority_private_key": "c46d4acc6750207f3c3c1ac5a7d84b9071dd94daf815fd02bbb42781b79ddd2c",
+        "player_authority_address": "6MdpsLek8o2sTzQq2u9uuK6CjRMyJhqLbqqj1Puo47i6",
+        "player_info_acc_private_key": "1b5ea1c630118529b7da356de238202fdd4a1622cd18215ef32c1f8f3d06f191",
+        "player_info_acc_address": "AJ7nJfEn33EUMtTgXUXnQW2LSzzsJPXeidxNRrbbg3Ca"
+    },
+    "popkorn": {
+        "player_authority_private_key": "45947248f0027e383f21e4eec38802259045919b059223583e18b39a2194f0bd",
+        "player_authority_address": "71gvTF3LxubzbsDDLooPMVDNrevVFJa2EsWYXpuGxjvo",
+        "player_info_acc_private_key": "a4cd767b8595425e6eb5b5e4b604cbc3abb3560223fbcb0f35c196f11d88cc34",
+        "player_info_acc_address": "7zsn8XQiVh5y13Fi8sM3fs9fbumVCfQAiKkk1kzCmWrP"
+    },
+    "nutup": {
+        "player_authority_private_key": "f9c86f989f280dbf12ec55b60b61cd62ec53b48fe40c680ae84a666b3f462c2d",
+        "player_authority_address": "AKS523LE8UxR91iaPYmH9ERfJbGT7QUnW56dddLRyakZ",
+        "player_info_acc_private_key": "25592abc6d76a5578760c0cad93e5d2d3067f02619e482cff1fbf11d06445c76",
+        "player_info_acc_address": "3uAHH2VSCxZSTmRRXsTYDbJ2tLhAn8gP9K1XMrfi3sSg"
+    },
+    "LMFLung": {
+        "player_authority_private_key": "59e9c2f1be677d7e6b685474b4c387a294ea2da306c57ad2c19be9e2eaf34605",
+        "player_authority_address": "298rFVpmcs4FX42A1WL3uLScjtN7KXAENEi2wF35WeHX",
+        "player_info_acc_private_key": "95f89b550a8229ad34b6ac2c08d0213cad0f67c521ea8d4d316b31b999d12e84",
+        "player_info_acc_address": "GAT8k4rYaezuUqoyUrn7B4rGtkAvrHGMJgbRqAmiVnG8"
+    },
+    "-GY-GoodGA": {
+        "player_authority_private_key": "7739b644a4c7e21066c5fbeb1a2d4621ddde7f39f7322467b696a256ecfd8ca7",
+        "player_authority_address": "BNxnPvWbGSPnktprtFfGiCVTEFQMUgs9K6xREpeeAU75",
+        "player_info_acc_private_key": "ddef143c6012877968937be4eae0edeefa00c661632659dea55da1dc71091205",
+        "player_info_acc_address": "Aq62mzzCQQgEfsMHZiQqssku2HvYXQdXCpiKGBYZVxMP"
+    },
+    "-GY-Messih23": {
+        "player_authority_private_key": "254fc3dfbfadf1ce61f6aee545a1029c87c606de132267d46c06637eb5b6163f",
+        "player_authority_address": "85ZuPN6Ah6XZmPXaV8czpUQCdfoUoGUCmYGJgj4eovYv",
+        "player_info_acc_private_key": "0c93c9884a07b96beeb51fb63b25ac44ad4f060a93d0c4ce900c549c4267f6fb",
+        "player_info_acc_address": "24ezbvxtkA9cCXpZUMbj89mD8ADHzhDxDjWw98icS2sk"
+    },
+    "-GY-wen1956": {
+        "player_authority_private_key": "eba2987d3afe6b23c3e10e6a557372c5e8e5e7d8cf91e66d656873622e0e87d6",
+        "player_authority_address": "AWezor4VPoFSPtao7BaKy6nnL3uuUcXJ56hWZ59zoJ3d",
+        "player_info_acc_private_key": "75f36e260e88df7c3c12e5def4286d2c41cb48e7fa7eb5618b44f24b007a7acf",
+        "player_info_acc_address": "3dWYVs1YLYw4aXLwbb3X7AfkS4bq7eDeKVKjTCFJiPk7"
+    },
+    "LMFDYNASTY": {
+        "player_authority_private_key": "fe88e9c4e34cdc42b5f37fd102e85ba9983c56ddec776ec94863eb177dc4302f",
+        "player_authority_address": "6ozRBAzsi24g1NfhMDJRPapuk665KgCqRGZxr5qH5zyy",
+        "player_info_acc_private_key": "b7931ca95835278f84c2ff410586de518a0e57293f0a85119ace5d9ed6396ccd",
+        "player_info_acc_address": "7V42DHw3owWgdSRxYoYzmzUCkwjkF3zN1AXf4Pjw3auf"
+    },
+    "-SGL-Tatin": {
+        "player_authority_private_key": "6efd579a977edaeb3e3258b309ff587a9e8b5b3e23194396ed02f8adc067901d",
+        "player_authority_address": "9QhpQr9EfUYwqYXjC34nu6ftM5q1ssB1SmU1JqE5CbJ8",
+        "player_info_acc_private_key": "fa67a8798be997829c61f77a78d3c159c39a03a11248c12a07fbeae304180454",
+        "player_info_acc_address": "Lm6XKS7BDDbgxpTQuBbb6AzonMFwsDtgy58cRQFTuTP"
+    },
+    "LMFPiuleto": {
+        "player_authority_private_key": "b6bb6e91187de5e6676cd14992e3d22466ff989e996fd224fb7a8bdca05b5693",
+        "player_authority_address": "HtXxvtw6WuNvRAzJERQR4cPdWUyfjooyo14CemJtLikR",
+        "player_info_acc_private_key": "a434f79c76c4558e8a42957c21633bc10407ab2f5e4e24e840eda1fd81893f5f",
+        "player_info_acc_address": "EMLPD8EpsD7DhDoJVE6BYSgn2TP2SJYSdQVnvyRsK7Yd"
+    },
+    "LMFBueBueMn": {
+        "player_authority_private_key": "7d7c136e91a638bbba304b740887eb75b406afa3412bfb8670524319b78a79b1",
+        "player_authority_address": "AXmLw5M25wy9pFNdXwnQdUW4wYUUcvNVocTN2Qyo2Vqs",
+        "player_info_acc_private_key": "bb6999be5d35cdc4773b738c7e367b2950b139e5cbf442f86fa4e8debff2ea69",
+        "player_info_acc_address": "EWmkexJ9emLCsqYP47Ex6VhJEvMh4s6NUCkMw78xpHfc"
+    },
+    "LMFCrow": {
+        "player_authority_private_key": "dfbdb145125a2a9940565ffc450ba5850156a644e2099d2e9c063285a7c73d68",
+        "player_authority_address": "5tWyJ8MvWKtrTUAFfMWYB59MSzwFwBU2QX2GNG4a8Scq",
+        "player_info_acc_private_key": "7d89d7fa601fbba1e354f0e606d2457f2889eb50fd48f36a3db6f2de03585099",
+        "player_info_acc_address": "2qwUtWL3qxL91PHk7HaQTysSFztXYWHUj64KQqQWpF4V"
+    },
+    "LMFLouwbas": {
+        "player_authority_private_key": "77e5d93961711f7ab776c9991e3d3f36af3807becdd5a4252d8d8b984ebf9e4d",
+        "player_authority_address": "2BbLRmEdegBG98cRcbv8To6eDLCDK1Ks8u5M3SRYiAzF",
+        "player_info_acc_private_key": "5c9d3a4974c8702b348cab98146e93b53800b98313c7b29c53b8a8f37f9b4573",
+        "player_info_acc_address": "6mVDpjKHZvAs5PGzKqdiGNK5kbyoeDLs3KHneFCE7GSJ"
+    },
+    "-GY-541": {
+        "player_authority_private_key": "7fbe42bb661921c1cb5d1e2058757a64155163326f52ad75720eddf4bbb0a9c0",
+        "player_authority_address": "6eUMdcFwPHD65zmNRadoFDJXtk8zwitAPtyvjyCZXiC7",
+        "player_info_acc_private_key": "7894f977877c7686becf0e3f0d523e6b59af8f664816d3c6ab82f5f79234d125",
+        "player_info_acc_address": "9Xzrvec29JhT5pnsnGYquppoqq6DL5iAHZ5gLFEgdggJ"
+    },
+    "LMF87CT": {
+        "player_authority_private_key": "fbc8b9cedc7fba95abdf430ba662179e3dc38a9cc5111c06ef8120b6f5dd8193",
+        "player_authority_address": "69CAAxougTFzTeLP1YDRGsKAdDLHRyFpG7Ncvp2qTVc6",
+        "player_info_acc_private_key": "a677a24b5ed6eb354a23851be29adaebd265183a32bf0489600a85aa3bbce147",
+        "player_info_acc_address": "7WmNGn1k6SJ4cn9VTyb9xpU5DhZBnGs11yaRrTSaHTV"
+    },
+    "LMFLzy": {
+        "player_authority_private_key": "d9b2bb877ed3680975244c3be35f60b1130cefcb80005e7931a8897ba653a181",
+        "player_authority_address": "6axizjxWTxBupkTeq1scwuAvP6E2eQxC2LZhEYSCnYQf",
+        "player_info_acc_private_key": "c3485d6426ed53c0c3d44cfc937ac4a5c110019f1c1bae74a5467a72b2e715c2",
+        "player_info_acc_address": "8MnWjT3eTso6Yq9ExHthxHCfC61LSqGGZ3V3GCdzXuq8"
+    },
+    "-GY-Godman": {
+        "player_authority_private_key": "769432ba9209ed1e2ba5c9e50e9075bdc1eecd40abf2d4bce0d3f7f4cf2b10b7",
+        "player_authority_address": "AYyfe8RunopBt33erzth4PP7qRwisycncxxe6P5D7CfM",
+        "player_info_acc_private_key": "8802207476c5a62d17526ce5da7607227fb2f7b910d5448666a782229cd82787",
+        "player_info_acc_address": "CF7XX9TDJrfMQxMee8X2464ConCDJ5beRnEssa6nfJa5"
+    },
+    "-GY-Timo": {
+        "player_authority_private_key": "b618d1b06a1c74535d3634c0b30344c1e63629177b264872325649f3f246ed6f",
+        "player_authority_address": "EcasxJgxS1bg2BR63RvZfsFDkYhrM7FBahKqcAQ9VkHb",
+        "player_info_acc_private_key": "6e91324f6802a44170cd0e8d32ba39987a28e648d1a28a5ceba3abdaf74248e4",
+        "player_info_acc_address": "6f772pXPxAr4JdQY4xr6ZyCcNywTThXbAHdDYE4nLV1z"
+    },
+    "LMFJK": {
+        "player_authority_private_key": "a43f3eb570c1219f44c2fb890a1e475303205c4d72536f97c121c55de11723fc",
+        "player_authority_address": "HafAYKdrKBPwimZkxnKB1d8p1aEdMY8h2T9BnSBDvRDC",
+        "player_info_acc_private_key": "76e96efb5fc5e6c6965acf6fbb63fa916e46a75b08c1bebd342454f2cac981ba",
+        "player_info_acc_address": "5uDtDZx18dTPvKBC2QnSJzadfxx5HNLsLsTFrVSUAq96"
+    },
+    "-GY-MatsuTakako": {
+        "player_authority_private_key": "1ab2d2f4dd76990920cc8c747eb4b6e6b2cb1f1f358e58c861dc7efb56edbf67",
+        "player_authority_address": "4z3K1uJM1ZwwLqYBarJZSqpx72khp5xeWdiBtoVSahZi",
+        "player_info_acc_private_key": "e71f2ad4a43e5e9213cf39de002a4d938f9d6da824a6f374123ac5dc052ae799",
+        "player_info_acc_address": "2mEUKoRAcssAL4PYGE71nPCVbhhHzF4QuFi5a8TsiMVu"
+    },
+    "-GY-COVI": {
+        "player_authority_private_key": "2d27d48737482980398bc9bba8f6ca6f906f073128e310924c32d17c95fb1009",
+        "player_authority_address": "5Aghmw1pannae3xEDVtwqbhHEKRPFRLUqZaD1BHdZKBg",
+        "player_info_acc_private_key": "01f282bf5167983be829e2f0bfc025e1616ae7df7dea271d2c4fc2dd847b9d09",
+        "player_info_acc_address": "HLVmueZKihDz3NMaXFfk9vk7ugBbMvPPm17L5LyMWR9"
+    },
+    "LMFProtoss": {
+        "player_authority_private_key": "81a6b504f2799d73b33e205938f45282064e97916009fe1a631cebe1a4b51685",
+        "player_authority_address": "5UNZEkd2PBvSbQQS92VQm5FuykuRSpovVor2HjLKZQeK",
+        "player_info_acc_private_key": "42ccc73aa67409c8db98b300a9d159e437155bcb6a968169f3051ec09bd27429",
+        "player_info_acc_address": "GUBpSRZAGFqHNKxN6ovdvpoaKv5ncXf3pe8pjHwwSJxS"
+    },
+    "-GY-SALEM": {
+        "player_authority_private_key": "225b3f1f6c716da66f4da28afcc1c2a7010617674e77a02150116687f9ce3069",
+        "player_authority_address": "3r2x4zEuPBk5izQNAJ1SbFiRxCxiigFp2WyevqM4gSwC",
+        "player_info_acc_private_key": "d012b5ad1468268b71488c60d6f05f81622f159c1f366a197f5c10775f3d523f",
+        "player_info_acc_address": "DaFSazV4C16ay6P8tLmvYLmpeMiUMkBffeNsCk5UQy7i"
+    },
+    "tibu": {
+        "player_authority_private_key": "77357b38fe1b0328b08822b0a949d62a68e34657e1ead3e2ebf81e1d32d20078",
+        "player_authority_address": "J3TyybRdXqgCSfsGzHN8Rp2fqLMZsnDqwojWeeRA6yGT",
+        "player_info_acc_private_key": "e3036382682a64987dcc03218cf7a1b2b9b554efbc01c8ef2b5740582b8aaafb",
+        "player_info_acc_address": "DxvYKZmhJggBdPF7Nmkv8rE5svEMuFgDGYAedDDq552n"
+    },
+    "Clay": {
+        "player_authority_private_key": "85a66e93311a09f265307cf51ba9bb3516cb26966829a30bb2b0a828d734485b",
+        "player_authority_address": "Bz6cMV5FYzBgHgEbuYzoyh4b1JjsFtZ2wqLiMg45n4YT",
+        "player_info_acc_private_key": "3801e9c2776860c0054194c0940bc6fcabb972bfa8e9c76d440e1ee21720174e",
+        "player_info_acc_address": "3kruB5rAxQkPy6zaVBApH4ionTxo4FajPyPdADAwbEUu"
+    },
+    "Kippa": {
+        "player_authority_private_key": "d447dcf30352318feed8b9d0e33197b6e60a9cf9a13d4cc96a34e483c85c7a92",
+        "player_authority_address": "DX2jS9s1xAEMqcYrXEAsHamGGwYbsFzSNbm9neXycyyd",
+        "player_info_acc_private_key": "a1905f6e1fb3f19c1814f3462d2953c5544dc11ffce7b6206dd84b2c10452f96",
+        "player_info_acc_address": "8gFKdPDTbQTsR2p9HitfqmRwE4xkEsEV34bsEtUgcNuN"
+    },
+    "Curtis": {
+        "player_authority_private_key": "99bea7054e93c2a87e08251331c0633d33f1e45d13193b3dbc12869aa74a5004",
+        "player_authority_address": "2Zs2KNE55a6qdgoUoXmfssy4tK4uSy44WS81JAix7itB",
+        "player_info_acc_private_key": "e2d85d79477ace59dfb8e6cf542ac4f3dd2214b10c80a9c005ae37a35e31c277",
+        "player_info_acc_address": "CUB99bQSDKVLTTrQwPsxdBqAkj5Qp5iHfCerDnsMpjF1"
+    },
+    "Spanka": {
+        "player_authority_private_key": "f84d24ecb4f8c8e237df1390fb1f21e919a7f3eeb5ccf93b1aba18df84d378f5",
+        "player_authority_address": "5JUarixjNwj6zW1YwqAioEE6NT3GheGLSCTxLYQokbP",
+        "player_info_acc_private_key": "bdc19f89f069aeb32374904ed205014fda104f0fe5a19e96e556241d2579e866",
+        "player_info_acc_address": "FMtmvvwfo7kv4YQdh53FRXsP6f7MQ3wigrLo4Tao8PhM"
+    },
+    "RebelKid": {
+        "player_authority_private_key": "aa982f13d3c24773eeed868ff2338e48798e5f6f2ef29907a50fc77fc40af05b",
+        "player_authority_address": "7WVjshgWBTyW6SjEw9CivyETgoELmgwH1T7cijxgWGt",
+        "player_info_acc_private_key": "b6160a59a937f394da4ee1674c940cb839549705501ff97104296fc17b507f18",
+        "player_info_acc_address": "GKs245WU7qpFDzgLNmJgmooK3VJxT72opi5cRG9rRW8j"
+    },
+    "Spaminator": {
+        "player_authority_private_key": "f280cf29dd4d643c6497cdfb7913982d729fec669a7c2e5fb6a4111f0828c97c",
+        "player_authority_address": "31meef7cwVGZN4r1CGkjyh7zQ3XLwro9WZvrw2pKkTox",
+        "player_info_acc_private_key": "dbbf5a999b2647c1fd77b2efb03c7687e7f18c2a78e42c47303249ad288f9ebb",
+        "player_info_acc_address": "ABA38PAzq9hyGSma2ouh3VnK2HLcX98WMpoWkXC7amrh"
+    },
+    "Katz": {
+        "player_authority_private_key": "93802f96c4f1aeeb19b1e849e32b3cac14d81cfcb6d86688fb511111aba594ef",
+        "player_authority_address": "B1gB484YS89SdMpUnzWkVx5gyrXeGsMZMKHEwXNXzBus",
+        "player_info_acc_private_key": "0a41c68c1e63cc8dfa034968d29358211810f365d1a0f01d65ece9bd273de451",
+        "player_info_acc_address": "728NfBo2HNMGNdskxCgPwJ1Yg8tUS6tfuJ75QhyFJZWE"
+    },
+    "Hammer": {
+        "player_authority_private_key": "55b09c147c2cccab330957713077a2adba1b827b61a94a626683c51a49d2afb4",
+        "player_authority_address": "xFtchEB4w9J1mpb2Dg7bVdjCLXu6SH4jcwKjF9qgMQh",
+        "player_info_acc_private_key": "304edb56b33e671e18a582386732f7249c0a568ae2d8f7c19fda13ca77f9736b",
+        "player_info_acc_address": "45ttC3PPCaQSUwJPfKZEe1VTXrWRe2rWuF25XaKSHFob"
+    },
+    "Dave": {
+        "player_authority_private_key": "f1a14e4779d29d87ce26060d1f08516383a435953350b38b88f72b1813e821a3",
+        "player_authority_address": "BNKatE5exCoMHjr2CjrBc7FERmSvyWmwc3FfooheVvBY",
+        "player_info_acc_private_key": "bb60ec82eae14b5e12ccb9c7152930470eea369e71e1f6ae61871320a0dfdd9a",
+        "player_info_acc_address": "HShQwwVwDiGC2HUBN5KtZVQv9iVXbFZrK3dNbfrskNii"
+    }
+}

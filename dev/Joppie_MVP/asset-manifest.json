@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/joppie_MVP/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/joppie_MVP/static/js/main.d79a65bb.chunk.js",
+    "main.js.map": "/joppie_MVP/static/js/main.d79a65bb.chunk.js.map",
+    "runtime-main.js": "/joppie_MVP/static/js/runtime-main.ebca539d.js",
+    "runtime-main.js.map": "/joppie_MVP/static/js/runtime-main.ebca539d.js.map",
+    "static/css/2.6aad7b4f.chunk.css": "/joppie_MVP/static/css/2.6aad7b4f.chunk.css",
+    "static/js/2.4e606921.chunk.js": "/joppie_MVP/static/js/2.4e606921.chunk.js",
+    "static/js/2.4e606921.chunk.js.map": "/joppie_MVP/static/js/2.4e606921.chunk.js.map",
+    "static/js/3.9c19cbcc.chunk.js": "/joppie_MVP/static/js/3.9c19cbcc.chunk.js",
+    "static/js/3.9c19cbcc.chunk.js.map": "/joppie_MVP/static/js/3.9c19cbcc.chunk.js.map",
+    "static/js/4.10a2dcdd.chunk.js": "/joppie_MVP/static/js/4.10a2dcdd.chunk.js",
+    "static/js/4.10a2dcdd.chunk.js.map": "/joppie_MVP/static/js/4.10a2dcdd.chunk.js.map",
+    "index.html": "/joppie_MVP/index.html",
+    "static/css/2.6aad7b4f.chunk.css.map": "/joppie_MVP/static/css/2.6aad7b4f.chunk.css.map",
+    "static/css/main.6dea0f05.chunk.css.map": "/joppie_MVP/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.4e606921.chunk.js.LICENSE.txt": "/joppie_MVP/static/js/2.4e606921.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ebca539d.js",
+    "static/css/2.6aad7b4f.chunk.css",
+    "static/js/2.4e606921.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.d79a65bb.chunk.js"
+  ]
+}

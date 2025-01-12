@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "types": ["mocha", "chai"],
+    "typeRoots": ["./node_modules/@types"],
+    "lib": ["es2015"],
+    "module": "CommonJS",        // <--- Important
+ // Modern JavaScript features
+    "target": "ES2021",
+    // How modules are handled
+    "module": "ESNext",
+    // Node resolution for imports
+    "moduleResolution": "node",
+    // We want strict type checks (optional, but recommended)
+    "strict": true,
+    // So we can import `.json` files
+    "resolveJsonModule": true,
+    // We'll allow default imports from commonjs
+    "esModuleInterop": true,
+    // We skip checking third-party library definitions
+    "skipLibCheck": true,
+    // Make sure file names are correct
+    "forceConsistentCasingInFileNames": true,
+    // Include Node typings so we can use `Buffer`, `console`, etc.
+    "types": ["node"],
+    // Some minimal libs so we have `console`, etc.
+    "lib": ["ES2021"]
+  },
+  "include": [
+    // Where your TS files live
+    "scripts/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  //"type": "module",
+  "scripts": {
+    "start": "ts-node scripts/local_test.ts"
+  }
+}
